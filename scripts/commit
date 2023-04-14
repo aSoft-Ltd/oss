@@ -1,0 +1,29 @@
+#!/bin/bash
+
+usage() {
+	echo "Submodule commiter"
+	echo "Usage: ./scripts/commit <commit-message>"
+	echo "    examples"
+	echo "    - ./scripts/commit 'my very greate commit message'"
+}
+
+doAction() {
+	set -xe
+	msg=$1
+	git submodule foreach "git add ."
+	git submodule foreach "git commit -m \"$msg\" || echo 'nothing to commit'"
+
+  git add .
+  git commit -m "$msg" || echo 'nothing to commit'
+}
+
+main() {
+	msg=$1;
+	if [[ -z "$msg" ]]; then
+		usage
+	else
+		doAction "$msg"
+	fi
+}
+
+main "$1";

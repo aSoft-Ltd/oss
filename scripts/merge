@@ -1,0 +1,45 @@
+#!/bin/bash
+
+usage() {
+	echo "Submodule merger"
+	echo "Usage: ./scripts/merge <local-branch> <origin-branch>"
+	echo "    examples"
+	echo "    - ./scripts/merge dev-george main"
+	echo "    - ./scripts/merge dev-andy main"
+}
+
+doAction() {
+	set -xe
+	local_branch=$1
+	origin_branch=$2
+	echo "merging $origin_branch -> $local_branch"
+	git submodule foreach "git add ."
+	git submodule foreach "git commit -m 'Before auto merging $origin_branch' || echo 'already upto date'"
+	git submodule foreach "git checkout $local_branch || git checkout -b $local_branch || echo 'already in branch $local_branch'"
+	git submodule foreach "git commit -m 'Before auto fetching $origin_branch' || echo 'already upto date'"
+	git submodule foreach "git fetch origin $origin_branch"
+	git submodule foreach "git merge origin/$origin_branch"
+
+  # Root repo
+  git add .
+  git commit -m "Before auto merging $origin_branch" || echo "already upto date"
+  git checkout $local_branch || git checkout -b $local_branch || echo 'already in branch $local_branch'
+  git add .
+  git commit -m "Before auto fetching $origin_branch" || echo 'already upto date'
+  git fetch origin $origin_branch
+  git merge origin/$origin_branch
+}
+
+main() {
+	local_branch=$1;
+	origin_branch=$2;
+	if [[ -z "$local_branch" ]]; then
+		usage
+	elif [[ -z "$origin_branch" ]]; then
+		usage
+	else
+		doAction "$local_branch" "$origin_branch"
+	fi
+}
+
+main $1 $2;

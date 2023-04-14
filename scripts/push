@@ -1,0 +1,34 @@
+#!/bin/bash
+
+usage() {
+	echo "Submodule pusher"
+	echo "Usage: ./scripts/push <branch-name>"
+	echo "    examples"
+	echo "    - ./scripts/push dev-george"
+	echo "    - ./scripts/push dev-andy"
+}
+
+doAction() {
+	set -xe
+	branch=$1
+	git submodule foreach "git add ."
+	git submodule foreach "git commit -m 'Before pushing' || echo 'already upto date'"
+	git submodule foreach "git checkout $branch"
+	git submodule foreach "git push origin $branch:$branch $branch:dev $branch:main"
+
+  git add .
+  git commit -m 'Before pushing' || echo 'already upto date'
+  git checkout $branch
+  git push origin $branch:$branch $branch:dev $branch:main
+}
+
+main() {
+	branch=$1;
+	if [[ -z "$branch" ]]; then
+		usage
+	else
+		doAction "$branch"
+	fi
+}
+
+main $1;
