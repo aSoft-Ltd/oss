@@ -10,3 +10,6 @@
 [submodule "scripts"]
 	path = scripts
 	url = https://github.com/aSoft-Ltd/scripts
+[submodule "kommander"]
+	path = kommander
+	url = https://github.com/aSoft-Ltd/kommander
