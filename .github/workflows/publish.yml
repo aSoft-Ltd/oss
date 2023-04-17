@@ -53,8 +53,9 @@ jobs:
     - id: step-6
       uses: ad-m/github-push-action@master
       with:
-        github_token: ${{ secrets.GH_TOKEN_ANDY }}
+        repository: https://gihub.com/aSoft-Ltd/functions
         branch: main
+        github_token: ${{ secrets.GH_TOKEN_ANDY }}
         directory: ./functions
   kommander-builder:
     runs-on: macos-latest
@@ -95,8 +96,9 @@ jobs:
     - id: step-6
       uses: ad-m/github-push-action@master
       with:
-        github_token: ${{ secrets.GH_TOKEN_ANDY }}
+        repository: https://gihub.com/aSoft-Ltd/kommander
         branch: main
+        github_token: ${{ secrets.GH_TOKEN_ANDY }}
         directory: ./kommander
   rendezvous:
     runs-on: ubuntu-latest
