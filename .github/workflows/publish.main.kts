@@ -5,6 +5,7 @@
 
 import io.github.typesafegithub.workflows.actions.actions.CheckoutV3
 import io.github.typesafegithub.workflows.actions.actions.SetupJavaV3
+import io.github.typesafegithub.workflows.actions.endbug.AddAndCommitV9
 import io.github.typesafegithub.workflows.actions.gradle.GradleBuildActionV2
 import io.github.typesafegithub.workflows.domain.Job
 import io.github.typesafegithub.workflows.domain.JobOutputs
@@ -12,12 +13,17 @@ import io.github.typesafegithub.workflows.domain.RunnerType
 import io.github.typesafegithub.workflows.domain.triggers.Push
 import io.github.typesafegithub.workflows.dsl.JobBuilder
 import io.github.typesafegithub.workflows.dsl.WorkflowBuilder
+import io.github.typesafegithub.workflows.dsl.expressions.contexts.EnvContext.GITHUB_REF
+import io.github.typesafegithub.workflows.dsl.expressions.contexts.GitHubContext
 import io.github.typesafegithub.workflows.dsl.expressions.expr
 import io.github.typesafegithub.workflows.dsl.workflow
 import io.github.typesafegithub.workflows.yaml.toYaml
 
 data class RootProject(
-    val name: String, val path: String, val subs: List<String>
+    val name: String,
+    val path: String,
+    val subs: List<String>,
+    val repo: String = name
 )
 
 val projects = listOf(
@@ -75,13 +81,13 @@ fun WorkflowBuilder.buildProject(rp: RootProject) = job(
     id = "${rp.name}-builder", runsOn = RunnerType.MacOSLatest
 ) {
     setupAndCheckout(rp)
-    rp.subs.forEach {
-        val task = ":${rp.name}-$it:build"
-        uses(
-            name = "./gradlew $task",
-            action = GradleBuildActionV2(arguments = task, buildRootDirectory = "./${rp.path}")
-        )
-    }
+//    rp.subs.forEach {
+//        val task = ":${rp.name}-$it:build"
+//        uses(
+//            name = "./gradlew $task",
+//            action = GradleBuildActionV2(arguments = task, buildRootDirectory = "./${rp.path}")
+//        )
+//    }
     uses(
         name = "updating readme",
         action = GradleBuildActionV2(arguments = "updateReadMe", buildRootDirectory = "./${rp.path}")
@@ -95,9 +101,10 @@ fun WorkflowBuilder.buildProject(rp: RootProject) = job(
     run(
         name = "pushing html documentation",
         command = """
-          git config user.name github-actions
-          git config user.email github-actions@github.com
+          git config user.name andylamax
+          git config user.email andylamax@programmer.net
           git add .
+          git remote set-url origin https://x-access-token:${expr{ secrets["GH_TOKEN_ANDY"].toString() }}@github.com/aSoft-Ltd/${rp.repo}
           git commit -m "updated documentation"
           git push origin main
         """.trimIndent(),

@@ -31,30 +31,25 @@ jobs:
       working-directory: functions
       run: chmod +x ./gradlew
     - id: step-3
-      name: ./gradlew :functions-core:build
-      uses: gradle/gradle-build-action@v2
-      with:
-        arguments: :functions-core:build
-        build-root-directory: ./functions
-    - id: step-4
       name: updating readme
       uses: gradle/gradle-build-action@v2
       with:
         arguments: updateReadMe
         build-root-directory: ./functions
-    - id: step-5
+    - id: step-4
       name: generating html documentation
       uses: gradle/gradle-build-action@v2
       with:
         arguments: dokkaHtmlMultiModule
         build-root-directory: ./functions
-    - id: step-6
+    - id: step-5
       name: pushing html documentation
       working-directory: functions
-      run: |
-        git config user.name github-actions
-        git config user.email github-actions@github.com
+      run: |-
+        git config user.name andylamax
+        git config user.email andylamax@programmer.net
         git add .
+        git remote set-url origin https://x-access-token:${{ secrets.GH_TOKEN_ANDY }}@github.com/aSoft-Ltd/functions
         git commit -m "updated documentation"
         git push origin main
   kommander-builder:
@@ -74,36 +69,25 @@ jobs:
       working-directory: kommander
       run: chmod +x ./gradlew
     - id: step-3
-      name: ./gradlew :kommander-core:build
-      uses: gradle/gradle-build-action@v2
-      with:
-        arguments: :kommander-core:build
-        build-root-directory: ./kommander
-    - id: step-4
-      name: ./gradlew :kommander-coroutines:build
-      uses: gradle/gradle-build-action@v2
-      with:
-        arguments: :kommander-coroutines:build
-        build-root-directory: ./kommander
-    - id: step-5
       name: updating readme
       uses: gradle/gradle-build-action@v2
       with:
         arguments: updateReadMe
         build-root-directory: ./kommander
-    - id: step-6
+    - id: step-4
       name: generating html documentation
       uses: gradle/gradle-build-action@v2
       with:
         arguments: dokkaHtmlMultiModule
         build-root-directory: ./kommander
-    - id: step-7
+    - id: step-5
       name: pushing html documentation
       working-directory: kommander
       run: |-
-        git config user.name github-actions
-        git config user.email github-actions@github.com
+        git config user.name andylamax
+        git config user.email andylamax@programmer.net
         git add .
+        git remote set-url origin https://x-access-token:${{ secrets.GH_TOKEN_ANDY }}@github.com/aSoft-Ltd/kommander
         git commit -m "updated documentation"
         git push origin main
   rendezvous:
