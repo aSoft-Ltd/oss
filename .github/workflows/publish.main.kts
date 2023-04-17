@@ -117,7 +117,8 @@ fun WorkflowBuilder.buildProject(rp: RootProject) = job(
             actionVersion = "master",
             inputs = mapOf(
                 "github_token" to expr { secrets.getValue("GH_TOKEN_ANDY") },
-                "branch" to "main"
+                "branch" to "main",
+                "directory" to "./${rp.path}"
             )
         )
     )
