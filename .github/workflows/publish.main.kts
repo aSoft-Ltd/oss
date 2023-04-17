@@ -72,7 +72,7 @@ fun JobBuilder<JobOutputs.EMPTY>.setupAndCheckout(rp: RootProject) {
 }
 
 fun WorkflowBuilder.buildProject(rp: RootProject) = job(
-    id = "${rp.name}-builder", runsOn = RunnerType.UbuntuLatest
+    id = "${rp.name}-builder", runsOn = RunnerType.MacOSLatest
 ) {
     setupAndCheckout(rp)
     rp.subs.forEach {
@@ -85,7 +85,7 @@ fun WorkflowBuilder.buildProject(rp: RootProject) = job(
 }
 
 fun WorkflowBuilder.publishProject(rp: RootProject, after: Job<JobOutputs.EMPTY>) = job(
-    id = "${rp.name}-publisher", runsOn = RunnerType.UbuntuLatest, needs = listOf(after)
+    id = "${rp.name}-publisher", runsOn = RunnerType.MacOSLatest, needs = listOf(after)
 ) {
     setupAndCheckout(rp)
     val argument =
@@ -108,6 +108,7 @@ val workflow = workflow(
         "ASOFT_MAVEN_PGP_PASSWORD" to expr { secrets["ASOFT_MAVEN_PGP_PASSWORD"].toString() },
         "ASOFT_NEXUS_PASSWORD" to expr { secrets["ASOFT_NEXUS_PASSWORD"].toString() },
         "ASOFT_NEXUS_USERNAME" to expr { secrets["ASOFT_NEXUS_USERNAME"].toString() },
+        "TARGETING_ALL" to "true"
     ),
 ) {
     val buildJobs = projects.map { buildProject(it) }
