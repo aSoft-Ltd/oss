@@ -82,47 +82,13 @@ fun WorkflowBuilder.buildProject(rp: RootProject) = job(
     id = "${rp.name}-builder", runsOn = RunnerType.MacOSLatest
 ) {
     setupAndCheckout(rp)
-//    rp.subs.forEach {
-//        val task = ":${rp.name}-$it:build"
-//        uses(
-//            name = "./gradlew $task",
-//            action = GradleBuildActionV2(arguments = task, buildRootDirectory = "./${rp.path}")
-//        )
-//    }
-    uses(
-        name = "updating readme",
-        action = GradleBuildActionV2(arguments = "updateReadMe", buildRootDirectory = "./${rp.path}")
-    )
-
-    uses(
-        name = "generating html documentation",
-        action = GradleBuildActionV2(arguments = "dokkaHtmlMultiModule", buildRootDirectory = "./${rp.path}")
-    )
-
-    run(
-        name = "pushing html documentation",
-        command = """
-          git config --local user.email "github-actions[bot]@users.noreply.github.com"
-          git config --local user.name "github-actions[bot]"
-          git add .
-          git commit -m "updated documentation"
-        """.trimIndent(),
-        workingDirectory = rp.path,
-    )
-
-    uses(
-        CustomAction(
-            actionOwner = "ad-m",
-            actionName = "github-push-action",
-            actionVersion = "master",
-            inputs = mapOf(
-                "repository" to "aSoft-Ltd/${rp.repo}",
-                "branch" to "main",
-                "github_token" to expr { secrets.getValue("GH_TOKEN_ANDY") },
-                "directory" to "./${rp.path}"
-            )
+    rp.subs.forEach {
+        val task = ":${rp.name}-$it:build"
+        uses(
+            name = "./gradlew $task",
+            action = GradleBuildActionV2(arguments = task, buildRootDirectory = "./${rp.path}")
         )
-    )
+    }
 }
 
 fun WorkflowBuilder.publishProject(rp: RootProject, after: Job<JobOutputs.EMPTY>) = job(
