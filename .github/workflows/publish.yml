@@ -46,12 +46,15 @@ jobs:
       name: pushing html documentation
       working-directory: functions
       run: |-
-        git config user.name andylamax
-        git config user.email andylamax@programmer.net
+        git config --local user.email "github-actions[bot]@users.noreply.github.com"
+        git config --local user.name "github-actions[bot]"
         git add .
-        git remote set-url origin https://x-access-token:${{ secrets.GH_TOKEN_ANDY }}@github.com/aSoft-Ltd/functions
         git commit -m "updated documentation"
-        git push origin main
+    - id: step-6
+      uses: ad-m/github-push-action@master
+      with:
+        github_token: ${{ secrets.GH_TOKEN_ANDY }}
+        branch: main
   kommander-builder:
     runs-on: macos-latest
     steps:
@@ -84,12 +87,15 @@ jobs:
       name: pushing html documentation
       working-directory: kommander
       run: |-
-        git config user.name andylamax
-        git config user.email andylamax@programmer.net
+        git config --local user.email "github-actions[bot]@users.noreply.github.com"
+        git config --local user.name "github-actions[bot]"
         git add .
-        git remote set-url origin https://x-access-token:${{ secrets.GH_TOKEN_ANDY }}@github.com/aSoft-Ltd/kommander
         git commit -m "updated documentation"
-        git push origin main
+    - id: step-6
+      uses: ad-m/github-push-action@master
+      with:
+        github_token: ${{ secrets.GH_TOKEN_ANDY }}
+        branch: main
   rendezvous:
     runs-on: ubuntu-latest
     needs:

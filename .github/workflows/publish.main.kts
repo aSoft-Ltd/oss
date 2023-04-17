@@ -10,6 +10,7 @@ import io.github.typesafegithub.workflows.actions.gradle.GradleBuildActionV2
 import io.github.typesafegithub.workflows.domain.Job
 import io.github.typesafegithub.workflows.domain.JobOutputs
 import io.github.typesafegithub.workflows.domain.RunnerType
+import io.github.typesafegithub.workflows.domain.actions.CustomAction
 import io.github.typesafegithub.workflows.domain.triggers.Push
 import io.github.typesafegithub.workflows.dsl.JobBuilder
 import io.github.typesafegithub.workflows.dsl.WorkflowBuilder
@@ -101,14 +102,24 @@ fun WorkflowBuilder.buildProject(rp: RootProject) = job(
     run(
         name = "pushing html documentation",
         command = """
-          git config user.name andylamax
-          git config user.email andylamax@programmer.net
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
           git add .
-          git remote set-url origin https://x-access-token:${expr{ secrets["GH_TOKEN_ANDY"].toString() }}@github.com/aSoft-Ltd/${rp.repo}
           git commit -m "updated documentation"
-          git push origin main
         """.trimIndent(),
         workingDirectory = rp.path,
+    )
+
+    uses(
+        CustomAction(
+            actionOwner = "ad-m",
+            actionName = "github-push-action",
+            actionVersion = "master",
+            inputs = mapOf(
+                "github_token" to expr { secrets.getValue("GH_TOKEN_ANDY") },
+                "branch" to "main"
+            )
+        )
     )
 }
 
