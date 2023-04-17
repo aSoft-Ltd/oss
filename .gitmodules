@@ -13,3 +13,6 @@
 [submodule "kommander"]
 	path = kommander
 	url = https://github.com/aSoft-Ltd/kommander
+[submodule "kollections"]
+	path = kollections
+	url = https://github.com/aSoft-Ltd/kollections
