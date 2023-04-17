@@ -53,7 +53,7 @@ jobs:
     - id: step-6
       uses: ad-m/github-push-action@master
       with:
-        repository: https://gihub.com/aSoft-Ltd/functions
+        repository: aSoft-Ltd/functions
         branch: main
         github_token: ${{ secrets.GH_TOKEN_ANDY }}
         directory: ./functions
@@ -96,7 +96,7 @@ jobs:
     - id: step-6
       uses: ad-m/github-push-action@master
       with:
-        repository: https://gihub.com/aSoft-Ltd/kommander
+        repository: aSoft-Ltd/kommander
         branch: main
         github_token: ${{ secrets.GH_TOKEN_ANDY }}
         directory: ./kommander
