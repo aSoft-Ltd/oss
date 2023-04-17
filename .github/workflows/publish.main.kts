@@ -82,23 +82,34 @@ fun WorkflowBuilder.buildProject(rp: RootProject) = job(
             action = GradleBuildActionV2(arguments = task, buildRootDirectory = "./${rp.path}")
         )
     }
+    uses(
+        name = "publishing documentation ",
+        action = GradleBuildActionV2(arguments = "updateReadMe", buildRootDirectory = "./${rp.path}")
+    )
+
+    uses(
+        name = "publishing documentation ",
+        action = GradleBuildActionV2(arguments = "dokkaHtmlMultiModule", buildRootDirectory = "./${rp.path}")
+    )
+
+    run(
+        name = "Push documentation",
+        command = "git push origin main",
+        workingDirectory = rp.path,
+    )
 }
 
 fun WorkflowBuilder.publishProject(rp: RootProject, after: Job<JobOutputs.EMPTY>) = job(
     id = "${rp.name}-publisher", runsOn = RunnerType.MacOSLatest, needs = listOf(after)
 ) {
     setupAndCheckout(rp)
+
     val argument =
         rp.subs.joinToString(separator = " ") { ":${rp.name}-$it:publishToSonatype" } + " closeAndReleaseStagingRepository"
     uses(
         name = "publishing " + rp.subs.joinToString(", ") { "${rp.name}-$it" },
         action = GradleBuildActionV2(arguments = argument, buildRootDirectory = "./${rp.path}")
     )
-//    rp.subs.forEachIndexed { index, it ->
-//        uses(
-//            name = "publishing ${rp.name}-$it", action = GradleBuildActionV2(arguments = argument, buildRootDirectory = "./${rp.path}")
-//        )
-//    }
 }
 
 val workflow = workflow(

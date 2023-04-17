@@ -1,4 +1,4 @@
-# This file was generated using Kotlin DSL (.github/workflows/.github/workflows/publish.main.kts).
+# This file was generated using Kotlin DSL (.github/workflows/publish.main.kts).
 # If you want to modify the workflow, please change the Kotlin file and regenerate this YAML file.
 # Generated with https://github.com/typesafegithub/github-workflows-kt
 
@@ -12,9 +12,10 @@ env:
   ASOFT_MAVEN_PGP_PASSWORD: ${{ secrets.ASOFT_MAVEN_PGP_PASSWORD }}
   ASOFT_NEXUS_PASSWORD: ${{ secrets.ASOFT_NEXUS_PASSWORD }}
   ASOFT_NEXUS_USERNAME: ${{ secrets.ASOFT_NEXUS_USERNAME }}
+  TARGETING_ALL: true
 jobs:
   functions-builder:
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
     steps:
     - id: step-0
       uses: actions/checkout@v3
@@ -35,8 +36,24 @@ jobs:
       with:
         arguments: :functions-core:build
         build-root-directory: ./functions
+    - id: step-4
+      name: 'publishing documentation '
+      uses: gradle/gradle-build-action@v2
+      with:
+        arguments: updateReadMe
+        build-root-directory: ./functions
+    - id: step-5
+      name: 'publishing documentation '
+      uses: gradle/gradle-build-action@v2
+      with:
+        arguments: dokkaHtmlMultiModule
+        build-root-directory: ./functions
+    - id: step-6
+      name: Push documentation
+      working-directory: functions
+      run: git push origin main
   kommander-builder:
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
     steps:
     - id: step-0
       uses: actions/checkout@v3
@@ -63,6 +80,22 @@ jobs:
       with:
         arguments: :kommander-coroutines:build
         build-root-directory: ./kommander
+    - id: step-5
+      name: 'publishing documentation '
+      uses: gradle/gradle-build-action@v2
+      with:
+        arguments: updateReadMe
+        build-root-directory: ./kommander
+    - id: step-6
+      name: 'publishing documentation '
+      uses: gradle/gradle-build-action@v2
+      with:
+        arguments: dokkaHtmlMultiModule
+        build-root-directory: ./kommander
+    - id: step-7
+      name: Push documentation
+      working-directory: kommander
+      run: git push origin main
   rendezvous:
     runs-on: ubuntu-latest
     needs:
@@ -72,7 +105,7 @@ jobs:
     - id: step-0
       run: echo "all builds completed. Beginning deployment"
   functions-publisher:
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
     needs:
     - rendezvous
     steps:
@@ -96,7 +129,7 @@ jobs:
         arguments: :functions-core:publishToSonatype closeAndReleaseStagingRepository
         build-root-directory: ./functions
   kommander-publisher:
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
     needs:
     - rendezvous
     steps:
