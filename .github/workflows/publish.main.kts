@@ -83,18 +83,24 @@ fun WorkflowBuilder.buildProject(rp: RootProject) = job(
         )
     }
     uses(
-        name = "publishing documentation ",
+        name = "updating readme",
         action = GradleBuildActionV2(arguments = "updateReadMe", buildRootDirectory = "./${rp.path}")
     )
 
     uses(
-        name = "publishing documentation ",
+        name = "generating html documentation",
         action = GradleBuildActionV2(arguments = "dokkaHtmlMultiModule", buildRootDirectory = "./${rp.path}")
     )
 
     run(
-        name = "Push documentation",
-        command = "git push origin main",
+        name = "pushing html documentation",
+        command = """
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git add .
+          git commit -m "updated documentation"
+          git push origin main
+        """.trimIndent(),
         workingDirectory = rp.path,
     )
 }
