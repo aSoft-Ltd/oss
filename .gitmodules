@@ -19,3 +19,6 @@
 [submodule "kevlar"]
 	path = kevlar
 	url = https://github.com/aSoft-Ltd/kevlar
+[submodule "kase"]
+	path = kase
+	url = https://github.com/aSoft-Ltd/kase

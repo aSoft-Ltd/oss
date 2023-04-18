@@ -32,6 +32,7 @@ val projects = listOf(
     RootProject("kommander", "kommander", listOf("core", "coroutines")),
     RootProject("kollections", "kollections", listOf("api", "interoperable", "atomic")),
     RootProject("kevlar", "kevlar", listOf("core")),
+    RootProject("kase", "kase", listOf("core")),
 //    RootProject("koncurrent-primitives", "koncurrent", listOf("core", "coroutines", "mock")),
 //    RootProject("koncurrent-later", "koncurrent", listOf("core", "coroutines", "test")),
 //    RootProject("live", "live", listOf("core", "compose", "coroutines", "react", "test")),
