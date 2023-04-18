@@ -21,16 +21,17 @@ import io.github.typesafegithub.workflows.dsl.workflow
 import io.github.typesafegithub.workflows.yaml.toYaml
 
 data class RootProject(
-        val name: String,
-        val path: String,
-        val subs: List<String>,
-        val repo: String = name
+    val name: String,
+    val path: String,
+    val subs: List<String>,
+    val repo: String = name
 )
 
 val projects = listOf(
-        RootProject("functions", "functions", listOf("core")),
-        RootProject("kommander", "kommander", listOf("core", "coroutines")),
-        RootProject("kollections", "kollections", listOf("api", "interoperable", "atomic")),
+    RootProject("functions", "functions", listOf("core")),
+    RootProject("kommander", "kommander", listOf("core", "coroutines")),
+    RootProject("kollections", "kollections", listOf("api", "interoperable", "atomic")),
+    RootProject("kevlar", "kevlar", listOf("core")),
 //    RootProject("koncurrent-primitives", "koncurrent", listOf("core", "coroutines", "mock")),
 //    RootProject("koncurrent-later", "koncurrent", listOf("core", "coroutines", "test")),
 //    RootProject("live", "live", listOf("core", "compose", "coroutines", "react", "test")),
@@ -73,47 +74,47 @@ fun JobBuilder<JobOutputs.EMPTY>.setupAndCheckout(rp: RootProject) {
     uses(CheckoutV3(submodules = true))
     uses(SetupJavaV3(javaVersion = "18", distribution = SetupJavaV3.Distribution.Corretto))
     run(
-            name = "Make ./gradlew executable",
-            command = "chmod +x ./gradlew",
-            workingDirectory = rp.path,
+        name = "Make ./gradlew executable",
+        command = "chmod +x ./gradlew",
+        workingDirectory = rp.path,
     )
 }
 
 fun WorkflowBuilder.buildProject(rp: RootProject) = job(
-        id = "${rp.name}-builder", runsOn = RunnerType.MacOSLatest
+    id = "${rp.name}-builder", runsOn = RunnerType.MacOSLatest
 ) {
     setupAndCheckout(rp)
     rp.subs.forEach {
         val task = ":${rp.name}-$it:build"
         uses(
-                name = "./gradlew $task",
-                action = GradleBuildActionV2(arguments = task, buildRootDirectory = "./${rp.path}")
+            name = "./gradlew $task",
+            action = GradleBuildActionV2(arguments = task, buildRootDirectory = "./${rp.path}")
         )
     }
 }
 
 fun WorkflowBuilder.publishProject(rp: RootProject, after: Job<JobOutputs.EMPTY>) = job(
-        id = "${rp.name}-publisher", runsOn = RunnerType.MacOSLatest, needs = listOf(after)
+    id = "${rp.name}-publisher", runsOn = RunnerType.MacOSLatest, needs = listOf(after)
 ) {
     setupAndCheckout(rp)
 
     val argument =
-            rp.subs.joinToString(separator = " ") { ":${rp.name}-$it:publishToSonatype" } + " closeAndReleaseStagingRepository"
+        rp.subs.joinToString(separator = " ") { ":${rp.name}-$it:publishToSonatype" } + " closeAndReleaseStagingRepository"
     uses(
-            name = "publishing " + rp.subs.joinToString(", ") { "${rp.name}-$it" },
-            action = GradleBuildActionV2(arguments = argument, buildRootDirectory = "./${rp.path}")
+        name = "publishing " + rp.subs.joinToString(", ") { "${rp.name}-$it" },
+        action = GradleBuildActionV2(arguments = argument, buildRootDirectory = "./${rp.path}")
     )
 }
 
 val workflow = workflow(
-        name = "Build, Cache then Publish", on = listOf(Push(branches = listOf("main"))), sourceFile = __FILE__.toPath(),
-        env = linkedMapOf(
-                "ASOFT_MAVEN_PGP_PRIVATE_KEY" to expr { secrets["ASOFT_MAVEN_PGP_PRIVATE_KEY"].toString() },
-                "ASOFT_MAVEN_PGP_PASSWORD" to expr { secrets["ASOFT_MAVEN_PGP_PASSWORD"].toString() },
-                "ASOFT_NEXUS_PASSWORD" to expr { secrets["ASOFT_NEXUS_PASSWORD"].toString() },
-                "ASOFT_NEXUS_USERNAME" to expr { secrets["ASOFT_NEXUS_USERNAME"].toString() },
-                "TARGETING_ALL" to "true"
-        ),
+    name = "Build, Cache then Publish", on = listOf(Push(branches = listOf("main"))), sourceFile = __FILE__.toPath(),
+    env = linkedMapOf(
+        "ASOFT_MAVEN_PGP_PRIVATE_KEY" to expr { secrets["ASOFT_MAVEN_PGP_PRIVATE_KEY"].toString() },
+        "ASOFT_MAVEN_PGP_PASSWORD" to expr { secrets["ASOFT_MAVEN_PGP_PASSWORD"].toString() },
+        "ASOFT_NEXUS_PASSWORD" to expr { secrets["ASOFT_NEXUS_PASSWORD"].toString() },
+        "ASOFT_NEXUS_USERNAME" to expr { secrets["ASOFT_NEXUS_USERNAME"].toString() },
+        "TARGETING_ALL" to "true"
+    ),
 ) {
     val buildJobs = projects.map { buildProject(it) }
     val rendezvous = job(id = "rendezvous", runsOn = RunnerType.UbuntuLatest, needs = buildJobs) {
