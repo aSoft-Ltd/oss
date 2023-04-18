@@ -94,6 +94,17 @@ fun WorkflowBuilder.buildProject(rp: RootProject) = job(
     }
 }
 
+//fun WorkflowBuilder.publishProject(rp: RootProject, after: Job<JobOutputs.EMPTY>) = job(
+//    id = "${rp.repo}-publisher", runsOn = RunnerType.MacOSLatest, needs = listOf(after)
+//) {
+//    setupAndCheckout(rp)
+//    val argument = "publishAllPublicationsToSonatypeRepository closeAndReleaseStagingRepository"
+//    uses(
+//        name = "publishing ${rp.repo}",
+//        action = GradleBuildActionV2(arguments = argument, buildRootDirectory = "./${rp.path}")
+//    )
+//}
+
 fun WorkflowBuilder.publishProject(rp: RootProject, after: Job<JobOutputs.EMPTY>) = job(
     id = "${rp.name}-publisher", runsOn = RunnerType.MacOSLatest, needs = listOf(after)
 ) {
@@ -122,6 +133,7 @@ val workflow = workflow(
         run("""echo "all builds completed. Beginning deployment"""")
     }
     projects.forEach { publishProject(it, rendezvous) }
+//    projects.associateBy { it.repo }.values.forEach { publishProject(it, rendezvous) }
 }
 
 println(workflow.toYaml(addConsistencyCheck = false))
