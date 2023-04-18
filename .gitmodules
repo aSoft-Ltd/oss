@@ -16,3 +16,6 @@
 [submodule "kollections"]
 	path = kollections
 	url = https://github.com/aSoft-Ltd/kollections
+[submodule "kevlar"]
+	path = kevlar
+	url = https://github.com/aSoft-Ltd/kevlar
