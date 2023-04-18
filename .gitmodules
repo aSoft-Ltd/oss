@@ -22,3 +22,6 @@
 [submodule "kase"]
 	path = kase
 	url = https://github.com/aSoft-Ltd/kase
+[submodule "koncurrent"]
+	path = koncurrent
+	url = https://github.com/aSoft-Ltd/koncurrent

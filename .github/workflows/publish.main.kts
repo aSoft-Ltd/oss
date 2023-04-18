@@ -24,17 +24,17 @@ data class RootProject(
     val name: String,
     val path: String,
     val subs: List<String>,
-    val repo: String = name
+    val repo: String = path
 )
 
 val projects = listOf(
     RootProject("functions", "functions", listOf("core")),
     RootProject("kommander", "kommander", listOf("core", "coroutines")),
-    RootProject("kollections", "kollections", listOf("api", "interoperable", "atomic")),
+    RootProject("kollections", "kollections", listOf("interoperable", "atomic")),
     RootProject("kevlar", "kevlar", listOf("core")),
     RootProject("kase", "kase", listOf("core")),
-//    RootProject("koncurrent-primitives", "koncurrent", listOf("core", "coroutines", "mock")),
-//    RootProject("koncurrent-later", "koncurrent", listOf("core", "coroutines", "test")),
+    RootProject("koncurrent-executors", "koncurrent", listOf("core", "coroutines", "mock")),
+    RootProject("koncurrent-later", "koncurrent", listOf("core", "coroutines", "test")),
 //    RootProject("live", "live", listOf("core", "compose", "coroutines", "react", "test")),
 //    RootProject("viewmodel", "viewmodel", listOf("core")),
 //    RootProject("cache", "cache", listOf("api", "browser", "file", "mock", "react-native")),
