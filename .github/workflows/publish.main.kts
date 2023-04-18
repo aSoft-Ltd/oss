@@ -127,8 +127,9 @@ val workflow = workflow(
         "TARGETING_ALL" to "true"
     ),
 ) {
-    val buildJobs = projects.map { buildProject(it) }
-    val rendezvous = job(id = "rendezvous", runsOn = RunnerType.UbuntuLatest, needs = buildJobs) {
+//    val buildJobs = projects.map { buildProject(it) }
+//    val rendezvous = job(id = "rendezvous", runsOn = RunnerType.UbuntuLatest, needs = buildJobs) {
+    val rendezvous = job(id = "rendezvous", runsOn = RunnerType.UbuntuLatest) {
         run("""echo "all builds completed. Beginning deployment"""")
     }
     projects.forEach { publishProject(it, rendezvous) }
