@@ -25,3 +25,6 @@
 [submodule "koncurrent"]
 	path = koncurrent
 	url = https://github.com/aSoft-Ltd/koncurrent
+[submodule "keep"]
+	path = keep
+	url = https://github.com/aSoft-Ltd/keep

@@ -34,7 +34,9 @@ val projects = listOf(
     RootProject("kase", "kase", listOf("core")),
     RootProject("koncurrent-executors", "koncurrent", listOf("core", "coroutines", "mock")),
     RootProject("koncurrent-later", "koncurrent", listOf("core", "coroutines", "test")),
+    RootProject("keep", "keep", listOf("api", "browser", "file", "mock", "react-native")),
 //    RootProject("live", "live", listOf("core", "compose", "coroutines", "react", "test")),
+
 //    RootProject("viewmodel", "viewmodel", listOf("core")),
 //    RootProject("cache", "cache", listOf("api", "browser", "file", "mock", "react-native")),
 //
@@ -68,7 +70,7 @@ val projects = listOf(
 //    RootProject("math-point", "math", listOf("core")),
 //
 //    RootProject("kida", "kida", listOf("api", "ktor", "core", "fake"))
-)
+).reversed()
 
 fun JobBuilder<JobOutputs.EMPTY>.setupAndCheckout(rp: RootProject) {
     uses(CheckoutV3(submodules = true))
@@ -93,17 +95,6 @@ fun WorkflowBuilder.buildProject(rp: RootProject) = job(
     }
 }
 
-//fun WorkflowBuilder.publishProject(rp: RootProject, after: Job<JobOutputs.EMPTY>) = job(
-//    id = "${rp.repo}-publisher", runsOn = RunnerType.MacOSLatest, needs = listOf(after)
-//) {
-//    setupAndCheckout(rp)
-//    val argument = "publishAllPublicationsToSonatypeRepository closeAndReleaseStagingRepository"
-//    uses(
-//        name = "publishing ${rp.repo}",
-//        action = GradleBuildActionV2(arguments = argument, buildRootDirectory = "./${rp.path}")
-//    )
-//}
-
 fun WorkflowBuilder.publishProject(rp: RootProject, after: Job<JobOutputs.EMPTY>) = job(
     id = "${rp.name}-publisher", runsOn = RunnerType.MacOSLatest, needs = listOf(after)
 ) {
@@ -127,9 +118,9 @@ val workflow = workflow(
         "TARGETING_ALL" to "true"
     ),
 ) {
-//    val buildJobs = projects.map { buildProject(it) }
-//    val rendezvous = job(id = "rendezvous", runsOn = RunnerType.UbuntuLatest, needs = buildJobs) {
-    val rendezvous = job(id = "rendezvous", runsOn = RunnerType.UbuntuLatest) {
+    val buildJobs = projects.map { buildProject(it) }
+    val rendezvous = job(id = "rendezvous", runsOn = RunnerType.UbuntuLatest, needs = buildJobs) {
+//    val rendezvous = job(id = "rendezvous", runsOn = RunnerType.UbuntuLatest) {
         run("""echo "all builds completed. Beginning deployment"""")
     }
     projects.forEach { publishProject(it, rendezvous) }
