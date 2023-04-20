@@ -4,17 +4,13 @@
 
 import io.github.typesafegithub.workflows.actions.actions.CheckoutV3
 import io.github.typesafegithub.workflows.actions.actions.SetupJavaV3
-import io.github.typesafegithub.workflows.actions.endbug.AddAndCommitV9
 import io.github.typesafegithub.workflows.actions.gradle.GradleBuildActionV2
 import io.github.typesafegithub.workflows.domain.Job
 import io.github.typesafegithub.workflows.domain.JobOutputs
 import io.github.typesafegithub.workflows.domain.RunnerType
-import io.github.typesafegithub.workflows.domain.actions.CustomAction
 import io.github.typesafegithub.workflows.domain.triggers.Push
 import io.github.typesafegithub.workflows.dsl.JobBuilder
 import io.github.typesafegithub.workflows.dsl.WorkflowBuilder
-import io.github.typesafegithub.workflows.dsl.expressions.contexts.EnvContext.GITHUB_REF
-import io.github.typesafegithub.workflows.dsl.expressions.contexts.GitHubContext
 import io.github.typesafegithub.workflows.dsl.expressions.expr
 import io.github.typesafegithub.workflows.dsl.workflow
 import io.github.typesafegithub.workflows.yaml.toYaml
@@ -108,6 +104,12 @@ fun WorkflowBuilder.publishProject(rp: RootProject, after: Job<JobOutputs.EMPTY>
 //        name = "publishing " + rp.subs.joinToString(", ") { "${rp.name}-$it" },
 //        action = GradleBuildActionV2(arguments = argument, buildRootDirectory = "./${rp.path}")
 //    )
+
+    val initTask = "initializeSonatypeStagingRepository"
+    uses(
+            name = "./gradlew $initTask",
+            action = GradleBuildActionV2(arguments = initTask, buildRootDirectory = "./${rp.path}")
+    )
 
     rp.subs.forEach {
         val task = ":${rp.name}-$it:publishToSonatype"
