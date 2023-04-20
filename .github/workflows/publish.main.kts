@@ -29,6 +29,8 @@ data class RootProject(
 val projects = listOf(
     RootProject("functions", "functions", listOf("core")),
     RootProject("kommander", "kommander", listOf("core", "coroutines")),
+    RootProject("lexi", "lexi", listOf("api", "console", "file")),
+    RootProject("lexi-test", "lexi", listOf("android")),
     RootProject("kollections", "kollections", listOf("interoperable", "atomic")),
     RootProject("kevlar", "kevlar", listOf("core")),
     RootProject("kase", "kase", listOf("core")),

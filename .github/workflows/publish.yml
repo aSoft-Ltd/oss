@@ -200,6 +200,62 @@ jobs:
       with:
         arguments: :kollections-atomic:build
         build-root-directory: ./kollections
+  lexi-test-builder:
+    runs-on: macos-latest
+    steps:
+    - id: step-0
+      uses: actions/checkout@v3
+      with:
+        submodules: true
+    - id: step-1
+      uses: actions/setup-java@v3
+      with:
+        java-version: 18
+        distribution: corretto
+    - id: step-2
+      name: Make ./gradlew executable
+      working-directory: lexi
+      run: chmod +x ./gradlew
+    - id: step-3
+      name: ./gradlew :lexi-test-android:build
+      uses: gradle/gradle-build-action@v2
+      with:
+        arguments: :lexi-test-android:build
+        build-root-directory: ./lexi
+  lexi-builder:
+    runs-on: macos-latest
+    steps:
+    - id: step-0
+      uses: actions/checkout@v3
+      with:
+        submodules: true
+    - id: step-1
+      uses: actions/setup-java@v3
+      with:
+        java-version: 18
+        distribution: corretto
+    - id: step-2
+      name: Make ./gradlew executable
+      working-directory: lexi
+      run: chmod +x ./gradlew
+    - id: step-3
+      name: ./gradlew :lexi-api:build
+      uses: gradle/gradle-build-action@v2
+      with:
+        arguments: :lexi-api:build
+        build-root-directory: ./lexi
+    - id: step-4
+      name: ./gradlew :lexi-console:build
+      uses: gradle/gradle-build-action@v2
+      with:
+        arguments: :lexi-console:build
+        build-root-directory: ./lexi
+    - id: step-5
+      name: ./gradlew :lexi-file:build
+      uses: gradle/gradle-build-action@v2
+      with:
+        arguments: :lexi-file:build
+        build-root-directory: ./lexi
   kommander-builder:
     runs-on: macos-latest
     steps:
@@ -259,6 +315,8 @@ jobs:
     - kase-builder
     - kevlar-builder
     - kollections-builder
+    - lexi-test-builder
+    - lexi-builder
     - kommander-builder
     - functions-builder
     steps:
@@ -408,6 +466,54 @@ jobs:
       with:
         arguments: :kollections-interoperable:publishToSonatype :kollections-atomic:publishToSonatype closeAndReleaseStagingRepository
         build-root-directory: ./kollections
+  lexi-test-publisher:
+    runs-on: macos-latest
+    needs:
+    - rendezvous
+    steps:
+    - id: step-0
+      uses: actions/checkout@v3
+      with:
+        submodules: true
+    - id: step-1
+      uses: actions/setup-java@v3
+      with:
+        java-version: 18
+        distribution: corretto
+    - id: step-2
+      name: Make ./gradlew executable
+      working-directory: lexi
+      run: chmod +x ./gradlew
+    - id: step-3
+      name: publishing lexi-test-android
+      uses: gradle/gradle-build-action@v2
+      with:
+        arguments: :lexi-test-android:publishToSonatype closeAndReleaseStagingRepository
+        build-root-directory: ./lexi
+  lexi-publisher:
+    runs-on: macos-latest
+    needs:
+    - rendezvous
+    steps:
+    - id: step-0
+      uses: actions/checkout@v3
+      with:
+        submodules: true
+    - id: step-1
+      uses: actions/setup-java@v3
+      with:
+        java-version: 18
+        distribution: corretto
+    - id: step-2
+      name: Make ./gradlew executable
+      working-directory: lexi
+      run: chmod +x ./gradlew
+    - id: step-3
+      name: publishing lexi-api, lexi-console, lexi-file
+      uses: gradle/gradle-build-action@v2
+      with:
+        arguments: :lexi-api:publishToSonatype :lexi-console:publishToSonatype :lexi-file:publishToSonatype closeAndReleaseStagingRepository
+        build-root-directory: ./lexi
   kommander-publisher:
     runs-on: macos-latest
     needs:
