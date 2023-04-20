@@ -31,3 +31,6 @@
 [submodule "lexi"]
 	path = lexi
 	url = https://github.com/aSoft-Ltd/lexi
+[submodule "cinematic"]
+	path = cinematic
+	url = https://github.com/aSoft-Ltd/cinematic
