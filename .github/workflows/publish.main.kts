@@ -109,14 +109,8 @@ fun WorkflowBuilder.publishProject(rp: RootProject, after: Job<JobOutputs.EMPTY>
 //        action = GradleBuildActionV2(arguments = argument, buildRootDirectory = "./${rp.path}")
 //    )
 
-    val initTask = "initializeSonatypeStagingRepository"
-    uses(
-            name = "./gradlew $initTask",
-            action = GradleBuildActionV2(arguments = initTask, buildRootDirectory = "./${rp.path}")
-    )
-
     rp.subs.forEach {
-        val task = "findSonatypeStagingRepository :${rp.name}-$it:publishToSonatype"
+        val task = ":${rp.name}-$it:publishToSonatype"
         uses(
                 name = "./gradlew $task",
                 action = GradleBuildActionV2(arguments = task, buildRootDirectory = "./${rp.path}")

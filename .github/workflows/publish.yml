@@ -38,40 +38,34 @@ jobs:
       working-directory: keep
       run: chmod +x ./gradlew
     - id: step-3
-      name: ./gradlew initializeSonatypeStagingRepository
+      name: ./gradlew :keep-api:publishToSonatype
       uses: gradle/gradle-build-action@v2
       with:
-        arguments: initializeSonatypeStagingRepository
+        arguments: :keep-api:publishToSonatype
         build-root-directory: ./keep
     - id: step-4
-      name: ./gradlew findSonatypeStagingRepository :keep-api:publishToSonatype
+      name: ./gradlew :keep-browser:publishToSonatype
       uses: gradle/gradle-build-action@v2
       with:
-        arguments: findSonatypeStagingRepository :keep-api:publishToSonatype
+        arguments: :keep-browser:publishToSonatype
         build-root-directory: ./keep
     - id: step-5
-      name: ./gradlew findSonatypeStagingRepository :keep-browser:publishToSonatype
+      name: ./gradlew :keep-file:publishToSonatype
       uses: gradle/gradle-build-action@v2
       with:
-        arguments: findSonatypeStagingRepository :keep-browser:publishToSonatype
+        arguments: :keep-file:publishToSonatype
         build-root-directory: ./keep
     - id: step-6
-      name: ./gradlew findSonatypeStagingRepository :keep-file:publishToSonatype
+      name: ./gradlew :keep-mock:publishToSonatype
       uses: gradle/gradle-build-action@v2
       with:
-        arguments: findSonatypeStagingRepository :keep-file:publishToSonatype
+        arguments: :keep-mock:publishToSonatype
         build-root-directory: ./keep
     - id: step-7
-      name: ./gradlew findSonatypeStagingRepository :keep-mock:publishToSonatype
+      name: ./gradlew :keep-react-native:publishToSonatype
       uses: gradle/gradle-build-action@v2
       with:
-        arguments: findSonatypeStagingRepository :keep-mock:publishToSonatype
-        build-root-directory: ./keep
-    - id: step-8
-      name: ./gradlew findSonatypeStagingRepository :keep-react-native:publishToSonatype
-      uses: gradle/gradle-build-action@v2
-      with:
-        arguments: findSonatypeStagingRepository :keep-react-native:publishToSonatype
+        arguments: :keep-react-native:publishToSonatype
         build-root-directory: ./keep
   koncurrent-later-publisher:
     runs-on: macos-latest
@@ -92,28 +86,22 @@ jobs:
       working-directory: koncurrent
       run: chmod +x ./gradlew
     - id: step-3
-      name: ./gradlew initializeSonatypeStagingRepository
+      name: ./gradlew :koncurrent-later-core:publishToSonatype
       uses: gradle/gradle-build-action@v2
       with:
-        arguments: initializeSonatypeStagingRepository
+        arguments: :koncurrent-later-core:publishToSonatype
         build-root-directory: ./koncurrent
     - id: step-4
-      name: ./gradlew findSonatypeStagingRepository :koncurrent-later-core:publishToSonatype
+      name: ./gradlew :koncurrent-later-coroutines:publishToSonatype
       uses: gradle/gradle-build-action@v2
       with:
-        arguments: findSonatypeStagingRepository :koncurrent-later-core:publishToSonatype
+        arguments: :koncurrent-later-coroutines:publishToSonatype
         build-root-directory: ./koncurrent
     - id: step-5
-      name: ./gradlew findSonatypeStagingRepository :koncurrent-later-coroutines:publishToSonatype
+      name: ./gradlew :koncurrent-later-test:publishToSonatype
       uses: gradle/gradle-build-action@v2
       with:
-        arguments: findSonatypeStagingRepository :koncurrent-later-coroutines:publishToSonatype
-        build-root-directory: ./koncurrent
-    - id: step-6
-      name: ./gradlew findSonatypeStagingRepository :koncurrent-later-test:publishToSonatype
-      uses: gradle/gradle-build-action@v2
-      with:
-        arguments: findSonatypeStagingRepository :koncurrent-later-test:publishToSonatype
+        arguments: :koncurrent-later-test:publishToSonatype
         build-root-directory: ./koncurrent
   koncurrent-executors-publisher:
     runs-on: macos-latest
@@ -134,28 +122,22 @@ jobs:
       working-directory: koncurrent
       run: chmod +x ./gradlew
     - id: step-3
-      name: ./gradlew initializeSonatypeStagingRepository
+      name: ./gradlew :koncurrent-executors-core:publishToSonatype
       uses: gradle/gradle-build-action@v2
       with:
-        arguments: initializeSonatypeStagingRepository
+        arguments: :koncurrent-executors-core:publishToSonatype
         build-root-directory: ./koncurrent
     - id: step-4
-      name: ./gradlew findSonatypeStagingRepository :koncurrent-executors-core:publishToSonatype
+      name: ./gradlew :koncurrent-executors-coroutines:publishToSonatype
       uses: gradle/gradle-build-action@v2
       with:
-        arguments: findSonatypeStagingRepository :koncurrent-executors-core:publishToSonatype
+        arguments: :koncurrent-executors-coroutines:publishToSonatype
         build-root-directory: ./koncurrent
     - id: step-5
-      name: ./gradlew findSonatypeStagingRepository :koncurrent-executors-coroutines:publishToSonatype
+      name: ./gradlew :koncurrent-executors-mock:publishToSonatype
       uses: gradle/gradle-build-action@v2
       with:
-        arguments: findSonatypeStagingRepository :koncurrent-executors-coroutines:publishToSonatype
-        build-root-directory: ./koncurrent
-    - id: step-6
-      name: ./gradlew findSonatypeStagingRepository :koncurrent-executors-mock:publishToSonatype
-      uses: gradle/gradle-build-action@v2
-      with:
-        arguments: findSonatypeStagingRepository :koncurrent-executors-mock:publishToSonatype
+        arguments: :koncurrent-executors-mock:publishToSonatype
         build-root-directory: ./koncurrent
   kase-publisher:
     runs-on: macos-latest
@@ -176,16 +158,10 @@ jobs:
       working-directory: kase
       run: chmod +x ./gradlew
     - id: step-3
-      name: ./gradlew initializeSonatypeStagingRepository
+      name: ./gradlew :kase-core:publishToSonatype
       uses: gradle/gradle-build-action@v2
       with:
-        arguments: initializeSonatypeStagingRepository
-        build-root-directory: ./kase
-    - id: step-4
-      name: ./gradlew findSonatypeStagingRepository :kase-core:publishToSonatype
-      uses: gradle/gradle-build-action@v2
-      with:
-        arguments: findSonatypeStagingRepository :kase-core:publishToSonatype
+        arguments: :kase-core:publishToSonatype
         build-root-directory: ./kase
   kevlar-publisher:
     runs-on: macos-latest
@@ -206,16 +182,10 @@ jobs:
       working-directory: kevlar
       run: chmod +x ./gradlew
     - id: step-3
-      name: ./gradlew initializeSonatypeStagingRepository
+      name: ./gradlew :kevlar-core:publishToSonatype
       uses: gradle/gradle-build-action@v2
       with:
-        arguments: initializeSonatypeStagingRepository
-        build-root-directory: ./kevlar
-    - id: step-4
-      name: ./gradlew findSonatypeStagingRepository :kevlar-core:publishToSonatype
-      uses: gradle/gradle-build-action@v2
-      with:
-        arguments: findSonatypeStagingRepository :kevlar-core:publishToSonatype
+        arguments: :kevlar-core:publishToSonatype
         build-root-directory: ./kevlar
   kollections-publisher:
     runs-on: macos-latest
@@ -236,22 +206,16 @@ jobs:
       working-directory: kollections
       run: chmod +x ./gradlew
     - id: step-3
-      name: ./gradlew initializeSonatypeStagingRepository
+      name: ./gradlew :kollections-interoperable:publishToSonatype
       uses: gradle/gradle-build-action@v2
       with:
-        arguments: initializeSonatypeStagingRepository
+        arguments: :kollections-interoperable:publishToSonatype
         build-root-directory: ./kollections
     - id: step-4
-      name: ./gradlew findSonatypeStagingRepository :kollections-interoperable:publishToSonatype
+      name: ./gradlew :kollections-atomic:publishToSonatype
       uses: gradle/gradle-build-action@v2
       with:
-        arguments: findSonatypeStagingRepository :kollections-interoperable:publishToSonatype
-        build-root-directory: ./kollections
-    - id: step-5
-      name: ./gradlew findSonatypeStagingRepository :kollections-atomic:publishToSonatype
-      uses: gradle/gradle-build-action@v2
-      with:
-        arguments: findSonatypeStagingRepository :kollections-atomic:publishToSonatype
+        arguments: :kollections-atomic:publishToSonatype
         build-root-directory: ./kollections
   lexi-test-publisher:
     runs-on: macos-latest
@@ -272,16 +236,10 @@ jobs:
       working-directory: lexi
       run: chmod +x ./gradlew
     - id: step-3
-      name: ./gradlew initializeSonatypeStagingRepository
+      name: ./gradlew :lexi-test-android:publishToSonatype
       uses: gradle/gradle-build-action@v2
       with:
-        arguments: initializeSonatypeStagingRepository
-        build-root-directory: ./lexi
-    - id: step-4
-      name: ./gradlew findSonatypeStagingRepository :lexi-test-android:publishToSonatype
-      uses: gradle/gradle-build-action@v2
-      with:
-        arguments: findSonatypeStagingRepository :lexi-test-android:publishToSonatype
+        arguments: :lexi-test-android:publishToSonatype
         build-root-directory: ./lexi
   lexi-publisher:
     runs-on: macos-latest
@@ -302,28 +260,22 @@ jobs:
       working-directory: lexi
       run: chmod +x ./gradlew
     - id: step-3
-      name: ./gradlew initializeSonatypeStagingRepository
+      name: ./gradlew :lexi-api:publishToSonatype
       uses: gradle/gradle-build-action@v2
       with:
-        arguments: initializeSonatypeStagingRepository
+        arguments: :lexi-api:publishToSonatype
         build-root-directory: ./lexi
     - id: step-4
-      name: ./gradlew findSonatypeStagingRepository :lexi-api:publishToSonatype
+      name: ./gradlew :lexi-console:publishToSonatype
       uses: gradle/gradle-build-action@v2
       with:
-        arguments: findSonatypeStagingRepository :lexi-api:publishToSonatype
+        arguments: :lexi-console:publishToSonatype
         build-root-directory: ./lexi
     - id: step-5
-      name: ./gradlew findSonatypeStagingRepository :lexi-console:publishToSonatype
+      name: ./gradlew :lexi-file:publishToSonatype
       uses: gradle/gradle-build-action@v2
       with:
-        arguments: findSonatypeStagingRepository :lexi-console:publishToSonatype
-        build-root-directory: ./lexi
-    - id: step-6
-      name: ./gradlew findSonatypeStagingRepository :lexi-file:publishToSonatype
-      uses: gradle/gradle-build-action@v2
-      with:
-        arguments: findSonatypeStagingRepository :lexi-file:publishToSonatype
+        arguments: :lexi-file:publishToSonatype
         build-root-directory: ./lexi
   kommander-publisher:
     runs-on: macos-latest
@@ -344,22 +296,16 @@ jobs:
       working-directory: kommander
       run: chmod +x ./gradlew
     - id: step-3
-      name: ./gradlew initializeSonatypeStagingRepository
+      name: ./gradlew :kommander-core:publishToSonatype
       uses: gradle/gradle-build-action@v2
       with:
-        arguments: initializeSonatypeStagingRepository
+        arguments: :kommander-core:publishToSonatype
         build-root-directory: ./kommander
     - id: step-4
-      name: ./gradlew findSonatypeStagingRepository :kommander-core:publishToSonatype
+      name: ./gradlew :kommander-coroutines:publishToSonatype
       uses: gradle/gradle-build-action@v2
       with:
-        arguments: findSonatypeStagingRepository :kommander-core:publishToSonatype
-        build-root-directory: ./kommander
-    - id: step-5
-      name: ./gradlew findSonatypeStagingRepository :kommander-coroutines:publishToSonatype
-      uses: gradle/gradle-build-action@v2
-      with:
-        arguments: findSonatypeStagingRepository :kommander-coroutines:publishToSonatype
+        arguments: :kommander-coroutines:publishToSonatype
         build-root-directory: ./kommander
   functions-publisher:
     runs-on: macos-latest
@@ -380,15 +326,9 @@ jobs:
       working-directory: functions
       run: chmod +x ./gradlew
     - id: step-3
-      name: ./gradlew initializeSonatypeStagingRepository
+      name: ./gradlew :functions-core:publishToSonatype
       uses: gradle/gradle-build-action@v2
       with:
-        arguments: initializeSonatypeStagingRepository
-        build-root-directory: ./functions
-    - id: step-4
-      name: ./gradlew findSonatypeStagingRepository :functions-core:publishToSonatype
-      uses: gradle/gradle-build-action@v2
-      with:
-        arguments: findSonatypeStagingRepository :functions-core:publishToSonatype
+        arguments: :functions-core:publishToSonatype
         build-root-directory: ./functions
 
