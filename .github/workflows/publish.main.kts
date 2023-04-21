@@ -24,15 +24,15 @@ data class RootProject(
 
 val projects = listOf(
     RootProject("functions", "functions", listOf("core")),
-    RootProject("kommander", "kommander", listOf("core", "coroutines")),
-    RootProject("lexi", "lexi", listOf("api", "console", "file")),
-    RootProject("lexi-test", "lexi", listOf("android")),
-    RootProject("kollections", "kollections", listOf("interoperable", "atomic")),
-    RootProject("kevlar", "kevlar", listOf("core")),
-    RootProject("kase", "kase", listOf("core")),
-    RootProject("koncurrent-executors", "koncurrent", listOf("core", "coroutines", "mock")),
-    RootProject("koncurrent-later", "koncurrent", listOf("core", "coroutines", "test")),
-    RootProject("keep", "keep", listOf("api", "browser", "file", "mock", "react-native")),
+//    RootProject("kommander", "kommander", listOf("core", "coroutines")),
+//    RootProject("lexi", "lexi", listOf("api", "console", "file")),
+//    RootProject("lexi-test", "lexi", listOf("android")),
+//    RootProject("kollections", "kollections", listOf("interoperable", "atomic")),
+//    RootProject("kevlar", "kevlar", listOf("core")),
+//    RootProject("kase", "kase", listOf("core")),
+//    RootProject("koncurrent-executors", "koncurrent", listOf("core", "coroutines", "mock")),
+//    RootProject("koncurrent-later", "koncurrent", listOf("core", "coroutines", "test")),
+//    RootProject("keep", "keep", listOf("api", "browser", "file", "mock", "react-native")),
     // =======================
 //    RootProject("live", "live", listOf("core", "compose", "coroutines", "react", "test")),
 
@@ -88,8 +88,8 @@ fun WorkflowBuilder.publishProject(rp: RootProject, after: Job<JobOutputs.EMPTY>
 ) {
     setupAndCheckout(rp)
 
-    val argument =
-        rp.subs.joinToString(separator = " ") { ":${rp.name}-$it:publishToSonatype" } //+ " closeAndReleaseStagingRepository"
+//    val argument = rp.subs.joinToString(separator = " ") { ":${rp.name}-$it:publishToSonatype" }
+    val argument = "publishToSonatype"
     uses(
         name = "publishing " + rp.subs.joinToString(", ") { "${rp.name}-$it" },
         action = GradleBuildActionV2(arguments = argument, buildRootDirectory = "./${rp.path}")
