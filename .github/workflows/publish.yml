@@ -12,6 +12,7 @@ env:
   ORG_GRADLE_PROJECT_mavenCentralPassword: ${{ secrets.ASOFT_NEXUS_PASSWORD }}
   ORG_GRADLE_PROJECT_signingInMemoryKey: ${{ secrets.ORG_GRADLE_PROJECT_SIGNINGINMEMORYKEY }}
   ORG_GRADLE_PROJECT_signingInMemoryKeyPassword: ${{ secrets.ORG_GRADLE_PROJECT_SIGNINGINMEMORYKEYPASSWORD }}
+  TARGETING_ALL: true
 jobs:
   rendezvous:
     runs-on: ubuntu-latest

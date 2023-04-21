@@ -103,7 +103,7 @@ val workflow = workflow(
         "ORG_GRADLE_PROJECT_mavenCentralPassword" to expr { secrets["ASOFT_NEXUS_PASSWORD"].toString() },
         "ORG_GRADLE_PROJECT_signingInMemoryKey" to expr { secrets["ORG_GRADLE_PROJECT_SIGNINGINMEMORYKEY"].toString() },
         "ORG_GRADLE_PROJECT_signingInMemoryKeyPassword" to expr { secrets["ORG_GRADLE_PROJECT_SIGNINGINMEMORYKEYPASSWORD"].toString() },
-//        "TARGETING_ALL" to "false"
+        "TARGETING_ALL" to "true"
     ),
 ) {
 //    val buildJobs = projects.map { buildProject(it) }
