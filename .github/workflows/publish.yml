@@ -18,6 +18,222 @@ jobs:
     steps:
     - id: step-0
       run: echo "all builds completed. Beginning deployment"
+  keep-publisher:
+    runs-on: macos-latest
+    needs:
+    - rendezvous
+    steps:
+    - id: step-0
+      uses: actions/checkout@v3
+      with:
+        submodules: true
+    - id: step-1
+      uses: actions/setup-java@v3
+      with:
+        java-version: 18
+        distribution: corretto
+    - id: step-2
+      name: Make ./gradlew executable
+      working-directory: keep
+      run: chmod +x ./gradlew
+    - id: step-3
+      name: publishing keep-api, keep-browser, keep-file, keep-mock, keep-react-native
+      uses: gradle/gradle-build-action@v2
+      with:
+        arguments: :keep-api:publishToSonatype :keep-browser:publishToSonatype :keep-file:publishToSonatype :keep-mock:publishToSonatype :keep-react-native:publishToSonatype
+        build-root-directory: ./keep
+  koncurrent-later-publisher:
+    runs-on: macos-latest
+    needs:
+    - rendezvous
+    steps:
+    - id: step-0
+      uses: actions/checkout@v3
+      with:
+        submodules: true
+    - id: step-1
+      uses: actions/setup-java@v3
+      with:
+        java-version: 18
+        distribution: corretto
+    - id: step-2
+      name: Make ./gradlew executable
+      working-directory: koncurrent
+      run: chmod +x ./gradlew
+    - id: step-3
+      name: publishing koncurrent-later-core, koncurrent-later-coroutines, koncurrent-later-test
+      uses: gradle/gradle-build-action@v2
+      with:
+        arguments: :koncurrent-later-core:publishToSonatype :koncurrent-later-coroutines:publishToSonatype :koncurrent-later-test:publishToSonatype
+        build-root-directory: ./koncurrent
+  koncurrent-executors-publisher:
+    runs-on: macos-latest
+    needs:
+    - rendezvous
+    steps:
+    - id: step-0
+      uses: actions/checkout@v3
+      with:
+        submodules: true
+    - id: step-1
+      uses: actions/setup-java@v3
+      with:
+        java-version: 18
+        distribution: corretto
+    - id: step-2
+      name: Make ./gradlew executable
+      working-directory: koncurrent
+      run: chmod +x ./gradlew
+    - id: step-3
+      name: publishing koncurrent-executors-core, koncurrent-executors-coroutines, koncurrent-executors-mock
+      uses: gradle/gradle-build-action@v2
+      with:
+        arguments: :koncurrent-executors-core:publishToSonatype :koncurrent-executors-coroutines:publishToSonatype :koncurrent-executors-mock:publishToSonatype
+        build-root-directory: ./koncurrent
+  kase-publisher:
+    runs-on: macos-latest
+    needs:
+    - rendezvous
+    steps:
+    - id: step-0
+      uses: actions/checkout@v3
+      with:
+        submodules: true
+    - id: step-1
+      uses: actions/setup-java@v3
+      with:
+        java-version: 18
+        distribution: corretto
+    - id: step-2
+      name: Make ./gradlew executable
+      working-directory: kase
+      run: chmod +x ./gradlew
+    - id: step-3
+      name: publishing kase-core
+      uses: gradle/gradle-build-action@v2
+      with:
+        arguments: :kase-core:publishToSonatype
+        build-root-directory: ./kase
+  kevlar-publisher:
+    runs-on: macos-latest
+    needs:
+    - rendezvous
+    steps:
+    - id: step-0
+      uses: actions/checkout@v3
+      with:
+        submodules: true
+    - id: step-1
+      uses: actions/setup-java@v3
+      with:
+        java-version: 18
+        distribution: corretto
+    - id: step-2
+      name: Make ./gradlew executable
+      working-directory: kevlar
+      run: chmod +x ./gradlew
+    - id: step-3
+      name: publishing kevlar-core
+      uses: gradle/gradle-build-action@v2
+      with:
+        arguments: :kevlar-core:publishToSonatype
+        build-root-directory: ./kevlar
+  kollections-publisher:
+    runs-on: macos-latest
+    needs:
+    - rendezvous
+    steps:
+    - id: step-0
+      uses: actions/checkout@v3
+      with:
+        submodules: true
+    - id: step-1
+      uses: actions/setup-java@v3
+      with:
+        java-version: 18
+        distribution: corretto
+    - id: step-2
+      name: Make ./gradlew executable
+      working-directory: kollections
+      run: chmod +x ./gradlew
+    - id: step-3
+      name: publishing kollections-interoperable, kollections-atomic
+      uses: gradle/gradle-build-action@v2
+      with:
+        arguments: :kollections-interoperable:publishToSonatype :kollections-atomic:publishToSonatype
+        build-root-directory: ./kollections
+  lexi-test-publisher:
+    runs-on: macos-latest
+    needs:
+    - rendezvous
+    steps:
+    - id: step-0
+      uses: actions/checkout@v3
+      with:
+        submodules: true
+    - id: step-1
+      uses: actions/setup-java@v3
+      with:
+        java-version: 18
+        distribution: corretto
+    - id: step-2
+      name: Make ./gradlew executable
+      working-directory: lexi
+      run: chmod +x ./gradlew
+    - id: step-3
+      name: publishing lexi-test-android
+      uses: gradle/gradle-build-action@v2
+      with:
+        arguments: :lexi-test-android:publishToSonatype
+        build-root-directory: ./lexi
+  lexi-publisher:
+    runs-on: macos-latest
+    needs:
+    - rendezvous
+    steps:
+    - id: step-0
+      uses: actions/checkout@v3
+      with:
+        submodules: true
+    - id: step-1
+      uses: actions/setup-java@v3
+      with:
+        java-version: 18
+        distribution: corretto
+    - id: step-2
+      name: Make ./gradlew executable
+      working-directory: lexi
+      run: chmod +x ./gradlew
+    - id: step-3
+      name: publishing lexi-api, lexi-console, lexi-file
+      uses: gradle/gradle-build-action@v2
+      with:
+        arguments: :lexi-api:publishToSonatype :lexi-console:publishToSonatype :lexi-file:publishToSonatype
+        build-root-directory: ./lexi
+  kommander-publisher:
+    runs-on: macos-latest
+    needs:
+    - rendezvous
+    steps:
+    - id: step-0
+      uses: actions/checkout@v3
+      with:
+        submodules: true
+    - id: step-1
+      uses: actions/setup-java@v3
+      with:
+        java-version: 18
+        distribution: corretto
+    - id: step-2
+      name: Make ./gradlew executable
+      working-directory: kommander
+      run: chmod +x ./gradlew
+    - id: step-3
+      name: publishing kommander-core, kommander-coroutines
+      uses: gradle/gradle-build-action@v2
+      with:
+        arguments: :kommander-core:publishToSonatype :kommander-coroutines:publishToSonatype
+        build-root-directory: ./kommander
   functions-publisher:
     runs-on: macos-latest
     needs:
