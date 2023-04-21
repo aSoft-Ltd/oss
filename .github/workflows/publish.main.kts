@@ -88,7 +88,8 @@ fun WorkflowBuilder.publishProject(rp: RootProject, after: Job<JobOutputs.EMPTY>
 ) {
     setupAndCheckout(rp)
 
-    val argument = rp.subs.joinToString(separator = " ") { ":${rp.name}-$it:publishAllPublicationsToMavenCentral" } +" --no-configuration-cache"
+    val argument =
+        rp.subs.joinToString(separator = " ") { ":${rp.name}-$it:publishAllPublicationsToMavenCentral" } + " --no-configuration-cache"
 //    val argument = "publishToSonatype"
     uses(
         name = "publishing " + rp.subs.joinToString(", ") { "${rp.name}-$it" },
@@ -111,7 +112,7 @@ val workflow = workflow(
 //    val rendezvous = job(id = "rendezvous", runsOn = RunnerType.UbuntuLatest) {
         run("""echo "all builds completed. Beginning deployment"""")
     }
-    projects.forEach { publishProject(it, rendezvous) }
+//    projects.forEach { publishProject(it, rendezvous) }
 //    projects.associateBy { it.repo }.values.forEach { publishProject(it, rendezvous) }
 }
 
