@@ -27,7 +27,7 @@ val projects = listOf(
     RootProject("kommander", "kommander", listOf("core", "coroutines")),
     RootProject("lexi", "lexi", listOf("api", "console", "file")),
     RootProject("lexi-test", "lexi", listOf("android")),
-//    RootProject("kollections", "kollections", listOf("interoperable", "atomic")),
+    RootProject("kollections", "kollections", listOf("interoperable", "atomic")),
 //    RootProject("kevlar", "kevlar", listOf("core")),
 //    RootProject("kase", "kase", listOf("core")),
 //    RootProject("koncurrent-executors", "koncurrent", listOf("core", "coroutines", "mock")),
