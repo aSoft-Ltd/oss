@@ -18,6 +18,30 @@ jobs:
     steps:
     - id: step-0
       run: echo "all builds completed. Beginning deployment"
+  kommander-publisher:
+    runs-on: macos-latest
+    needs:
+    - rendezvous
+    steps:
+    - id: step-0
+      uses: actions/checkout@v3
+      with:
+        submodules: true
+    - id: step-1
+      uses: actions/setup-java@v3
+      with:
+        java-version: 18
+        distribution: corretto
+    - id: step-2
+      name: Make ./gradlew executable
+      working-directory: kommander
+      run: chmod +x ./gradlew
+    - id: step-3
+      name: publishing kommander-core, kommander-coroutines
+      uses: gradle/gradle-build-action@v2
+      with:
+        arguments: :kommander-core:publishAllPublicationsToMavenCentral :kommander-coroutines:publishAllPublicationsToMavenCentral --no-configuration-cache
+        build-root-directory: ./kommander
   functions-publisher:
     runs-on: macos-latest
     needs:
@@ -40,6 +64,6 @@ jobs:
       name: publishing functions-core
       uses: gradle/gradle-build-action@v2
       with:
-        arguments: publishToSonatype
+        arguments: :functions-core:publishAllPublicationsToMavenCentral --no-configuration-cache
         build-root-directory: ./functions
 

@@ -24,7 +24,7 @@ data class RootProject(
 
 val projects = listOf(
     RootProject("functions", "functions", listOf("core")),
-//    RootProject("kommander", "kommander", listOf("core", "coroutines")),
+    RootProject("kommander", "kommander", listOf("core", "coroutines")),
 //    RootProject("lexi", "lexi", listOf("api", "console", "file")),
 //    RootProject("lexi-test", "lexi", listOf("android")),
 //    RootProject("kollections", "kollections", listOf("interoperable", "atomic")),
@@ -88,8 +88,8 @@ fun WorkflowBuilder.publishProject(rp: RootProject, after: Job<JobOutputs.EMPTY>
 ) {
     setupAndCheckout(rp)
 
-//    val argument = rp.subs.joinToString(separator = " ") { ":${rp.name}-$it:publishToSonatype" }
-    val argument = "publishToSonatype"
+    val argument = rp.subs.joinToString(separator = " ") { ":${rp.name}-$it:publishAllPublicationsToMavenCentral" } +" --no-configuration-cache"
+//    val argument = "publishToSonatype"
     uses(
         name = "publishing " + rp.subs.joinToString(", ") { "${rp.name}-$it" },
         action = GradleBuildActionV2(arguments = argument, buildRootDirectory = "./${rp.path}")
