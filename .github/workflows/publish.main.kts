@@ -25,8 +25,8 @@ data class RootProject(
 val projects = listOf(
     RootProject("functions", "functions", listOf("core")),
     RootProject("kommander", "kommander", listOf("core", "coroutines")),
-//    RootProject("lexi", "lexi", listOf("api", "console", "file")),
-//    RootProject("lexi-test", "lexi", listOf("android")),
+    RootProject("lexi", "lexi", listOf("api", "console", "file")),
+    RootProject("lexi-test", "lexi", listOf("android")),
 //    RootProject("kollections", "kollections", listOf("interoperable", "atomic")),
 //    RootProject("kevlar", "kevlar", listOf("core")),
 //    RootProject("kase", "kase", listOf("core")),
@@ -106,9 +106,9 @@ val workflow = workflow(
         "TARGETING_ALL" to "true"
     ),
 ) {
-//    val buildJobs = projects.map { buildProject(it) }
-//    val rendezvous = job(id = "rendezvous", runsOn = RunnerType.UbuntuLatest, needs = buildJobs) {
-    val rendezvous = job(id = "rendezvous", runsOn = RunnerType.UbuntuLatest) {
+    val buildJobs = projects.map { buildProject(it) }
+    val rendezvous = job(id = "rendezvous", runsOn = RunnerType.UbuntuLatest, needs = buildJobs) {
+//    val rendezvous = job(id = "rendezvous", runsOn = RunnerType.UbuntuLatest) {
         run("""echo "all builds completed. Beginning deployment"""")
     }
     projects.forEach { publishProject(it, rendezvous) }
