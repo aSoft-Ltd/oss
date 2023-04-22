@@ -30,8 +30,8 @@ val projects = listOf(
     RootProject("kollections", "kollections", listOf("interoperable", "atomic")),
     RootProject("kevlar", "kevlar", listOf("core")),
     RootProject("kase", "kase", listOf("core")),
-//    RootProject("koncurrent-executors", "koncurrent", listOf("core", "coroutines", "mock")),
-//    RootProject("koncurrent-later", "koncurrent", listOf("core", "coroutines", "test")),
+    RootProject("koncurrent-executors", "koncurrent", listOf("core", "coroutines", "mock")),
+    RootProject("koncurrent-later", "koncurrent", listOf("core", "coroutines", "test")),
 //    RootProject("keep", "keep", listOf("api", "browser", "file", "mock", "react-native")),
     // =======================
 //    RootProject("live", "live", listOf("core", "compose", "coroutines", "react", "test")),
