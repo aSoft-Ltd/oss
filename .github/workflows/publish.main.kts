@@ -32,7 +32,7 @@ val projects = listOf(
     RootProject("kase", "kase", listOf("core")),
     RootProject("koncurrent-executors", "koncurrent", listOf("core", "coroutines", "mock")),
     RootProject("koncurrent-later", "koncurrent", listOf("core", "coroutines", "test")),
-//    RootProject("keep", "keep", listOf("api", "browser", "file", "mock", "react-native")),
+    RootProject("keep", "keep", listOf("api", "browser", "file", "mock", "react-native")),
     // =======================
 //    RootProject("live", "live", listOf("core", "compose", "coroutines", "react", "test")),
 
