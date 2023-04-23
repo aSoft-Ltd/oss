@@ -14,6 +14,52 @@ env:
   ORG_GRADLE_PROJECT_signingInMemoryKeyPassword: ${{ secrets.ORG_GRADLE_PROJECT_SIGNINGINMEMORYKEYPASSWORD }}
   TARGETING_ALL: true
 jobs:
+  cinematic-live-builder:
+    runs-on: macos-latest
+    steps:
+    - id: step-0
+      uses: actions/checkout@v3
+      with:
+        submodules: true
+    - id: step-1
+      uses: actions/setup-java@v3
+      with:
+        java-version: 18
+        distribution: corretto
+    - id: step-2
+      name: Make ./gradlew executable
+      working-directory: cinematic
+      run: chmod +x ./gradlew
+    - id: step-3
+      name: ./gradlew :cinematic-live-core:build
+      uses: gradle/gradle-build-action@v2
+      with:
+        arguments: :cinematic-live-core:build
+        build-root-directory: ./cinematic
+    - id: step-4
+      name: ./gradlew :cinematic-live-compose:build
+      uses: gradle/gradle-build-action@v2
+      with:
+        arguments: :cinematic-live-compose:build
+        build-root-directory: ./cinematic
+    - id: step-5
+      name: ./gradlew :cinematic-live-coroutines:build
+      uses: gradle/gradle-build-action@v2
+      with:
+        arguments: :cinematic-live-coroutines:build
+        build-root-directory: ./cinematic
+    - id: step-6
+      name: ./gradlew :cinematic-live-react:build
+      uses: gradle/gradle-build-action@v2
+      with:
+        arguments: :cinematic-live-react:build
+        build-root-directory: ./cinematic
+    - id: step-7
+      name: ./gradlew :cinematic-live-test:build
+      uses: gradle/gradle-build-action@v2
+      with:
+        arguments: :cinematic-live-test:build
+        build-root-directory: ./cinematic
   keep-builder:
     runs-on: macos-latest
     steps:
@@ -309,6 +355,7 @@ jobs:
   rendezvous:
     runs-on: ubuntu-latest
     needs:
+    - cinematic-live-builder
     - keep-builder
     - koncurrent-later-builder
     - koncurrent-executors-builder
