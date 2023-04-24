@@ -34,3 +34,6 @@
 [submodule "cinematic"]
 	path = cinematic
 	url = https://github.com/aSoft-Ltd/cinematic
+[submodule "krest"]
+	path = krest
+	url = https://github.com/aSoft-Ltd/krest

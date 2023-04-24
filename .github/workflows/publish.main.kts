@@ -34,6 +34,8 @@ val projects = listOf(
     RootProject("koncurrent-later", "koncurrent", listOf("core", "coroutines", "test")),
     RootProject("keep", "keep", listOf("api", "browser", "file", "mock", "react-native")),
     RootProject("cinematic-live", "cinematic", listOf("core", "compose", "coroutines", "react", "test")),
+    RootProject("krest", "krest", listOf("core")),
+    RootProject("cinematic-scene", "cinematic", listOf("core")),
 
 //    RootProject("viewmodel", "viewmodel", listOf("core")),
 //

@@ -14,6 +14,50 @@ env:
   ORG_GRADLE_PROJECT_signingInMemoryKeyPassword: ${{ secrets.ORG_GRADLE_PROJECT_SIGNINGINMEMORYKEYPASSWORD }}
   TARGETING_ALL: true
 jobs:
+  cinematic-scene-builder:
+    runs-on: macos-latest
+    steps:
+    - id: step-0
+      uses: actions/checkout@v3
+      with:
+        submodules: true
+    - id: step-1
+      uses: actions/setup-java@v3
+      with:
+        java-version: 18
+        distribution: corretto
+    - id: step-2
+      name: Make ./gradlew executable
+      working-directory: cinematic
+      run: chmod +x ./gradlew
+    - id: step-3
+      name: ./gradlew :cinematic-scene-core:build
+      uses: gradle/gradle-build-action@v2
+      with:
+        arguments: :cinematic-scene-core:build
+        build-root-directory: ./cinematic
+  krest-builder:
+    runs-on: macos-latest
+    steps:
+    - id: step-0
+      uses: actions/checkout@v3
+      with:
+        submodules: true
+    - id: step-1
+      uses: actions/setup-java@v3
+      with:
+        java-version: 18
+        distribution: corretto
+    - id: step-2
+      name: Make ./gradlew executable
+      working-directory: krest
+      run: chmod +x ./gradlew
+    - id: step-3
+      name: ./gradlew :krest-core:build
+      uses: gradle/gradle-build-action@v2
+      with:
+        arguments: :krest-core:build
+        build-root-directory: ./krest
   cinematic-live-builder:
     runs-on: macos-latest
     steps:
@@ -355,6 +399,8 @@ jobs:
   rendezvous:
     runs-on: ubuntu-latest
     needs:
+    - cinematic-scene-builder
+    - krest-builder
     - cinematic-live-builder
     - keep-builder
     - koncurrent-later-builder
