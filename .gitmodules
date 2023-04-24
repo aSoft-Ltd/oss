@@ -40,3 +40,6 @@
 [submodule "kida"]
 	path = kida
 	url = https://github.com/aSoft-Ltd/kida
+[submodule "symphony"]
+	path = symphony
+	url = https://github.com/aSoft-Ltd/symphony
