@@ -37,3 +37,6 @@
 [submodule "krest"]
 	path = krest
 	url = https://github.com/aSoft-Ltd/krest
+[submodule "kida"]
+	path = kida
+	url = https://github.com/aSoft-Ltd/kida

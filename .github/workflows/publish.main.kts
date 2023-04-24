@@ -36,6 +36,7 @@ val projects = listOf(
     RootProject("cinematic-live", "cinematic", listOf("core", "compose", "coroutines", "react", "test")),
     RootProject("krest", "krest", listOf("core")),
     RootProject("cinematic-scene", "cinematic", listOf("core")),
+    RootProject("kida", "kida", listOf("api", "brela", "fake"))
 
 //    RootProject("viewmodel", "viewmodel", listOf("core")),
 //
