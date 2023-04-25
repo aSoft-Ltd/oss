@@ -36,9 +36,9 @@ val projects = listOf(
     RootProject("cinematic-live", "cinematic", listOf("core", "compose", "coroutines", "react", "test")),
     RootProject("krest", "krest", listOf("core")),
     RootProject("cinematic-scene", "cinematic", listOf("core")),
-    RootProject("kida", "kida", listOf("api", "brela", "fake"))
-
-//    RootProject("viewmodel", "viewmodel", listOf("core")),
+    RootProject("kida", "kida", listOf("api", "brela", "fake")),
+    RootProject("symphony-collections", "symphony", listOf("core")),
+    RootProject("symphony-collections-renderers", "symphony", listOf("string"))
 //
 //    RootProject("formatter", "formatter", listOf("core")),
 //    RootProject("kash", "kash", listOf("currency", "money")),

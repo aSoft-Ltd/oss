@@ -14,6 +14,50 @@ env:
   ORG_GRADLE_PROJECT_signingInMemoryKeyPassword: ${{ secrets.ORG_GRADLE_PROJECT_SIGNINGINMEMORYKEYPASSWORD }}
   TARGETING_ALL: true
 jobs:
+  symphony-collections-renderers-builder:
+    runs-on: macos-latest
+    steps:
+    - id: step-0
+      uses: actions/checkout@v3
+      with:
+        submodules: true
+    - id: step-1
+      uses: actions/setup-java@v3
+      with:
+        java-version: 18
+        distribution: corretto
+    - id: step-2
+      name: Make ./gradlew executable
+      working-directory: symphony
+      run: chmod +x ./gradlew
+    - id: step-3
+      name: ./gradlew :symphony-collections-renderers-string:build
+      uses: gradle/gradle-build-action@v2
+      with:
+        arguments: :symphony-collections-renderers-string:build
+        build-root-directory: ./symphony
+  symphony-collections-builder:
+    runs-on: macos-latest
+    steps:
+    - id: step-0
+      uses: actions/checkout@v3
+      with:
+        submodules: true
+    - id: step-1
+      uses: actions/setup-java@v3
+      with:
+        java-version: 18
+        distribution: corretto
+    - id: step-2
+      name: Make ./gradlew executable
+      working-directory: symphony
+      run: chmod +x ./gradlew
+    - id: step-3
+      name: ./gradlew :symphony-collections-core:build
+      uses: gradle/gradle-build-action@v2
+      with:
+        arguments: :symphony-collections-core:build
+        build-root-directory: ./symphony
   kida-builder:
     runs-on: macos-latest
     steps:
@@ -433,6 +477,8 @@ jobs:
   rendezvous:
     runs-on: ubuntu-latest
     needs:
+    - symphony-collections-renderers-builder
+    - symphony-collections-builder
     - kida-builder
     - cinematic-scene-builder
     - krest-builder
