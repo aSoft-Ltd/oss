@@ -25,6 +25,7 @@ data class RootProject(
 val projects = listOf(
     RootProject("functions", "functions", listOf("core")),
     RootProject("kommander", "kommander", listOf("core", "coroutines")),
+    RootProject("liquid", "liquid", listOf("number")),
     RootProject("lexi", "lexi", listOf("api", "console", "file")),
     RootProject("lexi-test", "lexi", listOf("android")),
     RootProject("kollections", "kollections", listOf("interoperable", "atomic")),
@@ -32,11 +33,11 @@ val projects = listOf(
     RootProject("kase", "kase", listOf("core")),
     RootProject("koncurrent-executors", "koncurrent", listOf("core", "coroutines", "mock")),
     RootProject("koncurrent-later", "koncurrent", listOf("core", "coroutines", "test")),
+    RootProject("kida", "kida", listOf("api", "brela", "fake")),
     RootProject("keep", "keep", listOf("api", "browser", "file", "mock", "react-native")),
     RootProject("cinematic-live", "cinematic", listOf("core", "compose", "coroutines", "react", "test")),
     RootProject("krest", "krest", listOf("core")),
     RootProject("cinematic-scene", "cinematic", listOf("core")),
-    RootProject("kida", "kida", listOf("api", "brela", "fake")),
     RootProject("symphony-collections", "symphony", listOf("core")),
     RootProject("symphony-collections-renderers", "symphony", listOf("string"))
 //

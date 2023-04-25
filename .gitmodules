@@ -43,3 +43,6 @@
 [submodule "symphony"]
 	path = symphony
 	url = https://github.com/aSoft-Ltd/symphony
+[submodule "liquid"]
+	path = liquid
+	url = https://github.com/aSoft-Ltd/liquid

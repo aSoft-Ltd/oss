@@ -58,40 +58,6 @@ jobs:
       with:
         arguments: :symphony-collections-core:build
         build-root-directory: ./symphony
-  kida-builder:
-    runs-on: macos-latest
-    steps:
-    - id: step-0
-      uses: actions/checkout@v3
-      with:
-        submodules: true
-    - id: step-1
-      uses: actions/setup-java@v3
-      with:
-        java-version: 18
-        distribution: corretto
-    - id: step-2
-      name: Make ./gradlew executable
-      working-directory: kida
-      run: chmod +x ./gradlew
-    - id: step-3
-      name: ./gradlew :kida-api:build
-      uses: gradle/gradle-build-action@v2
-      with:
-        arguments: :kida-api:build
-        build-root-directory: ./kida
-    - id: step-4
-      name: ./gradlew :kida-brela:build
-      uses: gradle/gradle-build-action@v2
-      with:
-        arguments: :kida-brela:build
-        build-root-directory: ./kida
-    - id: step-5
-      name: ./gradlew :kida-fake:build
-      uses: gradle/gradle-build-action@v2
-      with:
-        arguments: :kida-fake:build
-        build-root-directory: ./kida
   cinematic-scene-builder:
     runs-on: macos-latest
     steps:
@@ -228,6 +194,40 @@ jobs:
       with:
         arguments: :keep-react-native:build
         build-root-directory: ./keep
+  kida-builder:
+    runs-on: macos-latest
+    steps:
+    - id: step-0
+      uses: actions/checkout@v3
+      with:
+        submodules: true
+    - id: step-1
+      uses: actions/setup-java@v3
+      with:
+        java-version: 18
+        distribution: corretto
+    - id: step-2
+      name: Make ./gradlew executable
+      working-directory: kida
+      run: chmod +x ./gradlew
+    - id: step-3
+      name: ./gradlew :kida-api:build
+      uses: gradle/gradle-build-action@v2
+      with:
+        arguments: :kida-api:build
+        build-root-directory: ./kida
+    - id: step-4
+      name: ./gradlew :kida-brela:build
+      uses: gradle/gradle-build-action@v2
+      with:
+        arguments: :kida-brela:build
+        build-root-directory: ./kida
+    - id: step-5
+      name: ./gradlew :kida-fake:build
+      uses: gradle/gradle-build-action@v2
+      with:
+        arguments: :kida-fake:build
+        build-root-directory: ./kida
   koncurrent-later-builder:
     runs-on: macos-latest
     steps:
@@ -424,6 +424,28 @@ jobs:
       with:
         arguments: :lexi-file:build
         build-root-directory: ./lexi
+  liquid-builder:
+    runs-on: macos-latest
+    steps:
+    - id: step-0
+      uses: actions/checkout@v3
+      with:
+        submodules: true
+    - id: step-1
+      uses: actions/setup-java@v3
+      with:
+        java-version: 18
+        distribution: corretto
+    - id: step-2
+      name: Make ./gradlew executable
+      working-directory: liquid
+      run: chmod +x ./gradlew
+    - id: step-3
+      name: ./gradlew :liquid-number:build
+      uses: gradle/gradle-build-action@v2
+      with:
+        arguments: :liquid-number:build
+        build-root-directory: ./liquid
   kommander-builder:
     runs-on: macos-latest
     steps:
@@ -479,11 +501,11 @@ jobs:
     needs:
     - symphony-collections-renderers-builder
     - symphony-collections-builder
-    - kida-builder
     - cinematic-scene-builder
     - krest-builder
     - cinematic-live-builder
     - keep-builder
+    - kida-builder
     - koncurrent-later-builder
     - koncurrent-executors-builder
     - kase-builder
@@ -491,6 +513,7 @@ jobs:
     - kollections-builder
     - lexi-test-builder
     - lexi-builder
+    - liquid-builder
     - kommander-builder
     - functions-builder
     steps:
