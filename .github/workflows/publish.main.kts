@@ -39,7 +39,8 @@ val projects = listOf(
     RootProject("krest", "krest", listOf("core")),
     RootProject("cinematic-scene", "cinematic", listOf("core")),
     RootProject("symphony-collections", "symphony", listOf("core")),
-    RootProject("symphony-collections-renderers", "symphony", listOf("string"))
+    RootProject("symphony-collections-renderers", "symphony", listOf("string")),
+    RootProject("symphony-inputs", "symphony", listOf("core")),
 //
 //    RootProject("formatter", "formatter", listOf("core")),
 //    RootProject("kash", "kash", listOf("currency", "money")),
