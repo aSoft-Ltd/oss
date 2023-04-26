@@ -49,3 +49,9 @@
 [submodule "epsilon"]
 	path = epsilon
 	url = https://github.com/aSoft-Ltd/epsilon
+[submodule "identifier"]
+	path = identifier
+	url = https://github.com/aSoft-Ltd/identifier
+[submodule "krono"]
+	path = krono
+	url = https://github.com/aSoft-Ltd/krono

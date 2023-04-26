@@ -40,11 +40,13 @@ val projects = listOf(
     RootProject("cinematic-scene", "cinematic", listOf("core")),
     RootProject("symphony-collections", "symphony", listOf("core")),
     RootProject("symphony-collections-renderers", "symphony", listOf("string")),
-    RootProject("symphony-inputs", "symphony", listOf("core")),
+    RootProject("symphony-inputs", "symphony", listOf("core", "collections", "file")),
     RootProject("epsilon", "epsilon", listOf("core", "fake", "file")),
-    RootProject("epsilon-network", "epsilon", listOf("ktor"))
+    RootProject("epsilon-network", "epsilon", listOf("ktor")),
+    RootProject("krono", "krono", listOf("api", "kotlnix")),
+    RootProject("identifier", "identifier", listOf("core", "comm"))
+
 //
-//    RootProject("formatter", "formatter", listOf("core")),
 //    RootProject("kash", "kash", listOf("currency", "money")),
 //    RootProject("identifier", "identifier", listOf("core", "generators")),
 //
@@ -52,8 +54,6 @@ val projects = listOf(
 //    RootProject("response", "response", listOf("core")),
 //
 //    RootProject("geo", "geo", listOf("core", "languages", "countries")),
-//    RootProject("krono", "krono", listOf("api")),
-//    RootProject("presenters", "presenters", listOf("core", "actions", "mock", "krono", "geo")),
 //
 //    RootProject("mailer", "mailer", listOf("api", "mock", "smtp")),
 //
@@ -62,8 +62,6 @@ val projects = listOf(
 //    RootProject("math-spatial", "math", listOf("core")),
 //    RootProject("math-vector", "math", listOf("core")),
 //    RootProject("math-point", "math", listOf("core")),
-//
-//    RootProject("kida", "kida", listOf("api", "ktor", "core", "fake"))
 ).reversed()
 
 fun JobBuilder<JobOutputs.EMPTY>.setupAndCheckout(rp: RootProject) {
