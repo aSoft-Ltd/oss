@@ -55,3 +55,9 @@
 [submodule "krono"]
 	path = krono
 	url = https://github.com/aSoft-Ltd/krono
+[submodule "geo"]
+	path = geo
+	url = https://github.com/aSoft-Ltd/geo
+[submodule "kash"]
+	path = kash
+	url = https://github.com/aSoft-Ltd/kash
