@@ -48,7 +48,8 @@ val projects = listOf(
     RootProject("kash", "kash", listOf("currency", "money")),
     RootProject("geo", "geo", listOf("countries", "core")),
     RootProject("identifier", "identifier", listOf("core", "comm")),
-    RootProject("hormone", "hormone", listOf("core"))
+    RootProject("hormone", "hormone", listOf("core")),
+    RootProject("identifier-legal", "identifier", listOf("core"))
 //    RootProject("identifier", "identifier", listOf("core", "generators")),
 //
 //    RootProject("events", "events", listOf("core", "inmemory", "react")),
