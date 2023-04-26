@@ -46,3 +46,6 @@
 [submodule "liquid"]
 	path = liquid
 	url = https://github.com/aSoft-Ltd/liquid
+[submodule "epsilon"]
+	path = epsilon
+	url = https://github.com/aSoft-Ltd/epsilon

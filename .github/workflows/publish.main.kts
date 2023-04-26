@@ -41,6 +41,8 @@ val projects = listOf(
     RootProject("symphony-collections", "symphony", listOf("core")),
     RootProject("symphony-collections-renderers", "symphony", listOf("string")),
     RootProject("symphony-inputs", "symphony", listOf("core")),
+    RootProject("epsilon", "epsilon", listOf("core", "fake", "file")),
+    RootProject("epsilon-network", "epsilon", listOf("ktor"))
 //
 //    RootProject("formatter", "formatter", listOf("core")),
 //    RootProject("kash", "kash", listOf("currency", "money")),
