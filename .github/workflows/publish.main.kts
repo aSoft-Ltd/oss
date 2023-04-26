@@ -24,6 +24,7 @@ data class RootProject(
 
 val projects = listOf(
     RootProject("functions", "functions", listOf("core")),
+    RootProject("kronecker", "kronecker", listOf("core")),
     RootProject("kommander", "kommander", listOf("core", "coroutines")),
     RootProject("liquid", "liquid", listOf("number")),
     RootProject("lexi", "lexi", listOf("api", "console", "file")),
@@ -45,17 +46,13 @@ val projects = listOf(
     RootProject("epsilon-network", "epsilon", listOf("ktor")),
     RootProject("krono", "krono", listOf("api", "kotlinx")),
     RootProject("kash", "kash", listOf("currency", "money")),
-    RootProject("geo", "geo", listOf("countries")),
+    RootProject("geo", "geo", listOf("countries", "core")),
     RootProject("identifier", "identifier", listOf("core", "comm")),
-
-//
-//    RootProject("kash", "kash", listOf("currency", "money")),
+    RootProject("hormone", "hormone", listOf("core"))
 //    RootProject("identifier", "identifier", listOf("core", "generators")),
 //
 //    RootProject("events", "events", listOf("core", "inmemory", "react")),
 //    RootProject("response", "response", listOf("core")),
-//
-//    RootProject("geo", "geo", listOf("core", "languages", "countries")),
 //
 //    RootProject("mailer", "mailer", listOf("api", "mock", "smtp")),
 //
