@@ -226,6 +226,12 @@ jobs:
       with:
         arguments: :epsilon-file:build
         build-root-directory: ./epsilon
+    - id: step-6
+      name: ./gradlew :epsilon-symphony:build
+      uses: gradle/gradle-build-action@v2
+      with:
+        arguments: :epsilon-symphony:build
+        build-root-directory: ./epsilon
   symphony-inputs-builder:
     runs-on: macos-latest
     steps:
@@ -253,12 +259,6 @@ jobs:
       uses: gradle/gradle-build-action@v2
       with:
         arguments: :symphony-inputs-collections:build
-        build-root-directory: ./symphony
-    - id: step-5
-      name: ./gradlew :symphony-inputs-file:build
-      uses: gradle/gradle-build-action@v2
-      with:
-        arguments: :symphony-inputs-file:build
         build-root-directory: ./symphony
   symphony-collections-renderers-builder:
     runs-on: macos-latest
@@ -797,4 +797,652 @@ jobs:
     steps:
     - id: step-0
       run: echo "all builds completed. Beginning deployment"
+  identifier-legal-publisher:
+    runs-on: macos-latest
+    needs:
+    - rendezvous
+    steps:
+    - id: step-0
+      uses: actions/checkout@v3
+      with:
+        submodules: true
+    - id: step-1
+      uses: actions/setup-java@v3
+      with:
+        java-version: 18
+        distribution: corretto
+    - id: step-2
+      name: Make ./gradlew executable
+      working-directory: identifier
+      run: chmod +x ./gradlew
+    - id: step-3
+      name: publishing identifier-legal-core
+      uses: gradle/gradle-build-action@v2
+      with:
+        arguments: :identifier-legal-core:publishAllPublicationsToMavenCentral --no-configuration-cache
+        build-root-directory: ./identifier
+  hormone-publisher:
+    runs-on: macos-latest
+    needs:
+    - rendezvous
+    steps:
+    - id: step-0
+      uses: actions/checkout@v3
+      with:
+        submodules: true
+    - id: step-1
+      uses: actions/setup-java@v3
+      with:
+        java-version: 18
+        distribution: corretto
+    - id: step-2
+      name: Make ./gradlew executable
+      working-directory: hormone
+      run: chmod +x ./gradlew
+    - id: step-3
+      name: publishing hormone-core
+      uses: gradle/gradle-build-action@v2
+      with:
+        arguments: :hormone-core:publishAllPublicationsToMavenCentral --no-configuration-cache
+        build-root-directory: ./hormone
+  identifier-publisher:
+    runs-on: macos-latest
+    needs:
+    - rendezvous
+    steps:
+    - id: step-0
+      uses: actions/checkout@v3
+      with:
+        submodules: true
+    - id: step-1
+      uses: actions/setup-java@v3
+      with:
+        java-version: 18
+        distribution: corretto
+    - id: step-2
+      name: Make ./gradlew executable
+      working-directory: identifier
+      run: chmod +x ./gradlew
+    - id: step-3
+      name: publishing identifier-core, identifier-comm
+      uses: gradle/gradle-build-action@v2
+      with:
+        arguments: :identifier-core:publishAllPublicationsToMavenCentral :identifier-comm:publishAllPublicationsToMavenCentral --no-configuration-cache
+        build-root-directory: ./identifier
+  geo-publisher:
+    runs-on: macos-latest
+    needs:
+    - rendezvous
+    steps:
+    - id: step-0
+      uses: actions/checkout@v3
+      with:
+        submodules: true
+    - id: step-1
+      uses: actions/setup-java@v3
+      with:
+        java-version: 18
+        distribution: corretto
+    - id: step-2
+      name: Make ./gradlew executable
+      working-directory: geo
+      run: chmod +x ./gradlew
+    - id: step-3
+      name: publishing geo-countries, geo-core
+      uses: gradle/gradle-build-action@v2
+      with:
+        arguments: :geo-countries:publishAllPublicationsToMavenCentral :geo-core:publishAllPublicationsToMavenCentral --no-configuration-cache
+        build-root-directory: ./geo
+  kash-publisher:
+    runs-on: macos-latest
+    needs:
+    - rendezvous
+    steps:
+    - id: step-0
+      uses: actions/checkout@v3
+      with:
+        submodules: true
+    - id: step-1
+      uses: actions/setup-java@v3
+      with:
+        java-version: 18
+        distribution: corretto
+    - id: step-2
+      name: Make ./gradlew executable
+      working-directory: kash
+      run: chmod +x ./gradlew
+    - id: step-3
+      name: publishing kash-currency, kash-money
+      uses: gradle/gradle-build-action@v2
+      with:
+        arguments: :kash-currency:publishAllPublicationsToMavenCentral :kash-money:publishAllPublicationsToMavenCentral --no-configuration-cache
+        build-root-directory: ./kash
+  krono-publisher:
+    runs-on: macos-latest
+    needs:
+    - rendezvous
+    steps:
+    - id: step-0
+      uses: actions/checkout@v3
+      with:
+        submodules: true
+    - id: step-1
+      uses: actions/setup-java@v3
+      with:
+        java-version: 18
+        distribution: corretto
+    - id: step-2
+      name: Make ./gradlew executable
+      working-directory: krono
+      run: chmod +x ./gradlew
+    - id: step-3
+      name: publishing krono-api, krono-kotlinx
+      uses: gradle/gradle-build-action@v2
+      with:
+        arguments: :krono-api:publishAllPublicationsToMavenCentral :krono-kotlinx:publishAllPublicationsToMavenCentral --no-configuration-cache
+        build-root-directory: ./krono
+  epsilon-network-publisher:
+    runs-on: macos-latest
+    needs:
+    - rendezvous
+    steps:
+    - id: step-0
+      uses: actions/checkout@v3
+      with:
+        submodules: true
+    - id: step-1
+      uses: actions/setup-java@v3
+      with:
+        java-version: 18
+        distribution: corretto
+    - id: step-2
+      name: Make ./gradlew executable
+      working-directory: epsilon
+      run: chmod +x ./gradlew
+    - id: step-3
+      name: publishing epsilon-network-ktor
+      uses: gradle/gradle-build-action@v2
+      with:
+        arguments: :epsilon-network-ktor:publishAllPublicationsToMavenCentral --no-configuration-cache
+        build-root-directory: ./epsilon
+  epsilon-publisher:
+    runs-on: macos-latest
+    needs:
+    - rendezvous
+    steps:
+    - id: step-0
+      uses: actions/checkout@v3
+      with:
+        submodules: true
+    - id: step-1
+      uses: actions/setup-java@v3
+      with:
+        java-version: 18
+        distribution: corretto
+    - id: step-2
+      name: Make ./gradlew executable
+      working-directory: epsilon
+      run: chmod +x ./gradlew
+    - id: step-3
+      name: publishing epsilon-core, epsilon-fake, epsilon-file, epsilon-symphony
+      uses: gradle/gradle-build-action@v2
+      with:
+        arguments: :epsilon-core:publishAllPublicationsToMavenCentral :epsilon-fake:publishAllPublicationsToMavenCentral :epsilon-file:publishAllPublicationsToMavenCentral :epsilon-symphony:publishAllPublicationsToMavenCentral --no-configuration-cache
+        build-root-directory: ./epsilon
+  symphony-inputs-publisher:
+    runs-on: macos-latest
+    needs:
+    - rendezvous
+    steps:
+    - id: step-0
+      uses: actions/checkout@v3
+      with:
+        submodules: true
+    - id: step-1
+      uses: actions/setup-java@v3
+      with:
+        java-version: 18
+        distribution: corretto
+    - id: step-2
+      name: Make ./gradlew executable
+      working-directory: symphony
+      run: chmod +x ./gradlew
+    - id: step-3
+      name: publishing symphony-inputs-core, symphony-inputs-collections
+      uses: gradle/gradle-build-action@v2
+      with:
+        arguments: :symphony-inputs-core:publishAllPublicationsToMavenCentral :symphony-inputs-collections:publishAllPublicationsToMavenCentral --no-configuration-cache
+        build-root-directory: ./symphony
+  symphony-collections-renderers-publisher:
+    runs-on: macos-latest
+    needs:
+    - rendezvous
+    steps:
+    - id: step-0
+      uses: actions/checkout@v3
+      with:
+        submodules: true
+    - id: step-1
+      uses: actions/setup-java@v3
+      with:
+        java-version: 18
+        distribution: corretto
+    - id: step-2
+      name: Make ./gradlew executable
+      working-directory: symphony
+      run: chmod +x ./gradlew
+    - id: step-3
+      name: publishing symphony-collections-renderers-string
+      uses: gradle/gradle-build-action@v2
+      with:
+        arguments: :symphony-collections-renderers-string:publishAllPublicationsToMavenCentral --no-configuration-cache
+        build-root-directory: ./symphony
+  symphony-collections-publisher:
+    runs-on: macos-latest
+    needs:
+    - rendezvous
+    steps:
+    - id: step-0
+      uses: actions/checkout@v3
+      with:
+        submodules: true
+    - id: step-1
+      uses: actions/setup-java@v3
+      with:
+        java-version: 18
+        distribution: corretto
+    - id: step-2
+      name: Make ./gradlew executable
+      working-directory: symphony
+      run: chmod +x ./gradlew
+    - id: step-3
+      name: publishing symphony-collections-core
+      uses: gradle/gradle-build-action@v2
+      with:
+        arguments: :symphony-collections-core:publishAllPublicationsToMavenCentral --no-configuration-cache
+        build-root-directory: ./symphony
+  cinematic-scene-publisher:
+    runs-on: macos-latest
+    needs:
+    - rendezvous
+    steps:
+    - id: step-0
+      uses: actions/checkout@v3
+      with:
+        submodules: true
+    - id: step-1
+      uses: actions/setup-java@v3
+      with:
+        java-version: 18
+        distribution: corretto
+    - id: step-2
+      name: Make ./gradlew executable
+      working-directory: cinematic
+      run: chmod +x ./gradlew
+    - id: step-3
+      name: publishing cinematic-scene-core
+      uses: gradle/gradle-build-action@v2
+      with:
+        arguments: :cinematic-scene-core:publishAllPublicationsToMavenCentral --no-configuration-cache
+        build-root-directory: ./cinematic
+  krest-publisher:
+    runs-on: macos-latest
+    needs:
+    - rendezvous
+    steps:
+    - id: step-0
+      uses: actions/checkout@v3
+      with:
+        submodules: true
+    - id: step-1
+      uses: actions/setup-java@v3
+      with:
+        java-version: 18
+        distribution: corretto
+    - id: step-2
+      name: Make ./gradlew executable
+      working-directory: krest
+      run: chmod +x ./gradlew
+    - id: step-3
+      name: publishing krest-core
+      uses: gradle/gradle-build-action@v2
+      with:
+        arguments: :krest-core:publishAllPublicationsToMavenCentral --no-configuration-cache
+        build-root-directory: ./krest
+  cinematic-live-publisher:
+    runs-on: macos-latest
+    needs:
+    - rendezvous
+    steps:
+    - id: step-0
+      uses: actions/checkout@v3
+      with:
+        submodules: true
+    - id: step-1
+      uses: actions/setup-java@v3
+      with:
+        java-version: 18
+        distribution: corretto
+    - id: step-2
+      name: Make ./gradlew executable
+      working-directory: cinematic
+      run: chmod +x ./gradlew
+    - id: step-3
+      name: publishing cinematic-live-core, cinematic-live-compose, cinematic-live-coroutines, cinematic-live-react, cinematic-live-test
+      uses: gradle/gradle-build-action@v2
+      with:
+        arguments: :cinematic-live-core:publishAllPublicationsToMavenCentral :cinematic-live-compose:publishAllPublicationsToMavenCentral :cinematic-live-coroutines:publishAllPublicationsToMavenCentral :cinematic-live-react:publishAllPublicationsToMavenCentral :cinematic-live-test:publishAllPublicationsToMavenCentral --no-configuration-cache
+        build-root-directory: ./cinematic
+  keep-publisher:
+    runs-on: macos-latest
+    needs:
+    - rendezvous
+    steps:
+    - id: step-0
+      uses: actions/checkout@v3
+      with:
+        submodules: true
+    - id: step-1
+      uses: actions/setup-java@v3
+      with:
+        java-version: 18
+        distribution: corretto
+    - id: step-2
+      name: Make ./gradlew executable
+      working-directory: keep
+      run: chmod +x ./gradlew
+    - id: step-3
+      name: publishing keep-api, keep-browser, keep-file, keep-mock, keep-react-native
+      uses: gradle/gradle-build-action@v2
+      with:
+        arguments: :keep-api:publishAllPublicationsToMavenCentral :keep-browser:publishAllPublicationsToMavenCentral :keep-file:publishAllPublicationsToMavenCentral :keep-mock:publishAllPublicationsToMavenCentral :keep-react-native:publishAllPublicationsToMavenCentral --no-configuration-cache
+        build-root-directory: ./keep
+  kida-publisher:
+    runs-on: macos-latest
+    needs:
+    - rendezvous
+    steps:
+    - id: step-0
+      uses: actions/checkout@v3
+      with:
+        submodules: true
+    - id: step-1
+      uses: actions/setup-java@v3
+      with:
+        java-version: 18
+        distribution: corretto
+    - id: step-2
+      name: Make ./gradlew executable
+      working-directory: kida
+      run: chmod +x ./gradlew
+    - id: step-3
+      name: publishing kida-api, kida-brela, kida-fake
+      uses: gradle/gradle-build-action@v2
+      with:
+        arguments: :kida-api:publishAllPublicationsToMavenCentral :kida-brela:publishAllPublicationsToMavenCentral :kida-fake:publishAllPublicationsToMavenCentral --no-configuration-cache
+        build-root-directory: ./kida
+  koncurrent-later-publisher:
+    runs-on: macos-latest
+    needs:
+    - rendezvous
+    steps:
+    - id: step-0
+      uses: actions/checkout@v3
+      with:
+        submodules: true
+    - id: step-1
+      uses: actions/setup-java@v3
+      with:
+        java-version: 18
+        distribution: corretto
+    - id: step-2
+      name: Make ./gradlew executable
+      working-directory: koncurrent
+      run: chmod +x ./gradlew
+    - id: step-3
+      name: publishing koncurrent-later-core, koncurrent-later-coroutines, koncurrent-later-test
+      uses: gradle/gradle-build-action@v2
+      with:
+        arguments: :koncurrent-later-core:publishAllPublicationsToMavenCentral :koncurrent-later-coroutines:publishAllPublicationsToMavenCentral :koncurrent-later-test:publishAllPublicationsToMavenCentral --no-configuration-cache
+        build-root-directory: ./koncurrent
+  koncurrent-executors-publisher:
+    runs-on: macos-latest
+    needs:
+    - rendezvous
+    steps:
+    - id: step-0
+      uses: actions/checkout@v3
+      with:
+        submodules: true
+    - id: step-1
+      uses: actions/setup-java@v3
+      with:
+        java-version: 18
+        distribution: corretto
+    - id: step-2
+      name: Make ./gradlew executable
+      working-directory: koncurrent
+      run: chmod +x ./gradlew
+    - id: step-3
+      name: publishing koncurrent-executors-core, koncurrent-executors-coroutines, koncurrent-executors-mock
+      uses: gradle/gradle-build-action@v2
+      with:
+        arguments: :koncurrent-executors-core:publishAllPublicationsToMavenCentral :koncurrent-executors-coroutines:publishAllPublicationsToMavenCentral :koncurrent-executors-mock:publishAllPublicationsToMavenCentral --no-configuration-cache
+        build-root-directory: ./koncurrent
+  kase-publisher:
+    runs-on: macos-latest
+    needs:
+    - rendezvous
+    steps:
+    - id: step-0
+      uses: actions/checkout@v3
+      with:
+        submodules: true
+    - id: step-1
+      uses: actions/setup-java@v3
+      with:
+        java-version: 18
+        distribution: corretto
+    - id: step-2
+      name: Make ./gradlew executable
+      working-directory: kase
+      run: chmod +x ./gradlew
+    - id: step-3
+      name: publishing kase-core
+      uses: gradle/gradle-build-action@v2
+      with:
+        arguments: :kase-core:publishAllPublicationsToMavenCentral --no-configuration-cache
+        build-root-directory: ./kase
+  kevlar-publisher:
+    runs-on: macos-latest
+    needs:
+    - rendezvous
+    steps:
+    - id: step-0
+      uses: actions/checkout@v3
+      with:
+        submodules: true
+    - id: step-1
+      uses: actions/setup-java@v3
+      with:
+        java-version: 18
+        distribution: corretto
+    - id: step-2
+      name: Make ./gradlew executable
+      working-directory: kevlar
+      run: chmod +x ./gradlew
+    - id: step-3
+      name: publishing kevlar-core
+      uses: gradle/gradle-build-action@v2
+      with:
+        arguments: :kevlar-core:publishAllPublicationsToMavenCentral --no-configuration-cache
+        build-root-directory: ./kevlar
+  kollections-publisher:
+    runs-on: macos-latest
+    needs:
+    - rendezvous
+    steps:
+    - id: step-0
+      uses: actions/checkout@v3
+      with:
+        submodules: true
+    - id: step-1
+      uses: actions/setup-java@v3
+      with:
+        java-version: 18
+        distribution: corretto
+    - id: step-2
+      name: Make ./gradlew executable
+      working-directory: kollections
+      run: chmod +x ./gradlew
+    - id: step-3
+      name: publishing kollections-interoperable, kollections-atomic
+      uses: gradle/gradle-build-action@v2
+      with:
+        arguments: :kollections-interoperable:publishAllPublicationsToMavenCentral :kollections-atomic:publishAllPublicationsToMavenCentral --no-configuration-cache
+        build-root-directory: ./kollections
+  lexi-test-publisher:
+    runs-on: macos-latest
+    needs:
+    - rendezvous
+    steps:
+    - id: step-0
+      uses: actions/checkout@v3
+      with:
+        submodules: true
+    - id: step-1
+      uses: actions/setup-java@v3
+      with:
+        java-version: 18
+        distribution: corretto
+    - id: step-2
+      name: Make ./gradlew executable
+      working-directory: lexi
+      run: chmod +x ./gradlew
+    - id: step-3
+      name: publishing lexi-test-android
+      uses: gradle/gradle-build-action@v2
+      with:
+        arguments: :lexi-test-android:publishAllPublicationsToMavenCentral --no-configuration-cache
+        build-root-directory: ./lexi
+  lexi-publisher:
+    runs-on: macos-latest
+    needs:
+    - rendezvous
+    steps:
+    - id: step-0
+      uses: actions/checkout@v3
+      with:
+        submodules: true
+    - id: step-1
+      uses: actions/setup-java@v3
+      with:
+        java-version: 18
+        distribution: corretto
+    - id: step-2
+      name: Make ./gradlew executable
+      working-directory: lexi
+      run: chmod +x ./gradlew
+    - id: step-3
+      name: publishing lexi-api, lexi-console, lexi-file
+      uses: gradle/gradle-build-action@v2
+      with:
+        arguments: :lexi-api:publishAllPublicationsToMavenCentral :lexi-console:publishAllPublicationsToMavenCentral :lexi-file:publishAllPublicationsToMavenCentral --no-configuration-cache
+        build-root-directory: ./lexi
+  liquid-publisher:
+    runs-on: macos-latest
+    needs:
+    - rendezvous
+    steps:
+    - id: step-0
+      uses: actions/checkout@v3
+      with:
+        submodules: true
+    - id: step-1
+      uses: actions/setup-java@v3
+      with:
+        java-version: 18
+        distribution: corretto
+    - id: step-2
+      name: Make ./gradlew executable
+      working-directory: liquid
+      run: chmod +x ./gradlew
+    - id: step-3
+      name: publishing liquid-number
+      uses: gradle/gradle-build-action@v2
+      with:
+        arguments: :liquid-number:publishAllPublicationsToMavenCentral --no-configuration-cache
+        build-root-directory: ./liquid
+  kommander-publisher:
+    runs-on: macos-latest
+    needs:
+    - rendezvous
+    steps:
+    - id: step-0
+      uses: actions/checkout@v3
+      with:
+        submodules: true
+    - id: step-1
+      uses: actions/setup-java@v3
+      with:
+        java-version: 18
+        distribution: corretto
+    - id: step-2
+      name: Make ./gradlew executable
+      working-directory: kommander
+      run: chmod +x ./gradlew
+    - id: step-3
+      name: publishing kommander-core, kommander-coroutines
+      uses: gradle/gradle-build-action@v2
+      with:
+        arguments: :kommander-core:publishAllPublicationsToMavenCentral :kommander-coroutines:publishAllPublicationsToMavenCentral --no-configuration-cache
+        build-root-directory: ./kommander
+  kronecker-publisher:
+    runs-on: macos-latest
+    needs:
+    - rendezvous
+    steps:
+    - id: step-0
+      uses: actions/checkout@v3
+      with:
+        submodules: true
+    - id: step-1
+      uses: actions/setup-java@v3
+      with:
+        java-version: 18
+        distribution: corretto
+    - id: step-2
+      name: Make ./gradlew executable
+      working-directory: kronecker
+      run: chmod +x ./gradlew
+    - id: step-3
+      name: publishing kronecker-core
+      uses: gradle/gradle-build-action@v2
+      with:
+        arguments: :kronecker-core:publishAllPublicationsToMavenCentral --no-configuration-cache
+        build-root-directory: ./kronecker
+  functions-publisher:
+    runs-on: macos-latest
+    needs:
+    - rendezvous
+    steps:
+    - id: step-0
+      uses: actions/checkout@v3
+      with:
+        submodules: true
+    - id: step-1
+      uses: actions/setup-java@v3
+      with:
+        java-version: 18
+        distribution: corretto
+    - id: step-2
+      name: Make ./gradlew executable
+      working-directory: functions
+      run: chmod +x ./gradlew
+    - id: step-3
+      name: publishing functions-core
+      uses: gradle/gradle-build-action@v2
+      with:
+        arguments: :functions-core:publishAllPublicationsToMavenCentral --no-configuration-cache
+        build-root-directory: ./functions
 

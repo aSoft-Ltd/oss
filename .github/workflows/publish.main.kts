@@ -116,8 +116,7 @@ val workflow = workflow(
 //    val rendezvous = job(id = "rendezvous", runsOn = RunnerType.UbuntuLatest) {
         run("""echo "all builds completed. Beginning deployment"""")
     }
-//    projects.forEach { publishProject(it, rendezvous) }
-//    projects.associateBy { it.repo }.values.forEach { publishProject(it, rendezvous) }
+    projects.forEach { publishProject(it, rendezvous) }
 }
 
 println(workflow.toYaml(addConsistencyCheck = false))
