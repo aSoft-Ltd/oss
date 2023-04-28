@@ -114,6 +114,12 @@ jobs:
       with:
         arguments: :geo-core:build
         build-root-directory: ./geo
+    - id: step-5
+      name: ./gradlew :geo-symphony:build
+      uses: gradle/gradle-build-action@v2
+      with:
+        arguments: :geo-symphony:build
+        build-root-directory: ./geo
   kash-builder:
     runs-on: macos-latest
     steps:
@@ -141,6 +147,12 @@ jobs:
       uses: gradle/gradle-build-action@v2
       with:
         arguments: :kash-money:build
+        build-root-directory: ./kash
+    - id: step-5
+      name: ./gradlew :kash-symphony:build
+      uses: gradle/gradle-build-action@v2
+      with:
+        arguments: :kash-symphony:build
         build-root-directory: ./kash
   krono-builder:
     runs-on: macos-latest
@@ -888,10 +900,10 @@ jobs:
       working-directory: geo
       run: chmod +x ./gradlew
     - id: step-3
-      name: publishing geo-countries, geo-core
+      name: publishing geo-countries, geo-core, geo-symphony
       uses: gradle/gradle-build-action@v2
       with:
-        arguments: :geo-countries:publishAllPublicationsToMavenCentral :geo-core:publishAllPublicationsToMavenCentral --no-configuration-cache
+        arguments: :geo-countries:publishAllPublicationsToMavenCentral :geo-core:publishAllPublicationsToMavenCentral :geo-symphony:publishAllPublicationsToMavenCentral --no-configuration-cache
         build-root-directory: ./geo
   kash-publisher:
     runs-on: macos-latest
@@ -912,10 +924,10 @@ jobs:
       working-directory: kash
       run: chmod +x ./gradlew
     - id: step-3
-      name: publishing kash-currency, kash-money
+      name: publishing kash-currency, kash-money, kash-symphony
       uses: gradle/gradle-build-action@v2
       with:
-        arguments: :kash-currency:publishAllPublicationsToMavenCentral :kash-money:publishAllPublicationsToMavenCentral --no-configuration-cache
+        arguments: :kash-currency:publishAllPublicationsToMavenCentral :kash-money:publishAllPublicationsToMavenCentral :kash-symphony:publishAllPublicationsToMavenCentral --no-configuration-cache
         build-root-directory: ./kash
   krono-publisher:
     runs-on: macos-latest

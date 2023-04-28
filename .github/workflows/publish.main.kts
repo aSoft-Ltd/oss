@@ -45,8 +45,8 @@ val projects = listOf(
     RootProject("epsilon", "epsilon", listOf("core", "fake", "file", "symphony")),
     RootProject("epsilon-network", "epsilon", listOf("ktor")),
     RootProject("krono", "krono", listOf("api", "kotlinx")),
-    RootProject("kash", "kash", listOf("currency", "money")),
-    RootProject("geo", "geo", listOf("countries", "core")),
+    RootProject("kash", "kash", listOf("currency", "money", "symphony")),
+    RootProject("geo", "geo", listOf("countries", "core", "symphony")),
     RootProject("identifier", "identifier", listOf("core", "comm")),
     RootProject("hormone", "hormone", listOf("core")),
     RootProject("identifier-legal", "identifier", listOf("core"))
