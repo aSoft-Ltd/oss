@@ -182,6 +182,12 @@ jobs:
       with:
         arguments: :krono-kotlinx:build
         build-root-directory: ./krono
+    - id: step-5
+      name: ./gradlew :krono-symphony:build
+      uses: gradle/gradle-build-action@v2
+      with:
+        arguments: :krono-symphony:build
+        build-root-directory: ./krono
   epsilon-network-builder:
     runs-on: macos-latest
     steps:
@@ -948,10 +954,10 @@ jobs:
       working-directory: krono
       run: chmod +x ./gradlew
     - id: step-3
-      name: publishing krono-api, krono-kotlinx
+      name: publishing krono-api, krono-kotlinx, krono-symphony
       uses: gradle/gradle-build-action@v2
       with:
-        arguments: :krono-api:publishAllPublicationsToMavenCentral :krono-kotlinx:publishAllPublicationsToMavenCentral --no-configuration-cache
+        arguments: :krono-api:publishAllPublicationsToMavenCentral :krono-kotlinx:publishAllPublicationsToMavenCentral :krono-symphony:publishAllPublicationsToMavenCentral --no-configuration-cache
         build-root-directory: ./krono
   epsilon-network-publisher:
     runs-on: macos-latest
