@@ -67,3 +67,6 @@
 [submodule "kronecker"]
 	path = kronecker
 	url = https://github.com/aSoft-Ltd/kronecker
+[submodule "sanity"]
+	path = sanity
+	url = https://github.com/aSoft-Ltd/sanity
