@@ -23,7 +23,6 @@ data class RootProject(
 )
 
 val projects = listOf(
-    RootProject("functions", "functions", listOf("core")),
     RootProject("kronecker", "kronecker", listOf("core")),
     RootProject("kommander", "kommander", listOf("core", "coroutines")),
     RootProject("liquid", "liquid", listOf("number")),
