@@ -15,96 +15,114 @@ import io.github.typesafegithub.workflows.dsl.expressions.expr
 import io.github.typesafegithub.workflows.dsl.workflow
 import io.github.typesafegithub.workflows.yaml.toYaml
 
-data class RootProject(
-    val name: String,
+class ModuleBuilder(val parent: String) {
+    val modules = mutableListOf<String>()
+    fun p(vararg names: String) {
+        for (name in names) modules.add("$parent-$name")
+    }
+
+    fun p(name: String, builder: ModuleBuilder.() -> Unit) {
+        modules.addAll(ModuleBuilder("$parent-$name").apply(builder).modules)
+    }
+}
+
+class ProjectsBuilder {
+    val projects = mutableListOf<GradleProject>()
+    fun p(name: String, builder: ModuleBuilder.() -> Unit) {
+        projects.add(GradleProject(name, ModuleBuilder(name).apply(builder).modules))
+    }
+}
+
+data class GradleProject(
     val path: String,
-    val subs: List<String>,
-    val repo: String = path
+    val modules: List<String>
 )
 
-val projects = listOf(
-    RootProject("kronecker", "kronecker", listOf("core")),
-    RootProject("kommander", "kommander", listOf("core", "coroutines")),
-    RootProject("liquid", "liquid", listOf("number")),
-    RootProject("lexi", "lexi", listOf("api", "console", "file")),
-    RootProject("lexi-test", "lexi", listOf("android")),
-    RootProject("kollections", "kollections", listOf("interoperable", "atomic")),
-    RootProject("kevlar", "kevlar", listOf("core")),
-    RootProject("kase", "kase", listOf("core")),
-    RootProject("koncurrent-executors", "koncurrent", listOf("core", "coroutines", "mock")),
-    RootProject("koncurrent-later", "koncurrent", listOf("core", "coroutines", "test")),
-    RootProject("kida", "kida", listOf("api", "brela", "fake")),
-    RootProject("keep", "keep", listOf("api", "browser", "file", "mock", "react-native")),
-    RootProject("cinematic-live", "cinematic", listOf("core", "compose", "coroutines", "react", "test")),
-    RootProject("krest", "krest", listOf("core")),
-    RootProject("cinematic-scene", "cinematic", listOf("core")),
-    RootProject("symphony", "symphony", listOf("paginator", "selector", "actions", "table", "list", "collections")),
-    RootProject("symphony-input", "symphony", listOf("core", "form", "text", "number", "choice", "list", "file", "krono", "geo", "kash", "dialog")),// "identifier")),
-    RootProject("epsilon", "epsilon", listOf("core", "fake", "file")),
-    RootProject("epsilon-network", "epsilon", listOf("ktor")),
-    RootProject("krono", "krono", listOf("api", "kotlinx")),
-    RootProject("kash", "kash", listOf("currency", "money")),
-    RootProject("geo", "geo", listOf("countries", "core")),
-    RootProject("hormone", "hormone", listOf("core")),
-    RootProject("captain", "captain", listOf("url")),
-    RootProject("captain-navigator", "captain", listOf("api", "browser", "basic")),
-    RootProject("captain-router", "captain", listOf("core")),
-    RootProject("captain-router-react", "captain", listOf("core", "dom")),
-    RootProject("captain-router-compose", "captain", listOf("core", "html")),
-//    RootProject("identifier-legal", "identifier", listOf("core"))
-//    RootProject("identifier", "identifier", listOf("core", "comm")),
-//    RootProject("identifier", "identifier", listOf("core", "generators")),
-//
-//    RootProject("events", "events", listOf("core", "inmemory", "react")),
-//    RootProject("response", "response", listOf("core")),
-//
-//    RootProject("mailer", "mailer", listOf("api", "mock", "smtp")),
-//
-//    // math libs
-//    RootProject("math", "math", listOf("core")),
-//    RootProject("math-spatial", "math", listOf("core")),
-//    RootProject("math-vector", "math", listOf("core")),
-//    RootProject("math-point", "math", listOf("core")),
-).reversed()
+fun projects(builder: ProjectsBuilder.() -> Unit): List<GradleProject> = ProjectsBuilder().apply(builder).projects
 
-fun JobBuilder<JobOutputs.EMPTY>.setupAndCheckout(rp: RootProject) {
+val projects = projects {
+    p("liquid") { p("number") }
+    p("kronecker") { p("core") }
+    p("lexi") {
+        p("api", "console", "file")
+        p("test") { p("android") }
+    }
+    p("kommander") { p("core", "coroutines") }
+    p("kollections") { p("interoperable", "atomic") }
+    p("kevlar") { p("core") }
+    p("kase") { p("core") }
+    p("krest") { p("core") }
+    p("koncurrent") {
+        p("executors") { p("core", "coroutines", "mock") }
+        p("later") { p("core", "coroutines", "test") }
+    }
+    p("keep") { p("api", "browser", "file", "mock", "react-native") }
+    p("cinematic") {
+        p("live") { p("core", "compose", "coroutines", "react", "test") }
+        p("scene") { p("core") }
+    }
+    p("krono") { p("api", "kotlinx") }
+    p("hormone") { p("core") }
+    p("geo") { p("countries", "core") }
+    p("kash") { p("currency", "money") }
+    p("epsilon") {
+        p("core", "file", "fake")
+        p("network") { p("ktor") }
+    }
+    p("symphony") {
+        p("paginator", "selector", "actions", "table", "list", "collections")
+        p("input") { p("core", "form", "text", "number", "choice", "list", "file", "krono", "geo", "kash", "dialog") }// "identifier"),}
+    }
+    p("captain") {
+        p("url")
+        p("navigator") { p("api", "browser", "basic") }
+        p("router") {
+            p("core")
+            p("react") { p("core", "dom") }
+            p("compose") { p("core", "html") }
+        }
+    }
+    p("kida") { p("api", "brela", "fake") }
+}
+
+fun JobBuilder<JobOutputs.EMPTY>.setupAndCheckout(gp: GradleProject) {
     uses(CheckoutV3(submodules = true))
     uses(SetupJavaV3(javaVersion = "18", distribution = SetupJavaV3.Distribution.Corretto))
     run(
         name = "Make ./gradlew executable",
         command = "chmod +x ./gradlew",
-        workingDirectory = rp.path,
+        workingDirectory = gp.path,
     )
 }
 
-fun WorkflowBuilder.buildProject(rp: RootProject) = job(
-    id = "${rp.name}-builder", runsOn = RunnerType.MacOSLatest
+fun WorkflowBuilder.buildProject(gp: GradleProject) = job(
+    id = "${gp.path}-builder", runsOn = RunnerType.MacOSLatest
 ) {
-    setupAndCheckout(rp)
-    rp.subs.forEach {
-        val task = ":${rp.name}-$it:build"
+    setupAndCheckout(gp)
+    gp.modules.forEach {
+        val task = ":$it:build"
         uses(
             name = "./gradlew $task",
-            action = GradleBuildActionV2(arguments = task, buildRootDirectory = "./${rp.path}")
+            action = GradleBuildActionV2(arguments = task, buildRootDirectory = "./${gp.path}")
         )
     }
 }
 
-fun WorkflowBuilder.publishProject(rp: RootProject, after: Job<JobOutputs.EMPTY>) = job(
-    id = "${rp.name}-publisher", runsOn = RunnerType.MacOSLatest, needs = listOf(after)
+fun WorkflowBuilder.publishProject(gp: GradleProject, after: Job<JobOutputs.EMPTY>) = job(
+    id = "${gp.path}-publisher", runsOn = RunnerType.MacOSLatest, needs = listOf(after)
 ) {
-    setupAndCheckout(rp)
+    setupAndCheckout(gp)
 
-    val argument =
-        rp.subs.joinToString(separator = " ") { ":${rp.name}-$it:publishAllPublicationsToMavenCentral" } + " --no-configuration-cache"
-//    val argument = "publishToSonatype"
+    val argument = gp.modules.joinToString(separator = " ") {
+        ":$it:publishAllPublicationsToMavenCentral"
+    } + " --no-configuration-cache"
     uses(
-        name = "publishing " + rp.subs.joinToString(", ") { "${rp.name}-$it" },
-        action = GradleBuildActionV2(arguments = argument, buildRootDirectory = "./${rp.path}")
+        name = "publishing " + gp.modules.joinToString(", "),
+        action = GradleBuildActionV2(arguments = argument, buildRootDirectory = "./${gp.path}")
     )
 }
 
-val workflow = workflow(
+val wf = workflow(
     name = "Build, Cache then Publish", on = listOf(Push(branches = listOf("main"))), sourceFile = __FILE__.toPath(),
     env = linkedMapOf(
         "ORG_GRADLE_PROJECT_mavenCentralUsername" to expr { secrets["ASOFT_NEXUS_USERNAME"].toString() },
@@ -116,10 +134,9 @@ val workflow = workflow(
 ) {
     val buildJobs = projects.map { buildProject(it) }
     val rendezvous = job(id = "rendezvous", runsOn = RunnerType.UbuntuLatest, needs = buildJobs) {
-//    val rendezvous = job(id = "rendezvous", runsOn = RunnerType.UbuntuLatest) {
         run("""echo "all builds completed. Beginning deployment"""")
     }
     projects.forEach { publishProject(it, rendezvous) }
 }
 
-println(workflow.toYaml(addConsistencyCheck = false))
+println(wf.toYaml(addConsistencyCheck = false))
