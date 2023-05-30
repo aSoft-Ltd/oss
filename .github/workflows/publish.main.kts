@@ -1,6 +1,6 @@
 #!/usr/bin/env kotlin
 
-@file:DependsOn("io.github.typesafegithub:github-workflows-kt:0.41.0")
+@file:DependsOn("io.github.typesafegithub:github-workflows-kt:0.44.0")
 
 import io.github.typesafegithub.workflows.actions.actions.CheckoutV3
 import io.github.typesafegithub.workflows.actions.actions.SetupJavaV3
@@ -42,13 +42,18 @@ val projects = listOf(
     RootProject("symphony-collections", "symphony", listOf("core")),
     RootProject("symphony-collections-renderers", "symphony", listOf("string")),
     RootProject("symphony-inputs", "symphony", listOf("core", "collections")),
-    RootProject("epsilon", "epsilon", listOf("core", "fake", "file", "symphony")),
+    RootProject("epsilon", "epsilon", listOf("core", "fake", "file")),
     RootProject("epsilon-network", "epsilon", listOf("ktor")),
-    RootProject("krono", "krono", listOf("api", "kotlinx", "symphony")),
-    RootProject("kash", "kash", listOf("currency", "money", "symphony")),
-    RootProject("geo", "geo", listOf("countries", "core", "symphony")),
+    RootProject("krono", "krono", listOf("api", "kotlinx")),
+    RootProject("kash", "kash", listOf("currency", "money")),
+    RootProject("geo", "geo", listOf("countries", "core")),
     RootProject("identifier", "identifier", listOf("core", "comm")),
     RootProject("hormone", "hormone", listOf("core")),
+    RootProject("captain", "captain", listOf("url")),
+    RootProject("captain-navigator", "captain", listOf("api", "browser", "basic")),
+    RootProject("captain-router", "captain", listOf("core")),
+    RootProject("captain-router-react", "captain", listOf("core", "dom")),
+    RootProject("captain-router-compose", "captain", listOf("core", "html")),
     RootProject("identifier-legal", "identifier", listOf("core"))
 //    RootProject("identifier", "identifier", listOf("core", "generators")),
 //

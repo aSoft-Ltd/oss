@@ -70,3 +70,6 @@
 [submodule "sanity"]
 	path = sanity
 	url = https://github.com/aSoft-Ltd/sanity
+[submodule "captain"]
+	path = captain
+	url = https://github.com/aSoft-Ltd/captain
