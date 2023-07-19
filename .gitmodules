@@ -73,3 +73,6 @@
 [submodule "captain"]
 	path = captain
 	url = https://github.com/aSoft-Ltd/captain
+[submodule "klip"]
+	path = klip
+	url = https://github.com/aSoft-Ltd/klip
