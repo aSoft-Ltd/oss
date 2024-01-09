@@ -50,7 +50,7 @@ val projects = projects {
         p("test") { p("android") }
     }
     p("kommander") { p("core", "coroutines") }
-    p("kollections") { p("interoperable", "atomic") }
+    p("kollections") { p("primitive", "atomic") }
     p("kevlar") { p("core") }
     p("kase") { p("core") }
     p("krest") { p("core") }
