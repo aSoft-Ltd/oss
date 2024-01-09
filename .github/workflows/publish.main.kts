@@ -41,8 +41,10 @@ data class GradleProject(
 fun projects(builder: ProjectsBuilder.() -> Unit): List<GradleProject> = ProjectsBuilder().apply(builder).projects
 
 val projects = projects {
-    p("liquid") { p("number") }
     p("kronecker") { p("core") }
+    p("kotlinx-interoperable") {
+        p("exports")
+    }
     p("lexi") {
         p("api", "console", "file")
         p("test") { p("android") }
@@ -71,7 +73,7 @@ val projects = projects {
     }
     p("symphony") {
         p("paginator", "selector", "actions", "table", "list", "collections")
-        p("input") { p("core", "form", "text", "number", "choice", "list", "file", "krono", "geo", "kash", "dialog") }// "identifier"),}
+        p("input") { p("core", "text", "number", "choice", "dialog", "sheet") }
     }
     p("captain") {
         p("url")
@@ -100,7 +102,7 @@ fun WorkflowBuilder.buildProject(gp: GradleProject) = job(
 ) {
     setupAndCheckout(gp)
     gp.modules.forEach {
-        val task = ":$it:build"
+        val task = "kotlinUpgradeYarnLock :$it:build"
         uses(
             name = "./gradlew $task",
             action = GradleBuildActionV2(arguments = task, buildRootDirectory = "./${gp.path}")
@@ -114,7 +116,7 @@ fun WorkflowBuilder.publishProject(gp: GradleProject, after: Job<JobOutputs.EMPT
     setupAndCheckout(gp)
 
     val argument = gp.modules.joinToString(separator = " ") {
-        ":$it:publishAllPublicationsToMavenCentral"
+        "kotlinUpgradeYarnLock :$it:publishAllPublicationsToMavenCentral"
     } + " --no-configuration-cache"
     uses(
         name = "publishing " + gp.modules.joinToString(", "),
