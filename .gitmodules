@@ -79,3 +79,6 @@
 [submodule "build-logic"]
 	path = build-logic
 	url = https://github.com/aSoft-Ltd/build-logic
+[submodule "kotlinx-interoperable"]
+	path = kotlinx-interoperable
+	url = https://github.com/aSoft-Ltd/kotlinx-interoperable
