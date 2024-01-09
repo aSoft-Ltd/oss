@@ -56,6 +56,7 @@ val projects = projects {
     p("krest") { p("core") }
     p("koncurrent") {
         p("executors") { p("core", "coroutines", "mock") }
+        p("awaited") { p("core", "coroutines", "test") }
         p("later") { p("core", "coroutines", "test") }
     }
     p("keep") { p("api", "browser", "file", "mock", "react-native") }

@@ -31,10 +31,10 @@ jobs:
       working-directory: 'kronecker'
       run: 'chmod +x ./gradlew'
     - id: 'step-3'
-      name: './gradlew :kronecker-core:build'
+      name: './gradlew kotlinUpgradeYarnLock :kronecker-core:build'
       uses: 'gradle/gradle-build-action@v2'
       with:
-        arguments: ':kronecker-core:build'
+        arguments: 'kotlinUpgradeYarnLock :kronecker-core:build'
         build-root-directory: './kronecker'
   kotlinx-interoperable-builder:
     runs-on: 'macos-latest'
@@ -53,10 +53,10 @@ jobs:
       working-directory: 'kotlinx-interoperable'
       run: 'chmod +x ./gradlew'
     - id: 'step-3'
-      name: './gradlew :kotlinx-interoperable-exports:build'
+      name: './gradlew kotlinUpgradeYarnLock :kotlinx-interoperable-exports:build'
       uses: 'gradle/gradle-build-action@v2'
       with:
-        arguments: ':kotlinx-interoperable-exports:build'
+        arguments: 'kotlinUpgradeYarnLock :kotlinx-interoperable-exports:build'
         build-root-directory: './kotlinx-interoperable'
   lexi-builder:
     runs-on: 'macos-latest'
@@ -75,28 +75,28 @@ jobs:
       working-directory: 'lexi'
       run: 'chmod +x ./gradlew'
     - id: 'step-3'
-      name: './gradlew :lexi-api:build'
+      name: './gradlew kotlinUpgradeYarnLock :lexi-api:build'
       uses: 'gradle/gradle-build-action@v2'
       with:
-        arguments: ':lexi-api:build'
+        arguments: 'kotlinUpgradeYarnLock :lexi-api:build'
         build-root-directory: './lexi'
     - id: 'step-4'
-      name: './gradlew :lexi-console:build'
+      name: './gradlew kotlinUpgradeYarnLock :lexi-console:build'
       uses: 'gradle/gradle-build-action@v2'
       with:
-        arguments: ':lexi-console:build'
+        arguments: 'kotlinUpgradeYarnLock :lexi-console:build'
         build-root-directory: './lexi'
     - id: 'step-5'
-      name: './gradlew :lexi-file:build'
+      name: './gradlew kotlinUpgradeYarnLock :lexi-file:build'
       uses: 'gradle/gradle-build-action@v2'
       with:
-        arguments: ':lexi-file:build'
+        arguments: 'kotlinUpgradeYarnLock :lexi-file:build'
         build-root-directory: './lexi'
     - id: 'step-6'
-      name: './gradlew :lexi-test-android:build'
+      name: './gradlew kotlinUpgradeYarnLock :lexi-test-android:build'
       uses: 'gradle/gradle-build-action@v2'
       with:
-        arguments: ':lexi-test-android:build'
+        arguments: 'kotlinUpgradeYarnLock :lexi-test-android:build'
         build-root-directory: './lexi'
   kommander-builder:
     runs-on: 'macos-latest'
@@ -115,16 +115,16 @@ jobs:
       working-directory: 'kommander'
       run: 'chmod +x ./gradlew'
     - id: 'step-3'
-      name: './gradlew :kommander-core:build'
+      name: './gradlew kotlinUpgradeYarnLock :kommander-core:build'
       uses: 'gradle/gradle-build-action@v2'
       with:
-        arguments: ':kommander-core:build'
+        arguments: 'kotlinUpgradeYarnLock :kommander-core:build'
         build-root-directory: './kommander'
     - id: 'step-4'
-      name: './gradlew :kommander-coroutines:build'
+      name: './gradlew kotlinUpgradeYarnLock :kommander-coroutines:build'
       uses: 'gradle/gradle-build-action@v2'
       with:
-        arguments: ':kommander-coroutines:build'
+        arguments: 'kotlinUpgradeYarnLock :kommander-coroutines:build'
         build-root-directory: './kommander'
   kollections-builder:
     runs-on: 'macos-latest'
@@ -143,16 +143,16 @@ jobs:
       working-directory: 'kollections'
       run: 'chmod +x ./gradlew'
     - id: 'step-3'
-      name: './gradlew :kollections-interoperable:build'
+      name: './gradlew kotlinUpgradeYarnLock :kollections-interoperable:build'
       uses: 'gradle/gradle-build-action@v2'
       with:
-        arguments: ':kollections-interoperable:build'
+        arguments: 'kotlinUpgradeYarnLock :kollections-interoperable:build'
         build-root-directory: './kollections'
     - id: 'step-4'
-      name: './gradlew :kollections-atomic:build'
+      name: './gradlew kotlinUpgradeYarnLock :kollections-atomic:build'
       uses: 'gradle/gradle-build-action@v2'
       with:
-        arguments: ':kollections-atomic:build'
+        arguments: 'kotlinUpgradeYarnLock :kollections-atomic:build'
         build-root-directory: './kollections'
   kevlar-builder:
     runs-on: 'macos-latest'
@@ -171,10 +171,10 @@ jobs:
       working-directory: 'kevlar'
       run: 'chmod +x ./gradlew'
     - id: 'step-3'
-      name: './gradlew :kevlar-core:build'
+      name: './gradlew kotlinUpgradeYarnLock :kevlar-core:build'
       uses: 'gradle/gradle-build-action@v2'
       with:
-        arguments: ':kevlar-core:build'
+        arguments: 'kotlinUpgradeYarnLock :kevlar-core:build'
         build-root-directory: './kevlar'
   kase-builder:
     runs-on: 'macos-latest'
@@ -193,10 +193,10 @@ jobs:
       working-directory: 'kase'
       run: 'chmod +x ./gradlew'
     - id: 'step-3'
-      name: './gradlew :kase-core:build'
+      name: './gradlew kotlinUpgradeYarnLock :kase-core:build'
       uses: 'gradle/gradle-build-action@v2'
       with:
-        arguments: ':kase-core:build'
+        arguments: 'kotlinUpgradeYarnLock :kase-core:build'
         build-root-directory: './kase'
   krest-builder:
     runs-on: 'macos-latest'
@@ -215,10 +215,10 @@ jobs:
       working-directory: 'krest'
       run: 'chmod +x ./gradlew'
     - id: 'step-3'
-      name: './gradlew :krest-core:build'
+      name: './gradlew kotlinUpgradeYarnLock :krest-core:build'
       uses: 'gradle/gradle-build-action@v2'
       with:
-        arguments: ':krest-core:build'
+        arguments: 'kotlinUpgradeYarnLock :krest-core:build'
         build-root-directory: './krest'
   koncurrent-builder:
     runs-on: 'macos-latest'
@@ -237,40 +237,58 @@ jobs:
       working-directory: 'koncurrent'
       run: 'chmod +x ./gradlew'
     - id: 'step-3'
-      name: './gradlew :koncurrent-executors-core:build'
+      name: './gradlew kotlinUpgradeYarnLock :koncurrent-executors-core:build'
       uses: 'gradle/gradle-build-action@v2'
       with:
-        arguments: ':koncurrent-executors-core:build'
+        arguments: 'kotlinUpgradeYarnLock :koncurrent-executors-core:build'
         build-root-directory: './koncurrent'
     - id: 'step-4'
-      name: './gradlew :koncurrent-executors-coroutines:build'
+      name: './gradlew kotlinUpgradeYarnLock :koncurrent-executors-coroutines:build'
       uses: 'gradle/gradle-build-action@v2'
       with:
-        arguments: ':koncurrent-executors-coroutines:build'
+        arguments: 'kotlinUpgradeYarnLock :koncurrent-executors-coroutines:build'
         build-root-directory: './koncurrent'
     - id: 'step-5'
-      name: './gradlew :koncurrent-executors-mock:build'
+      name: './gradlew kotlinUpgradeYarnLock :koncurrent-executors-mock:build'
       uses: 'gradle/gradle-build-action@v2'
       with:
-        arguments: ':koncurrent-executors-mock:build'
+        arguments: 'kotlinUpgradeYarnLock :koncurrent-executors-mock:build'
         build-root-directory: './koncurrent'
     - id: 'step-6'
-      name: './gradlew :koncurrent-later-core:build'
+      name: './gradlew kotlinUpgradeYarnLock :koncurrent-awaited-core:build'
       uses: 'gradle/gradle-build-action@v2'
       with:
-        arguments: ':koncurrent-later-core:build'
+        arguments: 'kotlinUpgradeYarnLock :koncurrent-awaited-core:build'
         build-root-directory: './koncurrent'
     - id: 'step-7'
-      name: './gradlew :koncurrent-later-coroutines:build'
+      name: './gradlew kotlinUpgradeYarnLock :koncurrent-awaited-coroutines:build'
       uses: 'gradle/gradle-build-action@v2'
       with:
-        arguments: ':koncurrent-later-coroutines:build'
+        arguments: 'kotlinUpgradeYarnLock :koncurrent-awaited-coroutines:build'
         build-root-directory: './koncurrent'
     - id: 'step-8'
-      name: './gradlew :koncurrent-later-test:build'
+      name: './gradlew kotlinUpgradeYarnLock :koncurrent-awaited-test:build'
       uses: 'gradle/gradle-build-action@v2'
       with:
-        arguments: ':koncurrent-later-test:build'
+        arguments: 'kotlinUpgradeYarnLock :koncurrent-awaited-test:build'
+        build-root-directory: './koncurrent'
+    - id: 'step-9'
+      name: './gradlew kotlinUpgradeYarnLock :koncurrent-later-core:build'
+      uses: 'gradle/gradle-build-action@v2'
+      with:
+        arguments: 'kotlinUpgradeYarnLock :koncurrent-later-core:build'
+        build-root-directory: './koncurrent'
+    - id: 'step-10'
+      name: './gradlew kotlinUpgradeYarnLock :koncurrent-later-coroutines:build'
+      uses: 'gradle/gradle-build-action@v2'
+      with:
+        arguments: 'kotlinUpgradeYarnLock :koncurrent-later-coroutines:build'
+        build-root-directory: './koncurrent'
+    - id: 'step-11'
+      name: './gradlew kotlinUpgradeYarnLock :koncurrent-later-test:build'
+      uses: 'gradle/gradle-build-action@v2'
+      with:
+        arguments: 'kotlinUpgradeYarnLock :koncurrent-later-test:build'
         build-root-directory: './koncurrent'
   keep-builder:
     runs-on: 'macos-latest'
@@ -289,34 +307,34 @@ jobs:
       working-directory: 'keep'
       run: 'chmod +x ./gradlew'
     - id: 'step-3'
-      name: './gradlew :keep-api:build'
+      name: './gradlew kotlinUpgradeYarnLock :keep-api:build'
       uses: 'gradle/gradle-build-action@v2'
       with:
-        arguments: ':keep-api:build'
+        arguments: 'kotlinUpgradeYarnLock :keep-api:build'
         build-root-directory: './keep'
     - id: 'step-4'
-      name: './gradlew :keep-browser:build'
+      name: './gradlew kotlinUpgradeYarnLock :keep-browser:build'
       uses: 'gradle/gradle-build-action@v2'
       with:
-        arguments: ':keep-browser:build'
+        arguments: 'kotlinUpgradeYarnLock :keep-browser:build'
         build-root-directory: './keep'
     - id: 'step-5'
-      name: './gradlew :keep-file:build'
+      name: './gradlew kotlinUpgradeYarnLock :keep-file:build'
       uses: 'gradle/gradle-build-action@v2'
       with:
-        arguments: ':keep-file:build'
+        arguments: 'kotlinUpgradeYarnLock :keep-file:build'
         build-root-directory: './keep'
     - id: 'step-6'
-      name: './gradlew :keep-mock:build'
+      name: './gradlew kotlinUpgradeYarnLock :keep-mock:build'
       uses: 'gradle/gradle-build-action@v2'
       with:
-        arguments: ':keep-mock:build'
+        arguments: 'kotlinUpgradeYarnLock :keep-mock:build'
         build-root-directory: './keep'
     - id: 'step-7'
-      name: './gradlew :keep-react-native:build'
+      name: './gradlew kotlinUpgradeYarnLock :keep-react-native:build'
       uses: 'gradle/gradle-build-action@v2'
       with:
-        arguments: ':keep-react-native:build'
+        arguments: 'kotlinUpgradeYarnLock :keep-react-native:build'
         build-root-directory: './keep'
   cinematic-builder:
     runs-on: 'macos-latest'
@@ -335,40 +353,40 @@ jobs:
       working-directory: 'cinematic'
       run: 'chmod +x ./gradlew'
     - id: 'step-3'
-      name: './gradlew :cinematic-live-core:build'
+      name: './gradlew kotlinUpgradeYarnLock :cinematic-live-core:build'
       uses: 'gradle/gradle-build-action@v2'
       with:
-        arguments: ':cinematic-live-core:build'
+        arguments: 'kotlinUpgradeYarnLock :cinematic-live-core:build'
         build-root-directory: './cinematic'
     - id: 'step-4'
-      name: './gradlew :cinematic-live-compose:build'
+      name: './gradlew kotlinUpgradeYarnLock :cinematic-live-compose:build'
       uses: 'gradle/gradle-build-action@v2'
       with:
-        arguments: ':cinematic-live-compose:build'
+        arguments: 'kotlinUpgradeYarnLock :cinematic-live-compose:build'
         build-root-directory: './cinematic'
     - id: 'step-5'
-      name: './gradlew :cinematic-live-coroutines:build'
+      name: './gradlew kotlinUpgradeYarnLock :cinematic-live-coroutines:build'
       uses: 'gradle/gradle-build-action@v2'
       with:
-        arguments: ':cinematic-live-coroutines:build'
+        arguments: 'kotlinUpgradeYarnLock :cinematic-live-coroutines:build'
         build-root-directory: './cinematic'
     - id: 'step-6'
-      name: './gradlew :cinematic-live-react:build'
+      name: './gradlew kotlinUpgradeYarnLock :cinematic-live-react:build'
       uses: 'gradle/gradle-build-action@v2'
       with:
-        arguments: ':cinematic-live-react:build'
+        arguments: 'kotlinUpgradeYarnLock :cinematic-live-react:build'
         build-root-directory: './cinematic'
     - id: 'step-7'
-      name: './gradlew :cinematic-live-test:build'
+      name: './gradlew kotlinUpgradeYarnLock :cinematic-live-test:build'
       uses: 'gradle/gradle-build-action@v2'
       with:
-        arguments: ':cinematic-live-test:build'
+        arguments: 'kotlinUpgradeYarnLock :cinematic-live-test:build'
         build-root-directory: './cinematic'
     - id: 'step-8'
-      name: './gradlew :cinematic-scene-core:build'
+      name: './gradlew kotlinUpgradeYarnLock :cinematic-scene-core:build'
       uses: 'gradle/gradle-build-action@v2'
       with:
-        arguments: ':cinematic-scene-core:build'
+        arguments: 'kotlinUpgradeYarnLock :cinematic-scene-core:build'
         build-root-directory: './cinematic'
   krono-builder:
     runs-on: 'macos-latest'
@@ -387,16 +405,16 @@ jobs:
       working-directory: 'krono'
       run: 'chmod +x ./gradlew'
     - id: 'step-3'
-      name: './gradlew :krono-api:build'
+      name: './gradlew kotlinUpgradeYarnLock :krono-api:build'
       uses: 'gradle/gradle-build-action@v2'
       with:
-        arguments: ':krono-api:build'
+        arguments: 'kotlinUpgradeYarnLock :krono-api:build'
         build-root-directory: './krono'
     - id: 'step-4'
-      name: './gradlew :krono-kotlinx:build'
+      name: './gradlew kotlinUpgradeYarnLock :krono-kotlinx:build'
       uses: 'gradle/gradle-build-action@v2'
       with:
-        arguments: ':krono-kotlinx:build'
+        arguments: 'kotlinUpgradeYarnLock :krono-kotlinx:build'
         build-root-directory: './krono'
   hormone-builder:
     runs-on: 'macos-latest'
@@ -415,10 +433,10 @@ jobs:
       working-directory: 'hormone'
       run: 'chmod +x ./gradlew'
     - id: 'step-3'
-      name: './gradlew :hormone-core:build'
+      name: './gradlew kotlinUpgradeYarnLock :hormone-core:build'
       uses: 'gradle/gradle-build-action@v2'
       with:
-        arguments: ':hormone-core:build'
+        arguments: 'kotlinUpgradeYarnLock :hormone-core:build'
         build-root-directory: './hormone'
   geo-builder:
     runs-on: 'macos-latest'
@@ -437,16 +455,16 @@ jobs:
       working-directory: 'geo'
       run: 'chmod +x ./gradlew'
     - id: 'step-3'
-      name: './gradlew :geo-countries:build'
+      name: './gradlew kotlinUpgradeYarnLock :geo-countries:build'
       uses: 'gradle/gradle-build-action@v2'
       with:
-        arguments: ':geo-countries:build'
+        arguments: 'kotlinUpgradeYarnLock :geo-countries:build'
         build-root-directory: './geo'
     - id: 'step-4'
-      name: './gradlew :geo-core:build'
+      name: './gradlew kotlinUpgradeYarnLock :geo-core:build'
       uses: 'gradle/gradle-build-action@v2'
       with:
-        arguments: ':geo-core:build'
+        arguments: 'kotlinUpgradeYarnLock :geo-core:build'
         build-root-directory: './geo'
   kash-builder:
     runs-on: 'macos-latest'
@@ -465,16 +483,16 @@ jobs:
       working-directory: 'kash'
       run: 'chmod +x ./gradlew'
     - id: 'step-3'
-      name: './gradlew :kash-currency:build'
+      name: './gradlew kotlinUpgradeYarnLock :kash-currency:build'
       uses: 'gradle/gradle-build-action@v2'
       with:
-        arguments: ':kash-currency:build'
+        arguments: 'kotlinUpgradeYarnLock :kash-currency:build'
         build-root-directory: './kash'
     - id: 'step-4'
-      name: './gradlew :kash-money:build'
+      name: './gradlew kotlinUpgradeYarnLock :kash-money:build'
       uses: 'gradle/gradle-build-action@v2'
       with:
-        arguments: ':kash-money:build'
+        arguments: 'kotlinUpgradeYarnLock :kash-money:build'
         build-root-directory: './kash'
   epsilon-builder:
     runs-on: 'macos-latest'
@@ -493,28 +511,28 @@ jobs:
       working-directory: 'epsilon'
       run: 'chmod +x ./gradlew'
     - id: 'step-3'
-      name: './gradlew :epsilon-core:build'
+      name: './gradlew kotlinUpgradeYarnLock :epsilon-core:build'
       uses: 'gradle/gradle-build-action@v2'
       with:
-        arguments: ':epsilon-core:build'
+        arguments: 'kotlinUpgradeYarnLock :epsilon-core:build'
         build-root-directory: './epsilon'
     - id: 'step-4'
-      name: './gradlew :epsilon-file:build'
+      name: './gradlew kotlinUpgradeYarnLock :epsilon-file:build'
       uses: 'gradle/gradle-build-action@v2'
       with:
-        arguments: ':epsilon-file:build'
+        arguments: 'kotlinUpgradeYarnLock :epsilon-file:build'
         build-root-directory: './epsilon'
     - id: 'step-5'
-      name: './gradlew :epsilon-fake:build'
+      name: './gradlew kotlinUpgradeYarnLock :epsilon-fake:build'
       uses: 'gradle/gradle-build-action@v2'
       with:
-        arguments: ':epsilon-fake:build'
+        arguments: 'kotlinUpgradeYarnLock :epsilon-fake:build'
         build-root-directory: './epsilon'
     - id: 'step-6'
-      name: './gradlew :epsilon-network-ktor:build'
+      name: './gradlew kotlinUpgradeYarnLock :epsilon-network-ktor:build'
       uses: 'gradle/gradle-build-action@v2'
       with:
-        arguments: ':epsilon-network-ktor:build'
+        arguments: 'kotlinUpgradeYarnLock :epsilon-network-ktor:build'
         build-root-directory: './epsilon'
   symphony-builder:
     runs-on: 'macos-latest'
@@ -533,76 +551,76 @@ jobs:
       working-directory: 'symphony'
       run: 'chmod +x ./gradlew'
     - id: 'step-3'
-      name: './gradlew :symphony-paginator:build'
+      name: './gradlew kotlinUpgradeYarnLock :symphony-paginator:build'
       uses: 'gradle/gradle-build-action@v2'
       with:
-        arguments: ':symphony-paginator:build'
+        arguments: 'kotlinUpgradeYarnLock :symphony-paginator:build'
         build-root-directory: './symphony'
     - id: 'step-4'
-      name: './gradlew :symphony-selector:build'
+      name: './gradlew kotlinUpgradeYarnLock :symphony-selector:build'
       uses: 'gradle/gradle-build-action@v2'
       with:
-        arguments: ':symphony-selector:build'
+        arguments: 'kotlinUpgradeYarnLock :symphony-selector:build'
         build-root-directory: './symphony'
     - id: 'step-5'
-      name: './gradlew :symphony-actions:build'
+      name: './gradlew kotlinUpgradeYarnLock :symphony-actions:build'
       uses: 'gradle/gradle-build-action@v2'
       with:
-        arguments: ':symphony-actions:build'
+        arguments: 'kotlinUpgradeYarnLock :symphony-actions:build'
         build-root-directory: './symphony'
     - id: 'step-6'
-      name: './gradlew :symphony-table:build'
+      name: './gradlew kotlinUpgradeYarnLock :symphony-table:build'
       uses: 'gradle/gradle-build-action@v2'
       with:
-        arguments: ':symphony-table:build'
+        arguments: 'kotlinUpgradeYarnLock :symphony-table:build'
         build-root-directory: './symphony'
     - id: 'step-7'
-      name: './gradlew :symphony-list:build'
+      name: './gradlew kotlinUpgradeYarnLock :symphony-list:build'
       uses: 'gradle/gradle-build-action@v2'
       with:
-        arguments: ':symphony-list:build'
+        arguments: 'kotlinUpgradeYarnLock :symphony-list:build'
         build-root-directory: './symphony'
     - id: 'step-8'
-      name: './gradlew :symphony-collections:build'
+      name: './gradlew kotlinUpgradeYarnLock :symphony-collections:build'
       uses: 'gradle/gradle-build-action@v2'
       with:
-        arguments: ':symphony-collections:build'
+        arguments: 'kotlinUpgradeYarnLock :symphony-collections:build'
         build-root-directory: './symphony'
     - id: 'step-9'
-      name: './gradlew :symphony-input-core:build'
+      name: './gradlew kotlinUpgradeYarnLock :symphony-input-core:build'
       uses: 'gradle/gradle-build-action@v2'
       with:
-        arguments: ':symphony-input-core:build'
+        arguments: 'kotlinUpgradeYarnLock :symphony-input-core:build'
         build-root-directory: './symphony'
     - id: 'step-10'
-      name: './gradlew :symphony-input-text:build'
+      name: './gradlew kotlinUpgradeYarnLock :symphony-input-text:build'
       uses: 'gradle/gradle-build-action@v2'
       with:
-        arguments: ':symphony-input-text:build'
+        arguments: 'kotlinUpgradeYarnLock :symphony-input-text:build'
         build-root-directory: './symphony'
     - id: 'step-11'
-      name: './gradlew :symphony-input-number:build'
+      name: './gradlew kotlinUpgradeYarnLock :symphony-input-number:build'
       uses: 'gradle/gradle-build-action@v2'
       with:
-        arguments: ':symphony-input-number:build'
+        arguments: 'kotlinUpgradeYarnLock :symphony-input-number:build'
         build-root-directory: './symphony'
     - id: 'step-12'
-      name: './gradlew :symphony-input-choice:build'
+      name: './gradlew kotlinUpgradeYarnLock :symphony-input-choice:build'
       uses: 'gradle/gradle-build-action@v2'
       with:
-        arguments: ':symphony-input-choice:build'
+        arguments: 'kotlinUpgradeYarnLock :symphony-input-choice:build'
         build-root-directory: './symphony'
     - id: 'step-13'
-      name: './gradlew :symphony-input-dialog:build'
+      name: './gradlew kotlinUpgradeYarnLock :symphony-input-dialog:build'
       uses: 'gradle/gradle-build-action@v2'
       with:
-        arguments: ':symphony-input-dialog:build'
+        arguments: 'kotlinUpgradeYarnLock :symphony-input-dialog:build'
         build-root-directory: './symphony'
     - id: 'step-14'
-      name: './gradlew :symphony-input-sheet:build'
+      name: './gradlew kotlinUpgradeYarnLock :symphony-input-sheet:build'
       uses: 'gradle/gradle-build-action@v2'
       with:
-        arguments: ':symphony-input-sheet:build'
+        arguments: 'kotlinUpgradeYarnLock :symphony-input-sheet:build'
         build-root-directory: './symphony'
   captain-builder:
     runs-on: 'macos-latest'
@@ -621,58 +639,58 @@ jobs:
       working-directory: 'captain'
       run: 'chmod +x ./gradlew'
     - id: 'step-3'
-      name: './gradlew :captain-url:build'
+      name: './gradlew kotlinUpgradeYarnLock :captain-url:build'
       uses: 'gradle/gradle-build-action@v2'
       with:
-        arguments: ':captain-url:build'
+        arguments: 'kotlinUpgradeYarnLock :captain-url:build'
         build-root-directory: './captain'
     - id: 'step-4'
-      name: './gradlew :captain-navigator-api:build'
+      name: './gradlew kotlinUpgradeYarnLock :captain-navigator-api:build'
       uses: 'gradle/gradle-build-action@v2'
       with:
-        arguments: ':captain-navigator-api:build'
+        arguments: 'kotlinUpgradeYarnLock :captain-navigator-api:build'
         build-root-directory: './captain'
     - id: 'step-5'
-      name: './gradlew :captain-navigator-browser:build'
+      name: './gradlew kotlinUpgradeYarnLock :captain-navigator-browser:build'
       uses: 'gradle/gradle-build-action@v2'
       with:
-        arguments: ':captain-navigator-browser:build'
+        arguments: 'kotlinUpgradeYarnLock :captain-navigator-browser:build'
         build-root-directory: './captain'
     - id: 'step-6'
-      name: './gradlew :captain-navigator-basic:build'
+      name: './gradlew kotlinUpgradeYarnLock :captain-navigator-basic:build'
       uses: 'gradle/gradle-build-action@v2'
       with:
-        arguments: ':captain-navigator-basic:build'
+        arguments: 'kotlinUpgradeYarnLock :captain-navigator-basic:build'
         build-root-directory: './captain'
     - id: 'step-7'
-      name: './gradlew :captain-router-core:build'
+      name: './gradlew kotlinUpgradeYarnLock :captain-router-core:build'
       uses: 'gradle/gradle-build-action@v2'
       with:
-        arguments: ':captain-router-core:build'
+        arguments: 'kotlinUpgradeYarnLock :captain-router-core:build'
         build-root-directory: './captain'
     - id: 'step-8'
-      name: './gradlew :captain-router-react-core:build'
+      name: './gradlew kotlinUpgradeYarnLock :captain-router-react-core:build'
       uses: 'gradle/gradle-build-action@v2'
       with:
-        arguments: ':captain-router-react-core:build'
+        arguments: 'kotlinUpgradeYarnLock :captain-router-react-core:build'
         build-root-directory: './captain'
     - id: 'step-9'
-      name: './gradlew :captain-router-react-dom:build'
+      name: './gradlew kotlinUpgradeYarnLock :captain-router-react-dom:build'
       uses: 'gradle/gradle-build-action@v2'
       with:
-        arguments: ':captain-router-react-dom:build'
+        arguments: 'kotlinUpgradeYarnLock :captain-router-react-dom:build'
         build-root-directory: './captain'
     - id: 'step-10'
-      name: './gradlew :captain-router-compose-core:build'
+      name: './gradlew kotlinUpgradeYarnLock :captain-router-compose-core:build'
       uses: 'gradle/gradle-build-action@v2'
       with:
-        arguments: ':captain-router-compose-core:build'
+        arguments: 'kotlinUpgradeYarnLock :captain-router-compose-core:build'
         build-root-directory: './captain'
     - id: 'step-11'
-      name: './gradlew :captain-router-compose-html:build'
+      name: './gradlew kotlinUpgradeYarnLock :captain-router-compose-html:build'
       uses: 'gradle/gradle-build-action@v2'
       with:
-        arguments: ':captain-router-compose-html:build'
+        arguments: 'kotlinUpgradeYarnLock :captain-router-compose-html:build'
         build-root-directory: './captain'
   kida-builder:
     runs-on: 'macos-latest'
@@ -691,22 +709,22 @@ jobs:
       working-directory: 'kida'
       run: 'chmod +x ./gradlew'
     - id: 'step-3'
-      name: './gradlew :kida-api:build'
+      name: './gradlew kotlinUpgradeYarnLock :kida-api:build'
       uses: 'gradle/gradle-build-action@v2'
       with:
-        arguments: ':kida-api:build'
+        arguments: 'kotlinUpgradeYarnLock :kida-api:build'
         build-root-directory: './kida'
     - id: 'step-4'
-      name: './gradlew :kida-brela:build'
+      name: './gradlew kotlinUpgradeYarnLock :kida-brela:build'
       uses: 'gradle/gradle-build-action@v2'
       with:
-        arguments: ':kida-brela:build'
+        arguments: 'kotlinUpgradeYarnLock :kida-brela:build'
         build-root-directory: './kida'
     - id: 'step-5'
-      name: './gradlew :kida-fake:build'
+      name: './gradlew kotlinUpgradeYarnLock :kida-fake:build'
       uses: 'gradle/gradle-build-action@v2'
       with:
-        arguments: ':kida-fake:build'
+        arguments: 'kotlinUpgradeYarnLock :kida-fake:build'
         build-root-directory: './kida'
   rendezvous:
     runs-on: 'ubuntu-latest'
@@ -755,7 +773,7 @@ jobs:
       name: 'publishing kronecker-core'
       uses: 'gradle/gradle-build-action@v2'
       with:
-        arguments: ':kronecker-core:publishAllPublicationsToMavenCentral --no-configuration-cache'
+        arguments: 'kotlinUpgradeYarnLock :kronecker-core:publishAllPublicationsToMavenCentral --no-configuration-cache'
         build-root-directory: './kronecker'
   kotlinx-interoperable-publisher:
     runs-on: 'macos-latest'
@@ -779,7 +797,7 @@ jobs:
       name: 'publishing kotlinx-interoperable-exports'
       uses: 'gradle/gradle-build-action@v2'
       with:
-        arguments: ':kotlinx-interoperable-exports:publishAllPublicationsToMavenCentral --no-configuration-cache'
+        arguments: 'kotlinUpgradeYarnLock :kotlinx-interoperable-exports:publishAllPublicationsToMavenCentral --no-configuration-cache'
         build-root-directory: './kotlinx-interoperable'
   lexi-publisher:
     runs-on: 'macos-latest'
@@ -803,7 +821,7 @@ jobs:
       name: 'publishing lexi-api, lexi-console, lexi-file, lexi-test-android'
       uses: 'gradle/gradle-build-action@v2'
       with:
-        arguments: ':lexi-api:publishAllPublicationsToMavenCentral :lexi-console:publishAllPublicationsToMavenCentral :lexi-file:publishAllPublicationsToMavenCentral :lexi-test-android:publishAllPublicationsToMavenCentral --no-configuration-cache'
+        arguments: 'kotlinUpgradeYarnLock :lexi-api:publishAllPublicationsToMavenCentral kotlinUpgradeYarnLock :lexi-console:publishAllPublicationsToMavenCentral kotlinUpgradeYarnLock :lexi-file:publishAllPublicationsToMavenCentral kotlinUpgradeYarnLock :lexi-test-android:publishAllPublicationsToMavenCentral --no-configuration-cache'
         build-root-directory: './lexi'
   kommander-publisher:
     runs-on: 'macos-latest'
@@ -827,7 +845,7 @@ jobs:
       name: 'publishing kommander-core, kommander-coroutines'
       uses: 'gradle/gradle-build-action@v2'
       with:
-        arguments: ':kommander-core:publishAllPublicationsToMavenCentral :kommander-coroutines:publishAllPublicationsToMavenCentral --no-configuration-cache'
+        arguments: 'kotlinUpgradeYarnLock :kommander-core:publishAllPublicationsToMavenCentral kotlinUpgradeYarnLock :kommander-coroutines:publishAllPublicationsToMavenCentral --no-configuration-cache'
         build-root-directory: './kommander'
   kollections-publisher:
     runs-on: 'macos-latest'
@@ -851,7 +869,7 @@ jobs:
       name: 'publishing kollections-interoperable, kollections-atomic'
       uses: 'gradle/gradle-build-action@v2'
       with:
-        arguments: ':kollections-interoperable:publishAllPublicationsToMavenCentral :kollections-atomic:publishAllPublicationsToMavenCentral --no-configuration-cache'
+        arguments: 'kotlinUpgradeYarnLock :kollections-interoperable:publishAllPublicationsToMavenCentral kotlinUpgradeYarnLock :kollections-atomic:publishAllPublicationsToMavenCentral --no-configuration-cache'
         build-root-directory: './kollections'
   kevlar-publisher:
     runs-on: 'macos-latest'
@@ -875,7 +893,7 @@ jobs:
       name: 'publishing kevlar-core'
       uses: 'gradle/gradle-build-action@v2'
       with:
-        arguments: ':kevlar-core:publishAllPublicationsToMavenCentral --no-configuration-cache'
+        arguments: 'kotlinUpgradeYarnLock :kevlar-core:publishAllPublicationsToMavenCentral --no-configuration-cache'
         build-root-directory: './kevlar'
   kase-publisher:
     runs-on: 'macos-latest'
@@ -899,7 +917,7 @@ jobs:
       name: 'publishing kase-core'
       uses: 'gradle/gradle-build-action@v2'
       with:
-        arguments: ':kase-core:publishAllPublicationsToMavenCentral --no-configuration-cache'
+        arguments: 'kotlinUpgradeYarnLock :kase-core:publishAllPublicationsToMavenCentral --no-configuration-cache'
         build-root-directory: './kase'
   krest-publisher:
     runs-on: 'macos-latest'
@@ -923,7 +941,7 @@ jobs:
       name: 'publishing krest-core'
       uses: 'gradle/gradle-build-action@v2'
       with:
-        arguments: ':krest-core:publishAllPublicationsToMavenCentral --no-configuration-cache'
+        arguments: 'kotlinUpgradeYarnLock :krest-core:publishAllPublicationsToMavenCentral --no-configuration-cache'
         build-root-directory: './krest'
   koncurrent-publisher:
     runs-on: 'macos-latest'
@@ -944,10 +962,10 @@ jobs:
       working-directory: 'koncurrent'
       run: 'chmod +x ./gradlew'
     - id: 'step-3'
-      name: 'publishing koncurrent-executors-core, koncurrent-executors-coroutines, koncurrent-executors-mock, koncurrent-later-core, koncurrent-later-coroutines, koncurrent-later-test'
+      name: 'publishing koncurrent-executors-core, koncurrent-executors-coroutines, koncurrent-executors-mock, koncurrent-awaited-core, koncurrent-awaited-coroutines, koncurrent-awaited-test, koncurrent-later-core, koncurrent-later-coroutines, koncurrent-later-test'
       uses: 'gradle/gradle-build-action@v2'
       with:
-        arguments: ':koncurrent-executors-core:publishAllPublicationsToMavenCentral :koncurrent-executors-coroutines:publishAllPublicationsToMavenCentral :koncurrent-executors-mock:publishAllPublicationsToMavenCentral :koncurrent-later-core:publishAllPublicationsToMavenCentral :koncurrent-later-coroutines:publishAllPublicationsToMavenCentral :koncurrent-later-test:publishAllPublicationsToMavenCentral --no-configuration-cache'
+        arguments: 'kotlinUpgradeYarnLock :koncurrent-executors-core:publishAllPublicationsToMavenCentral kotlinUpgradeYarnLock :koncurrent-executors-coroutines:publishAllPublicationsToMavenCentral kotlinUpgradeYarnLock :koncurrent-executors-mock:publishAllPublicationsToMavenCentral kotlinUpgradeYarnLock :koncurrent-awaited-core:publishAllPublicationsToMavenCentral kotlinUpgradeYarnLock :koncurrent-awaited-coroutines:publishAllPublicationsToMavenCentral kotlinUpgradeYarnLock :koncurrent-awaited-test:publishAllPublicationsToMavenCentral kotlinUpgradeYarnLock :koncurrent-later-core:publishAllPublicationsToMavenCentral kotlinUpgradeYarnLock :koncurrent-later-coroutines:publishAllPublicationsToMavenCentral kotlinUpgradeYarnLock :koncurrent-later-test:publishAllPublicationsToMavenCentral --no-configuration-cache'
         build-root-directory: './koncurrent'
   keep-publisher:
     runs-on: 'macos-latest'
@@ -971,7 +989,7 @@ jobs:
       name: 'publishing keep-api, keep-browser, keep-file, keep-mock, keep-react-native'
       uses: 'gradle/gradle-build-action@v2'
       with:
-        arguments: ':keep-api:publishAllPublicationsToMavenCentral :keep-browser:publishAllPublicationsToMavenCentral :keep-file:publishAllPublicationsToMavenCentral :keep-mock:publishAllPublicationsToMavenCentral :keep-react-native:publishAllPublicationsToMavenCentral --no-configuration-cache'
+        arguments: 'kotlinUpgradeYarnLock :keep-api:publishAllPublicationsToMavenCentral kotlinUpgradeYarnLock :keep-browser:publishAllPublicationsToMavenCentral kotlinUpgradeYarnLock :keep-file:publishAllPublicationsToMavenCentral kotlinUpgradeYarnLock :keep-mock:publishAllPublicationsToMavenCentral kotlinUpgradeYarnLock :keep-react-native:publishAllPublicationsToMavenCentral --no-configuration-cache'
         build-root-directory: './keep'
   cinematic-publisher:
     runs-on: 'macos-latest'
@@ -995,7 +1013,7 @@ jobs:
       name: 'publishing cinematic-live-core, cinematic-live-compose, cinematic-live-coroutines, cinematic-live-react, cinematic-live-test, cinematic-scene-core'
       uses: 'gradle/gradle-build-action@v2'
       with:
-        arguments: ':cinematic-live-core:publishAllPublicationsToMavenCentral :cinematic-live-compose:publishAllPublicationsToMavenCentral :cinematic-live-coroutines:publishAllPublicationsToMavenCentral :cinematic-live-react:publishAllPublicationsToMavenCentral :cinematic-live-test:publishAllPublicationsToMavenCentral :cinematic-scene-core:publishAllPublicationsToMavenCentral --no-configuration-cache'
+        arguments: 'kotlinUpgradeYarnLock :cinematic-live-core:publishAllPublicationsToMavenCentral kotlinUpgradeYarnLock :cinematic-live-compose:publishAllPublicationsToMavenCentral kotlinUpgradeYarnLock :cinematic-live-coroutines:publishAllPublicationsToMavenCentral kotlinUpgradeYarnLock :cinematic-live-react:publishAllPublicationsToMavenCentral kotlinUpgradeYarnLock :cinematic-live-test:publishAllPublicationsToMavenCentral kotlinUpgradeYarnLock :cinematic-scene-core:publishAllPublicationsToMavenCentral --no-configuration-cache'
         build-root-directory: './cinematic'
   krono-publisher:
     runs-on: 'macos-latest'
@@ -1019,7 +1037,7 @@ jobs:
       name: 'publishing krono-api, krono-kotlinx'
       uses: 'gradle/gradle-build-action@v2'
       with:
-        arguments: ':krono-api:publishAllPublicationsToMavenCentral :krono-kotlinx:publishAllPublicationsToMavenCentral --no-configuration-cache'
+        arguments: 'kotlinUpgradeYarnLock :krono-api:publishAllPublicationsToMavenCentral kotlinUpgradeYarnLock :krono-kotlinx:publishAllPublicationsToMavenCentral --no-configuration-cache'
         build-root-directory: './krono'
   hormone-publisher:
     runs-on: 'macos-latest'
@@ -1043,7 +1061,7 @@ jobs:
       name: 'publishing hormone-core'
       uses: 'gradle/gradle-build-action@v2'
       with:
-        arguments: ':hormone-core:publishAllPublicationsToMavenCentral --no-configuration-cache'
+        arguments: 'kotlinUpgradeYarnLock :hormone-core:publishAllPublicationsToMavenCentral --no-configuration-cache'
         build-root-directory: './hormone'
   geo-publisher:
     runs-on: 'macos-latest'
@@ -1067,7 +1085,7 @@ jobs:
       name: 'publishing geo-countries, geo-core'
       uses: 'gradle/gradle-build-action@v2'
       with:
-        arguments: ':geo-countries:publishAllPublicationsToMavenCentral :geo-core:publishAllPublicationsToMavenCentral --no-configuration-cache'
+        arguments: 'kotlinUpgradeYarnLock :geo-countries:publishAllPublicationsToMavenCentral kotlinUpgradeYarnLock :geo-core:publishAllPublicationsToMavenCentral --no-configuration-cache'
         build-root-directory: './geo'
   kash-publisher:
     runs-on: 'macos-latest'
@@ -1091,7 +1109,7 @@ jobs:
       name: 'publishing kash-currency, kash-money'
       uses: 'gradle/gradle-build-action@v2'
       with:
-        arguments: ':kash-currency:publishAllPublicationsToMavenCentral :kash-money:publishAllPublicationsToMavenCentral --no-configuration-cache'
+        arguments: 'kotlinUpgradeYarnLock :kash-currency:publishAllPublicationsToMavenCentral kotlinUpgradeYarnLock :kash-money:publishAllPublicationsToMavenCentral --no-configuration-cache'
         build-root-directory: './kash'
   epsilon-publisher:
     runs-on: 'macos-latest'
@@ -1115,7 +1133,7 @@ jobs:
       name: 'publishing epsilon-core, epsilon-file, epsilon-fake, epsilon-network-ktor'
       uses: 'gradle/gradle-build-action@v2'
       with:
-        arguments: ':epsilon-core:publishAllPublicationsToMavenCentral :epsilon-file:publishAllPublicationsToMavenCentral :epsilon-fake:publishAllPublicationsToMavenCentral :epsilon-network-ktor:publishAllPublicationsToMavenCentral --no-configuration-cache'
+        arguments: 'kotlinUpgradeYarnLock :epsilon-core:publishAllPublicationsToMavenCentral kotlinUpgradeYarnLock :epsilon-file:publishAllPublicationsToMavenCentral kotlinUpgradeYarnLock :epsilon-fake:publishAllPublicationsToMavenCentral kotlinUpgradeYarnLock :epsilon-network-ktor:publishAllPublicationsToMavenCentral --no-configuration-cache'
         build-root-directory: './epsilon'
   symphony-publisher:
     runs-on: 'macos-latest'
@@ -1139,7 +1157,7 @@ jobs:
       name: 'publishing symphony-paginator, symphony-selector, symphony-actions, symphony-table, symphony-list, symphony-collections, symphony-input-core, symphony-input-text, symphony-input-number, symphony-input-choice, symphony-input-dialog, symphony-input-sheet'
       uses: 'gradle/gradle-build-action@v2'
       with:
-        arguments: ':symphony-paginator:publishAllPublicationsToMavenCentral :symphony-selector:publishAllPublicationsToMavenCentral :symphony-actions:publishAllPublicationsToMavenCentral :symphony-table:publishAllPublicationsToMavenCentral :symphony-list:publishAllPublicationsToMavenCentral :symphony-collections:publishAllPublicationsToMavenCentral :symphony-input-core:publishAllPublicationsToMavenCentral :symphony-input-text:publishAllPublicationsToMavenCentral :symphony-input-number:publishAllPublicationsToMavenCentral :symphony-input-choice:publishAllPublicationsToMavenCentral :symphony-input-dialog:publishAllPublicationsToMavenCentral :symphony-input-sheet:publishAllPublicationsToMavenCentral --no-configuration-cache'
+        arguments: 'kotlinUpgradeYarnLock :symphony-paginator:publishAllPublicationsToMavenCentral kotlinUpgradeYarnLock :symphony-selector:publishAllPublicationsToMavenCentral kotlinUpgradeYarnLock :symphony-actions:publishAllPublicationsToMavenCentral kotlinUpgradeYarnLock :symphony-table:publishAllPublicationsToMavenCentral kotlinUpgradeYarnLock :symphony-list:publishAllPublicationsToMavenCentral kotlinUpgradeYarnLock :symphony-collections:publishAllPublicationsToMavenCentral kotlinUpgradeYarnLock :symphony-input-core:publishAllPublicationsToMavenCentral kotlinUpgradeYarnLock :symphony-input-text:publishAllPublicationsToMavenCentral kotlinUpgradeYarnLock :symphony-input-number:publishAllPublicationsToMavenCentral kotlinUpgradeYarnLock :symphony-input-choice:publishAllPublicationsToMavenCentral kotlinUpgradeYarnLock :symphony-input-dialog:publishAllPublicationsToMavenCentral kotlinUpgradeYarnLock :symphony-input-sheet:publishAllPublicationsToMavenCentral --no-configuration-cache'
         build-root-directory: './symphony'
   captain-publisher:
     runs-on: 'macos-latest'
@@ -1163,7 +1181,7 @@ jobs:
       name: 'publishing captain-url, captain-navigator-api, captain-navigator-browser, captain-navigator-basic, captain-router-core, captain-router-react-core, captain-router-react-dom, captain-router-compose-core, captain-router-compose-html'
       uses: 'gradle/gradle-build-action@v2'
       with:
-        arguments: ':captain-url:publishAllPublicationsToMavenCentral :captain-navigator-api:publishAllPublicationsToMavenCentral :captain-navigator-browser:publishAllPublicationsToMavenCentral :captain-navigator-basic:publishAllPublicationsToMavenCentral :captain-router-core:publishAllPublicationsToMavenCentral :captain-router-react-core:publishAllPublicationsToMavenCentral :captain-router-react-dom:publishAllPublicationsToMavenCentral :captain-router-compose-core:publishAllPublicationsToMavenCentral :captain-router-compose-html:publishAllPublicationsToMavenCentral --no-configuration-cache'
+        arguments: 'kotlinUpgradeYarnLock :captain-url:publishAllPublicationsToMavenCentral kotlinUpgradeYarnLock :captain-navigator-api:publishAllPublicationsToMavenCentral kotlinUpgradeYarnLock :captain-navigator-browser:publishAllPublicationsToMavenCentral kotlinUpgradeYarnLock :captain-navigator-basic:publishAllPublicationsToMavenCentral kotlinUpgradeYarnLock :captain-router-core:publishAllPublicationsToMavenCentral kotlinUpgradeYarnLock :captain-router-react-core:publishAllPublicationsToMavenCentral kotlinUpgradeYarnLock :captain-router-react-dom:publishAllPublicationsToMavenCentral kotlinUpgradeYarnLock :captain-router-compose-core:publishAllPublicationsToMavenCentral kotlinUpgradeYarnLock :captain-router-compose-html:publishAllPublicationsToMavenCentral --no-configuration-cache'
         build-root-directory: './captain'
   kida-publisher:
     runs-on: 'macos-latest'
@@ -1187,6 +1205,6 @@ jobs:
       name: 'publishing kida-api, kida-brela, kida-fake'
       uses: 'gradle/gradle-build-action@v2'
       with:
-        arguments: ':kida-api:publishAllPublicationsToMavenCentral :kida-brela:publishAllPublicationsToMavenCentral :kida-fake:publishAllPublicationsToMavenCentral --no-configuration-cache'
+        arguments: 'kotlinUpgradeYarnLock :kida-api:publishAllPublicationsToMavenCentral kotlinUpgradeYarnLock :kida-brela:publishAllPublicationsToMavenCentral kotlinUpgradeYarnLock :kida-fake:publishAllPublicationsToMavenCentral --no-configuration-cache'
         build-root-directory: './kida'
 
