@@ -64,10 +64,12 @@ val projects = projects {
         p("live") { p("core", "compose", "coroutines", "react", "test") }
         p("scene") { p("core") }
     }
-    p("krono") { p("api", "kotlinx") }
+//    p("krono") { p("api", "kotlinx") }
     p("hormone") { p("core") }
 //    p("geo") { p("countries", "core") }
 //    p("kash") { p("currency", "money") }
+    p("kiota") { p("url", "numeral", "sse") }
+    p("neat") { p("validation", "formatting") }
     p("epsilon") {
         p("core", "file", "fake")
         p("network") { p("ktor") }

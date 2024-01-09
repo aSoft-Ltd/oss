@@ -14,28 +14,6 @@ env:
   ORG_GRADLE_PROJECT_signingInMemoryKeyPassword: '${{ secrets.ORG_GRADLE_PROJECT_SIGNINGINMEMORYKEYPASSWORD }}'
   TARGETING_ALL: 'true'
 jobs:
-  kronecker-builder:
-    runs-on: 'macos-latest'
-    steps:
-    - id: 'step-0'
-      uses: 'actions/checkout@v3'
-      with:
-        submodules: 'true'
-    - id: 'step-1'
-      uses: 'actions/setup-java@v3'
-      with:
-        java-version: '18'
-        distribution: 'corretto'
-    - id: 'step-2'
-      name: 'Make ./gradlew executable'
-      working-directory: 'kronecker'
-      run: 'chmod +x ./gradlew'
-    - id: 'step-3'
-      name: './gradlew kotlinUpgradeYarnLock :kronecker-core:build'
-      uses: 'gradle/gradle-build-action@v2'
-      with:
-        arguments: 'kotlinUpgradeYarnLock :kronecker-core:build'
-        build-root-directory: './kronecker'
   kotlinx-interoperable-builder:
     runs-on: 'macos-latest'
     steps:
@@ -143,10 +121,10 @@ jobs:
       working-directory: 'kollections'
       run: 'chmod +x ./gradlew'
     - id: 'step-3'
-      name: './gradlew kotlinUpgradeYarnLock :kollections-interoperable:build'
+      name: './gradlew kotlinUpgradeYarnLock :kollections-primitive:build'
       uses: 'gradle/gradle-build-action@v2'
       with:
-        arguments: 'kotlinUpgradeYarnLock :kollections-interoperable:build'
+        arguments: 'kotlinUpgradeYarnLock :kollections-primitive:build'
         build-root-directory: './kollections'
     - id: 'step-4'
       name: './gradlew kotlinUpgradeYarnLock :kollections-atomic:build'
@@ -198,28 +176,6 @@ jobs:
       with:
         arguments: 'kotlinUpgradeYarnLock :kase-core:build'
         build-root-directory: './kase'
-  krest-builder:
-    runs-on: 'macos-latest'
-    steps:
-    - id: 'step-0'
-      uses: 'actions/checkout@v3'
-      with:
-        submodules: 'true'
-    - id: 'step-1'
-      uses: 'actions/setup-java@v3'
-      with:
-        java-version: '18'
-        distribution: 'corretto'
-    - id: 'step-2'
-      name: 'Make ./gradlew executable'
-      working-directory: 'krest'
-      run: 'chmod +x ./gradlew'
-    - id: 'step-3'
-      name: './gradlew kotlinUpgradeYarnLock :krest-core:build'
-      uses: 'gradle/gradle-build-action@v2'
-      with:
-        arguments: 'kotlinUpgradeYarnLock :krest-core:build'
-        build-root-directory: './krest'
   koncurrent-builder:
     runs-on: 'macos-latest'
     steps:
@@ -388,34 +344,6 @@ jobs:
       with:
         arguments: 'kotlinUpgradeYarnLock :cinematic-scene-core:build'
         build-root-directory: './cinematic'
-  krono-builder:
-    runs-on: 'macos-latest'
-    steps:
-    - id: 'step-0'
-      uses: 'actions/checkout@v3'
-      with:
-        submodules: 'true'
-    - id: 'step-1'
-      uses: 'actions/setup-java@v3'
-      with:
-        java-version: '18'
-        distribution: 'corretto'
-    - id: 'step-2'
-      name: 'Make ./gradlew executable'
-      working-directory: 'krono'
-      run: 'chmod +x ./gradlew'
-    - id: 'step-3'
-      name: './gradlew kotlinUpgradeYarnLock :krono-api:build'
-      uses: 'gradle/gradle-build-action@v2'
-      with:
-        arguments: 'kotlinUpgradeYarnLock :krono-api:build'
-        build-root-directory: './krono'
-    - id: 'step-4'
-      name: './gradlew kotlinUpgradeYarnLock :krono-kotlinx:build'
-      uses: 'gradle/gradle-build-action@v2'
-      with:
-        arguments: 'kotlinUpgradeYarnLock :krono-kotlinx:build'
-        build-root-directory: './krono'
   hormone-builder:
     runs-on: 'macos-latest'
     steps:
@@ -438,7 +366,7 @@ jobs:
       with:
         arguments: 'kotlinUpgradeYarnLock :hormone-core:build'
         build-root-directory: './hormone'
-  geo-builder:
+  kiota-builder:
     runs-on: 'macos-latest'
     steps:
     - id: 'step-0'
@@ -452,21 +380,27 @@ jobs:
         distribution: 'corretto'
     - id: 'step-2'
       name: 'Make ./gradlew executable'
-      working-directory: 'geo'
+      working-directory: 'kiota'
       run: 'chmod +x ./gradlew'
     - id: 'step-3'
-      name: './gradlew kotlinUpgradeYarnLock :geo-countries:build'
+      name: './gradlew kotlinUpgradeYarnLock :kiota-url:build'
       uses: 'gradle/gradle-build-action@v2'
       with:
-        arguments: 'kotlinUpgradeYarnLock :geo-countries:build'
-        build-root-directory: './geo'
+        arguments: 'kotlinUpgradeYarnLock :kiota-url:build'
+        build-root-directory: './kiota'
     - id: 'step-4'
-      name: './gradlew kotlinUpgradeYarnLock :geo-core:build'
+      name: './gradlew kotlinUpgradeYarnLock :kiota-numeral:build'
       uses: 'gradle/gradle-build-action@v2'
       with:
-        arguments: 'kotlinUpgradeYarnLock :geo-core:build'
-        build-root-directory: './geo'
-  kash-builder:
+        arguments: 'kotlinUpgradeYarnLock :kiota-numeral:build'
+        build-root-directory: './kiota'
+    - id: 'step-5'
+      name: './gradlew kotlinUpgradeYarnLock :kiota-sse:build'
+      uses: 'gradle/gradle-build-action@v2'
+      with:
+        arguments: 'kotlinUpgradeYarnLock :kiota-sse:build'
+        build-root-directory: './kiota'
+  neat-builder:
     runs-on: 'macos-latest'
     steps:
     - id: 'step-0'
@@ -480,20 +414,20 @@ jobs:
         distribution: 'corretto'
     - id: 'step-2'
       name: 'Make ./gradlew executable'
-      working-directory: 'kash'
+      working-directory: 'neat'
       run: 'chmod +x ./gradlew'
     - id: 'step-3'
-      name: './gradlew kotlinUpgradeYarnLock :kash-currency:build'
+      name: './gradlew kotlinUpgradeYarnLock :neat-validation:build'
       uses: 'gradle/gradle-build-action@v2'
       with:
-        arguments: 'kotlinUpgradeYarnLock :kash-currency:build'
-        build-root-directory: './kash'
+        arguments: 'kotlinUpgradeYarnLock :neat-validation:build'
+        build-root-directory: './neat'
     - id: 'step-4'
-      name: './gradlew kotlinUpgradeYarnLock :kash-money:build'
+      name: './gradlew kotlinUpgradeYarnLock :neat-formatting:build'
       uses: 'gradle/gradle-build-action@v2'
       with:
-        arguments: 'kotlinUpgradeYarnLock :kash-money:build'
-        build-root-directory: './kash'
+        arguments: 'kotlinUpgradeYarnLock :neat-formatting:build'
+        build-root-directory: './neat'
   epsilon-builder:
     runs-on: 'macos-latest'
     steps:
@@ -729,21 +663,18 @@ jobs:
   rendezvous:
     runs-on: 'ubuntu-latest'
     needs:
-    - 'kronecker-builder'
     - 'kotlinx-interoperable-builder'
     - 'lexi-builder'
     - 'kommander-builder'
     - 'kollections-builder'
     - 'kevlar-builder'
     - 'kase-builder'
-    - 'krest-builder'
     - 'koncurrent-builder'
     - 'keep-builder'
     - 'cinematic-builder'
-    - 'krono-builder'
     - 'hormone-builder'
-    - 'geo-builder'
-    - 'kash-builder'
+    - 'kiota-builder'
+    - 'neat-builder'
     - 'epsilon-builder'
     - 'symphony-builder'
     - 'captain-builder'
@@ -751,30 +682,6 @@ jobs:
     steps:
     - id: 'step-0'
       run: 'echo "all builds completed. Beginning deployment"'
-  kronecker-publisher:
-    runs-on: 'macos-latest'
-    needs:
-    - 'rendezvous'
-    steps:
-    - id: 'step-0'
-      uses: 'actions/checkout@v3'
-      with:
-        submodules: 'true'
-    - id: 'step-1'
-      uses: 'actions/setup-java@v3'
-      with:
-        java-version: '18'
-        distribution: 'corretto'
-    - id: 'step-2'
-      name: 'Make ./gradlew executable'
-      working-directory: 'kronecker'
-      run: 'chmod +x ./gradlew'
-    - id: 'step-3'
-      name: 'publishing kronecker-core'
-      uses: 'gradle/gradle-build-action@v2'
-      with:
-        arguments: 'kotlinUpgradeYarnLock :kronecker-core:publishAllPublicationsToMavenCentral --no-configuration-cache'
-        build-root-directory: './kronecker'
   kotlinx-interoperable-publisher:
     runs-on: 'macos-latest'
     needs:
@@ -866,10 +773,10 @@ jobs:
       working-directory: 'kollections'
       run: 'chmod +x ./gradlew'
     - id: 'step-3'
-      name: 'publishing kollections-interoperable, kollections-atomic'
+      name: 'publishing kollections-primitive, kollections-atomic'
       uses: 'gradle/gradle-build-action@v2'
       with:
-        arguments: 'kotlinUpgradeYarnLock :kollections-interoperable:publishAllPublicationsToMavenCentral kotlinUpgradeYarnLock :kollections-atomic:publishAllPublicationsToMavenCentral --no-configuration-cache'
+        arguments: 'kotlinUpgradeYarnLock :kollections-primitive:publishAllPublicationsToMavenCentral kotlinUpgradeYarnLock :kollections-atomic:publishAllPublicationsToMavenCentral --no-configuration-cache'
         build-root-directory: './kollections'
   kevlar-publisher:
     runs-on: 'macos-latest'
@@ -919,30 +826,6 @@ jobs:
       with:
         arguments: 'kotlinUpgradeYarnLock :kase-core:publishAllPublicationsToMavenCentral --no-configuration-cache'
         build-root-directory: './kase'
-  krest-publisher:
-    runs-on: 'macos-latest'
-    needs:
-    - 'rendezvous'
-    steps:
-    - id: 'step-0'
-      uses: 'actions/checkout@v3'
-      with:
-        submodules: 'true'
-    - id: 'step-1'
-      uses: 'actions/setup-java@v3'
-      with:
-        java-version: '18'
-        distribution: 'corretto'
-    - id: 'step-2'
-      name: 'Make ./gradlew executable'
-      working-directory: 'krest'
-      run: 'chmod +x ./gradlew'
-    - id: 'step-3'
-      name: 'publishing krest-core'
-      uses: 'gradle/gradle-build-action@v2'
-      with:
-        arguments: 'kotlinUpgradeYarnLock :krest-core:publishAllPublicationsToMavenCentral --no-configuration-cache'
-        build-root-directory: './krest'
   koncurrent-publisher:
     runs-on: 'macos-latest'
     needs:
@@ -1015,30 +898,6 @@ jobs:
       with:
         arguments: 'kotlinUpgradeYarnLock :cinematic-live-core:publishAllPublicationsToMavenCentral kotlinUpgradeYarnLock :cinematic-live-compose:publishAllPublicationsToMavenCentral kotlinUpgradeYarnLock :cinematic-live-coroutines:publishAllPublicationsToMavenCentral kotlinUpgradeYarnLock :cinematic-live-react:publishAllPublicationsToMavenCentral kotlinUpgradeYarnLock :cinematic-live-test:publishAllPublicationsToMavenCentral kotlinUpgradeYarnLock :cinematic-scene-core:publishAllPublicationsToMavenCentral --no-configuration-cache'
         build-root-directory: './cinematic'
-  krono-publisher:
-    runs-on: 'macos-latest'
-    needs:
-    - 'rendezvous'
-    steps:
-    - id: 'step-0'
-      uses: 'actions/checkout@v3'
-      with:
-        submodules: 'true'
-    - id: 'step-1'
-      uses: 'actions/setup-java@v3'
-      with:
-        java-version: '18'
-        distribution: 'corretto'
-    - id: 'step-2'
-      name: 'Make ./gradlew executable'
-      working-directory: 'krono'
-      run: 'chmod +x ./gradlew'
-    - id: 'step-3'
-      name: 'publishing krono-api, krono-kotlinx'
-      uses: 'gradle/gradle-build-action@v2'
-      with:
-        arguments: 'kotlinUpgradeYarnLock :krono-api:publishAllPublicationsToMavenCentral kotlinUpgradeYarnLock :krono-kotlinx:publishAllPublicationsToMavenCentral --no-configuration-cache'
-        build-root-directory: './krono'
   hormone-publisher:
     runs-on: 'macos-latest'
     needs:
@@ -1063,7 +922,7 @@ jobs:
       with:
         arguments: 'kotlinUpgradeYarnLock :hormone-core:publishAllPublicationsToMavenCentral --no-configuration-cache'
         build-root-directory: './hormone'
-  geo-publisher:
+  kiota-publisher:
     runs-on: 'macos-latest'
     needs:
     - 'rendezvous'
@@ -1079,15 +938,15 @@ jobs:
         distribution: 'corretto'
     - id: 'step-2'
       name: 'Make ./gradlew executable'
-      working-directory: 'geo'
+      working-directory: 'kiota'
       run: 'chmod +x ./gradlew'
     - id: 'step-3'
-      name: 'publishing geo-countries, geo-core'
+      name: 'publishing kiota-url, kiota-numeral, kiota-sse'
       uses: 'gradle/gradle-build-action@v2'
       with:
-        arguments: 'kotlinUpgradeYarnLock :geo-countries:publishAllPublicationsToMavenCentral kotlinUpgradeYarnLock :geo-core:publishAllPublicationsToMavenCentral --no-configuration-cache'
-        build-root-directory: './geo'
-  kash-publisher:
+        arguments: 'kotlinUpgradeYarnLock :kiota-url:publishAllPublicationsToMavenCentral kotlinUpgradeYarnLock :kiota-numeral:publishAllPublicationsToMavenCentral kotlinUpgradeYarnLock :kiota-sse:publishAllPublicationsToMavenCentral --no-configuration-cache'
+        build-root-directory: './kiota'
+  neat-publisher:
     runs-on: 'macos-latest'
     needs:
     - 'rendezvous'
@@ -1103,14 +962,14 @@ jobs:
         distribution: 'corretto'
     - id: 'step-2'
       name: 'Make ./gradlew executable'
-      working-directory: 'kash'
+      working-directory: 'neat'
       run: 'chmod +x ./gradlew'
     - id: 'step-3'
-      name: 'publishing kash-currency, kash-money'
+      name: 'publishing neat-validation, neat-formatting'
       uses: 'gradle/gradle-build-action@v2'
       with:
-        arguments: 'kotlinUpgradeYarnLock :kash-currency:publishAllPublicationsToMavenCentral kotlinUpgradeYarnLock :kash-money:publishAllPublicationsToMavenCentral --no-configuration-cache'
-        build-root-directory: './kash'
+        arguments: 'kotlinUpgradeYarnLock :neat-validation:publishAllPublicationsToMavenCentral kotlinUpgradeYarnLock :neat-formatting:publishAllPublicationsToMavenCentral --no-configuration-cache'
+        build-root-directory: './neat'
   epsilon-publisher:
     runs-on: 'macos-latest'
     needs:

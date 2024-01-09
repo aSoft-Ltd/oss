@@ -82,3 +82,9 @@
 [submodule "kotlinx-interoperable"]
 	path = kotlinx-interoperable
 	url = https://github.com/aSoft-Ltd/kotlinx-interoperable
+[submodule "kiota"]
+	path = kiota
+	url = https://github.com/aSoft-Ltd/kiota
+[submodule "neat"]
+	path = neat
+	url = https://github.com/aSoft-Ltd/neat
