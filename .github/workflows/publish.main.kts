@@ -63,6 +63,7 @@ val projects = projects {
     }
 //    p("krest") { p("core") }
     p("koncurrent") {
+        p("utils")
         p("executors") { p("core", "coroutines", "mock") }
         p("awaited") { p("core", "coroutines", "test") }
         p("later") { p("core", "coroutines", "test") }
