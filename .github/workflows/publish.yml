@@ -564,70 +564,6 @@ jobs:
       with:
         arguments: 'kotlinUpgradeYarnLock :symphony-input-sheet:build'
         build-root-directory: './symphony'
-  captain-builder:
-    runs-on: 'macos-latest'
-    steps:
-    - id: 'step-0'
-      uses: 'actions/checkout@v3'
-      with:
-        submodules: 'true'
-    - id: 'step-1'
-      uses: 'actions/setup-java@v3'
-      with:
-        java-version: '18'
-        distribution: 'corretto'
-    - id: 'step-2'
-      name: 'Make ./gradlew executable'
-      working-directory: 'captain'
-      run: 'chmod +x ./gradlew'
-    - id: 'step-3'
-      name: './gradlew kotlinUpgradeYarnLock :captain-navigator-api:build'
-      uses: 'gradle/gradle-build-action@v2'
-      with:
-        arguments: 'kotlinUpgradeYarnLock :captain-navigator-api:build'
-        build-root-directory: './captain'
-    - id: 'step-4'
-      name: './gradlew kotlinUpgradeYarnLock :captain-navigator-browser:build'
-      uses: 'gradle/gradle-build-action@v2'
-      with:
-        arguments: 'kotlinUpgradeYarnLock :captain-navigator-browser:build'
-        build-root-directory: './captain'
-    - id: 'step-5'
-      name: './gradlew kotlinUpgradeYarnLock :captain-navigator-basic:build'
-      uses: 'gradle/gradle-build-action@v2'
-      with:
-        arguments: 'kotlinUpgradeYarnLock :captain-navigator-basic:build'
-        build-root-directory: './captain'
-    - id: 'step-6'
-      name: './gradlew kotlinUpgradeYarnLock :captain-router-core:build'
-      uses: 'gradle/gradle-build-action@v2'
-      with:
-        arguments: 'kotlinUpgradeYarnLock :captain-router-core:build'
-        build-root-directory: './captain'
-    - id: 'step-7'
-      name: './gradlew kotlinUpgradeYarnLock :captain-router-react-core:build'
-      uses: 'gradle/gradle-build-action@v2'
-      with:
-        arguments: 'kotlinUpgradeYarnLock :captain-router-react-core:build'
-        build-root-directory: './captain'
-    - id: 'step-8'
-      name: './gradlew kotlinUpgradeYarnLock :captain-router-react-dom:build'
-      uses: 'gradle/gradle-build-action@v2'
-      with:
-        arguments: 'kotlinUpgradeYarnLock :captain-router-react-dom:build'
-        build-root-directory: './captain'
-    - id: 'step-9'
-      name: './gradlew kotlinUpgradeYarnLock :captain-router-compose-core:build'
-      uses: 'gradle/gradle-build-action@v2'
-      with:
-        arguments: 'kotlinUpgradeYarnLock :captain-router-compose-core:build'
-        build-root-directory: './captain'
-    - id: 'step-10'
-      name: './gradlew kotlinUpgradeYarnLock :captain-router-compose-html:build'
-      uses: 'gradle/gradle-build-action@v2'
-      with:
-        arguments: 'kotlinUpgradeYarnLock :captain-router-compose-html:build'
-        build-root-directory: './captain'
   kida-builder:
     runs-on: 'macos-latest'
     steps:
@@ -678,7 +614,6 @@ jobs:
     - 'neat-builder'
     - 'epsilon-builder'
     - 'symphony-builder'
-    - 'captain-builder'
     - 'kida-builder'
     steps:
     - id: 'step-0'
@@ -995,30 +930,6 @@ jobs:
       with:
         arguments: 'kotlinUpgradeYarnLock :symphony-paginator:publishAllPublicationsToMavenCentral kotlinUpgradeYarnLock :symphony-selector:publishAllPublicationsToMavenCentral kotlinUpgradeYarnLock :symphony-actions:publishAllPublicationsToMavenCentral kotlinUpgradeYarnLock :symphony-table:publishAllPublicationsToMavenCentral kotlinUpgradeYarnLock :symphony-list:publishAllPublicationsToMavenCentral kotlinUpgradeYarnLock :symphony-collections:publishAllPublicationsToMavenCentral kotlinUpgradeYarnLock :symphony-input-core:publishAllPublicationsToMavenCentral kotlinUpgradeYarnLock :symphony-input-text:publishAllPublicationsToMavenCentral kotlinUpgradeYarnLock :symphony-input-number:publishAllPublicationsToMavenCentral kotlinUpgradeYarnLock :symphony-input-choice:publishAllPublicationsToMavenCentral kotlinUpgradeYarnLock :symphony-input-dialog:publishAllPublicationsToMavenCentral kotlinUpgradeYarnLock :symphony-input-sheet:publishAllPublicationsToMavenCentral --no-configuration-cache'
         build-root-directory: './symphony'
-  captain-publisher:
-    runs-on: 'macos-latest'
-    needs:
-    - 'rendezvous'
-    steps:
-    - id: 'step-0'
-      uses: 'actions/checkout@v3'
-      with:
-        submodules: 'true'
-    - id: 'step-1'
-      uses: 'actions/setup-java@v3'
-      with:
-        java-version: '18'
-        distribution: 'corretto'
-    - id: 'step-2'
-      name: 'Make ./gradlew executable'
-      working-directory: 'captain'
-      run: 'chmod +x ./gradlew'
-    - id: 'step-3'
-      name: 'publishing captain-navigator-api, captain-navigator-browser, captain-navigator-basic, captain-router-core, captain-router-react-core, captain-router-react-dom, captain-router-compose-core, captain-router-compose-html'
-      uses: 'gradle/gradle-build-action@v2'
-      with:
-        arguments: 'kotlinUpgradeYarnLock :captain-navigator-api:publishAllPublicationsToMavenCentral kotlinUpgradeYarnLock :captain-navigator-browser:publishAllPublicationsToMavenCentral kotlinUpgradeYarnLock :captain-navigator-basic:publishAllPublicationsToMavenCentral kotlinUpgradeYarnLock :captain-router-core:publishAllPublicationsToMavenCentral kotlinUpgradeYarnLock :captain-router-react-core:publishAllPublicationsToMavenCentral kotlinUpgradeYarnLock :captain-router-react-dom:publishAllPublicationsToMavenCentral kotlinUpgradeYarnLock :captain-router-compose-core:publishAllPublicationsToMavenCentral kotlinUpgradeYarnLock :captain-router-compose-html:publishAllPublicationsToMavenCentral --no-configuration-cache'
-        build-root-directory: './captain'
   kida-publisher:
     runs-on: 'macos-latest'
     needs:

@@ -87,14 +87,14 @@ val projects = projects {
         p("paginator", "selector", "actions", "table", "list", "collections")
         p("input") { p("core", "text", "number", "choice", "dialog", "sheet") }
     }
-    p("captain") {
-        p("navigator") { p("api", "browser", "basic") }
-        p("router") {
-            p("core")
-            p("react") { p("core", "dom") }
-            p("compose") { p("core", "html") }
-        }
-    }
+//    p("captain") {
+//        p("navigator") { p("api", "browser", "basic") }
+//        p("router") {
+//            p("core")
+//            p("react") { p("core", "dom") }
+//            p("compose") { p("core", "html") }
+//        }
+//    }
     p("kida") { p("api", "brela", "fake") }
 }
 
