@@ -176,6 +176,36 @@ jobs:
       with:
         arguments: 'kotlinUpgradeYarnLock :kase-core:build'
         build-root-directory: './kase'
+    - id: 'step-4'
+      name: './gradlew kotlinUpgradeYarnLock :kase-optional:build'
+      uses: 'gradle/gradle-build-action@v2'
+      with:
+        arguments: 'kotlinUpgradeYarnLock :kase-optional:build'
+        build-root-directory: './kase'
+    - id: 'step-5'
+      name: './gradlew kotlinUpgradeYarnLock :kase-possible:build'
+      uses: 'gradle/gradle-build-action@v2'
+      with:
+        arguments: 'kotlinUpgradeYarnLock :kase-possible:build'
+        build-root-directory: './kase'
+    - id: 'step-6'
+      name: './gradlew kotlinUpgradeYarnLock :kase-response-core:build'
+      uses: 'gradle/gradle-build-action@v2'
+      with:
+        arguments: 'kotlinUpgradeYarnLock :kase-response-core:build'
+        build-root-directory: './kase'
+    - id: 'step-7'
+      name: './gradlew kotlinUpgradeYarnLock :kase-response-ktor-server:build'
+      uses: 'gradle/gradle-build-action@v2'
+      with:
+        arguments: 'kotlinUpgradeYarnLock :kase-response-ktor-server:build'
+        build-root-directory: './kase'
+    - id: 'step-8'
+      name: './gradlew kotlinUpgradeYarnLock :kase-response-ktor-client:build'
+      uses: 'gradle/gradle-build-action@v2'
+      with:
+        arguments: 'kotlinUpgradeYarnLock :kase-response-ktor-client:build'
+        build-root-directory: './kase'
   koncurrent-builder:
     runs-on: 'macos-latest'
     steps:
@@ -792,10 +822,10 @@ jobs:
       working-directory: 'kase'
       run: 'chmod +x ./gradlew'
     - id: 'step-3'
-      name: 'publishing kase-core'
+      name: 'publishing kase-core, kase-optional, kase-possible, kase-response-core, kase-response-ktor-server, kase-response-ktor-client'
       uses: 'gradle/gradle-build-action@v2'
       with:
-        arguments: 'kotlinUpgradeYarnLock :kase-core:publishAllPublicationsToMavenCentral --no-configuration-cache'
+        arguments: 'kotlinUpgradeYarnLock :kase-core:publishAllPublicationsToMavenCentral kotlinUpgradeYarnLock :kase-optional:publishAllPublicationsToMavenCentral kotlinUpgradeYarnLock :kase-possible:publishAllPublicationsToMavenCentral kotlinUpgradeYarnLock :kase-response-core:publishAllPublicationsToMavenCentral kotlinUpgradeYarnLock :kase-response-ktor-server:publishAllPublicationsToMavenCentral kotlinUpgradeYarnLock :kase-response-ktor-client:publishAllPublicationsToMavenCentral --no-configuration-cache'
         build-root-directory: './kase'
   koncurrent-publisher:
     runs-on: 'macos-latest'

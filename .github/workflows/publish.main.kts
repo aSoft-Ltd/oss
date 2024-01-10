@@ -52,7 +52,15 @@ val projects = projects {
     p("kommander") { p("core", "coroutines") }
     p("kollections") { p("primitive", "atomic") }
     p("kevlar") { p("core") }
-    p("kase") { p("core") }
+    p("kase") {
+        p("core", "optional", "possible")
+        p("response") {
+            p("core")
+            p("ktor") {
+                p("server", "client")
+            }
+        }
+    }
 //    p("krest") { p("core") }
     p("koncurrent") {
         p("executors") { p("core", "coroutines", "mock") }
