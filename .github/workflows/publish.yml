@@ -397,12 +397,6 @@ jobs:
         arguments: 'kotlinUpgradeYarnLock :kiota-url:build'
         build-root-directory: './kiota'
     - id: 'step-4'
-      name: './gradlew kotlinUpgradeYarnLock :kiota-numeral:build'
-      uses: 'gradle/gradle-build-action@v2'
-      with:
-        arguments: 'kotlinUpgradeYarnLock :kiota-numeral:build'
-        build-root-directory: './kiota'
-    - id: 'step-5'
       name: './gradlew kotlinUpgradeYarnLock :kiota-sse:build'
       uses: 'gradle/gradle-build-action@v2'
       with:
@@ -459,18 +453,24 @@ jobs:
         arguments: 'kotlinUpgradeYarnLock :epsilon-core:build'
         build-root-directory: './epsilon'
     - id: 'step-4'
-      name: './gradlew kotlinUpgradeYarnLock :epsilon-file:build'
-      uses: 'gradle/gradle-build-action@v2'
-      with:
-        arguments: 'kotlinUpgradeYarnLock :epsilon-file:build'
-        build-root-directory: './epsilon'
-    - id: 'step-5'
       name: './gradlew kotlinUpgradeYarnLock :epsilon-fake:build'
       uses: 'gradle/gradle-build-action@v2'
       with:
         arguments: 'kotlinUpgradeYarnLock :epsilon-fake:build'
         build-root-directory: './epsilon'
+    - id: 'step-5'
+      name: './gradlew kotlinUpgradeYarnLock :epsilon-file-core:build'
+      uses: 'gradle/gradle-build-action@v2'
+      with:
+        arguments: 'kotlinUpgradeYarnLock :epsilon-file-core:build'
+        build-root-directory: './epsilon'
     - id: 'step-6'
+      name: './gradlew kotlinUpgradeYarnLock :epsilon-file-fields:build'
+      uses: 'gradle/gradle-build-action@v2'
+      with:
+        arguments: 'kotlinUpgradeYarnLock :epsilon-file-fields:build'
+        build-root-directory: './epsilon'
+    - id: 'step-7'
       name: './gradlew kotlinUpgradeYarnLock :epsilon-network-ktor:build'
       uses: 'gradle/gradle-build-action@v2'
       with:
@@ -918,10 +918,10 @@ jobs:
       working-directory: 'kiota'
       run: 'chmod +x ./gradlew'
     - id: 'step-3'
-      name: 'publishing kiota-url, kiota-numeral, kiota-sse'
+      name: 'publishing kiota-url, kiota-sse'
       uses: 'gradle/gradle-build-action@v2'
       with:
-        arguments: 'kotlinUpgradeYarnLock :kiota-url:publishAllPublicationsToMavenCentral kotlinUpgradeYarnLock :kiota-numeral:publishAllPublicationsToMavenCentral kotlinUpgradeYarnLock :kiota-sse:publishAllPublicationsToMavenCentral --no-configuration-cache'
+        arguments: 'kotlinUpgradeYarnLock :kiota-url:publishAllPublicationsToMavenCentral kotlinUpgradeYarnLock :kiota-sse:publishAllPublicationsToMavenCentral --no-configuration-cache'
         build-root-directory: './kiota'
   neat-publisher:
     runs-on: 'macos-latest'
@@ -966,10 +966,10 @@ jobs:
       working-directory: 'epsilon'
       run: 'chmod +x ./gradlew'
     - id: 'step-3'
-      name: 'publishing epsilon-core, epsilon-file, epsilon-fake, epsilon-network-ktor'
+      name: 'publishing epsilon-core, epsilon-fake, epsilon-file-core, epsilon-file-fields, epsilon-network-ktor'
       uses: 'gradle/gradle-build-action@v2'
       with:
-        arguments: 'kotlinUpgradeYarnLock :epsilon-core:publishAllPublicationsToMavenCentral kotlinUpgradeYarnLock :epsilon-file:publishAllPublicationsToMavenCentral kotlinUpgradeYarnLock :epsilon-fake:publishAllPublicationsToMavenCentral kotlinUpgradeYarnLock :epsilon-network-ktor:publishAllPublicationsToMavenCentral --no-configuration-cache'
+        arguments: 'kotlinUpgradeYarnLock :epsilon-core:publishAllPublicationsToMavenCentral kotlinUpgradeYarnLock :epsilon-fake:publishAllPublicationsToMavenCentral kotlinUpgradeYarnLock :epsilon-file-core:publishAllPublicationsToMavenCentral kotlinUpgradeYarnLock :epsilon-file-fields:publishAllPublicationsToMavenCentral kotlinUpgradeYarnLock :epsilon-network-ktor:publishAllPublicationsToMavenCentral --no-configuration-cache'
         build-root-directory: './epsilon'
   symphony-publisher:
     runs-on: 'macos-latest'

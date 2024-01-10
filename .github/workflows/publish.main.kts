@@ -76,10 +76,11 @@ val projects = projects {
 //    p("hormone") { p("core") }
 //    p("geo") { p("countries", "core") }
 //    p("kash") { p("currency", "money") }
-    p("kiota") { p("url", "numeral", "sse") }
+    p("kiota") { p("url", "sse") }
     p("neat") { p("validation", "formatting") }
     p("epsilon") {
-        p("core", "file", "fake")
+        p("core", "fake")
+        p("file") { p("core", "fields") }
         p("network") { p("ktor") }
     }
     p("symphony") {
