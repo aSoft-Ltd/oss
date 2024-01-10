@@ -65,7 +65,7 @@ val projects = projects {
         p("scene") { p("core") }
     }
 //    p("krono") { p("api", "kotlinx") }
-    p("hormone") { p("core") }
+//    p("hormone") { p("core") }
 //    p("geo") { p("countries", "core") }
 //    p("kash") { p("currency", "money") }
     p("kiota") { p("url", "numeral", "sse") }
