@@ -188,24 +188,6 @@ jobs:
       with:
         arguments: 'kotlinUpgradeYarnLock :kase-possible:build'
         build-root-directory: './kase'
-    - id: 'step-6'
-      name: './gradlew kotlinUpgradeYarnLock :kase-response-core:build'
-      uses: 'gradle/gradle-build-action@v2'
-      with:
-        arguments: 'kotlinUpgradeYarnLock :kase-response-core:build'
-        build-root-directory: './kase'
-    - id: 'step-7'
-      name: './gradlew kotlinUpgradeYarnLock :kase-response-ktor-server:build'
-      uses: 'gradle/gradle-build-action@v2'
-      with:
-        arguments: 'kotlinUpgradeYarnLock :kase-response-ktor-server:build'
-        build-root-directory: './kase'
-    - id: 'step-8'
-      name: './gradlew kotlinUpgradeYarnLock :kase-response-ktor-client:build'
-      uses: 'gradle/gradle-build-action@v2'
-      with:
-        arguments: 'kotlinUpgradeYarnLock :kase-response-ktor-client:build'
-        build-root-directory: './kase'
   koncurrent-builder:
     runs-on: 'macos-latest'
     steps:
@@ -430,52 +412,6 @@ jobs:
       with:
         arguments: 'kotlinUpgradeYarnLock :neat-formatting:build'
         build-root-directory: './neat'
-  epsilon-builder:
-    runs-on: 'macos-latest'
-    steps:
-    - id: 'step-0'
-      uses: 'actions/checkout@v3'
-      with:
-        submodules: 'true'
-    - id: 'step-1'
-      uses: 'actions/setup-java@v3'
-      with:
-        java-version: '18'
-        distribution: 'corretto'
-    - id: 'step-2'
-      name: 'Make ./gradlew executable'
-      working-directory: 'epsilon'
-      run: 'chmod +x ./gradlew'
-    - id: 'step-3'
-      name: './gradlew kotlinUpgradeYarnLock :epsilon-core:build'
-      uses: 'gradle/gradle-build-action@v2'
-      with:
-        arguments: 'kotlinUpgradeYarnLock :epsilon-core:build'
-        build-root-directory: './epsilon'
-    - id: 'step-4'
-      name: './gradlew kotlinUpgradeYarnLock :epsilon-fake:build'
-      uses: 'gradle/gradle-build-action@v2'
-      with:
-        arguments: 'kotlinUpgradeYarnLock :epsilon-fake:build'
-        build-root-directory: './epsilon'
-    - id: 'step-5'
-      name: './gradlew kotlinUpgradeYarnLock :epsilon-file-core:build'
-      uses: 'gradle/gradle-build-action@v2'
-      with:
-        arguments: 'kotlinUpgradeYarnLock :epsilon-file-core:build'
-        build-root-directory: './epsilon'
-    - id: 'step-6'
-      name: './gradlew kotlinUpgradeYarnLock :epsilon-file-fields:build'
-      uses: 'gradle/gradle-build-action@v2'
-      with:
-        arguments: 'kotlinUpgradeYarnLock :epsilon-file-fields:build'
-        build-root-directory: './epsilon'
-    - id: 'step-7'
-      name: './gradlew kotlinUpgradeYarnLock :epsilon-network-ktor:build'
-      uses: 'gradle/gradle-build-action@v2'
-      with:
-        arguments: 'kotlinUpgradeYarnLock :epsilon-network-ktor:build'
-        build-root-directory: './epsilon'
   symphony-builder:
     runs-on: 'macos-latest'
     steps:
@@ -612,7 +548,6 @@ jobs:
     - 'cinematic-builder'
     - 'kiota-builder'
     - 'neat-builder'
-    - 'epsilon-builder'
     - 'symphony-builder'
     - 'kida-builder'
     steps:
@@ -757,10 +692,10 @@ jobs:
       working-directory: 'kase'
       run: 'chmod +x ./gradlew'
     - id: 'step-3'
-      name: 'publishing kase-core, kase-optional, kase-possible, kase-response-core, kase-response-ktor-server, kase-response-ktor-client'
+      name: 'publishing kase-core, kase-optional, kase-possible'
       uses: 'gradle/gradle-build-action@v2'
       with:
-        arguments: 'kotlinUpgradeYarnLock :kase-core:publishAllPublicationsToMavenCentral kotlinUpgradeYarnLock :kase-optional:publishAllPublicationsToMavenCentral kotlinUpgradeYarnLock :kase-possible:publishAllPublicationsToMavenCentral kotlinUpgradeYarnLock :kase-response-core:publishAllPublicationsToMavenCentral kotlinUpgradeYarnLock :kase-response-ktor-server:publishAllPublicationsToMavenCentral kotlinUpgradeYarnLock :kase-response-ktor-client:publishAllPublicationsToMavenCentral --no-configuration-cache'
+        arguments: 'kotlinUpgradeYarnLock :kase-core:publishAllPublicationsToMavenCentral kotlinUpgradeYarnLock :kase-optional:publishAllPublicationsToMavenCentral kotlinUpgradeYarnLock :kase-possible:publishAllPublicationsToMavenCentral --no-configuration-cache'
         build-root-directory: './kase'
   koncurrent-publisher:
     runs-on: 'macos-latest'
@@ -882,30 +817,6 @@ jobs:
       with:
         arguments: 'kotlinUpgradeYarnLock :neat-validation:publishAllPublicationsToMavenCentral kotlinUpgradeYarnLock :neat-formatting:publishAllPublicationsToMavenCentral --no-configuration-cache'
         build-root-directory: './neat'
-  epsilon-publisher:
-    runs-on: 'macos-latest'
-    needs:
-    - 'rendezvous'
-    steps:
-    - id: 'step-0'
-      uses: 'actions/checkout@v3'
-      with:
-        submodules: 'true'
-    - id: 'step-1'
-      uses: 'actions/setup-java@v3'
-      with:
-        java-version: '18'
-        distribution: 'corretto'
-    - id: 'step-2'
-      name: 'Make ./gradlew executable'
-      working-directory: 'epsilon'
-      run: 'chmod +x ./gradlew'
-    - id: 'step-3'
-      name: 'publishing epsilon-core, epsilon-fake, epsilon-file-core, epsilon-file-fields, epsilon-network-ktor'
-      uses: 'gradle/gradle-build-action@v2'
-      with:
-        arguments: 'kotlinUpgradeYarnLock :epsilon-core:publishAllPublicationsToMavenCentral kotlinUpgradeYarnLock :epsilon-fake:publishAllPublicationsToMavenCentral kotlinUpgradeYarnLock :epsilon-file-core:publishAllPublicationsToMavenCentral kotlinUpgradeYarnLock :epsilon-file-fields:publishAllPublicationsToMavenCentral kotlinUpgradeYarnLock :epsilon-network-ktor:publishAllPublicationsToMavenCentral --no-configuration-cache'
-        build-root-directory: './epsilon'
   symphony-publisher:
     runs-on: 'macos-latest'
     needs:

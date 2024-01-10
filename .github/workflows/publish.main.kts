@@ -54,12 +54,12 @@ val projects = projects {
     p("kevlar") { p("core") }
     p("kase") {
         p("core", "optional", "possible")
-        p("response") {
-            p("core")
-            p("ktor") {
-                p("server", "client")
-            }
-        }
+//        p("response") {
+//            p("core")
+//            p("ktor") {
+//                p("server", "client")
+//            }
+//        }
     }
 //    p("krest") { p("core") }
     p("koncurrent") {
@@ -78,11 +78,11 @@ val projects = projects {
 //    p("kash") { p("currency", "money") }
     p("kiota") { p("url", "sse") }
     p("neat") { p("validation", "formatting") }
-    p("epsilon") {
-        p("core", "fake")
-        p("file") { p("core", "fields") }
-        p("network") { p("ktor") }
-    }
+//    p("epsilon") {
+//        p("core", "fake")
+//        p("file") { p("core", "fields") }
+//        p("network") { p("ktor") }
+//    }
     p("symphony") {
         p("paginator", "selector", "actions", "table", "list", "collections")
         p("input") { p("core", "text", "number", "choice", "dialog", "sheet") }
