@@ -79,7 +79,6 @@ val projects = projects {
         p("input") { p("core", "text", "number", "choice", "dialog", "sheet") }
     }
     p("captain") {
-        p("url")
         p("navigator") { p("api", "browser", "basic") }
         p("router") {
             p("core")
