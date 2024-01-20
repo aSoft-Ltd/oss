@@ -50,7 +50,7 @@ val projects = projects {
         p("test") { p("android") }
     }
     p("kommander") { p("core", "coroutines") }
-    p("kollections") { p("primitive", "atomic") }
+    p("kollections") { p("primitive", "atomic", "stacks") }
     p("kevlar") { p("core") }
     p("kase") {
         p("core", "optional", "possible")
@@ -88,14 +88,14 @@ val projects = projects {
         p("paginator", "selector", "actions", "table", "list", "collections")
         p("input") { p("core", "text", "number", "choice", "dialog", "sheet") }
     }
-//    p("captain") {
-//        p("navigator") { p("api", "browser", "basic") }
-//        p("router") {
-//            p("core")
-//            p("react") { p("core", "dom") }
-//            p("compose") { p("core", "html") }
-//        }
-//    }
+    p("captain") {
+        p("navigator") { p("api", "browser", "basic") }
+        p("router") {
+            p("core")
+            p("react") { p("core", "dom") }
+            p("compose") { p("core", "html") }
+        }
+    }
     p("kida") { p("api", "brela", "fake") }
 }
 
