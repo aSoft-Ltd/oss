@@ -28,12 +28,13 @@ class ModuleBuilder(val parent: String) {
 
 class ProjectsBuilder {
     val projects = mutableListOf<GradleProject>()
-    fun p(name: String, builder: ModuleBuilder.() -> Unit) {
-        projects.add(GradleProject(name, ModuleBuilder(name).apply(builder).modules))
+    fun p(name: String, path: String = name, builder: ModuleBuilder.() -> Unit) {
+        projects.add(GradleProject(name, path, ModuleBuilder(name).apply(builder).modules))
     }
 }
 
 data class GradleProject(
+    val name: String,
     val path: String,
     val modules: List<String>
 )
@@ -80,10 +81,10 @@ val projects = projects {
 //    p("kash") { p("currency", "money") }
     p("kiota") { p("url", "sse") }
     p("neat") { p("validation", "formatting") }
-    p("epsilon-api") {
-        p("core", "file","fake","network")
+    p("epsilon", "epsilon-api") {
+        p("core", "file", "fake", "network")
     }
-    p("epsilon-client") {
+    p("epsilon", "epsilon-client") {
         p("file") { p("fields") }
         p("image") { p("core", "web") }
         p("image-react") { p("core", "dom") }
