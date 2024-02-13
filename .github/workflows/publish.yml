@@ -532,18 +532,6 @@ jobs:
       with:
         arguments: 'kotlinUpgradeYarnLock :epsilon-image-react-dom:build'
         build-root-directory: './epsilon-client'
-    - id: 'step-8'
-      name: './gradlew kotlinUpgradeYarnLock :epsilon-image-compose-core:build'
-      uses: 'gradle/gradle-build-action@v2'
-      with:
-        arguments: 'kotlinUpgradeYarnLock :epsilon-image-compose-core:build'
-        build-root-directory: './epsilon-client'
-    - id: 'step-9'
-      name: './gradlew kotlinUpgradeYarnLock :epsilon-image-compose-html:build'
-      uses: 'gradle/gradle-build-action@v2'
-      with:
-        arguments: 'kotlinUpgradeYarnLock :epsilon-image-compose-html:build'
-        build-root-directory: './epsilon-client'
   symphony-builder:
     runs-on: 'macos-latest'
     steps:
@@ -1084,10 +1072,10 @@ jobs:
       working-directory: 'epsilon-client'
       run: 'chmod +x ./gradlew'
     - id: 'step-3'
-      name: 'publishing epsilon-file-fields, epsilon-image-core, epsilon-image-web, epsilon-image-react-core, epsilon-image-react-dom, epsilon-image-compose-core, epsilon-image-compose-html'
+      name: 'publishing epsilon-file-fields, epsilon-image-core, epsilon-image-web, epsilon-image-react-core, epsilon-image-react-dom'
       uses: 'gradle/gradle-build-action@v2'
       with:
-        arguments: 'kotlinUpgradeYarnLock :epsilon-file-fields:publishAllPublicationsToMavenCentral kotlinUpgradeYarnLock :epsilon-image-core:publishAllPublicationsToMavenCentral kotlinUpgradeYarnLock :epsilon-image-web:publishAllPublicationsToMavenCentral kotlinUpgradeYarnLock :epsilon-image-react-core:publishAllPublicationsToMavenCentral kotlinUpgradeYarnLock :epsilon-image-react-dom:publishAllPublicationsToMavenCentral kotlinUpgradeYarnLock :epsilon-image-compose-core:publishAllPublicationsToMavenCentral kotlinUpgradeYarnLock :epsilon-image-compose-html:publishAllPublicationsToMavenCentral --no-configuration-cache'
+        arguments: 'kotlinUpgradeYarnLock :epsilon-file-fields:publishAllPublicationsToMavenCentral kotlinUpgradeYarnLock :epsilon-image-core:publishAllPublicationsToMavenCentral kotlinUpgradeYarnLock :epsilon-image-web:publishAllPublicationsToMavenCentral kotlinUpgradeYarnLock :epsilon-image-react-core:publishAllPublicationsToMavenCentral kotlinUpgradeYarnLock :epsilon-image-react-dom:publishAllPublicationsToMavenCentral --no-configuration-cache'
         build-root-directory: './epsilon-client'
   symphony-publisher:
     runs-on: 'macos-latest'
