@@ -385,16 +385,16 @@ jobs:
       working-directory: 'krono-core'
       run: 'chmod +x ./gradlew'
     - id: 'step-3'
-      name: './gradlew kotlinUpgradeYarnLock :krono-core-api:build'
+      name: './gradlew kotlinUpgradeYarnLock :krono-api:build'
       uses: 'gradle/gradle-build-action@v2'
       with:
-        arguments: 'kotlinUpgradeYarnLock :krono-core-api:build'
+        arguments: 'kotlinUpgradeYarnLock :krono-api:build'
         build-root-directory: './krono-core'
     - id: 'step-4'
-      name: './gradlew kotlinUpgradeYarnLock :krono-core-kotlinx:build'
+      name: './gradlew kotlinUpgradeYarnLock :krono-kotlinx:build'
       uses: 'gradle/gradle-build-action@v2'
       with:
-        arguments: 'kotlinUpgradeYarnLock :krono-core-kotlinx:build'
+        arguments: 'kotlinUpgradeYarnLock :krono-kotlinx:build'
         build-root-directory: './krono-core'
   kiota-builder:
     runs-on: 'macos-latest'
@@ -976,10 +976,10 @@ jobs:
       working-directory: 'krono-core'
       run: 'chmod +x ./gradlew'
     - id: 'step-3'
-      name: 'publishing krono-core-api, krono-core-kotlinx'
+      name: 'publishing krono-api, krono-kotlinx'
       uses: 'gradle/gradle-build-action@v2'
       with:
-        arguments: 'kotlinUpgradeYarnLock :krono-core-api:publishAllPublicationsToMavenCentral kotlinUpgradeYarnLock :krono-core-kotlinx:publishAllPublicationsToMavenCentral --no-configuration-cache'
+        arguments: 'kotlinUpgradeYarnLock :krono-api:publishAllPublicationsToMavenCentral kotlinUpgradeYarnLock :krono-kotlinx:publishAllPublicationsToMavenCentral --no-configuration-cache'
         build-root-directory: './krono-core'
   kiota-publisher:
     runs-on: 'macos-latest'

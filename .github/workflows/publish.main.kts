@@ -74,7 +74,7 @@ val projects = projects {
         p("live") { p("core", "compose", "coroutines", "react", "test") }
         p("scene") { p("core") }
     }
-    p("krono-core") { p("api", "kotlinx") }
+    p("krono", "krono-core") { p("api", "kotlinx") }
 //    p("krono") { p("api", "kotlinx") }
 //    p("hormone") { p("core") }
 //    p("geo") { p("countries", "core") }
