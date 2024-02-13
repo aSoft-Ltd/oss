@@ -82,7 +82,7 @@ val projects = projects {
     p("kiota") { p("url", "sse") }
     p("neat") { p("validation", "formatting") }
     p("epsilon", "epsilon-api") {
-        p("core", "file", "fake", "network")
+        p("core", "file", "fake") // , "network")
     }
     p("epsilon", "epsilon-client") {
         p("file") { p("fields") }

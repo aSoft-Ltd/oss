@@ -486,12 +486,6 @@ jobs:
       with:
         arguments: 'kotlinUpgradeYarnLock :epsilon-fake:build'
         build-root-directory: './epsilon-api'
-    - id: 'step-6'
-      name: './gradlew kotlinUpgradeYarnLock :epsilon-network:build'
-      uses: 'gradle/gradle-build-action@v2'
-      with:
-        arguments: 'kotlinUpgradeYarnLock :epsilon-network:build'
-        build-root-directory: './epsilon-api'
   epsilon-client-builder:
     runs-on: 'macos-latest'
     steps:
@@ -1066,10 +1060,10 @@ jobs:
       working-directory: 'epsilon-api'
       run: 'chmod +x ./gradlew'
     - id: 'step-3'
-      name: 'publishing epsilon-core, epsilon-file, epsilon-fake, epsilon-network'
+      name: 'publishing epsilon-core, epsilon-file, epsilon-fake'
       uses: 'gradle/gradle-build-action@v2'
       with:
-        arguments: 'kotlinUpgradeYarnLock :epsilon-core:publishAllPublicationsToMavenCentral kotlinUpgradeYarnLock :epsilon-file:publishAllPublicationsToMavenCentral kotlinUpgradeYarnLock :epsilon-fake:publishAllPublicationsToMavenCentral kotlinUpgradeYarnLock :epsilon-network:publishAllPublicationsToMavenCentral --no-configuration-cache'
+        arguments: 'kotlinUpgradeYarnLock :epsilon-core:publishAllPublicationsToMavenCentral kotlinUpgradeYarnLock :epsilon-file:publishAllPublicationsToMavenCentral kotlinUpgradeYarnLock :epsilon-fake:publishAllPublicationsToMavenCentral --no-configuration-cache'
         build-root-directory: './epsilon-api'
   epsilon-client-publisher:
     runs-on: 'macos-latest'
