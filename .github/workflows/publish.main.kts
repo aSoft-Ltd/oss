@@ -88,7 +88,7 @@ val projects = projects {
         p("file") { p("fields") }
         p("image") { p("core", "web") }
         p("image-react") { p("core", "dom") }
-        p("image-compose") { p("core", "html") }
+//        p("image-compose") { p("core", "html") }
     }
     p("symphony") {
         p("paginator", "selector", "actions", "table", "list", "collections")
