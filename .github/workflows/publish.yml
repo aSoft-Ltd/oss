@@ -368,6 +368,34 @@ jobs:
       with:
         arguments: 'kotlinUpgradeYarnLock :cinematic-scene-core:build'
         build-root-directory: './cinematic'
+  krono-core-builder:
+    runs-on: 'macos-latest'
+    steps:
+    - id: 'step-0'
+      uses: 'actions/checkout@v3'
+      with:
+        submodules: 'true'
+    - id: 'step-1'
+      uses: 'actions/setup-java@v3'
+      with:
+        java-version: '18'
+        distribution: 'corretto'
+    - id: 'step-2'
+      name: 'Make ./gradlew executable'
+      working-directory: 'krono-core'
+      run: 'chmod +x ./gradlew'
+    - id: 'step-3'
+      name: './gradlew kotlinUpgradeYarnLock :krono-core-api:build'
+      uses: 'gradle/gradle-build-action@v2'
+      with:
+        arguments: 'kotlinUpgradeYarnLock :krono-core-api:build'
+        build-root-directory: './krono-core'
+    - id: 'step-4'
+      name: './gradlew kotlinUpgradeYarnLock :krono-core-kotlinx:build'
+      uses: 'gradle/gradle-build-action@v2'
+      with:
+        arguments: 'kotlinUpgradeYarnLock :krono-core-kotlinx:build'
+        build-root-directory: './krono-core'
   kiota-builder:
     runs-on: 'macos-latest'
     steps:
@@ -424,6 +452,104 @@ jobs:
       with:
         arguments: 'kotlinUpgradeYarnLock :neat-formatting:build'
         build-root-directory: './neat'
+  epsilon-api-builder:
+    runs-on: 'macos-latest'
+    steps:
+    - id: 'step-0'
+      uses: 'actions/checkout@v3'
+      with:
+        submodules: 'true'
+    - id: 'step-1'
+      uses: 'actions/setup-java@v3'
+      with:
+        java-version: '18'
+        distribution: 'corretto'
+    - id: 'step-2'
+      name: 'Make ./gradlew executable'
+      working-directory: 'epsilon-api'
+      run: 'chmod +x ./gradlew'
+    - id: 'step-3'
+      name: './gradlew kotlinUpgradeYarnLock :epsilon-api-core:build'
+      uses: 'gradle/gradle-build-action@v2'
+      with:
+        arguments: 'kotlinUpgradeYarnLock :epsilon-api-core:build'
+        build-root-directory: './epsilon-api'
+    - id: 'step-4'
+      name: './gradlew kotlinUpgradeYarnLock :epsilon-api-file:build'
+      uses: 'gradle/gradle-build-action@v2'
+      with:
+        arguments: 'kotlinUpgradeYarnLock :epsilon-api-file:build'
+        build-root-directory: './epsilon-api'
+    - id: 'step-5'
+      name: './gradlew kotlinUpgradeYarnLock :epsilon-api-fake:build'
+      uses: 'gradle/gradle-build-action@v2'
+      with:
+        arguments: 'kotlinUpgradeYarnLock :epsilon-api-fake:build'
+        build-root-directory: './epsilon-api'
+    - id: 'step-6'
+      name: './gradlew kotlinUpgradeYarnLock :epsilon-api-network:build'
+      uses: 'gradle/gradle-build-action@v2'
+      with:
+        arguments: 'kotlinUpgradeYarnLock :epsilon-api-network:build'
+        build-root-directory: './epsilon-api'
+  epsilon-client-builder:
+    runs-on: 'macos-latest'
+    steps:
+    - id: 'step-0'
+      uses: 'actions/checkout@v3'
+      with:
+        submodules: 'true'
+    - id: 'step-1'
+      uses: 'actions/setup-java@v3'
+      with:
+        java-version: '18'
+        distribution: 'corretto'
+    - id: 'step-2'
+      name: 'Make ./gradlew executable'
+      working-directory: 'epsilon-client'
+      run: 'chmod +x ./gradlew'
+    - id: 'step-3'
+      name: './gradlew kotlinUpgradeYarnLock :epsilon-client-file-fields:build'
+      uses: 'gradle/gradle-build-action@v2'
+      with:
+        arguments: 'kotlinUpgradeYarnLock :epsilon-client-file-fields:build'
+        build-root-directory: './epsilon-client'
+    - id: 'step-4'
+      name: './gradlew kotlinUpgradeYarnLock :epsilon-client-image-core:build'
+      uses: 'gradle/gradle-build-action@v2'
+      with:
+        arguments: 'kotlinUpgradeYarnLock :epsilon-client-image-core:build'
+        build-root-directory: './epsilon-client'
+    - id: 'step-5'
+      name: './gradlew kotlinUpgradeYarnLock :epsilon-client-image-web:build'
+      uses: 'gradle/gradle-build-action@v2'
+      with:
+        arguments: 'kotlinUpgradeYarnLock :epsilon-client-image-web:build'
+        build-root-directory: './epsilon-client'
+    - id: 'step-6'
+      name: './gradlew kotlinUpgradeYarnLock :epsilon-client-image-react-core:build'
+      uses: 'gradle/gradle-build-action@v2'
+      with:
+        arguments: 'kotlinUpgradeYarnLock :epsilon-client-image-react-core:build'
+        build-root-directory: './epsilon-client'
+    - id: 'step-7'
+      name: './gradlew kotlinUpgradeYarnLock :epsilon-client-image-react-dom:build'
+      uses: 'gradle/gradle-build-action@v2'
+      with:
+        arguments: 'kotlinUpgradeYarnLock :epsilon-client-image-react-dom:build'
+        build-root-directory: './epsilon-client'
+    - id: 'step-8'
+      name: './gradlew kotlinUpgradeYarnLock :epsilon-client-image-compose-core:build'
+      uses: 'gradle/gradle-build-action@v2'
+      with:
+        arguments: 'kotlinUpgradeYarnLock :epsilon-client-image-compose-core:build'
+        build-root-directory: './epsilon-client'
+    - id: 'step-9'
+      name: './gradlew kotlinUpgradeYarnLock :epsilon-client-image-compose-html:build'
+      uses: 'gradle/gradle-build-action@v2'
+      with:
+        arguments: 'kotlinUpgradeYarnLock :epsilon-client-image-compose-html:build'
+        build-root-directory: './epsilon-client'
   symphony-builder:
     runs-on: 'macos-latest'
     steps:
@@ -622,8 +748,11 @@ jobs:
     - 'koncurrent-builder'
     - 'keep-builder'
     - 'cinematic-builder'
+    - 'krono-core-builder'
     - 'kiota-builder'
     - 'neat-builder'
+    - 'epsilon-api-builder'
+    - 'epsilon-client-builder'
     - 'symphony-builder'
     - 'captain-builder'
     - 'kida-builder'
@@ -846,6 +975,30 @@ jobs:
       with:
         arguments: 'kotlinUpgradeYarnLock :cinematic-live-core:publishAllPublicationsToMavenCentral kotlinUpgradeYarnLock :cinematic-live-compose:publishAllPublicationsToMavenCentral kotlinUpgradeYarnLock :cinematic-live-coroutines:publishAllPublicationsToMavenCentral kotlinUpgradeYarnLock :cinematic-live-react:publishAllPublicationsToMavenCentral kotlinUpgradeYarnLock :cinematic-live-test:publishAllPublicationsToMavenCentral kotlinUpgradeYarnLock :cinematic-scene-core:publishAllPublicationsToMavenCentral --no-configuration-cache'
         build-root-directory: './cinematic'
+  krono-core-publisher:
+    runs-on: 'macos-latest'
+    needs:
+    - 'rendezvous'
+    steps:
+    - id: 'step-0'
+      uses: 'actions/checkout@v3'
+      with:
+        submodules: 'true'
+    - id: 'step-1'
+      uses: 'actions/setup-java@v3'
+      with:
+        java-version: '18'
+        distribution: 'corretto'
+    - id: 'step-2'
+      name: 'Make ./gradlew executable'
+      working-directory: 'krono-core'
+      run: 'chmod +x ./gradlew'
+    - id: 'step-3'
+      name: 'publishing krono-core-api, krono-core-kotlinx'
+      uses: 'gradle/gradle-build-action@v2'
+      with:
+        arguments: 'kotlinUpgradeYarnLock :krono-core-api:publishAllPublicationsToMavenCentral kotlinUpgradeYarnLock :krono-core-kotlinx:publishAllPublicationsToMavenCentral --no-configuration-cache'
+        build-root-directory: './krono-core'
   kiota-publisher:
     runs-on: 'macos-latest'
     needs:
@@ -894,6 +1047,54 @@ jobs:
       with:
         arguments: 'kotlinUpgradeYarnLock :neat-validation:publishAllPublicationsToMavenCentral kotlinUpgradeYarnLock :neat-formatting:publishAllPublicationsToMavenCentral --no-configuration-cache'
         build-root-directory: './neat'
+  epsilon-api-publisher:
+    runs-on: 'macos-latest'
+    needs:
+    - 'rendezvous'
+    steps:
+    - id: 'step-0'
+      uses: 'actions/checkout@v3'
+      with:
+        submodules: 'true'
+    - id: 'step-1'
+      uses: 'actions/setup-java@v3'
+      with:
+        java-version: '18'
+        distribution: 'corretto'
+    - id: 'step-2'
+      name: 'Make ./gradlew executable'
+      working-directory: 'epsilon-api'
+      run: 'chmod +x ./gradlew'
+    - id: 'step-3'
+      name: 'publishing epsilon-api-core, epsilon-api-file, epsilon-api-fake, epsilon-api-network'
+      uses: 'gradle/gradle-build-action@v2'
+      with:
+        arguments: 'kotlinUpgradeYarnLock :epsilon-api-core:publishAllPublicationsToMavenCentral kotlinUpgradeYarnLock :epsilon-api-file:publishAllPublicationsToMavenCentral kotlinUpgradeYarnLock :epsilon-api-fake:publishAllPublicationsToMavenCentral kotlinUpgradeYarnLock :epsilon-api-network:publishAllPublicationsToMavenCentral --no-configuration-cache'
+        build-root-directory: './epsilon-api'
+  epsilon-client-publisher:
+    runs-on: 'macos-latest'
+    needs:
+    - 'rendezvous'
+    steps:
+    - id: 'step-0'
+      uses: 'actions/checkout@v3'
+      with:
+        submodules: 'true'
+    - id: 'step-1'
+      uses: 'actions/setup-java@v3'
+      with:
+        java-version: '18'
+        distribution: 'corretto'
+    - id: 'step-2'
+      name: 'Make ./gradlew executable'
+      working-directory: 'epsilon-client'
+      run: 'chmod +x ./gradlew'
+    - id: 'step-3'
+      name: 'publishing epsilon-client-file-fields, epsilon-client-image-core, epsilon-client-image-web, epsilon-client-image-react-core, epsilon-client-image-react-dom, epsilon-client-image-compose-core, epsilon-client-image-compose-html'
+      uses: 'gradle/gradle-build-action@v2'
+      with:
+        arguments: 'kotlinUpgradeYarnLock :epsilon-client-file-fields:publishAllPublicationsToMavenCentral kotlinUpgradeYarnLock :epsilon-client-image-core:publishAllPublicationsToMavenCentral kotlinUpgradeYarnLock :epsilon-client-image-web:publishAllPublicationsToMavenCentral kotlinUpgradeYarnLock :epsilon-client-image-react-core:publishAllPublicationsToMavenCentral kotlinUpgradeYarnLock :epsilon-client-image-react-dom:publishAllPublicationsToMavenCentral kotlinUpgradeYarnLock :epsilon-client-image-compose-core:publishAllPublicationsToMavenCentral kotlinUpgradeYarnLock :epsilon-client-image-compose-html:publishAllPublicationsToMavenCentral --no-configuration-cache'
+        build-root-directory: './epsilon-client'
   symphony-publisher:
     runs-on: 'macos-latest'
     needs:

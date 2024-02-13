@@ -88,3 +88,15 @@
 [submodule "neat"]
 	path = neat
 	url = https://github.com/aSoft-Ltd/neat
+[submodule "podium"]
+	path = podium
+	url = https://github.com/aSoft-Ltd/podium
+[submodule "krono-core"]
+	path = krono-core
+	url = https://github.com/aSoft-Ltd/krono-core
+[submodule "epsilon-api"]
+	path = epsilon-api
+	url = https://github.com/aSoft-Ltd/epsilon-api
+[submodule "epsilon-client"]
+	path = epsilon-client
+	url = https://github.com/aSoft-Ltd/epsilon-client

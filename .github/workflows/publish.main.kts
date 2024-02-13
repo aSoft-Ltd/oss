@@ -73,17 +73,22 @@ val projects = projects {
         p("live") { p("core", "compose", "coroutines", "react", "test") }
         p("scene") { p("core") }
     }
+    p("krono-core") { p("api", "kotlinx") }
 //    p("krono") { p("api", "kotlinx") }
 //    p("hormone") { p("core") }
 //    p("geo") { p("countries", "core") }
 //    p("kash") { p("currency", "money") }
     p("kiota") { p("url", "sse") }
     p("neat") { p("validation", "formatting") }
-//    p("epsilon") {
-//        p("core", "fake")
-//        p("file") { p("core", "fields") }
-//        p("network") { p("ktor") }
-//    }
+    p("epsilon-api") {
+        p("core", "file","fake","network")
+    }
+    p("epsilon-client") {
+        p("file") { p("fields") }
+        p("image") { p("core", "web") }
+        p("image-react") { p("core", "dom") }
+        p("image-compose") { p("core", "html") }
+    }
     p("symphony") {
         p("paginator", "selector", "actions", "table", "list", "collections")
         p("input") { p("core", "text", "number", "choice", "dialog", "sheet") }
