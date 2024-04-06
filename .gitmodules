@@ -100,3 +100,6 @@
 [submodule "epsilon-client"]
 	path = epsilon-client
 	url = https://github.com/aSoft-Ltd/epsilon-client
+[submodule "formix"]
+	path = formix
+	url = https://github.com/aSoft-Ltd/formix
