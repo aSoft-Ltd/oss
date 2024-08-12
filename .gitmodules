@@ -103,3 +103,6 @@
 [submodule "formix"]
 	path = formix
 	url = https://github.com/aSoft-Ltd/formix
+[submodule "status"]
+	path = status
+	url = https://github.com/asoft-ltd/status
