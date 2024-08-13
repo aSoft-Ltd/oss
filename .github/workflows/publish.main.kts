@@ -42,7 +42,7 @@ data class GradleProject(
 fun projects(builder: ProjectsBuilder.() -> Unit): List<GradleProject> = ProjectsBuilder().apply(builder).projects
 
 val projects = projects {
-//    p("kronecker") { p("core") }
+    p("kronecker") { p("core") }
     p("kotlinx-interoperable") {
         p("exports")
     }
@@ -75,7 +75,6 @@ val projects = projects {
         p("scene") { p("core") }
     }
     p("krono", "krono-core") { p("api", "kotlinx") }
-//    p("krono") { p("api", "kotlinx") }
 //    p("hormone") { p("core") }
 //    p("geo") { p("countries", "core") }
 //    p("kash") { p("currency", "money") }
@@ -85,10 +84,10 @@ val projects = projects {
         p("core", "file", "fake") // , "network")
     }
     p("epsilon", "epsilon-client") {
-        p("file") { p("fields") }
+        p("fields")
         p("image") { p("core", "web") }
         p("image-react") { p("core", "dom") }
-//        p("image-compose") { p("core", "html") }
+        p("image-compose") { p("core", "html") }
     }
     p("symphony") {
         p("visibility", "paginator", "selector", "actions", "table", "list", "collections")
