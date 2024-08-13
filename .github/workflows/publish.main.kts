@@ -42,7 +42,7 @@ data class GradleProject(
 fun projects(builder: ProjectsBuilder.() -> Unit): List<GradleProject> = ProjectsBuilder().apply(builder).projects
 
 val projects = projects {
-    p("kronecker") { p("core") }
+//    p("kronecker") { p("core") }
     p("kotlinx-interoperable") {
         p("exports")
     }
@@ -116,13 +116,6 @@ fun WorkflowBuilder.buildProject(gp: GradleProject) = job(
     id = "${gp.path}-builder", runsOn = RunnerType.MacOSLatest
 ) {
     setupAndCheckout(gp)
-//    gp.modules.forEach {
-//        val task = "kotlinUpgradeYarnLock :$it:build"
-//        uses(
-//            name = "./gradlew $task",
-//            action = GradleBuildActionV2(arguments = task, buildRootDirectory = "./${gp.path}")
-//        )
-//    }
 
     val argument = gp.modules.joinToString(prefix = "kotlinUpgradeYarnLock ", separator = " ") { ":$it:build" }
     uses(
