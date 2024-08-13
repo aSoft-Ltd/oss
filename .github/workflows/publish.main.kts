@@ -92,7 +92,7 @@ val projects = projects {
     }
     p("symphony") {
         p("visibility", "paginator", "selector", "actions", "table", "list", "collections")
-        p("input") { p("core", "text", "number", "choice", "dialog", "sheet") }
+        p("input") { p("core", "text", "number", "choice", "dialog", "sheet", "finance") }
     }
     p("captain") {
         p("navigator") { p("api", "browser", "basic") }
