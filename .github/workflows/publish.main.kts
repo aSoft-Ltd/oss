@@ -80,9 +80,7 @@ val projects = projects {
 //    p("kash") { p("currency", "money") }
     p("kiota") { p("url", "sse") }
     p("neat") { p("validation", "formatting") }
-    p("epsilon", "epsilon-api") {
-        p("core", "file", "fake") // , "network")
-    }
+    p("epsilon", "epsilon-api") { p("core") }
     p("epsilon", "epsilon-client") {
         p("fields")
         p("image") { p("core", "web") }
@@ -118,13 +116,19 @@ fun WorkflowBuilder.buildProject(gp: GradleProject) = job(
     id = "${gp.path}-builder", runsOn = RunnerType.MacOSLatest
 ) {
     setupAndCheckout(gp)
-    gp.modules.forEach {
-        val task = "kotlinUpgradeYarnLock :$it:build"
-        uses(
-            name = "./gradlew $task",
-            action = GradleBuildActionV2(arguments = task, buildRootDirectory = "./${gp.path}")
-        )
-    }
+//    gp.modules.forEach {
+//        val task = "kotlinUpgradeYarnLock :$it:build"
+//        uses(
+//            name = "./gradlew $task",
+//            action = GradleBuildActionV2(arguments = task, buildRootDirectory = "./${gp.path}")
+//        )
+//    }
+
+    val argument = gp.modules.joinToString(prefix = "kotlinUpgradeYarnLock ", separator = " ") { ":$it:build" }
+    uses(
+        name = "building " + gp.modules.joinToString(", "),
+        action = GradleBuildActionV2(arguments = argument, buildRootDirectory = "./${gp.path}")
+    )
 }
 
 fun WorkflowBuilder.publishProject(gp: GradleProject, after: Job<JobOutputs.EMPTY>) = job(
