@@ -1,6 +1,7 @@
 #!/usr/bin/env kotlin
 
 @file:DependsOn("io.github.typesafegithub:github-workflows-kt:0.44.0")
+//@file:DependsOn("io.github.typesafegithub:github-workflows-kt:3.0.0")
 
 import io.github.typesafegithub.workflows.actions.actions.CheckoutV3
 import io.github.typesafegithub.workflows.actions.actions.SetupJavaV3
@@ -119,7 +120,9 @@ fun JobBuilder<JobOutputs.EMPTY>.setupAndCheckout(gp: GradleProject) {
 }
 
 fun WorkflowBuilder.buildProject(gp: GradleProject) = job(
-    id = "${gp.path}-builder", runsOn = RunnerType.MacOSLatest
+    id = "${gp.path}-builder",
+//    runsOn = RunnerType.MacOSLatest
+    runsOn = RunnerType.Custom("macos-latest-xl")
 ) {
     setupAndCheckout(gp)
 
@@ -139,7 +142,10 @@ fun WorkflowBuilder.buildProject(gp: GradleProject) = job(
 }
 
 fun WorkflowBuilder.publishProject(gp: GradleProject, after: Job<JobOutputs.EMPTY>) = job(
-    id = "${gp.path}-publisher", runsOn = RunnerType.MacOSLatest, needs = listOf(after)
+    id = "${gp.path}-publisher",
+//    runsOn = RunnerType.MacOSLatest,
+    runsOn = RunnerType.Custom("macos-latest-xl"),
+    needs = listOf(after)
 ) {
     setupAndCheckout(gp)
 

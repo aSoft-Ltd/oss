@@ -15,7 +15,7 @@ env:
   TARGETING_ALL: 'true'
 jobs:
   kotlinx-interoperable-builder:
-    runs-on: 'macos-latest'
+    runs-on: 'macos-latest-xl'
     steps:
     - id: 'step-0'
       uses: 'actions/checkout@v3'
@@ -37,7 +37,7 @@ jobs:
         arguments: 'kotlinUpgradePackageLock :kotlinx-interoperable-exports:build'
         build-root-directory: './kotlinx-interoperable'
   lexi-builder:
-    runs-on: 'macos-latest'
+    runs-on: 'macos-latest-xl'
     steps:
     - id: 'step-0'
       uses: 'actions/checkout@v3'
@@ -77,7 +77,7 @@ jobs:
         arguments: 'kotlinUpgradePackageLock :lexi-test-android:build'
         build-root-directory: './lexi'
   kommander-builder:
-    runs-on: 'macos-latest'
+    runs-on: 'macos-latest-xl'
     steps:
     - id: 'step-0'
       uses: 'actions/checkout@v3'
@@ -105,7 +105,7 @@ jobs:
         arguments: 'kotlinUpgradePackageLock :kommander-coroutines:build'
         build-root-directory: './kommander'
   kollections-builder:
-    runs-on: 'macos-latest'
+    runs-on: 'macos-latest-xl'
     steps:
     - id: 'step-0'
       uses: 'actions/checkout@v3'
@@ -139,7 +139,7 @@ jobs:
         arguments: 'kotlinUpgradePackageLock :kollections-stacks:build'
         build-root-directory: './kollections'
   kevlar-builder:
-    runs-on: 'macos-latest'
+    runs-on: 'macos-latest-xl'
     steps:
     - id: 'step-0'
       uses: 'actions/checkout@v3'
@@ -161,7 +161,7 @@ jobs:
         arguments: 'kotlinUpgradePackageLock :kevlar-core:build'
         build-root-directory: './kevlar'
   kase-builder:
-    runs-on: 'macos-latest'
+    runs-on: 'macos-latest-xl'
     steps:
     - id: 'step-0'
       uses: 'actions/checkout@v3'
@@ -195,7 +195,7 @@ jobs:
         arguments: 'kotlinUpgradePackageLock :kase-possible:build'
         build-root-directory: './kase'
   koncurrent-builder:
-    runs-on: 'macos-latest'
+    runs-on: 'macos-latest-xl'
     steps:
     - id: 'step-0'
       uses: 'actions/checkout@v3'
@@ -271,7 +271,7 @@ jobs:
         arguments: 'kotlinUpgradePackageLock :koncurrent-later-test:build'
         build-root-directory: './koncurrent'
   keep-builder:
-    runs-on: 'macos-latest'
+    runs-on: 'macos-latest-xl'
     steps:
     - id: 'step-0'
       uses: 'actions/checkout@v3'
@@ -317,7 +317,7 @@ jobs:
         arguments: 'kotlinUpgradePackageLock :keep-react-native:build'
         build-root-directory: './keep'
   cinematic-builder:
-    runs-on: 'macos-latest'
+    runs-on: 'macos-latest-xl'
     steps:
     - id: 'step-0'
       uses: 'actions/checkout@v3'
@@ -369,7 +369,7 @@ jobs:
         arguments: 'kotlinUpgradePackageLock :cinematic-scene-core:build'
         build-root-directory: './cinematic'
   krono-core-builder:
-    runs-on: 'macos-latest'
+    runs-on: 'macos-latest-xl'
     steps:
     - id: 'step-0'
       uses: 'actions/checkout@v3'
@@ -397,7 +397,7 @@ jobs:
         arguments: 'kotlinUpgradePackageLock :krono-kotlinx:build'
         build-root-directory: './krono-core'
   kiota-builder:
-    runs-on: 'macos-latest'
+    runs-on: 'macos-latest-xl'
     steps:
     - id: 'step-0'
       uses: 'actions/checkout@v3'
@@ -425,7 +425,7 @@ jobs:
         arguments: 'kotlinUpgradePackageLock :kiota-sse:build'
         build-root-directory: './kiota'
   neat-builder:
-    runs-on: 'macos-latest'
+    runs-on: 'macos-latest-xl'
     steps:
     - id: 'step-0'
       uses: 'actions/checkout@v3'
@@ -453,7 +453,7 @@ jobs:
         arguments: 'kotlinUpgradePackageLock :neat-formatting:build'
         build-root-directory: './neat'
   epsilon-api-builder:
-    runs-on: 'macos-latest'
+    runs-on: 'macos-latest-xl'
     steps:
     - id: 'step-0'
       uses: 'actions/checkout@v3'
@@ -475,7 +475,7 @@ jobs:
         arguments: 'kotlinUpgradePackageLock :epsilon-core:build'
         build-root-directory: './epsilon-api'
   epsilon-client-builder:
-    runs-on: 'macos-latest'
+    runs-on: 'macos-latest-xl'
     steps:
     - id: 'step-0'
       uses: 'actions/checkout@v3'
@@ -533,7 +533,7 @@ jobs:
         arguments: 'kotlinUpgradePackageLock :epsilon-image-compose-html:build'
         build-root-directory: './epsilon-client'
   symphony-builder:
-    runs-on: 'macos-latest'
+    runs-on: 'macos-latest-xl'
     steps:
     - id: 'step-0'
       uses: 'actions/checkout@v3'
@@ -633,7 +633,7 @@ jobs:
         arguments: 'kotlinUpgradePackageLock :symphony-input-finance:build'
         build-root-directory: './symphony'
   captain-builder:
-    runs-on: 'macos-latest'
+    runs-on: 'macos-latest-xl'
     steps:
     - id: 'step-0'
       uses: 'actions/checkout@v3'
@@ -697,7 +697,7 @@ jobs:
         arguments: 'kotlinUpgradePackageLock :captain-router-compose-html:build'
         build-root-directory: './captain'
   raven-builder:
-    runs-on: 'macos-latest'
+    runs-on: 'macos-latest-xl'
     steps:
     - id: 'step-0'
       uses: 'actions/checkout@v3'
@@ -803,7 +803,7 @@ jobs:
         arguments: 'kotlinUpgradePackageLock :raven-sms-kila:build'
         build-root-directory: './raven'
   kida-builder:
-    runs-on: 'macos-latest'
+    runs-on: 'macos-latest-xl'
     steps:
     - id: 'step-0'
       uses: 'actions/checkout@v3'
@@ -861,7 +861,7 @@ jobs:
     - id: 'step-0'
       run: 'echo "all builds completed. Beginning deployment"'
   kotlinx-interoperable-publisher:
-    runs-on: 'macos-latest'
+    runs-on: 'macos-latest-xl'
     needs:
     - 'rendezvous'
     steps:
@@ -885,7 +885,7 @@ jobs:
         arguments: 'kotlinUpgradePackageLock :kotlinx-interoperable-exports:publishAllPublicationsToMavenCentral --no-configuration-cache'
         build-root-directory: './kotlinx-interoperable'
   lexi-publisher:
-    runs-on: 'macos-latest'
+    runs-on: 'macos-latest-xl'
     needs:
     - 'rendezvous'
     steps:
@@ -909,7 +909,7 @@ jobs:
         arguments: 'kotlinUpgradePackageLock :lexi-api:publishAllPublicationsToMavenCentral kotlinUpgradePackageLock :lexi-console:publishAllPublicationsToMavenCentral kotlinUpgradePackageLock :lexi-file:publishAllPublicationsToMavenCentral kotlinUpgradePackageLock :lexi-test-android:publishAllPublicationsToMavenCentral --no-configuration-cache'
         build-root-directory: './lexi'
   kommander-publisher:
-    runs-on: 'macos-latest'
+    runs-on: 'macos-latest-xl'
     needs:
     - 'rendezvous'
     steps:
@@ -933,7 +933,7 @@ jobs:
         arguments: 'kotlinUpgradePackageLock :kommander-core:publishAllPublicationsToMavenCentral kotlinUpgradePackageLock :kommander-coroutines:publishAllPublicationsToMavenCentral --no-configuration-cache'
         build-root-directory: './kommander'
   kollections-publisher:
-    runs-on: 'macos-latest'
+    runs-on: 'macos-latest-xl'
     needs:
     - 'rendezvous'
     steps:
@@ -957,7 +957,7 @@ jobs:
         arguments: 'kotlinUpgradePackageLock :kollections-primitive:publishAllPublicationsToMavenCentral kotlinUpgradePackageLock :kollections-atomic:publishAllPublicationsToMavenCentral kotlinUpgradePackageLock :kollections-stacks:publishAllPublicationsToMavenCentral --no-configuration-cache'
         build-root-directory: './kollections'
   kevlar-publisher:
-    runs-on: 'macos-latest'
+    runs-on: 'macos-latest-xl'
     needs:
     - 'rendezvous'
     steps:
@@ -981,7 +981,7 @@ jobs:
         arguments: 'kotlinUpgradePackageLock :kevlar-core:publishAllPublicationsToMavenCentral --no-configuration-cache'
         build-root-directory: './kevlar'
   kase-publisher:
-    runs-on: 'macos-latest'
+    runs-on: 'macos-latest-xl'
     needs:
     - 'rendezvous'
     steps:
@@ -1005,7 +1005,7 @@ jobs:
         arguments: 'kotlinUpgradePackageLock :kase-core:publishAllPublicationsToMavenCentral kotlinUpgradePackageLock :kase-optional:publishAllPublicationsToMavenCentral kotlinUpgradePackageLock :kase-possible:publishAllPublicationsToMavenCentral --no-configuration-cache'
         build-root-directory: './kase'
   koncurrent-publisher:
-    runs-on: 'macos-latest'
+    runs-on: 'macos-latest-xl'
     needs:
     - 'rendezvous'
     steps:
@@ -1029,7 +1029,7 @@ jobs:
         arguments: 'kotlinUpgradePackageLock :koncurrent-utils:publishAllPublicationsToMavenCentral kotlinUpgradePackageLock :koncurrent-executors-core:publishAllPublicationsToMavenCentral kotlinUpgradePackageLock :koncurrent-executors-coroutines:publishAllPublicationsToMavenCentral kotlinUpgradePackageLock :koncurrent-executors-mock:publishAllPublicationsToMavenCentral kotlinUpgradePackageLock :koncurrent-awaited-core:publishAllPublicationsToMavenCentral kotlinUpgradePackageLock :koncurrent-awaited-coroutines:publishAllPublicationsToMavenCentral kotlinUpgradePackageLock :koncurrent-awaited-test:publishAllPublicationsToMavenCentral kotlinUpgradePackageLock :koncurrent-later-core:publishAllPublicationsToMavenCentral kotlinUpgradePackageLock :koncurrent-later-coroutines:publishAllPublicationsToMavenCentral kotlinUpgradePackageLock :koncurrent-later-test:publishAllPublicationsToMavenCentral --no-configuration-cache'
         build-root-directory: './koncurrent'
   keep-publisher:
-    runs-on: 'macos-latest'
+    runs-on: 'macos-latest-xl'
     needs:
     - 'rendezvous'
     steps:
@@ -1053,7 +1053,7 @@ jobs:
         arguments: 'kotlinUpgradePackageLock :keep-api:publishAllPublicationsToMavenCentral kotlinUpgradePackageLock :keep-browser:publishAllPublicationsToMavenCentral kotlinUpgradePackageLock :keep-file:publishAllPublicationsToMavenCentral kotlinUpgradePackageLock :keep-mock:publishAllPublicationsToMavenCentral kotlinUpgradePackageLock :keep-react-native:publishAllPublicationsToMavenCentral --no-configuration-cache'
         build-root-directory: './keep'
   cinematic-publisher:
-    runs-on: 'macos-latest'
+    runs-on: 'macos-latest-xl'
     needs:
     - 'rendezvous'
     steps:
@@ -1077,7 +1077,7 @@ jobs:
         arguments: 'kotlinUpgradePackageLock :cinematic-live-core:publishAllPublicationsToMavenCentral kotlinUpgradePackageLock :cinematic-live-compose:publishAllPublicationsToMavenCentral kotlinUpgradePackageLock :cinematic-live-coroutines:publishAllPublicationsToMavenCentral kotlinUpgradePackageLock :cinematic-live-react:publishAllPublicationsToMavenCentral kotlinUpgradePackageLock :cinematic-live-test:publishAllPublicationsToMavenCentral kotlinUpgradePackageLock :cinematic-scene-core:publishAllPublicationsToMavenCentral --no-configuration-cache'
         build-root-directory: './cinematic'
   krono-core-publisher:
-    runs-on: 'macos-latest'
+    runs-on: 'macos-latest-xl'
     needs:
     - 'rendezvous'
     steps:
@@ -1101,7 +1101,7 @@ jobs:
         arguments: 'kotlinUpgradePackageLock :krono-api:publishAllPublicationsToMavenCentral kotlinUpgradePackageLock :krono-kotlinx:publishAllPublicationsToMavenCentral --no-configuration-cache'
         build-root-directory: './krono-core'
   kiota-publisher:
-    runs-on: 'macos-latest'
+    runs-on: 'macos-latest-xl'
     needs:
     - 'rendezvous'
     steps:
@@ -1125,7 +1125,7 @@ jobs:
         arguments: 'kotlinUpgradePackageLock :kiota-url:publishAllPublicationsToMavenCentral kotlinUpgradePackageLock :kiota-sse:publishAllPublicationsToMavenCentral --no-configuration-cache'
         build-root-directory: './kiota'
   neat-publisher:
-    runs-on: 'macos-latest'
+    runs-on: 'macos-latest-xl'
     needs:
     - 'rendezvous'
     steps:
@@ -1149,7 +1149,7 @@ jobs:
         arguments: 'kotlinUpgradePackageLock :neat-validation:publishAllPublicationsToMavenCentral kotlinUpgradePackageLock :neat-formatting:publishAllPublicationsToMavenCentral --no-configuration-cache'
         build-root-directory: './neat'
   epsilon-api-publisher:
-    runs-on: 'macos-latest'
+    runs-on: 'macos-latest-xl'
     needs:
     - 'rendezvous'
     steps:
@@ -1173,7 +1173,7 @@ jobs:
         arguments: 'kotlinUpgradePackageLock :epsilon-core:publishAllPublicationsToMavenCentral --no-configuration-cache'
         build-root-directory: './epsilon-api'
   epsilon-client-publisher:
-    runs-on: 'macos-latest'
+    runs-on: 'macos-latest-xl'
     needs:
     - 'rendezvous'
     steps:
@@ -1197,7 +1197,7 @@ jobs:
         arguments: 'kotlinUpgradePackageLock :epsilon-fields:publishAllPublicationsToMavenCentral kotlinUpgradePackageLock :epsilon-image-core:publishAllPublicationsToMavenCentral kotlinUpgradePackageLock :epsilon-image-web:publishAllPublicationsToMavenCentral kotlinUpgradePackageLock :epsilon-image-react-core:publishAllPublicationsToMavenCentral kotlinUpgradePackageLock :epsilon-image-react-dom:publishAllPublicationsToMavenCentral kotlinUpgradePackageLock :epsilon-image-compose-core:publishAllPublicationsToMavenCentral kotlinUpgradePackageLock :epsilon-image-compose-html:publishAllPublicationsToMavenCentral --no-configuration-cache'
         build-root-directory: './epsilon-client'
   symphony-publisher:
-    runs-on: 'macos-latest'
+    runs-on: 'macos-latest-xl'
     needs:
     - 'rendezvous'
     steps:
@@ -1221,7 +1221,7 @@ jobs:
         arguments: 'kotlinUpgradePackageLock :symphony-visibility:publishAllPublicationsToMavenCentral kotlinUpgradePackageLock :symphony-paginator:publishAllPublicationsToMavenCentral kotlinUpgradePackageLock :symphony-selector:publishAllPublicationsToMavenCentral kotlinUpgradePackageLock :symphony-actions:publishAllPublicationsToMavenCentral kotlinUpgradePackageLock :symphony-table:publishAllPublicationsToMavenCentral kotlinUpgradePackageLock :symphony-list:publishAllPublicationsToMavenCentral kotlinUpgradePackageLock :symphony-collections:publishAllPublicationsToMavenCentral kotlinUpgradePackageLock :symphony-input-core:publishAllPublicationsToMavenCentral kotlinUpgradePackageLock :symphony-input-text:publishAllPublicationsToMavenCentral kotlinUpgradePackageLock :symphony-input-number:publishAllPublicationsToMavenCentral kotlinUpgradePackageLock :symphony-input-choice:publishAllPublicationsToMavenCentral kotlinUpgradePackageLock :symphony-input-dialog:publishAllPublicationsToMavenCentral kotlinUpgradePackageLock :symphony-input-sheet:publishAllPublicationsToMavenCentral kotlinUpgradePackageLock :symphony-input-finance:publishAllPublicationsToMavenCentral --no-configuration-cache'
         build-root-directory: './symphony'
   captain-publisher:
-    runs-on: 'macos-latest'
+    runs-on: 'macos-latest-xl'
     needs:
     - 'rendezvous'
     steps:
@@ -1245,7 +1245,7 @@ jobs:
         arguments: 'kotlinUpgradePackageLock :captain-navigator-api:publishAllPublicationsToMavenCentral kotlinUpgradePackageLock :captain-navigator-browser:publishAllPublicationsToMavenCentral kotlinUpgradePackageLock :captain-navigator-basic:publishAllPublicationsToMavenCentral kotlinUpgradePackageLock :captain-router-core:publishAllPublicationsToMavenCentral kotlinUpgradePackageLock :captain-router-react-core:publishAllPublicationsToMavenCentral kotlinUpgradePackageLock :captain-router-react-dom:publishAllPublicationsToMavenCentral kotlinUpgradePackageLock :captain-router-compose-core:publishAllPublicationsToMavenCentral kotlinUpgradePackageLock :captain-router-compose-html:publishAllPublicationsToMavenCentral --no-configuration-cache'
         build-root-directory: './captain'
   raven-publisher:
-    runs-on: 'macos-latest'
+    runs-on: 'macos-latest-xl'
     needs:
     - 'rendezvous'
     steps:
@@ -1269,7 +1269,7 @@ jobs:
         arguments: 'kotlinUpgradePackageLock :raven-core:publishAllPublicationsToMavenCentral kotlinUpgradePackageLock :raven-config:publishAllPublicationsToMavenCentral kotlinUpgradePackageLock :raven-outbox-core:publishAllPublicationsToMavenCentral kotlinUpgradePackageLock :raven-outbox-local:publishAllPublicationsToMavenCentral kotlinUpgradePackageLock :raven-outbox-server:publishAllPublicationsToMavenCentral kotlinUpgradePackageLock :raven-outbox-client:publishAllPublicationsToMavenCentral kotlinUpgradePackageLock :raven-email-core:publishAllPublicationsToMavenCentral kotlinUpgradePackageLock :raven-email-markup:publishAllPublicationsToMavenCentral kotlinUpgradePackageLock :raven-email-config:publishAllPublicationsToMavenCentral kotlinUpgradePackageLock :raven-email-console:publishAllPublicationsToMavenCentral kotlinUpgradePackageLock :raven-email-brevo:publishAllPublicationsToMavenCentral kotlinUpgradePackageLock :raven-sms-core:publishAllPublicationsToMavenCentral kotlinUpgradePackageLock :raven-sms-config:publishAllPublicationsToMavenCentral kotlinUpgradePackageLock :raven-sms-console:publishAllPublicationsToMavenCentral kotlinUpgradePackageLock :raven-sms-kila:publishAllPublicationsToMavenCentral --no-configuration-cache'
         build-root-directory: './raven'
   kida-publisher:
-    runs-on: 'macos-latest'
+    runs-on: 'macos-latest-xl'
     needs:
     - 'rendezvous'
     steps:
