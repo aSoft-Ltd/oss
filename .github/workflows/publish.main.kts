@@ -128,13 +128,9 @@ fun WorkflowBuilder.buildProject(gp: GradleProject) = job(
 //        name = "building " + gp.modules.joinToString(", "),
 //        action = GradleBuildActionV2(arguments = argument, buildRootDirectory = "./${gp.path}")
 //    )
-    uses(
-        name = "Upgrade yarn lock",
-        action = GradleBuildActionV2(arguments = "kotlinUpgradeYarnLock", buildRootDirectory = "./${gp.path}")
-    )
 
     gp.modules.forEach {
-        val argument = ":$it:build"
+        val argument = "kotlinUpgradeYarnLock :$it:build"
         uses(
             name = "building $it",
             action = GradleBuildActionV2(arguments = argument, buildRootDirectory = "./${gp.path}")
