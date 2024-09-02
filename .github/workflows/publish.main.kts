@@ -123,11 +123,23 @@ fun WorkflowBuilder.buildProject(gp: GradleProject) = job(
 ) {
     setupAndCheckout(gp)
 
-    val argument = gp.modules.joinToString(prefix = "kotlinUpgradeYarnLock ", separator = " ") { ":$it:build" }
+//    val argument = gp.modules.joinToString(prefix = "kotlinUpgradeYarnLock ", separator = " ") { ":$it:build" }
+//    uses(
+//        name = "building " + gp.modules.joinToString(", "),
+//        action = GradleBuildActionV2(arguments = argument, buildRootDirectory = "./${gp.path}")
+//    )
     uses(
-        name = "building " + gp.modules.joinToString(", "),
-        action = GradleBuildActionV2(arguments = argument, buildRootDirectory = "./${gp.path}")
+        name = "Upgrade yarn lock",
+        action = GradleBuildActionV2(arguments = "kotlinUpgradeYarnLock", buildRootDirectory = "./${gp.path}")
     )
+
+    gp.modules.forEach {
+        val argument = ":$it:build"
+        uses(
+            name = "building $it",
+            action = GradleBuildActionV2(arguments = argument, buildRootDirectory = "./${gp.path}")
+        )
+    }
 }
 
 fun WorkflowBuilder.publishProject(gp: GradleProject, after: Job<JobOutputs.EMPTY>) = job(
