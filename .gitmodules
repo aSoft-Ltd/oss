@@ -106,3 +106,9 @@
 [submodule "status"]
 	path = status
 	url = https://github.com/asoft-ltd/status
+[submodule "kit"]
+	path = kit
+	url = https://github.com/asoft-ltd/kit
+[submodule "raven"]
+	path = raven
+	url = https://github.com/asoft-ltd/raven

@@ -99,6 +99,12 @@ val projects = projects {
             p("compose") { p("core", "html") }
         }
     }
+    p("raven") {
+        p("core", "config")
+        p("outbox") { p("core", "local", "server", "client") }
+        p("email") { p("core", "markup", "config", "console", "brevo") }
+        p("sms") { p("core", "config", "console", "kila") }
+    }
     p("kida") { p("api", "brela", "fake") }
 }
 
