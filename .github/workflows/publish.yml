@@ -366,6 +366,28 @@ jobs:
       with:
         arguments: 'kotlinUpgradeYarnLock :captain-navigator-api:build :captain-navigator-browser:build :captain-navigator-basic:build :captain-router-core:build :captain-router-react-core:build :captain-router-react-dom:build :captain-router-compose-core:build :captain-router-compose-html:build'
         build-root-directory: './captain'
+  raven-builder:
+    runs-on: 'macos-latest'
+    steps:
+    - id: 'step-0'
+      uses: 'actions/checkout@v3'
+      with:
+        submodules: 'true'
+    - id: 'step-1'
+      uses: 'actions/setup-java@v3'
+      with:
+        java-version: '18'
+        distribution: 'corretto'
+    - id: 'step-2'
+      name: 'Make ./gradlew executable'
+      working-directory: 'raven'
+      run: 'chmod +x ./gradlew'
+    - id: 'step-3'
+      name: 'building raven-core, raven-config, raven-outbox-core, raven-outbox-local, raven-outbox-server, raven-outbox-client, raven-email-core, raven-email-markup, raven-email-config, raven-email-console, raven-email-brevo, raven-sms-core, raven-sms-config, raven-sms-console, raven-sms-kila'
+      uses: 'gradle/gradle-build-action@v2'
+      with:
+        arguments: 'kotlinUpgradeYarnLock :raven-core:build :raven-config:build :raven-outbox-core:build :raven-outbox-local:build :raven-outbox-server:build :raven-outbox-client:build :raven-email-core:build :raven-email-markup:build :raven-email-config:build :raven-email-console:build :raven-email-brevo:build :raven-sms-core:build :raven-sms-config:build :raven-sms-console:build :raven-sms-kila:build'
+        build-root-directory: './raven'
   kida-builder:
     runs-on: 'macos-latest'
     steps:
@@ -407,6 +429,7 @@ jobs:
     - 'epsilon-client-builder'
     - 'symphony-builder'
     - 'captain-builder'
+    - 'raven-builder'
     - 'kida-builder'
     steps:
     - id: 'step-0'
@@ -795,6 +818,30 @@ jobs:
       with:
         arguments: 'kotlinUpgradeYarnLock :captain-navigator-api:publishAllPublicationsToMavenCentral kotlinUpgradeYarnLock :captain-navigator-browser:publishAllPublicationsToMavenCentral kotlinUpgradeYarnLock :captain-navigator-basic:publishAllPublicationsToMavenCentral kotlinUpgradeYarnLock :captain-router-core:publishAllPublicationsToMavenCentral kotlinUpgradeYarnLock :captain-router-react-core:publishAllPublicationsToMavenCentral kotlinUpgradeYarnLock :captain-router-react-dom:publishAllPublicationsToMavenCentral kotlinUpgradeYarnLock :captain-router-compose-core:publishAllPublicationsToMavenCentral kotlinUpgradeYarnLock :captain-router-compose-html:publishAllPublicationsToMavenCentral --no-configuration-cache'
         build-root-directory: './captain'
+  raven-publisher:
+    runs-on: 'macos-latest'
+    needs:
+    - 'rendezvous'
+    steps:
+    - id: 'step-0'
+      uses: 'actions/checkout@v3'
+      with:
+        submodules: 'true'
+    - id: 'step-1'
+      uses: 'actions/setup-java@v3'
+      with:
+        java-version: '18'
+        distribution: 'corretto'
+    - id: 'step-2'
+      name: 'Make ./gradlew executable'
+      working-directory: 'raven'
+      run: 'chmod +x ./gradlew'
+    - id: 'step-3'
+      name: 'publishing raven-core, raven-config, raven-outbox-core, raven-outbox-local, raven-outbox-server, raven-outbox-client, raven-email-core, raven-email-markup, raven-email-config, raven-email-console, raven-email-brevo, raven-sms-core, raven-sms-config, raven-sms-console, raven-sms-kila'
+      uses: 'gradle/gradle-build-action@v2'
+      with:
+        arguments: 'kotlinUpgradeYarnLock :raven-core:publishAllPublicationsToMavenCentral kotlinUpgradeYarnLock :raven-config:publishAllPublicationsToMavenCentral kotlinUpgradeYarnLock :raven-outbox-core:publishAllPublicationsToMavenCentral kotlinUpgradeYarnLock :raven-outbox-local:publishAllPublicationsToMavenCentral kotlinUpgradeYarnLock :raven-outbox-server:publishAllPublicationsToMavenCentral kotlinUpgradeYarnLock :raven-outbox-client:publishAllPublicationsToMavenCentral kotlinUpgradeYarnLock :raven-email-core:publishAllPublicationsToMavenCentral kotlinUpgradeYarnLock :raven-email-markup:publishAllPublicationsToMavenCentral kotlinUpgradeYarnLock :raven-email-config:publishAllPublicationsToMavenCentral kotlinUpgradeYarnLock :raven-email-console:publishAllPublicationsToMavenCentral kotlinUpgradeYarnLock :raven-email-brevo:publishAllPublicationsToMavenCentral kotlinUpgradeYarnLock :raven-sms-core:publishAllPublicationsToMavenCentral kotlinUpgradeYarnLock :raven-sms-config:publishAllPublicationsToMavenCentral kotlinUpgradeYarnLock :raven-sms-console:publishAllPublicationsToMavenCentral kotlinUpgradeYarnLock :raven-sms-kila:publishAllPublicationsToMavenCentral --no-configuration-cache'
+        build-root-directory: './raven'
   kida-publisher:
     runs-on: 'macos-latest'
     needs:
