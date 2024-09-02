@@ -130,7 +130,7 @@ fun WorkflowBuilder.buildProject(gp: GradleProject) = job(
 //    )
 
     gp.modules.forEach {
-        val argument = "kotlinUpgradeYarnLock :$it:build"
+        val argument = ":$it:build"
         uses(
             name = "building $it",
             action = GradleBuildActionV2(arguments = argument, buildRootDirectory = "./${gp.path}")
@@ -144,7 +144,7 @@ fun WorkflowBuilder.publishProject(gp: GradleProject, after: Job<JobOutputs.EMPT
     setupAndCheckout(gp)
 
     val argument = gp.modules.joinToString(separator = " ") {
-        "kotlinUpgradeYarnLock :$it:publishAllPublicationsToMavenCentral"
+        ":$it:publishAllPublicationsToMavenCentral"
     } + " --no-configuration-cache"
     uses(
         name = "publishing " + gp.modules.joinToString(", "),
