@@ -12,6 +12,7 @@ import io.github.typesafegithub.workflows.domain.RunnerType
 import io.github.typesafegithub.workflows.domain.triggers.Push
 import io.github.typesafegithub.workflows.dsl.JobBuilder
 import io.github.typesafegithub.workflows.dsl.WorkflowBuilder
+import io.github.typesafegithub.workflows.dsl.expressions.contexts.GitHubContext
 import io.github.typesafegithub.workflows.dsl.expressions.expr
 import io.github.typesafegithub.workflows.dsl.workflow
 import io.github.typesafegithub.workflows.yaml.toYaml
@@ -131,20 +132,30 @@ fun WorkflowBuilder.buildProject(gp: GradleProject) = job(
 //        action = GradleBuildActionV2(arguments = argument, buildRootDirectory = "./${gp.path}")
 //    )
     run(
-        name = "Check disk space",
+        name = "Check disk space before cleanup",
         command = "df -h"
     )
 
     run(
         name = "Free disk space",
-        command = """
-            sudo swapoff -a
-            sudo rm -f /swapfile
-            sudo apt clean
-            docker rmi ${'$'}(docker image ls -aq)
-            df -h
-        """.trimIndent()
+        command = "rm -rf ${expr { github.workspace }}/*"
     )
+
+    run(
+        name = "Check disk space after clean up",
+        command = "df -h"
+    )
+
+//    run(
+//        name = "Free disk space",
+//        command = """
+//            sudo swapoff -a
+//            sudo rm -f /swapfile
+//            sudo apt clean
+//            docker rmi ${'$'}(docker image ls -aq)
+//            df -h
+//        """.trimIndent()
+//    )
     gp.modules.forEach {
         val argument = "kotlinUpgradePackageLock :$it:build"
         uses(
@@ -162,19 +173,18 @@ fun WorkflowBuilder.publishProject(gp: GradleProject, after: Job<JobOutputs.EMPT
     setupAndCheckout(gp)
 
     run(
-        name = "Check disk space",
+        name = "Check disk space before cleanup",
         command = "df -h"
     )
 
     run(
         name = "Free disk space",
-        command = """
-            sudo swapoff -a
-            sudo rm -f /swapfile
-            sudo apt clean
-            docker rmi ${'$'}(docker image ls -aq)
-            df -h
-        """.trimIndent()
+        command = "rm -rf ${expr { github.workspace }}/*"
+    )
+
+    run(
+        name = "Check disk space after clean up",
+        command = "df -h"
     )
 
     val argument = gp.modules.joinToString(separator = " ") {

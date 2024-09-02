@@ -31,17 +31,15 @@ jobs:
       working-directory: 'kotlinx-interoperable'
       run: 'chmod +x ./gradlew'
     - id: 'step-3'
-      name: 'Check disk space'
+      name: 'Check disk space before cleanup'
       run: 'df -h'
     - id: 'step-4'
       name: 'Free disk space'
-      run: |-
-        sudo swapoff -a
-        sudo rm -f /swapfile
-        sudo apt clean
-        docker rmi $(docker image ls -aq)
-        df -h
+      run: 'rm -rf ${{ github.workspace }}/*'
     - id: 'step-5'
+      name: 'Check disk space after clean up'
+      run: 'df -h'
+    - id: 'step-6'
       name: 'building kotlinx-interoperable-exports'
       uses: 'gradle/gradle-build-action@v2'
       with:
@@ -64,35 +62,33 @@ jobs:
       working-directory: 'lexi'
       run: 'chmod +x ./gradlew'
     - id: 'step-3'
-      name: 'Check disk space'
+      name: 'Check disk space before cleanup'
       run: 'df -h'
     - id: 'step-4'
       name: 'Free disk space'
-      run: |-
-        sudo swapoff -a
-        sudo rm -f /swapfile
-        sudo apt clean
-        docker rmi $(docker image ls -aq)
-        df -h
+      run: 'rm -rf ${{ github.workspace }}/*'
     - id: 'step-5'
+      name: 'Check disk space after clean up'
+      run: 'df -h'
+    - id: 'step-6'
       name: 'building lexi-api'
       uses: 'gradle/gradle-build-action@v2'
       with:
         arguments: 'kotlinUpgradePackageLock :lexi-api:build'
         build-root-directory: './lexi'
-    - id: 'step-6'
+    - id: 'step-7'
       name: 'building lexi-console'
       uses: 'gradle/gradle-build-action@v2'
       with:
         arguments: 'kotlinUpgradePackageLock :lexi-console:build'
         build-root-directory: './lexi'
-    - id: 'step-7'
+    - id: 'step-8'
       name: 'building lexi-file'
       uses: 'gradle/gradle-build-action@v2'
       with:
         arguments: 'kotlinUpgradePackageLock :lexi-file:build'
         build-root-directory: './lexi'
-    - id: 'step-8'
+    - id: 'step-9'
       name: 'building lexi-test-android'
       uses: 'gradle/gradle-build-action@v2'
       with:
@@ -115,23 +111,21 @@ jobs:
       working-directory: 'kommander'
       run: 'chmod +x ./gradlew'
     - id: 'step-3'
-      name: 'Check disk space'
+      name: 'Check disk space before cleanup'
       run: 'df -h'
     - id: 'step-4'
       name: 'Free disk space'
-      run: |-
-        sudo swapoff -a
-        sudo rm -f /swapfile
-        sudo apt clean
-        docker rmi $(docker image ls -aq)
-        df -h
+      run: 'rm -rf ${{ github.workspace }}/*'
     - id: 'step-5'
+      name: 'Check disk space after clean up'
+      run: 'df -h'
+    - id: 'step-6'
       name: 'building kommander-core'
       uses: 'gradle/gradle-build-action@v2'
       with:
         arguments: 'kotlinUpgradePackageLock :kommander-core:build'
         build-root-directory: './kommander'
-    - id: 'step-6'
+    - id: 'step-7'
       name: 'building kommander-coroutines'
       uses: 'gradle/gradle-build-action@v2'
       with:
@@ -154,29 +148,27 @@ jobs:
       working-directory: 'kollections'
       run: 'chmod +x ./gradlew'
     - id: 'step-3'
-      name: 'Check disk space'
+      name: 'Check disk space before cleanup'
       run: 'df -h'
     - id: 'step-4'
       name: 'Free disk space'
-      run: |-
-        sudo swapoff -a
-        sudo rm -f /swapfile
-        sudo apt clean
-        docker rmi $(docker image ls -aq)
-        df -h
+      run: 'rm -rf ${{ github.workspace }}/*'
     - id: 'step-5'
+      name: 'Check disk space after clean up'
+      run: 'df -h'
+    - id: 'step-6'
       name: 'building kollections-primitive'
       uses: 'gradle/gradle-build-action@v2'
       with:
         arguments: 'kotlinUpgradePackageLock :kollections-primitive:build'
         build-root-directory: './kollections'
-    - id: 'step-6'
+    - id: 'step-7'
       name: 'building kollections-atomic'
       uses: 'gradle/gradle-build-action@v2'
       with:
         arguments: 'kotlinUpgradePackageLock :kollections-atomic:build'
         build-root-directory: './kollections'
-    - id: 'step-7'
+    - id: 'step-8'
       name: 'building kollections-stacks'
       uses: 'gradle/gradle-build-action@v2'
       with:
@@ -199,17 +191,15 @@ jobs:
       working-directory: 'kevlar'
       run: 'chmod +x ./gradlew'
     - id: 'step-3'
-      name: 'Check disk space'
+      name: 'Check disk space before cleanup'
       run: 'df -h'
     - id: 'step-4'
       name: 'Free disk space'
-      run: |-
-        sudo swapoff -a
-        sudo rm -f /swapfile
-        sudo apt clean
-        docker rmi $(docker image ls -aq)
-        df -h
+      run: 'rm -rf ${{ github.workspace }}/*'
     - id: 'step-5'
+      name: 'Check disk space after clean up'
+      run: 'df -h'
+    - id: 'step-6'
       name: 'building kevlar-core'
       uses: 'gradle/gradle-build-action@v2'
       with:
@@ -232,29 +222,27 @@ jobs:
       working-directory: 'kase'
       run: 'chmod +x ./gradlew'
     - id: 'step-3'
-      name: 'Check disk space'
+      name: 'Check disk space before cleanup'
       run: 'df -h'
     - id: 'step-4'
       name: 'Free disk space'
-      run: |-
-        sudo swapoff -a
-        sudo rm -f /swapfile
-        sudo apt clean
-        docker rmi $(docker image ls -aq)
-        df -h
+      run: 'rm -rf ${{ github.workspace }}/*'
     - id: 'step-5'
+      name: 'Check disk space after clean up'
+      run: 'df -h'
+    - id: 'step-6'
       name: 'building kase-core'
       uses: 'gradle/gradle-build-action@v2'
       with:
         arguments: 'kotlinUpgradePackageLock :kase-core:build'
         build-root-directory: './kase'
-    - id: 'step-6'
+    - id: 'step-7'
       name: 'building kase-optional'
       uses: 'gradle/gradle-build-action@v2'
       with:
         arguments: 'kotlinUpgradePackageLock :kase-optional:build'
         build-root-directory: './kase'
-    - id: 'step-7'
+    - id: 'step-8'
       name: 'building kase-possible'
       uses: 'gradle/gradle-build-action@v2'
       with:
@@ -277,71 +265,69 @@ jobs:
       working-directory: 'koncurrent'
       run: 'chmod +x ./gradlew'
     - id: 'step-3'
-      name: 'Check disk space'
+      name: 'Check disk space before cleanup'
       run: 'df -h'
     - id: 'step-4'
       name: 'Free disk space'
-      run: |-
-        sudo swapoff -a
-        sudo rm -f /swapfile
-        sudo apt clean
-        docker rmi $(docker image ls -aq)
-        df -h
+      run: 'rm -rf ${{ github.workspace }}/*'
     - id: 'step-5'
+      name: 'Check disk space after clean up'
+      run: 'df -h'
+    - id: 'step-6'
       name: 'building koncurrent-utils'
       uses: 'gradle/gradle-build-action@v2'
       with:
         arguments: 'kotlinUpgradePackageLock :koncurrent-utils:build'
         build-root-directory: './koncurrent'
-    - id: 'step-6'
+    - id: 'step-7'
       name: 'building koncurrent-executors-core'
       uses: 'gradle/gradle-build-action@v2'
       with:
         arguments: 'kotlinUpgradePackageLock :koncurrent-executors-core:build'
         build-root-directory: './koncurrent'
-    - id: 'step-7'
+    - id: 'step-8'
       name: 'building koncurrent-executors-coroutines'
       uses: 'gradle/gradle-build-action@v2'
       with:
         arguments: 'kotlinUpgradePackageLock :koncurrent-executors-coroutines:build'
         build-root-directory: './koncurrent'
-    - id: 'step-8'
+    - id: 'step-9'
       name: 'building koncurrent-executors-mock'
       uses: 'gradle/gradle-build-action@v2'
       with:
         arguments: 'kotlinUpgradePackageLock :koncurrent-executors-mock:build'
         build-root-directory: './koncurrent'
-    - id: 'step-9'
+    - id: 'step-10'
       name: 'building koncurrent-awaited-core'
       uses: 'gradle/gradle-build-action@v2'
       with:
         arguments: 'kotlinUpgradePackageLock :koncurrent-awaited-core:build'
         build-root-directory: './koncurrent'
-    - id: 'step-10'
+    - id: 'step-11'
       name: 'building koncurrent-awaited-coroutines'
       uses: 'gradle/gradle-build-action@v2'
       with:
         arguments: 'kotlinUpgradePackageLock :koncurrent-awaited-coroutines:build'
         build-root-directory: './koncurrent'
-    - id: 'step-11'
+    - id: 'step-12'
       name: 'building koncurrent-awaited-test'
       uses: 'gradle/gradle-build-action@v2'
       with:
         arguments: 'kotlinUpgradePackageLock :koncurrent-awaited-test:build'
         build-root-directory: './koncurrent'
-    - id: 'step-12'
+    - id: 'step-13'
       name: 'building koncurrent-later-core'
       uses: 'gradle/gradle-build-action@v2'
       with:
         arguments: 'kotlinUpgradePackageLock :koncurrent-later-core:build'
         build-root-directory: './koncurrent'
-    - id: 'step-13'
+    - id: 'step-14'
       name: 'building koncurrent-later-coroutines'
       uses: 'gradle/gradle-build-action@v2'
       with:
         arguments: 'kotlinUpgradePackageLock :koncurrent-later-coroutines:build'
         build-root-directory: './koncurrent'
-    - id: 'step-14'
+    - id: 'step-15'
       name: 'building koncurrent-later-test'
       uses: 'gradle/gradle-build-action@v2'
       with:
@@ -364,41 +350,39 @@ jobs:
       working-directory: 'keep'
       run: 'chmod +x ./gradlew'
     - id: 'step-3'
-      name: 'Check disk space'
+      name: 'Check disk space before cleanup'
       run: 'df -h'
     - id: 'step-4'
       name: 'Free disk space'
-      run: |-
-        sudo swapoff -a
-        sudo rm -f /swapfile
-        sudo apt clean
-        docker rmi $(docker image ls -aq)
-        df -h
+      run: 'rm -rf ${{ github.workspace }}/*'
     - id: 'step-5'
+      name: 'Check disk space after clean up'
+      run: 'df -h'
+    - id: 'step-6'
       name: 'building keep-api'
       uses: 'gradle/gradle-build-action@v2'
       with:
         arguments: 'kotlinUpgradePackageLock :keep-api:build'
         build-root-directory: './keep'
-    - id: 'step-6'
+    - id: 'step-7'
       name: 'building keep-browser'
       uses: 'gradle/gradle-build-action@v2'
       with:
         arguments: 'kotlinUpgradePackageLock :keep-browser:build'
         build-root-directory: './keep'
-    - id: 'step-7'
+    - id: 'step-8'
       name: 'building keep-file'
       uses: 'gradle/gradle-build-action@v2'
       with:
         arguments: 'kotlinUpgradePackageLock :keep-file:build'
         build-root-directory: './keep'
-    - id: 'step-8'
+    - id: 'step-9'
       name: 'building keep-mock'
       uses: 'gradle/gradle-build-action@v2'
       with:
         arguments: 'kotlinUpgradePackageLock :keep-mock:build'
         build-root-directory: './keep'
-    - id: 'step-9'
+    - id: 'step-10'
       name: 'building keep-react-native'
       uses: 'gradle/gradle-build-action@v2'
       with:
@@ -421,47 +405,45 @@ jobs:
       working-directory: 'cinematic'
       run: 'chmod +x ./gradlew'
     - id: 'step-3'
-      name: 'Check disk space'
+      name: 'Check disk space before cleanup'
       run: 'df -h'
     - id: 'step-4'
       name: 'Free disk space'
-      run: |-
-        sudo swapoff -a
-        sudo rm -f /swapfile
-        sudo apt clean
-        docker rmi $(docker image ls -aq)
-        df -h
+      run: 'rm -rf ${{ github.workspace }}/*'
     - id: 'step-5'
+      name: 'Check disk space after clean up'
+      run: 'df -h'
+    - id: 'step-6'
       name: 'building cinematic-live-core'
       uses: 'gradle/gradle-build-action@v2'
       with:
         arguments: 'kotlinUpgradePackageLock :cinematic-live-core:build'
         build-root-directory: './cinematic'
-    - id: 'step-6'
+    - id: 'step-7'
       name: 'building cinematic-live-compose'
       uses: 'gradle/gradle-build-action@v2'
       with:
         arguments: 'kotlinUpgradePackageLock :cinematic-live-compose:build'
         build-root-directory: './cinematic'
-    - id: 'step-7'
+    - id: 'step-8'
       name: 'building cinematic-live-coroutines'
       uses: 'gradle/gradle-build-action@v2'
       with:
         arguments: 'kotlinUpgradePackageLock :cinematic-live-coroutines:build'
         build-root-directory: './cinematic'
-    - id: 'step-8'
+    - id: 'step-9'
       name: 'building cinematic-live-react'
       uses: 'gradle/gradle-build-action@v2'
       with:
         arguments: 'kotlinUpgradePackageLock :cinematic-live-react:build'
         build-root-directory: './cinematic'
-    - id: 'step-9'
+    - id: 'step-10'
       name: 'building cinematic-live-test'
       uses: 'gradle/gradle-build-action@v2'
       with:
         arguments: 'kotlinUpgradePackageLock :cinematic-live-test:build'
         build-root-directory: './cinematic'
-    - id: 'step-10'
+    - id: 'step-11'
       name: 'building cinematic-scene-core'
       uses: 'gradle/gradle-build-action@v2'
       with:
@@ -484,23 +466,21 @@ jobs:
       working-directory: 'krono-core'
       run: 'chmod +x ./gradlew'
     - id: 'step-3'
-      name: 'Check disk space'
+      name: 'Check disk space before cleanup'
       run: 'df -h'
     - id: 'step-4'
       name: 'Free disk space'
-      run: |-
-        sudo swapoff -a
-        sudo rm -f /swapfile
-        sudo apt clean
-        docker rmi $(docker image ls -aq)
-        df -h
+      run: 'rm -rf ${{ github.workspace }}/*'
     - id: 'step-5'
+      name: 'Check disk space after clean up'
+      run: 'df -h'
+    - id: 'step-6'
       name: 'building krono-api'
       uses: 'gradle/gradle-build-action@v2'
       with:
         arguments: 'kotlinUpgradePackageLock :krono-api:build'
         build-root-directory: './krono-core'
-    - id: 'step-6'
+    - id: 'step-7'
       name: 'building krono-kotlinx'
       uses: 'gradle/gradle-build-action@v2'
       with:
@@ -523,23 +503,21 @@ jobs:
       working-directory: 'kiota'
       run: 'chmod +x ./gradlew'
     - id: 'step-3'
-      name: 'Check disk space'
+      name: 'Check disk space before cleanup'
       run: 'df -h'
     - id: 'step-4'
       name: 'Free disk space'
-      run: |-
-        sudo swapoff -a
-        sudo rm -f /swapfile
-        sudo apt clean
-        docker rmi $(docker image ls -aq)
-        df -h
+      run: 'rm -rf ${{ github.workspace }}/*'
     - id: 'step-5'
+      name: 'Check disk space after clean up'
+      run: 'df -h'
+    - id: 'step-6'
       name: 'building kiota-url'
       uses: 'gradle/gradle-build-action@v2'
       with:
         arguments: 'kotlinUpgradePackageLock :kiota-url:build'
         build-root-directory: './kiota'
-    - id: 'step-6'
+    - id: 'step-7'
       name: 'building kiota-sse'
       uses: 'gradle/gradle-build-action@v2'
       with:
@@ -562,23 +540,21 @@ jobs:
       working-directory: 'neat'
       run: 'chmod +x ./gradlew'
     - id: 'step-3'
-      name: 'Check disk space'
+      name: 'Check disk space before cleanup'
       run: 'df -h'
     - id: 'step-4'
       name: 'Free disk space'
-      run: |-
-        sudo swapoff -a
-        sudo rm -f /swapfile
-        sudo apt clean
-        docker rmi $(docker image ls -aq)
-        df -h
+      run: 'rm -rf ${{ github.workspace }}/*'
     - id: 'step-5'
+      name: 'Check disk space after clean up'
+      run: 'df -h'
+    - id: 'step-6'
       name: 'building neat-validation'
       uses: 'gradle/gradle-build-action@v2'
       with:
         arguments: 'kotlinUpgradePackageLock :neat-validation:build'
         build-root-directory: './neat'
-    - id: 'step-6'
+    - id: 'step-7'
       name: 'building neat-formatting'
       uses: 'gradle/gradle-build-action@v2'
       with:
@@ -601,17 +577,15 @@ jobs:
       working-directory: 'epsilon-api'
       run: 'chmod +x ./gradlew'
     - id: 'step-3'
-      name: 'Check disk space'
+      name: 'Check disk space before cleanup'
       run: 'df -h'
     - id: 'step-4'
       name: 'Free disk space'
-      run: |-
-        sudo swapoff -a
-        sudo rm -f /swapfile
-        sudo apt clean
-        docker rmi $(docker image ls -aq)
-        df -h
+      run: 'rm -rf ${{ github.workspace }}/*'
     - id: 'step-5'
+      name: 'Check disk space after clean up'
+      run: 'df -h'
+    - id: 'step-6'
       name: 'building epsilon-core'
       uses: 'gradle/gradle-build-action@v2'
       with:
@@ -634,53 +608,51 @@ jobs:
       working-directory: 'epsilon-client'
       run: 'chmod +x ./gradlew'
     - id: 'step-3'
-      name: 'Check disk space'
+      name: 'Check disk space before cleanup'
       run: 'df -h'
     - id: 'step-4'
       name: 'Free disk space'
-      run: |-
-        sudo swapoff -a
-        sudo rm -f /swapfile
-        sudo apt clean
-        docker rmi $(docker image ls -aq)
-        df -h
+      run: 'rm -rf ${{ github.workspace }}/*'
     - id: 'step-5'
+      name: 'Check disk space after clean up'
+      run: 'df -h'
+    - id: 'step-6'
       name: 'building epsilon-fields'
       uses: 'gradle/gradle-build-action@v2'
       with:
         arguments: 'kotlinUpgradePackageLock :epsilon-fields:build'
         build-root-directory: './epsilon-client'
-    - id: 'step-6'
+    - id: 'step-7'
       name: 'building epsilon-image-core'
       uses: 'gradle/gradle-build-action@v2'
       with:
         arguments: 'kotlinUpgradePackageLock :epsilon-image-core:build'
         build-root-directory: './epsilon-client'
-    - id: 'step-7'
+    - id: 'step-8'
       name: 'building epsilon-image-web'
       uses: 'gradle/gradle-build-action@v2'
       with:
         arguments: 'kotlinUpgradePackageLock :epsilon-image-web:build'
         build-root-directory: './epsilon-client'
-    - id: 'step-8'
+    - id: 'step-9'
       name: 'building epsilon-image-react-core'
       uses: 'gradle/gradle-build-action@v2'
       with:
         arguments: 'kotlinUpgradePackageLock :epsilon-image-react-core:build'
         build-root-directory: './epsilon-client'
-    - id: 'step-9'
+    - id: 'step-10'
       name: 'building epsilon-image-react-dom'
       uses: 'gradle/gradle-build-action@v2'
       with:
         arguments: 'kotlinUpgradePackageLock :epsilon-image-react-dom:build'
         build-root-directory: './epsilon-client'
-    - id: 'step-10'
+    - id: 'step-11'
       name: 'building epsilon-image-compose-core'
       uses: 'gradle/gradle-build-action@v2'
       with:
         arguments: 'kotlinUpgradePackageLock :epsilon-image-compose-core:build'
         build-root-directory: './epsilon-client'
-    - id: 'step-11'
+    - id: 'step-12'
       name: 'building epsilon-image-compose-html'
       uses: 'gradle/gradle-build-action@v2'
       with:
@@ -703,95 +675,93 @@ jobs:
       working-directory: 'symphony'
       run: 'chmod +x ./gradlew'
     - id: 'step-3'
-      name: 'Check disk space'
+      name: 'Check disk space before cleanup'
       run: 'df -h'
     - id: 'step-4'
       name: 'Free disk space'
-      run: |-
-        sudo swapoff -a
-        sudo rm -f /swapfile
-        sudo apt clean
-        docker rmi $(docker image ls -aq)
-        df -h
+      run: 'rm -rf ${{ github.workspace }}/*'
     - id: 'step-5'
+      name: 'Check disk space after clean up'
+      run: 'df -h'
+    - id: 'step-6'
       name: 'building symphony-visibility'
       uses: 'gradle/gradle-build-action@v2'
       with:
         arguments: 'kotlinUpgradePackageLock :symphony-visibility:build'
         build-root-directory: './symphony'
-    - id: 'step-6'
+    - id: 'step-7'
       name: 'building symphony-paginator'
       uses: 'gradle/gradle-build-action@v2'
       with:
         arguments: 'kotlinUpgradePackageLock :symphony-paginator:build'
         build-root-directory: './symphony'
-    - id: 'step-7'
+    - id: 'step-8'
       name: 'building symphony-selector'
       uses: 'gradle/gradle-build-action@v2'
       with:
         arguments: 'kotlinUpgradePackageLock :symphony-selector:build'
         build-root-directory: './symphony'
-    - id: 'step-8'
+    - id: 'step-9'
       name: 'building symphony-actions'
       uses: 'gradle/gradle-build-action@v2'
       with:
         arguments: 'kotlinUpgradePackageLock :symphony-actions:build'
         build-root-directory: './symphony'
-    - id: 'step-9'
+    - id: 'step-10'
       name: 'building symphony-table'
       uses: 'gradle/gradle-build-action@v2'
       with:
         arguments: 'kotlinUpgradePackageLock :symphony-table:build'
         build-root-directory: './symphony'
-    - id: 'step-10'
+    - id: 'step-11'
       name: 'building symphony-list'
       uses: 'gradle/gradle-build-action@v2'
       with:
         arguments: 'kotlinUpgradePackageLock :symphony-list:build'
         build-root-directory: './symphony'
-    - id: 'step-11'
+    - id: 'step-12'
       name: 'building symphony-collections'
       uses: 'gradle/gradle-build-action@v2'
       with:
         arguments: 'kotlinUpgradePackageLock :symphony-collections:build'
         build-root-directory: './symphony'
-    - id: 'step-12'
+    - id: 'step-13'
       name: 'building symphony-input-core'
       uses: 'gradle/gradle-build-action@v2'
       with:
         arguments: 'kotlinUpgradePackageLock :symphony-input-core:build'
         build-root-directory: './symphony'
-    - id: 'step-13'
+    - id: 'step-14'
       name: 'building symphony-input-text'
       uses: 'gradle/gradle-build-action@v2'
       with:
         arguments: 'kotlinUpgradePackageLock :symphony-input-text:build'
         build-root-directory: './symphony'
-    - id: 'step-14'
+    - id: 'step-15'
       name: 'building symphony-input-number'
       uses: 'gradle/gradle-build-action@v2'
       with:
         arguments: 'kotlinUpgradePackageLock :symphony-input-number:build'
         build-root-directory: './symphony'
-    - id: 'step-15'
+    - id: 'step-16'
       name: 'building symphony-input-choice'
       uses: 'gradle/gradle-build-action@v2'
       with:
         arguments: 'kotlinUpgradePackageLock :symphony-input-choice:build'
         build-root-directory: './symphony'
-    - id: 'step-16'
+    - id: 'step-17'
       name: 'building symphony-input-dialog'
       uses: 'gradle/gradle-build-action@v2'
       with:
         arguments: 'kotlinUpgradePackageLock :symphony-input-dialog:build'
         build-root-directory: './symphony'
-    - id: 'step-17'
+    - id: 'step-18'
       name: 'building symphony-input-sheet'
       uses: 'gradle/gradle-build-action@v2'
       with:
         arguments: 'kotlinUpgradePackageLock :symphony-input-sheet:build'
         build-root-directory: './symphony'
-    - id: 'step-18'
+    - id: 'step-19'
       name: 'building symphony-input-finance'
       uses: 'gradle/gradle-build-action@v2'
       with:
@@ -814,59 +784,57 @@ jobs:
       working-directory: 'captain'
       run: 'chmod +x ./gradlew'
     - id: 'step-3'
-      name: 'Check disk space'
+      name: 'Check disk space before cleanup'
       run: 'df -h'
     - id: 'step-4'
       name: 'Free disk space'
-      run: |-
-        sudo swapoff -a
-        sudo rm -f /swapfile
-        sudo apt clean
-        docker rmi $(docker image ls -aq)
-        df -h
+      run: 'rm -rf ${{ github.workspace }}/*'
     - id: 'step-5'
+      name: 'Check disk space after clean up'
+      run: 'df -h'
+    - id: 'step-6'
       name: 'building captain-navigator-api'
       uses: 'gradle/gradle-build-action@v2'
       with:
         arguments: 'kotlinUpgradePackageLock :captain-navigator-api:build'
         build-root-directory: './captain'
-    - id: 'step-6'
+    - id: 'step-7'
       name: 'building captain-navigator-browser'
       uses: 'gradle/gradle-build-action@v2'
       with:
         arguments: 'kotlinUpgradePackageLock :captain-navigator-browser:build'
         build-root-directory: './captain'
-    - id: 'step-7'
+    - id: 'step-8'
       name: 'building captain-navigator-basic'
       uses: 'gradle/gradle-build-action@v2'
       with:
         arguments: 'kotlinUpgradePackageLock :captain-navigator-basic:build'
         build-root-directory: './captain'
-    - id: 'step-8'
+    - id: 'step-9'
       name: 'building captain-router-core'
       uses: 'gradle/gradle-build-action@v2'
       with:
         arguments: 'kotlinUpgradePackageLock :captain-router-core:build'
         build-root-directory: './captain'
-    - id: 'step-9'
+    - id: 'step-10'
       name: 'building captain-router-react-core'
       uses: 'gradle/gradle-build-action@v2'
       with:
         arguments: 'kotlinUpgradePackageLock :captain-router-react-core:build'
         build-root-directory: './captain'
-    - id: 'step-10'
+    - id: 'step-11'
       name: 'building captain-router-react-dom'
       uses: 'gradle/gradle-build-action@v2'
       with:
         arguments: 'kotlinUpgradePackageLock :captain-router-react-dom:build'
         build-root-directory: './captain'
-    - id: 'step-11'
+    - id: 'step-12'
       name: 'building captain-router-compose-core'
       uses: 'gradle/gradle-build-action@v2'
       with:
         arguments: 'kotlinUpgradePackageLock :captain-router-compose-core:build'
         build-root-directory: './captain'
-    - id: 'step-12'
+    - id: 'step-13'
       name: 'building captain-router-compose-html'
       uses: 'gradle/gradle-build-action@v2'
       with:
@@ -889,101 +857,99 @@ jobs:
       working-directory: 'raven'
       run: 'chmod +x ./gradlew'
     - id: 'step-3'
-      name: 'Check disk space'
+      name: 'Check disk space before cleanup'
       run: 'df -h'
     - id: 'step-4'
       name: 'Free disk space'
-      run: |-
-        sudo swapoff -a
-        sudo rm -f /swapfile
-        sudo apt clean
-        docker rmi $(docker image ls -aq)
-        df -h
+      run: 'rm -rf ${{ github.workspace }}/*'
     - id: 'step-5'
+      name: 'Check disk space after clean up'
+      run: 'df -h'
+    - id: 'step-6'
       name: 'building raven-core'
       uses: 'gradle/gradle-build-action@v2'
       with:
         arguments: 'kotlinUpgradePackageLock :raven-core:build'
         build-root-directory: './raven'
-    - id: 'step-6'
+    - id: 'step-7'
       name: 'building raven-config'
       uses: 'gradle/gradle-build-action@v2'
       with:
         arguments: 'kotlinUpgradePackageLock :raven-config:build'
         build-root-directory: './raven'
-    - id: 'step-7'
+    - id: 'step-8'
       name: 'building raven-outbox-core'
       uses: 'gradle/gradle-build-action@v2'
       with:
         arguments: 'kotlinUpgradePackageLock :raven-outbox-core:build'
         build-root-directory: './raven'
-    - id: 'step-8'
+    - id: 'step-9'
       name: 'building raven-outbox-local'
       uses: 'gradle/gradle-build-action@v2'
       with:
         arguments: 'kotlinUpgradePackageLock :raven-outbox-local:build'
         build-root-directory: './raven'
-    - id: 'step-9'
+    - id: 'step-10'
       name: 'building raven-outbox-server'
       uses: 'gradle/gradle-build-action@v2'
       with:
         arguments: 'kotlinUpgradePackageLock :raven-outbox-server:build'
         build-root-directory: './raven'
-    - id: 'step-10'
+    - id: 'step-11'
       name: 'building raven-outbox-client'
       uses: 'gradle/gradle-build-action@v2'
       with:
         arguments: 'kotlinUpgradePackageLock :raven-outbox-client:build'
         build-root-directory: './raven'
-    - id: 'step-11'
+    - id: 'step-12'
       name: 'building raven-email-core'
       uses: 'gradle/gradle-build-action@v2'
       with:
         arguments: 'kotlinUpgradePackageLock :raven-email-core:build'
         build-root-directory: './raven'
-    - id: 'step-12'
+    - id: 'step-13'
       name: 'building raven-email-markup'
       uses: 'gradle/gradle-build-action@v2'
       with:
         arguments: 'kotlinUpgradePackageLock :raven-email-markup:build'
         build-root-directory: './raven'
-    - id: 'step-13'
+    - id: 'step-14'
       name: 'building raven-email-config'
       uses: 'gradle/gradle-build-action@v2'
       with:
         arguments: 'kotlinUpgradePackageLock :raven-email-config:build'
         build-root-directory: './raven'
-    - id: 'step-14'
+    - id: 'step-15'
       name: 'building raven-email-console'
       uses: 'gradle/gradle-build-action@v2'
       with:
         arguments: 'kotlinUpgradePackageLock :raven-email-console:build'
         build-root-directory: './raven'
-    - id: 'step-15'
+    - id: 'step-16'
       name: 'building raven-email-brevo'
       uses: 'gradle/gradle-build-action@v2'
       with:
         arguments: 'kotlinUpgradePackageLock :raven-email-brevo:build'
         build-root-directory: './raven'
-    - id: 'step-16'
+    - id: 'step-17'
       name: 'building raven-sms-core'
       uses: 'gradle/gradle-build-action@v2'
       with:
         arguments: 'kotlinUpgradePackageLock :raven-sms-core:build'
         build-root-directory: './raven'
-    - id: 'step-17'
+    - id: 'step-18'
       name: 'building raven-sms-config'
       uses: 'gradle/gradle-build-action@v2'
       with:
         arguments: 'kotlinUpgradePackageLock :raven-sms-config:build'
         build-root-directory: './raven'
-    - id: 'step-18'
+    - id: 'step-19'
       name: 'building raven-sms-console'
       uses: 'gradle/gradle-build-action@v2'
       with:
         arguments: 'kotlinUpgradePackageLock :raven-sms-console:build'
         build-root-directory: './raven'
-    - id: 'step-19'
+    - id: 'step-20'
       name: 'building raven-sms-kila'
       uses: 'gradle/gradle-build-action@v2'
       with:
@@ -1006,29 +972,27 @@ jobs:
       working-directory: 'kida'
       run: 'chmod +x ./gradlew'
     - id: 'step-3'
-      name: 'Check disk space'
+      name: 'Check disk space before cleanup'
       run: 'df -h'
     - id: 'step-4'
       name: 'Free disk space'
-      run: |-
-        sudo swapoff -a
-        sudo rm -f /swapfile
-        sudo apt clean
-        docker rmi $(docker image ls -aq)
-        df -h
+      run: 'rm -rf ${{ github.workspace }}/*'
     - id: 'step-5'
+      name: 'Check disk space after clean up'
+      run: 'df -h'
+    - id: 'step-6'
       name: 'building kida-api'
       uses: 'gradle/gradle-build-action@v2'
       with:
         arguments: 'kotlinUpgradePackageLock :kida-api:build'
         build-root-directory: './kida'
-    - id: 'step-6'
+    - id: 'step-7'
       name: 'building kida-brela'
       uses: 'gradle/gradle-build-action@v2'
       with:
         arguments: 'kotlinUpgradePackageLock :kida-brela:build'
         build-root-directory: './kida'
-    - id: 'step-7'
+    - id: 'step-8'
       name: 'building kida-fake'
       uses: 'gradle/gradle-build-action@v2'
       with:
@@ -1077,17 +1041,15 @@ jobs:
       working-directory: 'kotlinx-interoperable'
       run: 'chmod +x ./gradlew'
     - id: 'step-3'
-      name: 'Check disk space'
+      name: 'Check disk space before cleanup'
       run: 'df -h'
     - id: 'step-4'
       name: 'Free disk space'
-      run: |-
-        sudo swapoff -a
-        sudo rm -f /swapfile
-        sudo apt clean
-        docker rmi $(docker image ls -aq)
-        df -h
+      run: 'rm -rf ${{ github.workspace }}/*'
     - id: 'step-5'
+      name: 'Check disk space after clean up'
+      run: 'df -h'
+    - id: 'step-6'
       name: 'publishing kotlinx-interoperable-exports'
       uses: 'gradle/gradle-build-action@v2'
       with:
@@ -1112,17 +1074,15 @@ jobs:
       working-directory: 'lexi'
       run: 'chmod +x ./gradlew'
     - id: 'step-3'
-      name: 'Check disk space'
+      name: 'Check disk space before cleanup'
       run: 'df -h'
     - id: 'step-4'
       name: 'Free disk space'
-      run: |-
-        sudo swapoff -a
-        sudo rm -f /swapfile
-        sudo apt clean
-        docker rmi $(docker image ls -aq)
-        df -h
+      run: 'rm -rf ${{ github.workspace }}/*'
     - id: 'step-5'
+      name: 'Check disk space after clean up'
+      run: 'df -h'
+    - id: 'step-6'
       name: 'publishing lexi-api, lexi-console, lexi-file, lexi-test-android'
       uses: 'gradle/gradle-build-action@v2'
       with:
@@ -1147,17 +1107,15 @@ jobs:
       working-directory: 'kommander'
       run: 'chmod +x ./gradlew'
     - id: 'step-3'
-      name: 'Check disk space'
+      name: 'Check disk space before cleanup'
       run: 'df -h'
     - id: 'step-4'
       name: 'Free disk space'
-      run: |-
-        sudo swapoff -a
-        sudo rm -f /swapfile
-        sudo apt clean
-        docker rmi $(docker image ls -aq)
-        df -h
+      run: 'rm -rf ${{ github.workspace }}/*'
     - id: 'step-5'
+      name: 'Check disk space after clean up'
+      run: 'df -h'
+    - id: 'step-6'
       name: 'publishing kommander-core, kommander-coroutines'
       uses: 'gradle/gradle-build-action@v2'
       with:
@@ -1182,17 +1140,15 @@ jobs:
       working-directory: 'kollections'
       run: 'chmod +x ./gradlew'
     - id: 'step-3'
-      name: 'Check disk space'
+      name: 'Check disk space before cleanup'
       run: 'df -h'
     - id: 'step-4'
       name: 'Free disk space'
-      run: |-
-        sudo swapoff -a
-        sudo rm -f /swapfile
-        sudo apt clean
-        docker rmi $(docker image ls -aq)
-        df -h
+      run: 'rm -rf ${{ github.workspace }}/*'
     - id: 'step-5'
+      name: 'Check disk space after clean up'
+      run: 'df -h'
+    - id: 'step-6'
       name: 'publishing kollections-primitive, kollections-atomic, kollections-stacks'
       uses: 'gradle/gradle-build-action@v2'
       with:
@@ -1217,17 +1173,15 @@ jobs:
       working-directory: 'kevlar'
       run: 'chmod +x ./gradlew'
     - id: 'step-3'
-      name: 'Check disk space'
+      name: 'Check disk space before cleanup'
       run: 'df -h'
     - id: 'step-4'
       name: 'Free disk space'
-      run: |-
-        sudo swapoff -a
-        sudo rm -f /swapfile
-        sudo apt clean
-        docker rmi $(docker image ls -aq)
-        df -h
+      run: 'rm -rf ${{ github.workspace }}/*'
     - id: 'step-5'
+      name: 'Check disk space after clean up'
+      run: 'df -h'
+    - id: 'step-6'
       name: 'publishing kevlar-core'
       uses: 'gradle/gradle-build-action@v2'
       with:
@@ -1252,17 +1206,15 @@ jobs:
       working-directory: 'kase'
       run: 'chmod +x ./gradlew'
     - id: 'step-3'
-      name: 'Check disk space'
+      name: 'Check disk space before cleanup'
       run: 'df -h'
     - id: 'step-4'
       name: 'Free disk space'
-      run: |-
-        sudo swapoff -a
-        sudo rm -f /swapfile
-        sudo apt clean
-        docker rmi $(docker image ls -aq)
-        df -h
+      run: 'rm -rf ${{ github.workspace }}/*'
     - id: 'step-5'
+      name: 'Check disk space after clean up'
+      run: 'df -h'
+    - id: 'step-6'
       name: 'publishing kase-core, kase-optional, kase-possible'
       uses: 'gradle/gradle-build-action@v2'
       with:
@@ -1287,17 +1239,15 @@ jobs:
       working-directory: 'koncurrent'
       run: 'chmod +x ./gradlew'
     - id: 'step-3'
-      name: 'Check disk space'
+      name: 'Check disk space before cleanup'
       run: 'df -h'
     - id: 'step-4'
       name: 'Free disk space'
-      run: |-
-        sudo swapoff -a
-        sudo rm -f /swapfile
-        sudo apt clean
-        docker rmi $(docker image ls -aq)
-        df -h
+      run: 'rm -rf ${{ github.workspace }}/*'
     - id: 'step-5'
+      name: 'Check disk space after clean up'
+      run: 'df -h'
+    - id: 'step-6'
       name: 'publishing koncurrent-utils, koncurrent-executors-core, koncurrent-executors-coroutines, koncurrent-executors-mock, koncurrent-awaited-core, koncurrent-awaited-coroutines, koncurrent-awaited-test, koncurrent-later-core, koncurrent-later-coroutines, koncurrent-later-test'
       uses: 'gradle/gradle-build-action@v2'
       with:
@@ -1322,17 +1272,15 @@ jobs:
       working-directory: 'keep'
       run: 'chmod +x ./gradlew'
     - id: 'step-3'
-      name: 'Check disk space'
+      name: 'Check disk space before cleanup'
       run: 'df -h'
     - id: 'step-4'
       name: 'Free disk space'
-      run: |-
-        sudo swapoff -a
-        sudo rm -f /swapfile
-        sudo apt clean
-        docker rmi $(docker image ls -aq)
-        df -h
+      run: 'rm -rf ${{ github.workspace }}/*'
     - id: 'step-5'
+      name: 'Check disk space after clean up'
+      run: 'df -h'
+    - id: 'step-6'
       name: 'publishing keep-api, keep-browser, keep-file, keep-mock, keep-react-native'
       uses: 'gradle/gradle-build-action@v2'
       with:
@@ -1357,17 +1305,15 @@ jobs:
       working-directory: 'cinematic'
       run: 'chmod +x ./gradlew'
     - id: 'step-3'
-      name: 'Check disk space'
+      name: 'Check disk space before cleanup'
       run: 'df -h'
     - id: 'step-4'
       name: 'Free disk space'
-      run: |-
-        sudo swapoff -a
-        sudo rm -f /swapfile
-        sudo apt clean
-        docker rmi $(docker image ls -aq)
-        df -h
+      run: 'rm -rf ${{ github.workspace }}/*'
     - id: 'step-5'
+      name: 'Check disk space after clean up'
+      run: 'df -h'
+    - id: 'step-6'
       name: 'publishing cinematic-live-core, cinematic-live-compose, cinematic-live-coroutines, cinematic-live-react, cinematic-live-test, cinematic-scene-core'
       uses: 'gradle/gradle-build-action@v2'
       with:
@@ -1392,17 +1338,15 @@ jobs:
       working-directory: 'krono-core'
       run: 'chmod +x ./gradlew'
     - id: 'step-3'
-      name: 'Check disk space'
+      name: 'Check disk space before cleanup'
       run: 'df -h'
     - id: 'step-4'
       name: 'Free disk space'
-      run: |-
-        sudo swapoff -a
-        sudo rm -f /swapfile
-        sudo apt clean
-        docker rmi $(docker image ls -aq)
-        df -h
+      run: 'rm -rf ${{ github.workspace }}/*'
     - id: 'step-5'
+      name: 'Check disk space after clean up'
+      run: 'df -h'
+    - id: 'step-6'
       name: 'publishing krono-api, krono-kotlinx'
       uses: 'gradle/gradle-build-action@v2'
       with:
@@ -1427,17 +1371,15 @@ jobs:
       working-directory: 'kiota'
       run: 'chmod +x ./gradlew'
     - id: 'step-3'
-      name: 'Check disk space'
+      name: 'Check disk space before cleanup'
       run: 'df -h'
     - id: 'step-4'
       name: 'Free disk space'
-      run: |-
-        sudo swapoff -a
-        sudo rm -f /swapfile
-        sudo apt clean
-        docker rmi $(docker image ls -aq)
-        df -h
+      run: 'rm -rf ${{ github.workspace }}/*'
     - id: 'step-5'
+      name: 'Check disk space after clean up'
+      run: 'df -h'
+    - id: 'step-6'
       name: 'publishing kiota-url, kiota-sse'
       uses: 'gradle/gradle-build-action@v2'
       with:
@@ -1462,17 +1404,15 @@ jobs:
       working-directory: 'neat'
       run: 'chmod +x ./gradlew'
     - id: 'step-3'
-      name: 'Check disk space'
+      name: 'Check disk space before cleanup'
       run: 'df -h'
     - id: 'step-4'
       name: 'Free disk space'
-      run: |-
-        sudo swapoff -a
-        sudo rm -f /swapfile
-        sudo apt clean
-        docker rmi $(docker image ls -aq)
-        df -h
+      run: 'rm -rf ${{ github.workspace }}/*'
     - id: 'step-5'
+      name: 'Check disk space after clean up'
+      run: 'df -h'
+    - id: 'step-6'
       name: 'publishing neat-validation, neat-formatting'
       uses: 'gradle/gradle-build-action@v2'
       with:
@@ -1497,17 +1437,15 @@ jobs:
       working-directory: 'epsilon-api'
       run: 'chmod +x ./gradlew'
     - id: 'step-3'
-      name: 'Check disk space'
+      name: 'Check disk space before cleanup'
       run: 'df -h'
     - id: 'step-4'
       name: 'Free disk space'
-      run: |-
-        sudo swapoff -a
-        sudo rm -f /swapfile
-        sudo apt clean
-        docker rmi $(docker image ls -aq)
-        df -h
+      run: 'rm -rf ${{ github.workspace }}/*'
     - id: 'step-5'
+      name: 'Check disk space after clean up'
+      run: 'df -h'
+    - id: 'step-6'
       name: 'publishing epsilon-core'
       uses: 'gradle/gradle-build-action@v2'
       with:
@@ -1532,17 +1470,15 @@ jobs:
       working-directory: 'epsilon-client'
       run: 'chmod +x ./gradlew'
     - id: 'step-3'
-      name: 'Check disk space'
+      name: 'Check disk space before cleanup'
       run: 'df -h'
     - id: 'step-4'
       name: 'Free disk space'
-      run: |-
-        sudo swapoff -a
-        sudo rm -f /swapfile
-        sudo apt clean
-        docker rmi $(docker image ls -aq)
-        df -h
+      run: 'rm -rf ${{ github.workspace }}/*'
     - id: 'step-5'
+      name: 'Check disk space after clean up'
+      run: 'df -h'
+    - id: 'step-6'
       name: 'publishing epsilon-fields, epsilon-image-core, epsilon-image-web, epsilon-image-react-core, epsilon-image-react-dom, epsilon-image-compose-core, epsilon-image-compose-html'
       uses: 'gradle/gradle-build-action@v2'
       with:
@@ -1567,17 +1503,15 @@ jobs:
       working-directory: 'symphony'
       run: 'chmod +x ./gradlew'
     - id: 'step-3'
-      name: 'Check disk space'
+      name: 'Check disk space before cleanup'
       run: 'df -h'
     - id: 'step-4'
       name: 'Free disk space'
-      run: |-
-        sudo swapoff -a
-        sudo rm -f /swapfile
-        sudo apt clean
-        docker rmi $(docker image ls -aq)
-        df -h
+      run: 'rm -rf ${{ github.workspace }}/*'
     - id: 'step-5'
+      name: 'Check disk space after clean up'
+      run: 'df -h'
+    - id: 'step-6'
       name: 'publishing symphony-visibility, symphony-paginator, symphony-selector, symphony-actions, symphony-table, symphony-list, symphony-collections, symphony-input-core, symphony-input-text, symphony-input-number, symphony-input-choice, symphony-input-dialog, symphony-input-sheet, symphony-input-finance'
       uses: 'gradle/gradle-build-action@v2'
       with:
@@ -1602,17 +1536,15 @@ jobs:
       working-directory: 'captain'
       run: 'chmod +x ./gradlew'
     - id: 'step-3'
-      name: 'Check disk space'
+      name: 'Check disk space before cleanup'
       run: 'df -h'
     - id: 'step-4'
       name: 'Free disk space'
-      run: |-
-        sudo swapoff -a
-        sudo rm -f /swapfile
-        sudo apt clean
-        docker rmi $(docker image ls -aq)
-        df -h
+      run: 'rm -rf ${{ github.workspace }}/*'
     - id: 'step-5'
+      name: 'Check disk space after clean up'
+      run: 'df -h'
+    - id: 'step-6'
       name: 'publishing captain-navigator-api, captain-navigator-browser, captain-navigator-basic, captain-router-core, captain-router-react-core, captain-router-react-dom, captain-router-compose-core, captain-router-compose-html'
       uses: 'gradle/gradle-build-action@v2'
       with:
@@ -1637,17 +1569,15 @@ jobs:
       working-directory: 'raven'
       run: 'chmod +x ./gradlew'
     - id: 'step-3'
-      name: 'Check disk space'
+      name: 'Check disk space before cleanup'
       run: 'df -h'
     - id: 'step-4'
       name: 'Free disk space'
-      run: |-
-        sudo swapoff -a
-        sudo rm -f /swapfile
-        sudo apt clean
-        docker rmi $(docker image ls -aq)
-        df -h
+      run: 'rm -rf ${{ github.workspace }}/*'
     - id: 'step-5'
+      name: 'Check disk space after clean up'
+      run: 'df -h'
+    - id: 'step-6'
       name: 'publishing raven-core, raven-config, raven-outbox-core, raven-outbox-local, raven-outbox-server, raven-outbox-client, raven-email-core, raven-email-markup, raven-email-config, raven-email-console, raven-email-brevo, raven-sms-core, raven-sms-config, raven-sms-console, raven-sms-kila'
       uses: 'gradle/gradle-build-action@v2'
       with:
@@ -1672,17 +1602,15 @@ jobs:
       working-directory: 'kida'
       run: 'chmod +x ./gradlew'
     - id: 'step-3'
-      name: 'Check disk space'
+      name: 'Check disk space before cleanup'
       run: 'df -h'
     - id: 'step-4'
       name: 'Free disk space'
-      run: |-
-        sudo swapoff -a
-        sudo rm -f /swapfile
-        sudo apt clean
-        docker rmi $(docker image ls -aq)
-        df -h
+      run: 'rm -rf ${{ github.workspace }}/*'
     - id: 'step-5'
+      name: 'Check disk space after clean up'
+      run: 'df -h'
+    - id: 'step-6'
       name: 'publishing kida-api, kida-brela, kida-fake'
       uses: 'gradle/gradle-build-action@v2'
       with:
