@@ -130,9 +130,23 @@ fun WorkflowBuilder.buildProject(gp: GradleProject) = job(
 //        name = "building " + gp.modules.joinToString(", "),
 //        action = GradleBuildActionV2(arguments = argument, buildRootDirectory = "./${gp.path}")
 //    )
+    run(
+        name = "Check disk space",
+        command = "df -h"
+    )
 
+    run(
+        name = "Free disk space",
+        command = """
+            sudo swapoff -a
+            sudo rm -f /swapfile
+            sudo apt clean
+            docker rmi ${'$'}(docker image ls -aq)
+            df -h
+        """.trimIndent()
+    )
     gp.modules.forEach {
-        val argument = "clean kotlinUpgradePackageLock :$it:build"
+        val argument = "kotlinUpgradePackageLock :$it:build"
         uses(
             name = "building $it",
             action = GradleBuildActionV2(arguments = argument, buildRootDirectory = "./${gp.path}")
@@ -146,6 +160,22 @@ fun WorkflowBuilder.publishProject(gp: GradleProject, after: Job<JobOutputs.EMPT
     needs = listOf(after)
 ) {
     setupAndCheckout(gp)
+
+    run(
+        name = "Check disk space",
+        command = "df -h"
+    )
+
+    run(
+        name = "Free disk space",
+        command = """
+            sudo swapoff -a
+            sudo rm -f /swapfile
+            sudo apt clean
+            docker rmi ${'$'}(docker image ls -aq)
+            df -h
+        """.trimIndent()
+    )
 
     val argument = gp.modules.joinToString(separator = " ") {
         "kotlinUpgradePackageLock :$it:publishAllPublicationsToMavenCentral"
