@@ -121,8 +121,7 @@ fun JobBuilder<JobOutputs.EMPTY>.setupAndCheckout(gp: GradleProject) {
 
 fun WorkflowBuilder.buildProject(gp: GradleProject) = job(
     id = "${gp.path}-builder",
-//    runsOn = RunnerType.MacOSLatest
-    runsOn = RunnerType.Custom("macos-latest-xl")
+    runsOn = RunnerType.MacOSLatest
 ) {
     setupAndCheckout(gp)
 
@@ -143,8 +142,7 @@ fun WorkflowBuilder.buildProject(gp: GradleProject) = job(
 
 fun WorkflowBuilder.publishProject(gp: GradleProject, after: Job<JobOutputs.EMPTY>) = job(
     id = "${gp.path}-publisher",
-//    runsOn = RunnerType.MacOSLatest,
-    runsOn = RunnerType.Custom("macos-latest-xl"),
+    runsOn = RunnerType.MacOSLatest,
     needs = listOf(after)
 ) {
     setupAndCheckout(gp)
