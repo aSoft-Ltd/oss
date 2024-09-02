@@ -133,7 +133,7 @@ fun WorkflowBuilder.buildProject(gp: GradleProject) = job(
 //    )
 
     gp.modules.forEach {
-        val argument = "kotlinUpgradePackageLock clean :$it:build"
+        val argument = "clean kotlinUpgradePackageLock :$it:build"
         uses(
             name = "building $it",
             action = GradleBuildActionV2(arguments = argument, buildRootDirectory = "./${gp.path}")
