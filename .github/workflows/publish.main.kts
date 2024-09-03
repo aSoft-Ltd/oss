@@ -91,7 +91,7 @@ val projects = projects {
     }
     p("symphony") {
         p("visibility", "paginator", "selector", "actions", "table", "list", "collections")
-        p("input") { p("core", "text", "number", "choice", "dialog", "sheet", "finance") }
+        p("input") { p("core", "text", "number", "choice", "dialog") }
     }
     p("captain") {
         p("navigator") { p("api", "browser", "basic") }
@@ -131,20 +131,20 @@ fun WorkflowBuilder.buildProject(gp: GradleProject) = job(
 //        name = "building " + gp.modules.joinToString(", "),
 //        action = GradleBuildActionV2(arguments = argument, buildRootDirectory = "./${gp.path}")
 //    )
-    run(
-        name = "Check disk space before cleanup",
-        command = "df -h"
-    )
-
-    run(
-        name = "Free disk space",
-        command = "rm -rf ${expr { github.workspace }}/*"
-    )
-
-    run(
-        name = "Check disk space after clean up",
-        command = "df -h"
-    )
+//    run(
+//        name = "Check disk space before cleanup",
+//        command = "df -h"
+//    )
+//
+//    run(
+//        name = "Free disk space",
+//        command = "rm -rf ${expr { github.workspace }}/*"
+//    )
+//
+//    run(
+//        name = "Check disk space after clean up",
+//        command = "df -h"
+//    )
 
 //    run(
 //        name = "Free disk space",
@@ -172,20 +172,20 @@ fun WorkflowBuilder.publishProject(gp: GradleProject, after: Job<JobOutputs.EMPT
 ) {
     setupAndCheckout(gp)
 
-    run(
-        name = "Check disk space before cleanup",
-        command = "df -h"
-    )
-
-    run(
-        name = "Free disk space",
-        command = "rm -rf ${expr { github.workspace }}/*"
-    )
-
-    run(
-        name = "Check disk space after clean up",
-        command = "df -h"
-    )
+//    run(
+//        name = "Check disk space before cleanup",
+//        command = "df -h"
+//    )
+//
+//    run(
+//        name = "Free disk space",
+//        command = "rm -rf ${expr { github.workspace }}/*"
+//    )
+//
+//    run(
+//        name = "Check disk space after clean up",
+//        command = "df -h"
+//    )
 
     val argument = gp.modules.joinToString(separator = " ") {
         "kotlinUpgradePackageLock :$it:publishAllPublicationsToMavenCentral"
