@@ -45,51 +45,51 @@ data class GradleProject(
 fun projects(builder: ProjectsBuilder.() -> Unit): List<GradleProject> = ProjectsBuilder().apply(builder).projects
 
 val projects = projects {
-//    p("kronecker") { p("core") }
-    p("kotlinx-interoperable") {
-        p("exports")
-    }
-    p("lexi") {
-        p("api", "console", "file")
-        p("test") { p("android") }
-    }
-    p("kommander") { p("core", "coroutines") }
-    p("kollections") { p("primitive", "atomic", "stacks") }
-    p("kevlar") { p("core") }
-    p("kase") {
-        p("core", "optional", "possible")
-//        p("response") {
-//            p("core")
-//            p("ktor") {
-//                p("server", "client")
-//            }
-//        }
-    }
-//    p("krest") { p("core") }
-    p("koncurrent") {
-        p("utils")
-        p("executors") { p("core", "coroutines", "mock") }
-        p("awaited") { p("core", "coroutines", "test") }
-        p("later") { p("core", "coroutines", "test") }
-    }
-    p("keep") { p("api", "browser", "file", "mock", "react-native") }
-    p("cinematic") {
-        p("live") { p("core", "compose", "coroutines", "react", "test") }
-        p("scene") { p("core") }
-    }
-    p("krono", "krono-core") { p("api", "kotlinx") }
-//    p("hormone") { p("core") }
-//    p("geo") { p("countries", "core") }
-//    p("kash") { p("currency", "money") }
-    p("kiota") { p("url", "sse") }
-    p("neat") { p("validation", "formatting") }
-    p("epsilon", "epsilon-api") { p("core") }
-    p("epsilon", "epsilon-client") {
-        p("fields")
-        p("image") { p("core", "web") }
-        p("image-react") { p("core", "dom") }
-        p("image-compose") { p("core", "html") }
-    }
+////    p("kronecker") { p("core") }
+//    p("kotlinx-interoperable") {
+//        p("exports")
+//    }
+//    p("lexi") {
+//        p("api", "console", "file")
+//        p("test") { p("android") }
+//    }
+//    p("kommander") { p("core", "coroutines") }
+//    p("kollections") { p("primitive", "atomic", "stacks") }
+//    p("kevlar") { p("core") }
+//    p("kase") {
+//        p("core", "optional", "possible")
+////        p("response") {
+////            p("core")
+////            p("ktor") {
+////                p("server", "client")
+////            }
+////        }
+//    }
+////    p("krest") { p("core") }
+//    p("koncurrent") {
+//        p("utils")
+//        p("executors") { p("core", "coroutines", "mock") }
+//        p("awaited") { p("core", "coroutines", "test") }
+//        p("later") { p("core", "coroutines", "test") }
+//    }
+//    p("keep") { p("api", "browser", "file", "mock", "react-native") }
+//    p("cinematic") {
+//        p("live") { p("core", "compose", "coroutines", "react", "test") }
+//        p("scene") { p("core") }
+//    }
+//    p("krono", "krono-core") { p("api", "kotlinx") }
+////    p("hormone") { p("core") }
+////    p("geo") { p("countries", "core") }
+////    p("kash") { p("currency", "money") }
+//    p("kiota") { p("url", "sse") }
+//    p("neat") { p("validation", "formatting") }
+//    p("epsilon", "epsilon-api") { p("core") }
+//    p("epsilon", "epsilon-client") {
+//        p("fields")
+//        p("image") { p("core", "web") }
+//        p("image-react") { p("core", "dom") }
+//        p("image-compose") { p("core", "html") }
+//    }
     p(name = "symphony", id = "symphony-core") {
         p("visibility", "paginator", "selector", "actions", "table", "list", "collections")
     }
@@ -110,7 +110,7 @@ val projects = projects {
         p("email") { p("core", "markup", "config", "console", "brevo") }
         p("sms") { p("core", "config", "console", "kila") }
     }
-    p("kida") { p("api", "brela", "fake") }
+//    p("kida") { p("api", "brela", "fake") }
 }
 
 fun JobBuilder<JobOutputs.EMPTY>.setupAndCheckout(gp: GradleProject) {
