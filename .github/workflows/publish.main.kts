@@ -30,14 +30,15 @@ class ModuleBuilder(val parent: String) {
 
 class ProjectsBuilder {
     val projects = mutableListOf<GradleProject>()
-    fun p(name: String, path: String = name, builder: ModuleBuilder.() -> Unit) {
-        projects.add(GradleProject(name, path, ModuleBuilder(name).apply(builder).modules))
+    fun p(name: String, path: String = name, id: String = path, builder: ModuleBuilder.() -> Unit) {
+        projects.add(GradleProject(name, path, id, ModuleBuilder(name).apply(builder).modules))
     }
 }
 
 data class GradleProject(
     val name: String,
     val path: String,
+    val id: String,
     val modules: List<String>
 )
 
@@ -89,8 +90,10 @@ val projects = projects {
         p("image-react") { p("core", "dom") }
         p("image-compose") { p("core", "html") }
     }
-    p("symphony") {
+    p(name = "symphony", id = "symphony-core") {
         p("visibility", "paginator", "selector", "actions", "table", "list", "collections")
+    }
+    p(name = "symphony", id = "symphony-input") {
         p("input") { p("core", "text", "number", "choice", "dialog") }
     }
     p("captain") {
@@ -121,41 +124,11 @@ fun JobBuilder<JobOutputs.EMPTY>.setupAndCheckout(gp: GradleProject) {
 }
 
 fun WorkflowBuilder.buildProject(gp: GradleProject) = job(
-    id = "${gp.path}-builder",
+    id = "${gp.id}-builder",
     runsOn = RunnerType.MacOSLatest
 ) {
     setupAndCheckout(gp)
 
-//    val argument = gp.modules.joinToString(prefix = "kotlinUpgradePackageLock ", separator = " ") { ":$it:build" }
-//    uses(
-//        name = "building " + gp.modules.joinToString(", "),
-//        action = GradleBuildActionV2(arguments = argument, buildRootDirectory = "./${gp.path}")
-//    )
-//    run(
-//        name = "Check disk space before cleanup",
-//        command = "df -h"
-//    )
-//
-//    run(
-//        name = "Free disk space",
-//        command = "rm -rf ${expr { github.workspace }}/*"
-//    )
-//
-//    run(
-//        name = "Check disk space after clean up",
-//        command = "df -h"
-//    )
-
-//    run(
-//        name = "Free disk space",
-//        command = """
-//            sudo swapoff -a
-//            sudo rm -f /swapfile
-//            sudo apt clean
-//            docker rmi ${'$'}(docker image ls -aq)
-//            df -h
-//        """.trimIndent()
-//    )
     gp.modules.forEach {
         val argument = "kotlinUpgradePackageLock :$it:build"
         uses(
@@ -166,26 +139,11 @@ fun WorkflowBuilder.buildProject(gp: GradleProject) = job(
 }
 
 fun WorkflowBuilder.publishProject(gp: GradleProject, after: Job<JobOutputs.EMPTY>) = job(
-    id = "${gp.path}-publisher",
+    id = "${gp.id}-publisher",
     runsOn = RunnerType.MacOSLatest,
     needs = listOf(after)
 ) {
     setupAndCheckout(gp)
-
-//    run(
-//        name = "Check disk space before cleanup",
-//        command = "df -h"
-//    )
-//
-//    run(
-//        name = "Free disk space",
-//        command = "rm -rf ${expr { github.workspace }}/*"
-//    )
-//
-//    run(
-//        name = "Check disk space after clean up",
-//        command = "df -h"
-//    )
 
     val argument = gp.modules.joinToString(separator = " ") {
         "kotlinUpgradePackageLock :$it:publishAllPublicationsToMavenCentral"

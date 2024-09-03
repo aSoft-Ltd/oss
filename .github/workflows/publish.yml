@@ -532,7 +532,7 @@ jobs:
       with:
         arguments: 'kotlinUpgradePackageLock :epsilon-image-compose-html:build'
         build-root-directory: './epsilon-client'
-  symphony-builder:
+  symphony-core-builder:
     runs-on: 'macos-latest'
     steps:
     - id: 'step-0'
@@ -590,31 +590,47 @@ jobs:
       with:
         arguments: 'kotlinUpgradePackageLock :symphony-collections:build'
         build-root-directory: './symphony'
-    - id: 'step-10'
+  symphony-input-builder:
+    runs-on: 'macos-latest'
+    steps:
+    - id: 'step-0'
+      uses: 'actions/checkout@v3'
+      with:
+        submodules: 'true'
+    - id: 'step-1'
+      uses: 'actions/setup-java@v3'
+      with:
+        java-version: '18'
+        distribution: 'corretto'
+    - id: 'step-2'
+      name: 'Make ./gradlew executable'
+      working-directory: 'symphony'
+      run: 'chmod +x ./gradlew'
+    - id: 'step-3'
       name: 'building symphony-input-core'
       uses: 'gradle/gradle-build-action@v2'
       with:
         arguments: 'kotlinUpgradePackageLock :symphony-input-core:build'
         build-root-directory: './symphony'
-    - id: 'step-11'
+    - id: 'step-4'
       name: 'building symphony-input-text'
       uses: 'gradle/gradle-build-action@v2'
       with:
         arguments: 'kotlinUpgradePackageLock :symphony-input-text:build'
         build-root-directory: './symphony'
-    - id: 'step-12'
+    - id: 'step-5'
       name: 'building symphony-input-number'
       uses: 'gradle/gradle-build-action@v2'
       with:
         arguments: 'kotlinUpgradePackageLock :symphony-input-number:build'
         build-root-directory: './symphony'
-    - id: 'step-13'
+    - id: 'step-6'
       name: 'building symphony-input-choice'
       uses: 'gradle/gradle-build-action@v2'
       with:
         arguments: 'kotlinUpgradePackageLock :symphony-input-choice:build'
         build-root-directory: './symphony'
-    - id: 'step-14'
+    - id: 'step-7'
       name: 'building symphony-input-dialog'
       uses: 'gradle/gradle-build-action@v2'
       with:
@@ -841,7 +857,8 @@ jobs:
     - 'neat-builder'
     - 'epsilon-api-builder'
     - 'epsilon-client-builder'
-    - 'symphony-builder'
+    - 'symphony-core-builder'
+    - 'symphony-input-builder'
     - 'captain-builder'
     - 'raven-builder'
     - 'kida-builder'
@@ -1184,7 +1201,7 @@ jobs:
       with:
         arguments: 'kotlinUpgradePackageLock :epsilon-fields:publishAllPublicationsToMavenCentral kotlinUpgradePackageLock :epsilon-image-core:publishAllPublicationsToMavenCentral kotlinUpgradePackageLock :epsilon-image-web:publishAllPublicationsToMavenCentral kotlinUpgradePackageLock :epsilon-image-react-core:publishAllPublicationsToMavenCentral kotlinUpgradePackageLock :epsilon-image-react-dom:publishAllPublicationsToMavenCentral kotlinUpgradePackageLock :epsilon-image-compose-core:publishAllPublicationsToMavenCentral kotlinUpgradePackageLock :epsilon-image-compose-html:publishAllPublicationsToMavenCentral --no-configuration-cache'
         build-root-directory: './epsilon-client'
-  symphony-publisher:
+  symphony-core-publisher:
     runs-on: 'macos-latest'
     needs:
     - 'rendezvous'
@@ -1203,10 +1220,34 @@ jobs:
       working-directory: 'symphony'
       run: 'chmod +x ./gradlew'
     - id: 'step-3'
-      name: 'publishing symphony-visibility, symphony-paginator, symphony-selector, symphony-actions, symphony-table, symphony-list, symphony-collections, symphony-input-core, symphony-input-text, symphony-input-number, symphony-input-choice, symphony-input-dialog'
+      name: 'publishing symphony-visibility, symphony-paginator, symphony-selector, symphony-actions, symphony-table, symphony-list, symphony-collections'
       uses: 'gradle/gradle-build-action@v2'
       with:
-        arguments: 'kotlinUpgradePackageLock :symphony-visibility:publishAllPublicationsToMavenCentral kotlinUpgradePackageLock :symphony-paginator:publishAllPublicationsToMavenCentral kotlinUpgradePackageLock :symphony-selector:publishAllPublicationsToMavenCentral kotlinUpgradePackageLock :symphony-actions:publishAllPublicationsToMavenCentral kotlinUpgradePackageLock :symphony-table:publishAllPublicationsToMavenCentral kotlinUpgradePackageLock :symphony-list:publishAllPublicationsToMavenCentral kotlinUpgradePackageLock :symphony-collections:publishAllPublicationsToMavenCentral kotlinUpgradePackageLock :symphony-input-core:publishAllPublicationsToMavenCentral kotlinUpgradePackageLock :symphony-input-text:publishAllPublicationsToMavenCentral kotlinUpgradePackageLock :symphony-input-number:publishAllPublicationsToMavenCentral kotlinUpgradePackageLock :symphony-input-choice:publishAllPublicationsToMavenCentral kotlinUpgradePackageLock :symphony-input-dialog:publishAllPublicationsToMavenCentral --no-configuration-cache'
+        arguments: 'kotlinUpgradePackageLock :symphony-visibility:publishAllPublicationsToMavenCentral kotlinUpgradePackageLock :symphony-paginator:publishAllPublicationsToMavenCentral kotlinUpgradePackageLock :symphony-selector:publishAllPublicationsToMavenCentral kotlinUpgradePackageLock :symphony-actions:publishAllPublicationsToMavenCentral kotlinUpgradePackageLock :symphony-table:publishAllPublicationsToMavenCentral kotlinUpgradePackageLock :symphony-list:publishAllPublicationsToMavenCentral kotlinUpgradePackageLock :symphony-collections:publishAllPublicationsToMavenCentral --no-configuration-cache'
+        build-root-directory: './symphony'
+  symphony-input-publisher:
+    runs-on: 'macos-latest'
+    needs:
+    - 'rendezvous'
+    steps:
+    - id: 'step-0'
+      uses: 'actions/checkout@v3'
+      with:
+        submodules: 'true'
+    - id: 'step-1'
+      uses: 'actions/setup-java@v3'
+      with:
+        java-version: '18'
+        distribution: 'corretto'
+    - id: 'step-2'
+      name: 'Make ./gradlew executable'
+      working-directory: 'symphony'
+      run: 'chmod +x ./gradlew'
+    - id: 'step-3'
+      name: 'publishing symphony-input-core, symphony-input-text, symphony-input-number, symphony-input-choice, symphony-input-dialog'
+      uses: 'gradle/gradle-build-action@v2'
+      with:
+        arguments: 'kotlinUpgradePackageLock :symphony-input-core:publishAllPublicationsToMavenCentral kotlinUpgradePackageLock :symphony-input-text:publishAllPublicationsToMavenCentral kotlinUpgradePackageLock :symphony-input-number:publishAllPublicationsToMavenCentral kotlinUpgradePackageLock :symphony-input-choice:publishAllPublicationsToMavenCentral kotlinUpgradePackageLock :symphony-input-dialog:publishAllPublicationsToMavenCentral --no-configuration-cache'
         build-root-directory: './symphony'
   captain-publisher:
     runs-on: 'macos-latest'
