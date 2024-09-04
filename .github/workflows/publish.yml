@@ -34,6 +34,7 @@ jobs:
       name: 'building kotlinx-interoperable-exports'
       uses: 'gradle/gradle-build-action@v2'
       with:
+        cache-disabled: 'true'
         arguments: 'kotlinUpgradePackageLock :kotlinx-interoperable-exports:build'
         build-root-directory: './kotlinx-interoperable'
   lexi-builder:
@@ -56,24 +57,28 @@ jobs:
       name: 'building lexi-api'
       uses: 'gradle/gradle-build-action@v2'
       with:
+        cache-disabled: 'true'
         arguments: 'kotlinUpgradePackageLock :lexi-api:build'
         build-root-directory: './lexi'
     - id: 'step-4'
       name: 'building lexi-console'
       uses: 'gradle/gradle-build-action@v2'
       with:
+        cache-disabled: 'true'
         arguments: 'kotlinUpgradePackageLock :lexi-console:build'
         build-root-directory: './lexi'
     - id: 'step-5'
       name: 'building lexi-file'
       uses: 'gradle/gradle-build-action@v2'
       with:
+        cache-disabled: 'true'
         arguments: 'kotlinUpgradePackageLock :lexi-file:build'
         build-root-directory: './lexi'
     - id: 'step-6'
       name: 'building lexi-test-android'
       uses: 'gradle/gradle-build-action@v2'
       with:
+        cache-disabled: 'true'
         arguments: 'kotlinUpgradePackageLock :lexi-test-android:build'
         build-root-directory: './lexi'
   kommander-builder:
@@ -96,12 +101,14 @@ jobs:
       name: 'building kommander-core'
       uses: 'gradle/gradle-build-action@v2'
       with:
+        cache-disabled: 'true'
         arguments: 'kotlinUpgradePackageLock :kommander-core:build'
         build-root-directory: './kommander'
     - id: 'step-4'
       name: 'building kommander-coroutines'
       uses: 'gradle/gradle-build-action@v2'
       with:
+        cache-disabled: 'true'
         arguments: 'kotlinUpgradePackageLock :kommander-coroutines:build'
         build-root-directory: './kommander'
   kollections-builder:
@@ -124,18 +131,21 @@ jobs:
       name: 'building kollections-primitive'
       uses: 'gradle/gradle-build-action@v2'
       with:
+        cache-disabled: 'true'
         arguments: 'kotlinUpgradePackageLock :kollections-primitive:build'
         build-root-directory: './kollections'
     - id: 'step-4'
       name: 'building kollections-atomic'
       uses: 'gradle/gradle-build-action@v2'
       with:
+        cache-disabled: 'true'
         arguments: 'kotlinUpgradePackageLock :kollections-atomic:build'
         build-root-directory: './kollections'
     - id: 'step-5'
       name: 'building kollections-stacks'
       uses: 'gradle/gradle-build-action@v2'
       with:
+        cache-disabled: 'true'
         arguments: 'kotlinUpgradePackageLock :kollections-stacks:build'
         build-root-directory: './kollections'
   kevlar-builder:
@@ -158,6 +168,7 @@ jobs:
       name: 'building kevlar-core'
       uses: 'gradle/gradle-build-action@v2'
       with:
+        cache-disabled: 'true'
         arguments: 'kotlinUpgradePackageLock :kevlar-core:build'
         build-root-directory: './kevlar'
   kase-builder:
@@ -180,18 +191,21 @@ jobs:
       name: 'building kase-core'
       uses: 'gradle/gradle-build-action@v2'
       with:
+        cache-disabled: 'true'
         arguments: 'kotlinUpgradePackageLock :kase-core:build'
         build-root-directory: './kase'
     - id: 'step-4'
       name: 'building kase-optional'
       uses: 'gradle/gradle-build-action@v2'
       with:
+        cache-disabled: 'true'
         arguments: 'kotlinUpgradePackageLock :kase-optional:build'
         build-root-directory: './kase'
     - id: 'step-5'
       name: 'building kase-possible'
       uses: 'gradle/gradle-build-action@v2'
       with:
+        cache-disabled: 'true'
         arguments: 'kotlinUpgradePackageLock :kase-possible:build'
         build-root-directory: './kase'
   koncurrent-builder:
@@ -214,60 +228,70 @@ jobs:
       name: 'building koncurrent-utils'
       uses: 'gradle/gradle-build-action@v2'
       with:
+        cache-disabled: 'true'
         arguments: 'kotlinUpgradePackageLock :koncurrent-utils:build'
         build-root-directory: './koncurrent'
     - id: 'step-4'
       name: 'building koncurrent-executors-core'
       uses: 'gradle/gradle-build-action@v2'
       with:
+        cache-disabled: 'true'
         arguments: 'kotlinUpgradePackageLock :koncurrent-executors-core:build'
         build-root-directory: './koncurrent'
     - id: 'step-5'
       name: 'building koncurrent-executors-coroutines'
       uses: 'gradle/gradle-build-action@v2'
       with:
+        cache-disabled: 'true'
         arguments: 'kotlinUpgradePackageLock :koncurrent-executors-coroutines:build'
         build-root-directory: './koncurrent'
     - id: 'step-6'
       name: 'building koncurrent-executors-mock'
       uses: 'gradle/gradle-build-action@v2'
       with:
+        cache-disabled: 'true'
         arguments: 'kotlinUpgradePackageLock :koncurrent-executors-mock:build'
         build-root-directory: './koncurrent'
     - id: 'step-7'
       name: 'building koncurrent-awaited-core'
       uses: 'gradle/gradle-build-action@v2'
       with:
+        cache-disabled: 'true'
         arguments: 'kotlinUpgradePackageLock :koncurrent-awaited-core:build'
         build-root-directory: './koncurrent'
     - id: 'step-8'
       name: 'building koncurrent-awaited-coroutines'
       uses: 'gradle/gradle-build-action@v2'
       with:
+        cache-disabled: 'true'
         arguments: 'kotlinUpgradePackageLock :koncurrent-awaited-coroutines:build'
         build-root-directory: './koncurrent'
     - id: 'step-9'
       name: 'building koncurrent-awaited-test'
       uses: 'gradle/gradle-build-action@v2'
       with:
+        cache-disabled: 'true'
         arguments: 'kotlinUpgradePackageLock :koncurrent-awaited-test:build'
         build-root-directory: './koncurrent'
     - id: 'step-10'
       name: 'building koncurrent-later-core'
       uses: 'gradle/gradle-build-action@v2'
       with:
+        cache-disabled: 'true'
         arguments: 'kotlinUpgradePackageLock :koncurrent-later-core:build'
         build-root-directory: './koncurrent'
     - id: 'step-11'
       name: 'building koncurrent-later-coroutines'
       uses: 'gradle/gradle-build-action@v2'
       with:
+        cache-disabled: 'true'
         arguments: 'kotlinUpgradePackageLock :koncurrent-later-coroutines:build'
         build-root-directory: './koncurrent'
     - id: 'step-12'
       name: 'building koncurrent-later-test'
       uses: 'gradle/gradle-build-action@v2'
       with:
+        cache-disabled: 'true'
         arguments: 'kotlinUpgradePackageLock :koncurrent-later-test:build'
         build-root-directory: './koncurrent'
   keep-builder:
@@ -290,30 +314,35 @@ jobs:
       name: 'building keep-api'
       uses: 'gradle/gradle-build-action@v2'
       with:
+        cache-disabled: 'true'
         arguments: 'kotlinUpgradePackageLock :keep-api:build'
         build-root-directory: './keep'
     - id: 'step-4'
       name: 'building keep-browser'
       uses: 'gradle/gradle-build-action@v2'
       with:
+        cache-disabled: 'true'
         arguments: 'kotlinUpgradePackageLock :keep-browser:build'
         build-root-directory: './keep'
     - id: 'step-5'
       name: 'building keep-file'
       uses: 'gradle/gradle-build-action@v2'
       with:
+        cache-disabled: 'true'
         arguments: 'kotlinUpgradePackageLock :keep-file:build'
         build-root-directory: './keep'
     - id: 'step-6'
       name: 'building keep-mock'
       uses: 'gradle/gradle-build-action@v2'
       with:
+        cache-disabled: 'true'
         arguments: 'kotlinUpgradePackageLock :keep-mock:build'
         build-root-directory: './keep'
     - id: 'step-7'
       name: 'building keep-react-native'
       uses: 'gradle/gradle-build-action@v2'
       with:
+        cache-disabled: 'true'
         arguments: 'kotlinUpgradePackageLock :keep-react-native:build'
         build-root-directory: './keep'
   cinematic-builder:
@@ -336,36 +365,42 @@ jobs:
       name: 'building cinematic-live-core'
       uses: 'gradle/gradle-build-action@v2'
       with:
+        cache-disabled: 'true'
         arguments: 'kotlinUpgradePackageLock :cinematic-live-core:build'
         build-root-directory: './cinematic'
     - id: 'step-4'
       name: 'building cinematic-live-compose'
       uses: 'gradle/gradle-build-action@v2'
       with:
+        cache-disabled: 'true'
         arguments: 'kotlinUpgradePackageLock :cinematic-live-compose:build'
         build-root-directory: './cinematic'
     - id: 'step-5'
       name: 'building cinematic-live-coroutines'
       uses: 'gradle/gradle-build-action@v2'
       with:
+        cache-disabled: 'true'
         arguments: 'kotlinUpgradePackageLock :cinematic-live-coroutines:build'
         build-root-directory: './cinematic'
     - id: 'step-6'
       name: 'building cinematic-live-react'
       uses: 'gradle/gradle-build-action@v2'
       with:
+        cache-disabled: 'true'
         arguments: 'kotlinUpgradePackageLock :cinematic-live-react:build'
         build-root-directory: './cinematic'
     - id: 'step-7'
       name: 'building cinematic-live-test'
       uses: 'gradle/gradle-build-action@v2'
       with:
+        cache-disabled: 'true'
         arguments: 'kotlinUpgradePackageLock :cinematic-live-test:build'
         build-root-directory: './cinematic'
     - id: 'step-8'
       name: 'building cinematic-scene-core'
       uses: 'gradle/gradle-build-action@v2'
       with:
+        cache-disabled: 'true'
         arguments: 'kotlinUpgradePackageLock :cinematic-scene-core:build'
         build-root-directory: './cinematic'
   krono-core-builder:
@@ -388,12 +423,14 @@ jobs:
       name: 'building krono-api'
       uses: 'gradle/gradle-build-action@v2'
       with:
+        cache-disabled: 'true'
         arguments: 'kotlinUpgradePackageLock :krono-api:build'
         build-root-directory: './krono-core'
     - id: 'step-4'
       name: 'building krono-kotlinx'
       uses: 'gradle/gradle-build-action@v2'
       with:
+        cache-disabled: 'true'
         arguments: 'kotlinUpgradePackageLock :krono-kotlinx:build'
         build-root-directory: './krono-core'
   kiota-builder:
@@ -416,12 +453,14 @@ jobs:
       name: 'building kiota-url'
       uses: 'gradle/gradle-build-action@v2'
       with:
+        cache-disabled: 'true'
         arguments: 'kotlinUpgradePackageLock :kiota-url:build'
         build-root-directory: './kiota'
     - id: 'step-4'
       name: 'building kiota-sse'
       uses: 'gradle/gradle-build-action@v2'
       with:
+        cache-disabled: 'true'
         arguments: 'kotlinUpgradePackageLock :kiota-sse:build'
         build-root-directory: './kiota'
   neat-builder:
@@ -444,12 +483,14 @@ jobs:
       name: 'building neat-validation'
       uses: 'gradle/gradle-build-action@v2'
       with:
+        cache-disabled: 'true'
         arguments: 'kotlinUpgradePackageLock :neat-validation:build'
         build-root-directory: './neat'
     - id: 'step-4'
       name: 'building neat-formatting'
       uses: 'gradle/gradle-build-action@v2'
       with:
+        cache-disabled: 'true'
         arguments: 'kotlinUpgradePackageLock :neat-formatting:build'
         build-root-directory: './neat'
   epsilon-api-builder:
@@ -472,6 +513,7 @@ jobs:
       name: 'building epsilon-core'
       uses: 'gradle/gradle-build-action@v2'
       with:
+        cache-disabled: 'true'
         arguments: 'kotlinUpgradePackageLock :epsilon-core:build'
         build-root-directory: './epsilon-api'
   epsilon-client-builder:
@@ -494,45 +536,52 @@ jobs:
       name: 'building epsilon-fields'
       uses: 'gradle/gradle-build-action@v2'
       with:
+        cache-disabled: 'true'
         arguments: 'kotlinUpgradePackageLock :epsilon-fields:build'
         build-root-directory: './epsilon-client'
     - id: 'step-4'
       name: 'building epsilon-image-core'
       uses: 'gradle/gradle-build-action@v2'
       with:
+        cache-disabled: 'true'
         arguments: 'kotlinUpgradePackageLock :epsilon-image-core:build'
         build-root-directory: './epsilon-client'
     - id: 'step-5'
       name: 'building epsilon-image-web'
       uses: 'gradle/gradle-build-action@v2'
       with:
+        cache-disabled: 'true'
         arguments: 'kotlinUpgradePackageLock :epsilon-image-web:build'
         build-root-directory: './epsilon-client'
     - id: 'step-6'
       name: 'building epsilon-image-react-core'
       uses: 'gradle/gradle-build-action@v2'
       with:
+        cache-disabled: 'true'
         arguments: 'kotlinUpgradePackageLock :epsilon-image-react-core:build'
         build-root-directory: './epsilon-client'
     - id: 'step-7'
       name: 'building epsilon-image-react-dom'
       uses: 'gradle/gradle-build-action@v2'
       with:
+        cache-disabled: 'true'
         arguments: 'kotlinUpgradePackageLock :epsilon-image-react-dom:build'
         build-root-directory: './epsilon-client'
     - id: 'step-8'
       name: 'building epsilon-image-compose-core'
       uses: 'gradle/gradle-build-action@v2'
       with:
+        cache-disabled: 'true'
         arguments: 'kotlinUpgradePackageLock :epsilon-image-compose-core:build'
         build-root-directory: './epsilon-client'
     - id: 'step-9'
       name: 'building epsilon-image-compose-html'
       uses: 'gradle/gradle-build-action@v2'
       with:
+        cache-disabled: 'true'
         arguments: 'kotlinUpgradePackageLock :epsilon-image-compose-html:build'
         build-root-directory: './epsilon-client'
-  symphony-core-builder:
+  symphony-builder:
     runs-on: 'macos-latest'
     steps:
     - id: 'step-0'
@@ -552,88 +601,84 @@ jobs:
       name: 'building symphony-visibility'
       uses: 'gradle/gradle-build-action@v2'
       with:
+        cache-disabled: 'true'
         arguments: 'kotlinUpgradePackageLock :symphony-visibility:build'
         build-root-directory: './symphony'
     - id: 'step-4'
       name: 'building symphony-paginator'
       uses: 'gradle/gradle-build-action@v2'
       with:
+        cache-disabled: 'true'
         arguments: 'kotlinUpgradePackageLock :symphony-paginator:build'
         build-root-directory: './symphony'
     - id: 'step-5'
       name: 'building symphony-selector'
       uses: 'gradle/gradle-build-action@v2'
       with:
+        cache-disabled: 'true'
         arguments: 'kotlinUpgradePackageLock :symphony-selector:build'
         build-root-directory: './symphony'
     - id: 'step-6'
       name: 'building symphony-actions'
       uses: 'gradle/gradle-build-action@v2'
       with:
+        cache-disabled: 'true'
         arguments: 'kotlinUpgradePackageLock :symphony-actions:build'
         build-root-directory: './symphony'
     - id: 'step-7'
       name: 'building symphony-table'
       uses: 'gradle/gradle-build-action@v2'
       with:
+        cache-disabled: 'true'
         arguments: 'kotlinUpgradePackageLock :symphony-table:build'
         build-root-directory: './symphony'
     - id: 'step-8'
       name: 'building symphony-list'
       uses: 'gradle/gradle-build-action@v2'
       with:
+        cache-disabled: 'true'
         arguments: 'kotlinUpgradePackageLock :symphony-list:build'
         build-root-directory: './symphony'
     - id: 'step-9'
       name: 'building symphony-collections'
       uses: 'gradle/gradle-build-action@v2'
       with:
+        cache-disabled: 'true'
         arguments: 'kotlinUpgradePackageLock :symphony-collections:build'
         build-root-directory: './symphony'
-  symphony-input-builder:
-    runs-on: 'macos-latest'
-    steps:
-    - id: 'step-0'
-      uses: 'actions/checkout@v3'
-      with:
-        submodules: 'true'
-    - id: 'step-1'
-      uses: 'actions/setup-java@v3'
-      with:
-        java-version: '18'
-        distribution: 'corretto'
-    - id: 'step-2'
-      name: 'Make ./gradlew executable'
-      working-directory: 'symphony'
-      run: 'chmod +x ./gradlew'
-    - id: 'step-3'
+    - id: 'step-10'
       name: 'building symphony-input-core'
       uses: 'gradle/gradle-build-action@v2'
       with:
+        cache-disabled: 'true'
         arguments: 'kotlinUpgradePackageLock :symphony-input-core:build'
         build-root-directory: './symphony'
-    - id: 'step-4'
+    - id: 'step-11'
       name: 'building symphony-input-text'
       uses: 'gradle/gradle-build-action@v2'
       with:
+        cache-disabled: 'true'
         arguments: 'kotlinUpgradePackageLock :symphony-input-text:build'
         build-root-directory: './symphony'
-    - id: 'step-5'
+    - id: 'step-12'
       name: 'building symphony-input-number'
       uses: 'gradle/gradle-build-action@v2'
       with:
+        cache-disabled: 'true'
         arguments: 'kotlinUpgradePackageLock :symphony-input-number:build'
         build-root-directory: './symphony'
-    - id: 'step-6'
+    - id: 'step-13'
       name: 'building symphony-input-choice'
       uses: 'gradle/gradle-build-action@v2'
       with:
+        cache-disabled: 'true'
         arguments: 'kotlinUpgradePackageLock :symphony-input-choice:build'
         build-root-directory: './symphony'
-    - id: 'step-7'
+    - id: 'step-14'
       name: 'building symphony-input-dialog'
       uses: 'gradle/gradle-build-action@v2'
       with:
+        cache-disabled: 'true'
         arguments: 'kotlinUpgradePackageLock :symphony-input-dialog:build'
         build-root-directory: './symphony'
   captain-builder:
@@ -656,48 +701,56 @@ jobs:
       name: 'building captain-navigator-api'
       uses: 'gradle/gradle-build-action@v2'
       with:
+        cache-disabled: 'true'
         arguments: 'kotlinUpgradePackageLock :captain-navigator-api:build'
         build-root-directory: './captain'
     - id: 'step-4'
       name: 'building captain-navigator-browser'
       uses: 'gradle/gradle-build-action@v2'
       with:
+        cache-disabled: 'true'
         arguments: 'kotlinUpgradePackageLock :captain-navigator-browser:build'
         build-root-directory: './captain'
     - id: 'step-5'
       name: 'building captain-navigator-basic'
       uses: 'gradle/gradle-build-action@v2'
       with:
+        cache-disabled: 'true'
         arguments: 'kotlinUpgradePackageLock :captain-navigator-basic:build'
         build-root-directory: './captain'
     - id: 'step-6'
       name: 'building captain-router-core'
       uses: 'gradle/gradle-build-action@v2'
       with:
+        cache-disabled: 'true'
         arguments: 'kotlinUpgradePackageLock :captain-router-core:build'
         build-root-directory: './captain'
     - id: 'step-7'
       name: 'building captain-router-react-core'
       uses: 'gradle/gradle-build-action@v2'
       with:
+        cache-disabled: 'true'
         arguments: 'kotlinUpgradePackageLock :captain-router-react-core:build'
         build-root-directory: './captain'
     - id: 'step-8'
       name: 'building captain-router-react-dom'
       uses: 'gradle/gradle-build-action@v2'
       with:
+        cache-disabled: 'true'
         arguments: 'kotlinUpgradePackageLock :captain-router-react-dom:build'
         build-root-directory: './captain'
     - id: 'step-9'
       name: 'building captain-router-compose-core'
       uses: 'gradle/gradle-build-action@v2'
       with:
+        cache-disabled: 'true'
         arguments: 'kotlinUpgradePackageLock :captain-router-compose-core:build'
         build-root-directory: './captain'
     - id: 'step-10'
       name: 'building captain-router-compose-html'
       uses: 'gradle/gradle-build-action@v2'
       with:
+        cache-disabled: 'true'
         arguments: 'kotlinUpgradePackageLock :captain-router-compose-html:build'
         build-root-directory: './captain'
   raven-builder:
@@ -720,90 +773,105 @@ jobs:
       name: 'building raven-core'
       uses: 'gradle/gradle-build-action@v2'
       with:
+        cache-disabled: 'true'
         arguments: 'kotlinUpgradePackageLock :raven-core:build'
         build-root-directory: './raven'
     - id: 'step-4'
       name: 'building raven-config'
       uses: 'gradle/gradle-build-action@v2'
       with:
+        cache-disabled: 'true'
         arguments: 'kotlinUpgradePackageLock :raven-config:build'
         build-root-directory: './raven'
     - id: 'step-5'
       name: 'building raven-outbox-core'
       uses: 'gradle/gradle-build-action@v2'
       with:
+        cache-disabled: 'true'
         arguments: 'kotlinUpgradePackageLock :raven-outbox-core:build'
         build-root-directory: './raven'
     - id: 'step-6'
       name: 'building raven-outbox-local'
       uses: 'gradle/gradle-build-action@v2'
       with:
+        cache-disabled: 'true'
         arguments: 'kotlinUpgradePackageLock :raven-outbox-local:build'
         build-root-directory: './raven'
     - id: 'step-7'
       name: 'building raven-outbox-server'
       uses: 'gradle/gradle-build-action@v2'
       with:
+        cache-disabled: 'true'
         arguments: 'kotlinUpgradePackageLock :raven-outbox-server:build'
         build-root-directory: './raven'
     - id: 'step-8'
       name: 'building raven-outbox-client'
       uses: 'gradle/gradle-build-action@v2'
       with:
+        cache-disabled: 'true'
         arguments: 'kotlinUpgradePackageLock :raven-outbox-client:build'
         build-root-directory: './raven'
     - id: 'step-9'
       name: 'building raven-email-core'
       uses: 'gradle/gradle-build-action@v2'
       with:
+        cache-disabled: 'true'
         arguments: 'kotlinUpgradePackageLock :raven-email-core:build'
         build-root-directory: './raven'
     - id: 'step-10'
       name: 'building raven-email-markup'
       uses: 'gradle/gradle-build-action@v2'
       with:
+        cache-disabled: 'true'
         arguments: 'kotlinUpgradePackageLock :raven-email-markup:build'
         build-root-directory: './raven'
     - id: 'step-11'
       name: 'building raven-email-config'
       uses: 'gradle/gradle-build-action@v2'
       with:
+        cache-disabled: 'true'
         arguments: 'kotlinUpgradePackageLock :raven-email-config:build'
         build-root-directory: './raven'
     - id: 'step-12'
       name: 'building raven-email-console'
       uses: 'gradle/gradle-build-action@v2'
       with:
+        cache-disabled: 'true'
         arguments: 'kotlinUpgradePackageLock :raven-email-console:build'
         build-root-directory: './raven'
     - id: 'step-13'
       name: 'building raven-email-brevo'
       uses: 'gradle/gradle-build-action@v2'
       with:
+        cache-disabled: 'true'
         arguments: 'kotlinUpgradePackageLock :raven-email-brevo:build'
         build-root-directory: './raven'
     - id: 'step-14'
       name: 'building raven-sms-core'
       uses: 'gradle/gradle-build-action@v2'
       with:
+        cache-disabled: 'true'
         arguments: 'kotlinUpgradePackageLock :raven-sms-core:build'
         build-root-directory: './raven'
     - id: 'step-15'
       name: 'building raven-sms-config'
       uses: 'gradle/gradle-build-action@v2'
       with:
+        cache-disabled: 'true'
         arguments: 'kotlinUpgradePackageLock :raven-sms-config:build'
         build-root-directory: './raven'
     - id: 'step-16'
       name: 'building raven-sms-console'
       uses: 'gradle/gradle-build-action@v2'
       with:
+        cache-disabled: 'true'
         arguments: 'kotlinUpgradePackageLock :raven-sms-console:build'
         build-root-directory: './raven'
     - id: 'step-17'
       name: 'building raven-sms-kila'
       uses: 'gradle/gradle-build-action@v2'
       with:
+        cache-disabled: 'true'
         arguments: 'kotlinUpgradePackageLock :raven-sms-kila:build'
         build-root-directory: './raven'
   kida-builder:
@@ -826,18 +894,21 @@ jobs:
       name: 'building kida-api'
       uses: 'gradle/gradle-build-action@v2'
       with:
+        cache-disabled: 'true'
         arguments: 'kotlinUpgradePackageLock :kida-api:build'
         build-root-directory: './kida'
     - id: 'step-4'
       name: 'building kida-brela'
       uses: 'gradle/gradle-build-action@v2'
       with:
+        cache-disabled: 'true'
         arguments: 'kotlinUpgradePackageLock :kida-brela:build'
         build-root-directory: './kida'
     - id: 'step-5'
       name: 'building kida-fake'
       uses: 'gradle/gradle-build-action@v2'
       with:
+        cache-disabled: 'true'
         arguments: 'kotlinUpgradePackageLock :kida-fake:build'
         build-root-directory: './kida'
   rendezvous:
@@ -857,8 +928,7 @@ jobs:
     - 'neat-builder'
     - 'epsilon-api-builder'
     - 'epsilon-client-builder'
-    - 'symphony-core-builder'
-    - 'symphony-input-builder'
+    - 'symphony-builder'
     - 'captain-builder'
     - 'raven-builder'
     - 'kida-builder'
@@ -887,6 +957,7 @@ jobs:
       name: 'publishing kotlinx-interoperable-exports'
       uses: 'gradle/gradle-build-action@v2'
       with:
+        cache-disabled: 'true'
         arguments: 'kotlinUpgradePackageLock :kotlinx-interoperable-exports:publishAllPublicationsToMavenCentral --no-configuration-cache'
         build-root-directory: './kotlinx-interoperable'
   lexi-publisher:
@@ -911,6 +982,7 @@ jobs:
       name: 'publishing lexi-api, lexi-console, lexi-file, lexi-test-android'
       uses: 'gradle/gradle-build-action@v2'
       with:
+        cache-disabled: 'true'
         arguments: 'kotlinUpgradePackageLock :lexi-api:publishAllPublicationsToMavenCentral :lexi-console:publishAllPublicationsToMavenCentral :lexi-file:publishAllPublicationsToMavenCentral :lexi-test-android:publishAllPublicationsToMavenCentral --no-configuration-cache'
         build-root-directory: './lexi'
   kommander-publisher:
@@ -935,6 +1007,7 @@ jobs:
       name: 'publishing kommander-core, kommander-coroutines'
       uses: 'gradle/gradle-build-action@v2'
       with:
+        cache-disabled: 'true'
         arguments: 'kotlinUpgradePackageLock :kommander-core:publishAllPublicationsToMavenCentral :kommander-coroutines:publishAllPublicationsToMavenCentral --no-configuration-cache'
         build-root-directory: './kommander'
   kollections-publisher:
@@ -959,6 +1032,7 @@ jobs:
       name: 'publishing kollections-primitive, kollections-atomic, kollections-stacks'
       uses: 'gradle/gradle-build-action@v2'
       with:
+        cache-disabled: 'true'
         arguments: 'kotlinUpgradePackageLock :kollections-primitive:publishAllPublicationsToMavenCentral :kollections-atomic:publishAllPublicationsToMavenCentral :kollections-stacks:publishAllPublicationsToMavenCentral --no-configuration-cache'
         build-root-directory: './kollections'
   kevlar-publisher:
@@ -983,6 +1057,7 @@ jobs:
       name: 'publishing kevlar-core'
       uses: 'gradle/gradle-build-action@v2'
       with:
+        cache-disabled: 'true'
         arguments: 'kotlinUpgradePackageLock :kevlar-core:publishAllPublicationsToMavenCentral --no-configuration-cache'
         build-root-directory: './kevlar'
   kase-publisher:
@@ -1007,6 +1082,7 @@ jobs:
       name: 'publishing kase-core, kase-optional, kase-possible'
       uses: 'gradle/gradle-build-action@v2'
       with:
+        cache-disabled: 'true'
         arguments: 'kotlinUpgradePackageLock :kase-core:publishAllPublicationsToMavenCentral :kase-optional:publishAllPublicationsToMavenCentral :kase-possible:publishAllPublicationsToMavenCentral --no-configuration-cache'
         build-root-directory: './kase'
   koncurrent-publisher:
@@ -1031,6 +1107,7 @@ jobs:
       name: 'publishing koncurrent-utils, koncurrent-executors-core, koncurrent-executors-coroutines, koncurrent-executors-mock, koncurrent-awaited-core, koncurrent-awaited-coroutines, koncurrent-awaited-test, koncurrent-later-core, koncurrent-later-coroutines, koncurrent-later-test'
       uses: 'gradle/gradle-build-action@v2'
       with:
+        cache-disabled: 'true'
         arguments: 'kotlinUpgradePackageLock :koncurrent-utils:publishAllPublicationsToMavenCentral :koncurrent-executors-core:publishAllPublicationsToMavenCentral :koncurrent-executors-coroutines:publishAllPublicationsToMavenCentral :koncurrent-executors-mock:publishAllPublicationsToMavenCentral :koncurrent-awaited-core:publishAllPublicationsToMavenCentral :koncurrent-awaited-coroutines:publishAllPublicationsToMavenCentral :koncurrent-awaited-test:publishAllPublicationsToMavenCentral :koncurrent-later-core:publishAllPublicationsToMavenCentral :koncurrent-later-coroutines:publishAllPublicationsToMavenCentral :koncurrent-later-test:publishAllPublicationsToMavenCentral --no-configuration-cache'
         build-root-directory: './koncurrent'
   keep-publisher:
@@ -1055,6 +1132,7 @@ jobs:
       name: 'publishing keep-api, keep-browser, keep-file, keep-mock, keep-react-native'
       uses: 'gradle/gradle-build-action@v2'
       with:
+        cache-disabled: 'true'
         arguments: 'kotlinUpgradePackageLock :keep-api:publishAllPublicationsToMavenCentral :keep-browser:publishAllPublicationsToMavenCentral :keep-file:publishAllPublicationsToMavenCentral :keep-mock:publishAllPublicationsToMavenCentral :keep-react-native:publishAllPublicationsToMavenCentral --no-configuration-cache'
         build-root-directory: './keep'
   cinematic-publisher:
@@ -1079,6 +1157,7 @@ jobs:
       name: 'publishing cinematic-live-core, cinematic-live-compose, cinematic-live-coroutines, cinematic-live-react, cinematic-live-test, cinematic-scene-core'
       uses: 'gradle/gradle-build-action@v2'
       with:
+        cache-disabled: 'true'
         arguments: 'kotlinUpgradePackageLock :cinematic-live-core:publishAllPublicationsToMavenCentral :cinematic-live-compose:publishAllPublicationsToMavenCentral :cinematic-live-coroutines:publishAllPublicationsToMavenCentral :cinematic-live-react:publishAllPublicationsToMavenCentral :cinematic-live-test:publishAllPublicationsToMavenCentral :cinematic-scene-core:publishAllPublicationsToMavenCentral --no-configuration-cache'
         build-root-directory: './cinematic'
   krono-core-publisher:
@@ -1103,6 +1182,7 @@ jobs:
       name: 'publishing krono-api, krono-kotlinx'
       uses: 'gradle/gradle-build-action@v2'
       with:
+        cache-disabled: 'true'
         arguments: 'kotlinUpgradePackageLock :krono-api:publishAllPublicationsToMavenCentral :krono-kotlinx:publishAllPublicationsToMavenCentral --no-configuration-cache'
         build-root-directory: './krono-core'
   kiota-publisher:
@@ -1127,6 +1207,7 @@ jobs:
       name: 'publishing kiota-url, kiota-sse'
       uses: 'gradle/gradle-build-action@v2'
       with:
+        cache-disabled: 'true'
         arguments: 'kotlinUpgradePackageLock :kiota-url:publishAllPublicationsToMavenCentral :kiota-sse:publishAllPublicationsToMavenCentral --no-configuration-cache'
         build-root-directory: './kiota'
   neat-publisher:
@@ -1151,6 +1232,7 @@ jobs:
       name: 'publishing neat-validation, neat-formatting'
       uses: 'gradle/gradle-build-action@v2'
       with:
+        cache-disabled: 'true'
         arguments: 'kotlinUpgradePackageLock :neat-validation:publishAllPublicationsToMavenCentral :neat-formatting:publishAllPublicationsToMavenCentral --no-configuration-cache'
         build-root-directory: './neat'
   epsilon-api-publisher:
@@ -1175,6 +1257,7 @@ jobs:
       name: 'publishing epsilon-core'
       uses: 'gradle/gradle-build-action@v2'
       with:
+        cache-disabled: 'true'
         arguments: 'kotlinUpgradePackageLock :epsilon-core:publishAllPublicationsToMavenCentral --no-configuration-cache'
         build-root-directory: './epsilon-api'
   epsilon-client-publisher:
@@ -1199,9 +1282,10 @@ jobs:
       name: 'publishing epsilon-fields, epsilon-image-core, epsilon-image-web, epsilon-image-react-core, epsilon-image-react-dom, epsilon-image-compose-core, epsilon-image-compose-html'
       uses: 'gradle/gradle-build-action@v2'
       with:
+        cache-disabled: 'true'
         arguments: 'kotlinUpgradePackageLock :epsilon-fields:publishAllPublicationsToMavenCentral :epsilon-image-core:publishAllPublicationsToMavenCentral :epsilon-image-web:publishAllPublicationsToMavenCentral :epsilon-image-react-core:publishAllPublicationsToMavenCentral :epsilon-image-react-dom:publishAllPublicationsToMavenCentral :epsilon-image-compose-core:publishAllPublicationsToMavenCentral :epsilon-image-compose-html:publishAllPublicationsToMavenCentral --no-configuration-cache'
         build-root-directory: './epsilon-client'
-  symphony-core-publisher:
+  symphony-publisher:
     runs-on: 'macos-latest'
     needs:
     - 'rendezvous'
@@ -1220,34 +1304,11 @@ jobs:
       working-directory: 'symphony'
       run: 'chmod +x ./gradlew'
     - id: 'step-3'
-      name: 'publishing symphony-visibility, symphony-paginator, symphony-selector, symphony-actions, symphony-table, symphony-list, symphony-collections'
+      name: 'publishing symphony-visibility, symphony-paginator, symphony-selector, symphony-actions, symphony-table, symphony-list, symphony-collections, symphony-input-core, symphony-input-text, symphony-input-number, symphony-input-choice, symphony-input-dialog'
       uses: 'gradle/gradle-build-action@v2'
       with:
-        arguments: 'kotlinUpgradePackageLock :symphony-visibility:publishAllPublicationsToMavenCentral :symphony-paginator:publishAllPublicationsToMavenCentral :symphony-selector:publishAllPublicationsToMavenCentral :symphony-actions:publishAllPublicationsToMavenCentral :symphony-table:publishAllPublicationsToMavenCentral :symphony-list:publishAllPublicationsToMavenCentral :symphony-collections:publishAllPublicationsToMavenCentral --no-configuration-cache'
-        build-root-directory: './symphony'
-  symphony-input-publisher:
-    runs-on: 'macos-latest'
-    needs:
-    - 'rendezvous'
-    steps:
-    - id: 'step-0'
-      uses: 'actions/checkout@v3'
-      with:
-        submodules: 'true'
-    - id: 'step-1'
-      uses: 'actions/setup-java@v3'
-      with:
-        java-version: '18'
-        distribution: 'corretto'
-    - id: 'step-2'
-      name: 'Make ./gradlew executable'
-      working-directory: 'symphony'
-      run: 'chmod +x ./gradlew'
-    - id: 'step-3'
-      name: 'publishing symphony-input-core, symphony-input-text, symphony-input-number, symphony-input-choice, symphony-input-dialog'
-      uses: 'gradle/gradle-build-action@v2'
-      with:
-        arguments: 'kotlinUpgradePackageLock :symphony-input-core:publishAllPublicationsToMavenCentral :symphony-input-text:publishAllPublicationsToMavenCentral :symphony-input-number:publishAllPublicationsToMavenCentral :symphony-input-choice:publishAllPublicationsToMavenCentral :symphony-input-dialog:publishAllPublicationsToMavenCentral --no-configuration-cache'
+        cache-disabled: 'true'
+        arguments: 'kotlinUpgradePackageLock :symphony-visibility:publishAllPublicationsToMavenCentral :symphony-paginator:publishAllPublicationsToMavenCentral :symphony-selector:publishAllPublicationsToMavenCentral :symphony-actions:publishAllPublicationsToMavenCentral :symphony-table:publishAllPublicationsToMavenCentral :symphony-list:publishAllPublicationsToMavenCentral :symphony-collections:publishAllPublicationsToMavenCentral :symphony-input-core:publishAllPublicationsToMavenCentral :symphony-input-text:publishAllPublicationsToMavenCentral :symphony-input-number:publishAllPublicationsToMavenCentral :symphony-input-choice:publishAllPublicationsToMavenCentral :symphony-input-dialog:publishAllPublicationsToMavenCentral --no-configuration-cache'
         build-root-directory: './symphony'
   captain-publisher:
     runs-on: 'macos-latest'
@@ -1271,6 +1332,7 @@ jobs:
       name: 'publishing captain-navigator-api, captain-navigator-browser, captain-navigator-basic, captain-router-core, captain-router-react-core, captain-router-react-dom, captain-router-compose-core, captain-router-compose-html'
       uses: 'gradle/gradle-build-action@v2'
       with:
+        cache-disabled: 'true'
         arguments: 'kotlinUpgradePackageLock :captain-navigator-api:publishAllPublicationsToMavenCentral :captain-navigator-browser:publishAllPublicationsToMavenCentral :captain-navigator-basic:publishAllPublicationsToMavenCentral :captain-router-core:publishAllPublicationsToMavenCentral :captain-router-react-core:publishAllPublicationsToMavenCentral :captain-router-react-dom:publishAllPublicationsToMavenCentral :captain-router-compose-core:publishAllPublicationsToMavenCentral :captain-router-compose-html:publishAllPublicationsToMavenCentral --no-configuration-cache'
         build-root-directory: './captain'
   raven-publisher:
@@ -1295,6 +1357,7 @@ jobs:
       name: 'publishing raven-core, raven-config, raven-outbox-core, raven-outbox-local, raven-outbox-server, raven-outbox-client, raven-email-core, raven-email-markup, raven-email-config, raven-email-console, raven-email-brevo, raven-sms-core, raven-sms-config, raven-sms-console, raven-sms-kila'
       uses: 'gradle/gradle-build-action@v2'
       with:
+        cache-disabled: 'true'
         arguments: 'kotlinUpgradePackageLock :raven-core:publishAllPublicationsToMavenCentral :raven-config:publishAllPublicationsToMavenCentral :raven-outbox-core:publishAllPublicationsToMavenCentral :raven-outbox-local:publishAllPublicationsToMavenCentral :raven-outbox-server:publishAllPublicationsToMavenCentral :raven-outbox-client:publishAllPublicationsToMavenCentral :raven-email-core:publishAllPublicationsToMavenCentral :raven-email-markup:publishAllPublicationsToMavenCentral :raven-email-config:publishAllPublicationsToMavenCentral :raven-email-console:publishAllPublicationsToMavenCentral :raven-email-brevo:publishAllPublicationsToMavenCentral :raven-sms-core:publishAllPublicationsToMavenCentral :raven-sms-config:publishAllPublicationsToMavenCentral :raven-sms-console:publishAllPublicationsToMavenCentral :raven-sms-kila:publishAllPublicationsToMavenCentral --no-configuration-cache'
         build-root-directory: './raven'
   kida-publisher:
@@ -1319,6 +1382,7 @@ jobs:
       name: 'publishing kida-api, kida-brela, kida-fake'
       uses: 'gradle/gradle-build-action@v2'
       with:
+        cache-disabled: 'true'
         arguments: 'kotlinUpgradePackageLock :kida-api:publishAllPublicationsToMavenCentral :kida-brela:publishAllPublicationsToMavenCentral :kida-fake:publishAllPublicationsToMavenCentral --no-configuration-cache'
         build-root-directory: './kida'
 

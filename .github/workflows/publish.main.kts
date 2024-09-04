@@ -90,12 +90,16 @@ val projects = projects {
         p("image-react") { p("core", "dom") }
         p("image-compose") { p("core", "html") }
     }
-    p(name = "symphony", id = "symphony-core") {
+    p("symphony") {
         p("visibility", "paginator", "selector", "actions", "table", "list", "collections")
-    }
-    p(name = "symphony", id = "symphony-input") {
         p("input") { p("core", "text", "number", "choice", "dialog") }
     }
+//    p(name = "symphony", id = "symphony-core") {
+//        p("visibility", "paginator", "selector", "actions", "table", "list", "collections")
+//    }
+//    p(name = "symphony", id = "symphony-input") {
+//        p("input") { p("core", "text", "number", "choice", "dialog") }
+//    }
     p("captain") {
         p("navigator") { p("api", "browser", "basic") }
         p("router") {
@@ -110,6 +114,16 @@ val projects = projects {
         p("email") { p("core", "markup", "config", "console", "brevo") }
         p("sms") { p("core", "config", "console", "kila") }
     }
+//    p("raven", id = "raven-core") {
+//        p("core", "config")
+//        p("outbox") { p("core", "local", "server", "client") }
+//    }
+//    p("raven", id = "raven-email") {
+//        p("email") { p("core", "markup", "config", "console", "brevo") }
+//    }
+//    p("raven", id = "raven-sms") {
+//        p("sms") { p("core", "config", "console", "kila") }
+//    }
     p("kida") { p("api", "brela", "fake") }
 }
 
@@ -133,7 +147,7 @@ fun WorkflowBuilder.buildProject(gp: GradleProject) = job(
         val argument = "kotlinUpgradePackageLock :$it:build"
         uses(
             name = "building $it",
-            action = GradleBuildActionV2(arguments = argument, buildRootDirectory = "./${gp.path}")
+            action = GradleBuildActionV2(arguments = argument, buildRootDirectory = "./${gp.path}", cacheDisabled = true)
         )
     }
 }
@@ -154,7 +168,7 @@ fun WorkflowBuilder.publishProject(gp: GradleProject, after: Job<JobOutputs.EMPT
     }
     uses(
         name = "publishing " + gp.modules.joinToString(", "),
-        action = GradleBuildActionV2(arguments = argument, buildRootDirectory = "./${gp.path}")
+        action = GradleBuildActionV2(arguments = argument, buildRootDirectory = "./${gp.path}", cacheDisabled = true)
     )
 }
 
