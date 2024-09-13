@@ -75,6 +75,20 @@ jobs:
         arguments: 'kotlinUpgradePackageLock :lexi-file:build'
         build-root-directory: './lexi'
     - id: 'step-6'
+      name: 'building lexi-configuration'
+      uses: 'gradle/gradle-build-action@v2'
+      with:
+        cache-disabled: 'true'
+        arguments: 'kotlinUpgradePackageLock :lexi-configuration:build'
+        build-root-directory: './lexi'
+    - id: 'step-7'
+      name: 'building lexi-formatters'
+      uses: 'gradle/gradle-build-action@v2'
+      with:
+        cache-disabled: 'true'
+        arguments: 'kotlinUpgradePackageLock :lexi-formatters:build'
+        build-root-directory: './lexi'
+    - id: 'step-8'
       name: 'building lexi-test-android'
       uses: 'gradle/gradle-build-action@v2'
       with:
@@ -208,6 +222,43 @@ jobs:
         cache-disabled: 'true'
         arguments: 'kotlinUpgradePackageLock :kase-possible:build'
         build-root-directory: './kase'
+  response-builder:
+    runs-on: 'macos-latest'
+    steps:
+    - id: 'step-0'
+      uses: 'actions/checkout@v3'
+      with:
+        submodules: 'true'
+    - id: 'step-1'
+      uses: 'actions/setup-java@v3'
+      with:
+        java-version: '18'
+        distribution: 'corretto'
+    - id: 'step-2'
+      name: 'Make ./gradlew executable'
+      working-directory: 'response'
+      run: 'chmod +x ./gradlew'
+    - id: 'step-3'
+      name: 'building response-core'
+      uses: 'gradle/gradle-build-action@v2'
+      with:
+        cache-disabled: 'true'
+        arguments: 'kotlinUpgradePackageLock :response-core:build'
+        build-root-directory: './response'
+    - id: 'step-4'
+      name: 'building response-ktor-server'
+      uses: 'gradle/gradle-build-action@v2'
+      with:
+        cache-disabled: 'true'
+        arguments: 'kotlinUpgradePackageLock :response-ktor-server:build'
+        build-root-directory: './response'
+    - id: 'step-5'
+      name: 'building response-ktor-client'
+      uses: 'gradle/gradle-build-action@v2'
+      with:
+        cache-disabled: 'true'
+        arguments: 'kotlinUpgradePackageLock :response-ktor-client:build'
+        build-root-directory: './response'
   koncurrent-builder:
     runs-on: 'macos-latest'
     steps:
@@ -433,6 +484,29 @@ jobs:
         cache-disabled: 'true'
         arguments: 'kotlinUpgradePackageLock :krono-kotlinx:build'
         build-root-directory: './krono-core'
+  habitat-builder:
+    runs-on: 'macos-latest'
+    steps:
+    - id: 'step-0'
+      uses: 'actions/checkout@v3'
+      with:
+        submodules: 'true'
+    - id: 'step-1'
+      uses: 'actions/setup-java@v3'
+      with:
+        java-version: '18'
+        distribution: 'corretto'
+    - id: 'step-2'
+      name: 'Make ./gradlew executable'
+      working-directory: 'habitat'
+      run: 'chmod +x ./gradlew'
+    - id: 'step-3'
+      name: 'building habitat-core'
+      uses: 'gradle/gradle-build-action@v2'
+      with:
+        cache-disabled: 'true'
+        arguments: 'kotlinUpgradePackageLock :habitat-core:build'
+        build-root-directory: './habitat'
   kiota-builder:
     runs-on: 'macos-latest'
     steps:
@@ -920,10 +994,12 @@ jobs:
     - 'kollections-builder'
     - 'kevlar-builder'
     - 'kase-builder'
+    - 'response-builder'
     - 'koncurrent-builder'
     - 'keep-builder'
     - 'cinematic-builder'
     - 'krono-core-builder'
+    - 'habitat-builder'
     - 'kiota-builder'
     - 'neat-builder'
     - 'epsilon-api-builder'
@@ -979,11 +1055,11 @@ jobs:
       working-directory: 'lexi'
       run: 'chmod +x ./gradlew'
     - id: 'step-3'
-      name: 'publishing lexi-api, lexi-console, lexi-file, lexi-test-android'
+      name: 'publishing lexi-api, lexi-console, lexi-file, lexi-configuration, lexi-formatters, lexi-test-android'
       uses: 'gradle/gradle-build-action@v2'
       with:
         cache-disabled: 'true'
-        arguments: 'kotlinUpgradePackageLock :lexi-api:publishAllPublicationsToMavenCentral :lexi-console:publishAllPublicationsToMavenCentral :lexi-file:publishAllPublicationsToMavenCentral :lexi-test-android:publishAllPublicationsToMavenCentral --no-configuration-cache'
+        arguments: 'kotlinUpgradePackageLock :lexi-api:publishAllPublicationsToMavenCentral :lexi-console:publishAllPublicationsToMavenCentral :lexi-file:publishAllPublicationsToMavenCentral :lexi-configuration:publishAllPublicationsToMavenCentral :lexi-formatters:publishAllPublicationsToMavenCentral :lexi-test-android:publishAllPublicationsToMavenCentral --no-configuration-cache'
         build-root-directory: './lexi'
   kommander-publisher:
     runs-on: 'macos-latest'
@@ -1085,6 +1161,31 @@ jobs:
         cache-disabled: 'true'
         arguments: 'kotlinUpgradePackageLock :kase-core:publishAllPublicationsToMavenCentral :kase-optional:publishAllPublicationsToMavenCentral :kase-possible:publishAllPublicationsToMavenCentral --no-configuration-cache'
         build-root-directory: './kase'
+  response-publisher:
+    runs-on: 'macos-latest'
+    needs:
+    - 'rendezvous'
+    steps:
+    - id: 'step-0'
+      uses: 'actions/checkout@v3'
+      with:
+        submodules: 'true'
+    - id: 'step-1'
+      uses: 'actions/setup-java@v3'
+      with:
+        java-version: '18'
+        distribution: 'corretto'
+    - id: 'step-2'
+      name: 'Make ./gradlew executable'
+      working-directory: 'response'
+      run: 'chmod +x ./gradlew'
+    - id: 'step-3'
+      name: 'publishing response-core, response-ktor-server, response-ktor-client'
+      uses: 'gradle/gradle-build-action@v2'
+      with:
+        cache-disabled: 'true'
+        arguments: 'kotlinUpgradePackageLock :response-core:publishAllPublicationsToMavenCentral :response-ktor-server:publishAllPublicationsToMavenCentral :response-ktor-client:publishAllPublicationsToMavenCentral --no-configuration-cache'
+        build-root-directory: './response'
   koncurrent-publisher:
     runs-on: 'macos-latest'
     needs:
@@ -1185,6 +1286,31 @@ jobs:
         cache-disabled: 'true'
         arguments: 'kotlinUpgradePackageLock :krono-api:publishAllPublicationsToMavenCentral :krono-kotlinx:publishAllPublicationsToMavenCentral --no-configuration-cache'
         build-root-directory: './krono-core'
+  habitat-publisher:
+    runs-on: 'macos-latest'
+    needs:
+    - 'rendezvous'
+    steps:
+    - id: 'step-0'
+      uses: 'actions/checkout@v3'
+      with:
+        submodules: 'true'
+    - id: 'step-1'
+      uses: 'actions/setup-java@v3'
+      with:
+        java-version: '18'
+        distribution: 'corretto'
+    - id: 'step-2'
+      name: 'Make ./gradlew executable'
+      working-directory: 'habitat'
+      run: 'chmod +x ./gradlew'
+    - id: 'step-3'
+      name: 'publishing habitat-core'
+      uses: 'gradle/gradle-build-action@v2'
+      with:
+        cache-disabled: 'true'
+        arguments: 'kotlinUpgradePackageLock :habitat-core:publishAllPublicationsToMavenCentral --no-configuration-cache'
+        build-root-directory: './habitat'
   kiota-publisher:
     runs-on: 'macos-latest'
     needs:

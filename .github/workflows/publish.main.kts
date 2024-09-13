@@ -50,7 +50,7 @@ val projects = projects {
         p("exports")
     }
     p("lexi") {
-        p("api", "console", "file")
+        p("api", "console", "file", "configuration", "formatters")
         p("test") { p("android") }
     }
     p("kommander") { p("core", "coroutines") }
@@ -58,12 +58,12 @@ val projects = projects {
     p("kevlar") { p("core") }
     p("kase") {
         p("core", "optional", "possible")
-//        p("response") {
-//            p("core")
-//            p("ktor") {
-//                p("server", "client")
-//            }
-//        }
+    }
+    p("response") {
+        p("core")
+        p("ktor") {
+            p("server", "client")
+        }
     }
 //    p("krest") { p("core") }
     p("koncurrent") {
@@ -78,6 +78,9 @@ val projects = projects {
         p("scene") { p("core") }
     }
     p("krono", "krono-core") { p("api", "kotlinx") }
+    p("habitat") {
+        p("core")
+    }
 //    p("hormone") { p("core") }
 //    p("geo") { p("countries", "core") }
 //    p("kash") { p("currency", "money") }

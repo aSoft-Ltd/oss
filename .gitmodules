@@ -112,3 +112,9 @@
 [submodule "raven"]
 	path = raven
 	url = https://github.com/asoft-ltd/raven
+[submodule "habitat"]
+	path = habitat
+	url = https://github.com/asoft-ltd/habitat
+[submodule "response"]
+	path = response
+	url = https://github.com/asoft-ltd/response
