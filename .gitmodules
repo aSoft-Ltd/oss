@@ -118,3 +118,9 @@
 [submodule "response"]
 	path = response
 	url = https://github.com/asoft-ltd/response
+[submodule "nation"]
+	path = nation
+	url = https://github.com/asoft-ltd/nation
+[submodule "sim"]
+	path = sim
+	url = https://github.com/asoft-ltd/sim

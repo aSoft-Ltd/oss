@@ -755,6 +755,73 @@ jobs:
         cache-disabled: 'true'
         arguments: 'kotlinUpgradePackageLock :symphony-input-dialog:build'
         build-root-directory: './symphony'
+    - id: 'step-15'
+      name: 'building symphony-input-phone'
+      uses: 'gradle/gradle-build-action@v2'
+      with:
+        cache-disabled: 'true'
+        arguments: 'kotlinUpgradePackageLock :symphony-input-phone:build'
+        build-root-directory: './symphony'
+  nation-builder:
+    runs-on: 'macos-latest'
+    steps:
+    - id: 'step-0'
+      uses: 'actions/checkout@v3'
+      with:
+        submodules: 'true'
+    - id: 'step-1'
+      uses: 'actions/setup-java@v3'
+      with:
+        java-version: '18'
+        distribution: 'corretto'
+    - id: 'step-2'
+      name: 'Make ./gradlew executable'
+      working-directory: 'nation'
+      run: 'chmod +x ./gradlew'
+    - id: 'step-3'
+      name: 'building nation-countries'
+      uses: 'gradle/gradle-build-action@v2'
+      with:
+        cache-disabled: 'true'
+        arguments: 'kotlinUpgradePackageLock :nation-countries:build'
+        build-root-directory: './nation'
+    - id: 'step-4'
+      name: 'building nation-currencies'
+      uses: 'gradle/gradle-build-action@v2'
+      with:
+        cache-disabled: 'true'
+        arguments: 'kotlinUpgradePackageLock :nation-currencies:build'
+        build-root-directory: './nation'
+    - id: 'step-5'
+      name: 'building nation-flags-compose'
+      uses: 'gradle/gradle-build-action@v2'
+      with:
+        cache-disabled: 'true'
+        arguments: 'kotlinUpgradePackageLock :nation-flags-compose:build'
+        build-root-directory: './nation'
+  sim-builder:
+    runs-on: 'macos-latest'
+    steps:
+    - id: 'step-0'
+      uses: 'actions/checkout@v3'
+      with:
+        submodules: 'true'
+    - id: 'step-1'
+      uses: 'actions/setup-java@v3'
+      with:
+        java-version: '18'
+        distribution: 'corretto'
+    - id: 'step-2'
+      name: 'Make ./gradlew executable'
+      working-directory: 'sim'
+      run: 'chmod +x ./gradlew'
+    - id: 'step-3'
+      name: 'building sim-core'
+      uses: 'gradle/gradle-build-action@v2'
+      with:
+        cache-disabled: 'true'
+        arguments: 'kotlinUpgradePackageLock :sim-core:build'
+        build-root-directory: './sim'
   captain-builder:
     runs-on: 'macos-latest'
     steps:
@@ -1005,6 +1072,8 @@ jobs:
     - 'epsilon-api-builder'
     - 'epsilon-client-builder'
     - 'symphony-builder'
+    - 'nation-builder'
+    - 'sim-builder'
     - 'captain-builder'
     - 'raven-builder'
     - 'kida-builder'
@@ -1430,12 +1499,62 @@ jobs:
       working-directory: 'symphony'
       run: 'chmod +x ./gradlew'
     - id: 'step-3'
-      name: 'publishing symphony-visibility, symphony-paginator, symphony-selector, symphony-actions, symphony-table, symphony-list, symphony-collections, symphony-input-core, symphony-input-text, symphony-input-number, symphony-input-choice, symphony-input-dialog'
+      name: 'publishing symphony-visibility, symphony-paginator, symphony-selector, symphony-actions, symphony-table, symphony-list, symphony-collections, symphony-input-core, symphony-input-text, symphony-input-number, symphony-input-choice, symphony-input-dialog, symphony-input-phone'
       uses: 'gradle/gradle-build-action@v2'
       with:
         cache-disabled: 'true'
-        arguments: 'kotlinUpgradePackageLock :symphony-visibility:publishAllPublicationsToMavenCentral :symphony-paginator:publishAllPublicationsToMavenCentral :symphony-selector:publishAllPublicationsToMavenCentral :symphony-actions:publishAllPublicationsToMavenCentral :symphony-table:publishAllPublicationsToMavenCentral :symphony-list:publishAllPublicationsToMavenCentral :symphony-collections:publishAllPublicationsToMavenCentral :symphony-input-core:publishAllPublicationsToMavenCentral :symphony-input-text:publishAllPublicationsToMavenCentral :symphony-input-number:publishAllPublicationsToMavenCentral :symphony-input-choice:publishAllPublicationsToMavenCentral :symphony-input-dialog:publishAllPublicationsToMavenCentral --no-configuration-cache'
+        arguments: 'kotlinUpgradePackageLock :symphony-visibility:publishAllPublicationsToMavenCentral :symphony-paginator:publishAllPublicationsToMavenCentral :symphony-selector:publishAllPublicationsToMavenCentral :symphony-actions:publishAllPublicationsToMavenCentral :symphony-table:publishAllPublicationsToMavenCentral :symphony-list:publishAllPublicationsToMavenCentral :symphony-collections:publishAllPublicationsToMavenCentral :symphony-input-core:publishAllPublicationsToMavenCentral :symphony-input-text:publishAllPublicationsToMavenCentral :symphony-input-number:publishAllPublicationsToMavenCentral :symphony-input-choice:publishAllPublicationsToMavenCentral :symphony-input-dialog:publishAllPublicationsToMavenCentral :symphony-input-phone:publishAllPublicationsToMavenCentral --no-configuration-cache'
         build-root-directory: './symphony'
+  nation-publisher:
+    runs-on: 'macos-latest'
+    needs:
+    - 'rendezvous'
+    steps:
+    - id: 'step-0'
+      uses: 'actions/checkout@v3'
+      with:
+        submodules: 'true'
+    - id: 'step-1'
+      uses: 'actions/setup-java@v3'
+      with:
+        java-version: '18'
+        distribution: 'corretto'
+    - id: 'step-2'
+      name: 'Make ./gradlew executable'
+      working-directory: 'nation'
+      run: 'chmod +x ./gradlew'
+    - id: 'step-3'
+      name: 'publishing nation-countries, nation-currencies, nation-flags-compose'
+      uses: 'gradle/gradle-build-action@v2'
+      with:
+        cache-disabled: 'true'
+        arguments: 'kotlinUpgradePackageLock :nation-countries:publishAllPublicationsToMavenCentral :nation-currencies:publishAllPublicationsToMavenCentral :nation-flags-compose:publishAllPublicationsToMavenCentral --no-configuration-cache'
+        build-root-directory: './nation'
+  sim-publisher:
+    runs-on: 'macos-latest'
+    needs:
+    - 'rendezvous'
+    steps:
+    - id: 'step-0'
+      uses: 'actions/checkout@v3'
+      with:
+        submodules: 'true'
+    - id: 'step-1'
+      uses: 'actions/setup-java@v3'
+      with:
+        java-version: '18'
+        distribution: 'corretto'
+    - id: 'step-2'
+      name: 'Make ./gradlew executable'
+      working-directory: 'sim'
+      run: 'chmod +x ./gradlew'
+    - id: 'step-3'
+      name: 'publishing sim-core'
+      uses: 'gradle/gradle-build-action@v2'
+      with:
+        cache-disabled: 'true'
+        arguments: 'kotlinUpgradePackageLock :sim-core:publishAllPublicationsToMavenCentral --no-configuration-cache'
+        build-root-directory: './sim'
   captain-publisher:
     runs-on: 'macos-latest'
     needs:

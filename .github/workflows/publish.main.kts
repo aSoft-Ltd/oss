@@ -45,7 +45,6 @@ data class GradleProject(
 fun projects(builder: ProjectsBuilder.() -> Unit): List<GradleProject> = ProjectsBuilder().apply(builder).projects
 
 val projects = projects {
-//    p("kronecker") { p("core") }
     p("kotlinx-interoperable") {
         p("exports")
     }
@@ -65,7 +64,6 @@ val projects = projects {
             p("server", "client")
         }
     }
-//    p("krest") { p("core") }
     p("koncurrent") {
         p("utils")
         p("executors") { p("core", "coroutines", "mock") }
@@ -81,9 +79,6 @@ val projects = projects {
     p("habitat") {
         p("core")
     }
-//    p("hormone") { p("core") }
-//    p("geo") { p("countries", "core") }
-//    p("kash") { p("currency", "money") }
     p("kiota") { p("url", "sse") }
     p("neat") { p("validation", "formatting") }
     p("epsilon", "epsilon-api") { p("core") }
@@ -95,14 +90,13 @@ val projects = projects {
     }
     p("symphony") {
         p("visibility", "paginator", "selector", "actions", "table", "list", "collections")
-        p("input") { p("core", "text", "number", "choice", "dialog") }
+        p("input") { p("core", "text", "number", "choice", "dialog", "phone") }
     }
-//    p(name = "symphony", id = "symphony-core") {
-//        p("visibility", "paginator", "selector", "actions", "table", "list", "collections")
-//    }
-//    p(name = "symphony", id = "symphony-input") {
-//        p("input") { p("core", "text", "number", "choice", "dialog") }
-//    }
+    p("nation") {
+        p("countries", "currencies")
+        p("flags") { p("compose") }
+    }
+    p("sim") { p("core") }
     p("captain") {
         p("navigator") { p("api", "browser", "basic") }
         p("router") {
@@ -117,16 +111,6 @@ val projects = projects {
         p("email") { p("core", "markup", "config", "console", "brevo") }
         p("sms") { p("core", "config", "console", "kila") }
     }
-//    p("raven", id = "raven-core") {
-//        p("core", "config")
-//        p("outbox") { p("core", "local", "server", "client") }
-//    }
-//    p("raven", id = "raven-email") {
-//        p("email") { p("core", "markup", "config", "console", "brevo") }
-//    }
-//    p("raven", id = "raven-sms") {
-//        p("sms") { p("core", "config", "console", "kila") }
-//    }
     p("kida") { p("api", "brela", "fake") }
 }
 
