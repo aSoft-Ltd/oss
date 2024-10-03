@@ -12,7 +12,6 @@ import io.github.typesafegithub.workflows.domain.RunnerType
 import io.github.typesafegithub.workflows.domain.triggers.Push
 import io.github.typesafegithub.workflows.dsl.JobBuilder
 import io.github.typesafegithub.workflows.dsl.WorkflowBuilder
-import io.github.typesafegithub.workflows.dsl.expressions.contexts.GitHubContext
 import io.github.typesafegithub.workflows.dsl.expressions.expr
 import io.github.typesafegithub.workflows.dsl.workflow
 import io.github.typesafegithub.workflows.yaml.toYaml
@@ -108,7 +107,11 @@ val projects = projects {
     p("raven") {
         p("core", "config")
         p("outbox") { p("core", "local", "server", "client") }
-        p("email") { p("core", "markup", "config", "console", "brevo") }
+        p("email") {
+            p("markup")
+            p("agent") { p("core", "config", "console", "brevo", "mailgun", "postmark") }
+            p("resources") { p("core", "file") }
+        }
         p("sms") { p("core", "config", "console", "kila") }
     }
     p("kida") { p("api", "brela", "fake") }
