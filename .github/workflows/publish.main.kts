@@ -1,11 +1,16 @@
 #!/usr/bin/env kotlin
 
-@file:DependsOn("io.github.typesafegithub:github-workflows-kt:0.44.0")
-//@file:DependsOn("io.github.typesafegithub:github-workflows-kt:3.0.0")
+@file:Repository("https://repo.maven.apache.org/maven2/")
+@file:DependsOn("io.github.typesafegithub:github-workflows-kt:3.0.1")
 
-import io.github.typesafegithub.workflows.actions.actions.CheckoutV3
-import io.github.typesafegithub.workflows.actions.actions.SetupJavaV3
-import io.github.typesafegithub.workflows.actions.gradle.GradleBuildActionV2
+@file:Repository("https://bindings.krzeminski.it")
+@file:DependsOn("actions:checkout:v3")
+@file:DependsOn("actions:setup-java:v3")
+@file:DependsOn("gradle:gradle-build-action:v2")
+
+import io.github.typesafegithub.workflows.actions.actions.Checkout
+import io.github.typesafegithub.workflows.actions.actions.SetupJava
+import io.github.typesafegithub.workflows.actions.gradle.GradleBuildAction
 import io.github.typesafegithub.workflows.domain.Job
 import io.github.typesafegithub.workflows.domain.JobOutputs
 import io.github.typesafegithub.workflows.domain.RunnerType
@@ -14,7 +19,7 @@ import io.github.typesafegithub.workflows.dsl.JobBuilder
 import io.github.typesafegithub.workflows.dsl.WorkflowBuilder
 import io.github.typesafegithub.workflows.dsl.expressions.expr
 import io.github.typesafegithub.workflows.dsl.workflow
-import io.github.typesafegithub.workflows.yaml.toYaml
+import io.github.typesafegithub.workflows.yaml.ConsistencyCheckJobConfig
 
 class ModuleBuilder(val parent: String) {
     val modules = mutableListOf<String>()
@@ -118,8 +123,8 @@ val projects = projects {
 }
 
 fun JobBuilder<JobOutputs.EMPTY>.setupAndCheckout(gp: GradleProject) {
-    uses(CheckoutV3(submodules = true))
-    uses(SetupJavaV3(javaVersion = "18", distribution = SetupJavaV3.Distribution.Corretto))
+    uses(action=Checkout(submodules = true))
+    uses(action=SetupJava(javaVersion = "18", distribution = SetupJava.Distribution.Corretto))
     run(
         name = "Make ./gradlew executable",
         command = "chmod +x ./gradlew",
@@ -137,7 +142,7 @@ fun WorkflowBuilder.buildProject(gp: GradleProject) = job(
         val argument = "kotlinUpgradePackageLock :$it:build"
         uses(
             name = "building $it",
-            action = GradleBuildActionV2(arguments = argument, buildRootDirectory = "./${gp.path}", cacheDisabled = true)
+            action = GradleBuildAction(arguments = argument, buildRootDirectory = "./${gp.path}", cacheDisabled = true)
         )
     }
 }
@@ -158,12 +163,12 @@ fun WorkflowBuilder.publishProject(gp: GradleProject, after: Job<JobOutputs.EMPT
     }
     uses(
         name = "publishing " + gp.modules.joinToString(", "),
-        action = GradleBuildActionV2(arguments = argument, buildRootDirectory = "./${gp.path}", cacheDisabled = true)
+        action = GradleBuildAction(arguments = argument, buildRootDirectory = "./${gp.path}", cacheDisabled = true)
     )
 }
 
-val wf = workflow(
-    name = "Build, Cache then Publish", on = listOf(Push(branches = listOf("main"))), sourceFile = __FILE__.toPath(),
+workflow(
+    name = "Build, Cache then Publish", on = listOf(Push(branches = listOf("main"))), sourceFile = __FILE__,
     env = linkedMapOf(
         "ORG_GRADLE_PROJECT_mavenCentralUsername" to expr { secrets["ASOFT_NEXUS_USERNAME"].toString() },
         "ORG_GRADLE_PROJECT_mavenCentralPassword" to expr { secrets["ASOFT_NEXUS_PASSWORD"].toString() },
@@ -171,12 +176,11 @@ val wf = workflow(
         "ORG_GRADLE_PROJECT_signingInMemoryKeyPassword" to expr { secrets["ORG_GRADLE_PROJECT_SIGNINGINMEMORYKEYPASSWORD"].toString() },
         "TARGETING_ALL" to "true"
     ),
+    consistencyCheckJobConfig = ConsistencyCheckJobConfig.Disabled,
 ) {
     val buildJobs = projects.map { buildProject(it) }
     val rendezvous = job(id = "rendezvous", runsOn = RunnerType.UbuntuLatest, needs = buildJobs) {
-        run("""echo "all builds completed. Beginning deployment"""")
+        run(command = """echo "all builds completed. Beginning deployment"""")
     }
     projects.forEach { publishProject(it, rendezvous) }
 }
-
-println(wf.toYaml(addConsistencyCheck = false))
