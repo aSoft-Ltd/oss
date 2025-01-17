@@ -120,15 +120,14 @@ val projects = projects {
         p("sms") { p("core", "config", "console", "kila") }
     }
     // <todo>
-    p("kash") { p("cents") }
-    p("klip") { p("api", "browser") }
+    p("klip") { p("api", "browser", "system") }
     // </todo>
     p("kida") { p("api", "brela", "fake") }
 }
 
 fun JobBuilder<JobOutputs.EMPTY>.setupAndCheckout(gp: GradleProject) {
-    uses(action=Checkout(submodules = true))
-    uses(action=SetupJava(javaVersion = "18", distribution = SetupJava.Distribution.Corretto))
+    uses(action = Checkout(submodules = true))
+    uses(action = SetupJava(javaVersion = "18", distribution = SetupJava.Distribution.Corretto))
     run(
         name = "Make ./gradlew executable",
         command = "chmod +x ./gradlew",
