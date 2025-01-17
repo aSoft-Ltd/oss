@@ -141,6 +141,11 @@ fun WorkflowBuilder.buildProject(gp: GradleProject) = job(
 ) {
     setupAndCheckout(gp)
 
+    run(
+        name = "Remove kotlin-js-store so that installing upgrading package-lock doesn't fail",
+        command = "rm kotlin-js-store -rf"
+    )
+
     gp.modules.forEach {
         val argument = "kotlinUpgradePackageLock :$it:build"
         uses(
