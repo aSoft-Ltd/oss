@@ -420,34 +420,41 @@ jobs:
         cache-disabled: 'true'
         arguments: 'kotlinUpgradePackageLock :cinematic-live-core:build'
     - id: 'step-4'
+      name: 'building cinematic-live-kollections'
+      uses: 'gradle/gradle-build-action@v2'
+      with:
+        build-root-directory: './cinematic'
+        cache-disabled: 'true'
+        arguments: 'kotlinUpgradePackageLock :cinematic-live-kollections:build'
+    - id: 'step-5'
       name: 'building cinematic-live-compose'
       uses: 'gradle/gradle-build-action@v2'
       with:
         build-root-directory: './cinematic'
         cache-disabled: 'true'
         arguments: 'kotlinUpgradePackageLock :cinematic-live-compose:build'
-    - id: 'step-5'
+    - id: 'step-6'
       name: 'building cinematic-live-coroutines'
       uses: 'gradle/gradle-build-action@v2'
       with:
         build-root-directory: './cinematic'
         cache-disabled: 'true'
         arguments: 'kotlinUpgradePackageLock :cinematic-live-coroutines:build'
-    - id: 'step-6'
+    - id: 'step-7'
       name: 'building cinematic-live-react'
       uses: 'gradle/gradle-build-action@v2'
       with:
         build-root-directory: './cinematic'
         cache-disabled: 'true'
         arguments: 'kotlinUpgradePackageLock :cinematic-live-react:build'
-    - id: 'step-7'
+    - id: 'step-8'
       name: 'building cinematic-live-test'
       uses: 'gradle/gradle-build-action@v2'
       with:
         build-root-directory: './cinematic'
         cache-disabled: 'true'
         arguments: 'kotlinUpgradePackageLock :cinematic-live-test:build'
-    - id: 'step-8'
+    - id: 'step-9'
       name: 'building cinematic-scene-core'
       uses: 'gradle/gradle-build-action@v2'
       with:
@@ -1043,6 +1050,43 @@ jobs:
         build-root-directory: './raven'
         cache-disabled: 'true'
         arguments: 'kotlinUpgradePackageLock :raven-sms-kila:build'
+  klip-builder:
+    runs-on: 'macos-latest'
+    steps:
+    - id: 'step-0'
+      uses: 'actions/checkout@v3'
+      with:
+        submodules: 'true'
+    - id: 'step-1'
+      uses: 'actions/setup-java@v3'
+      with:
+        java-version: '18'
+        distribution: 'corretto'
+    - id: 'step-2'
+      name: 'Make ./gradlew executable'
+      working-directory: 'klip'
+      run: 'chmod +x ./gradlew'
+    - id: 'step-3'
+      name: 'building klip-api'
+      uses: 'gradle/gradle-build-action@v2'
+      with:
+        build-root-directory: './klip'
+        cache-disabled: 'true'
+        arguments: 'kotlinUpgradePackageLock :klip-api:build'
+    - id: 'step-4'
+      name: 'building klip-browser'
+      uses: 'gradle/gradle-build-action@v2'
+      with:
+        build-root-directory: './klip'
+        cache-disabled: 'true'
+        arguments: 'kotlinUpgradePackageLock :klip-browser:build'
+    - id: 'step-5'
+      name: 'building klip-system'
+      uses: 'gradle/gradle-build-action@v2'
+      with:
+        build-root-directory: './klip'
+        cache-disabled: 'true'
+        arguments: 'kotlinUpgradePackageLock :klip-system:build'
   kida-builder:
     runs-on: 'macos-latest'
     steps:
@@ -1104,6 +1148,7 @@ jobs:
     - 'sim-builder'
     - 'captain-builder'
     - 'raven-builder'
+    - 'klip-builder'
     - 'kida-builder'
     steps:
     - id: 'step-0'
@@ -1352,12 +1397,12 @@ jobs:
       working-directory: 'cinematic'
       run: 'chmod +x ./gradlew'
     - id: 'step-3'
-      name: 'publishing cinematic-live-core, cinematic-live-compose, cinematic-live-coroutines, cinematic-live-react, cinematic-live-test, cinematic-scene-core'
+      name: 'publishing cinematic-live-core, cinematic-live-kollections, cinematic-live-compose, cinematic-live-coroutines, cinematic-live-react, cinematic-live-test, cinematic-scene-core'
       uses: 'gradle/gradle-build-action@v2'
       with:
         build-root-directory: './cinematic'
         cache-disabled: 'true'
-        arguments: 'kotlinUpgradePackageLock :cinematic-live-core:publishAllPublicationsToMavenCentral :cinematic-live-compose:publishAllPublicationsToMavenCentral :cinematic-live-coroutines:publishAllPublicationsToMavenCentral :cinematic-live-react:publishAllPublicationsToMavenCentral :cinematic-live-test:publishAllPublicationsToMavenCentral :cinematic-scene-core:publishAllPublicationsToMavenCentral --no-configuration-cache'
+        arguments: 'kotlinUpgradePackageLock :cinematic-live-core:publishAllPublicationsToMavenCentral :cinematic-live-kollections:publishAllPublicationsToMavenCentral :cinematic-live-compose:publishAllPublicationsToMavenCentral :cinematic-live-coroutines:publishAllPublicationsToMavenCentral :cinematic-live-react:publishAllPublicationsToMavenCentral :cinematic-live-test:publishAllPublicationsToMavenCentral :cinematic-scene-core:publishAllPublicationsToMavenCentral --no-configuration-cache'
   krono-core-publisher:
     runs-on: 'macos-latest'
     needs:
@@ -1633,6 +1678,31 @@ jobs:
         build-root-directory: './raven'
         cache-disabled: 'true'
         arguments: 'kotlinUpgradePackageLock :raven-core:publishAllPublicationsToMavenCentral :raven-config:publishAllPublicationsToMavenCentral :raven-outbox-core:publishAllPublicationsToMavenCentral :raven-outbox-local:publishAllPublicationsToMavenCentral :raven-outbox-server:publishAllPublicationsToMavenCentral :raven-outbox-client:publishAllPublicationsToMavenCentral :raven-email-markup:publishAllPublicationsToMavenCentral :raven-email-agent-core:publishAllPublicationsToMavenCentral :raven-email-agent-config:publishAllPublicationsToMavenCentral :raven-email-agent-console:publishAllPublicationsToMavenCentral :raven-email-agent-brevo:publishAllPublicationsToMavenCentral :raven-email-agent-mailgun:publishAllPublicationsToMavenCentral :raven-email-agent-postmark:publishAllPublicationsToMavenCentral :raven-email-resources-core:publishAllPublicationsToMavenCentral :raven-email-resources-file:publishAllPublicationsToMavenCentral :raven-sms-core:publishAllPublicationsToMavenCentral :raven-sms-config:publishAllPublicationsToMavenCentral :raven-sms-console:publishAllPublicationsToMavenCentral :raven-sms-kila:publishAllPublicationsToMavenCentral --no-configuration-cache'
+  klip-publisher:
+    runs-on: 'macos-latest'
+    needs:
+    - 'rendezvous'
+    steps:
+    - id: 'step-0'
+      uses: 'actions/checkout@v3'
+      with:
+        submodules: 'true'
+    - id: 'step-1'
+      uses: 'actions/setup-java@v3'
+      with:
+        java-version: '18'
+        distribution: 'corretto'
+    - id: 'step-2'
+      name: 'Make ./gradlew executable'
+      working-directory: 'klip'
+      run: 'chmod +x ./gradlew'
+    - id: 'step-3'
+      name: 'publishing klip-api, klip-browser, klip-system'
+      uses: 'gradle/gradle-build-action@v2'
+      with:
+        build-root-directory: './klip'
+        cache-disabled: 'true'
+        arguments: 'kotlinUpgradePackageLock :klip-api:publishAllPublicationsToMavenCentral :klip-browser:publishAllPublicationsToMavenCentral :klip-system:publishAllPublicationsToMavenCentral --no-configuration-cache'
   kida-publisher:
     runs-on: 'macos-latest'
     needs:
