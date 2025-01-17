@@ -71,7 +71,7 @@ val projects = projects {
     }
     p("keep") { p("api", "browser", "file", "mock", "react-native") }
     p("cinematic") {
-        p("live") { p("core", "compose", "coroutines", "react", "test") }
+        p("live") { p("core", "kollections", "compose", "coroutines", "react", "test") }
         p("scene") { p("core") }
     }
     p("krono", "krono-core") { p("api", "kotlinx") }
@@ -114,6 +114,10 @@ val projects = projects {
         }
         p("sms") { p("core", "config", "console", "kila") }
     }
+    // <todo>
+    p("kash") { p("cents") }
+    p("klip") { p("api", "browser") }
+    // </todo>
     p("kida") { p("api", "brela", "fake") }
 }
 
