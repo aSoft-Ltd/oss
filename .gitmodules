@@ -124,6 +124,3 @@
 [submodule "sim"]
 	path = sim
 	url = https://github.com/asoft-ltd/sim
-[submodule "system"]
-	path = system
-	url = https://github.com/asoft-ltd/system

@@ -83,7 +83,15 @@ val projects = projects {
     p("habitat") {
         p("core")
     }
-    p("kiota") { p("url", "sse") }
+    p("kiota") {
+        p("url", "sse")
+        p("file") {
+            p("core", "system", "test")
+            listOf("picker", "manager").forEach {
+                p(it) { p("core", "system", "test") }
+            }
+        }
+    }
     p("neat") { p("validation", "formatting") }
     p("epsilon", "epsilon-api") { p("core") }
     p("epsilon", "epsilon-client") {
@@ -123,6 +131,10 @@ val projects = projects {
     p("klip") { p("api", "browser", "system") }
     // </todo>
     p("kida") { p("api", "brela", "fake") }
+    p("majestic") {
+        p("theme", "table", "graphs", "drawers", "screen", "loaders")
+        p("input") { p("core", "text", "color", "choice", "phone") }
+    }
 }
 
 fun JobBuilder<JobOutputs.EMPTY>.setupAndCheckout(gp: GradleProject) {
