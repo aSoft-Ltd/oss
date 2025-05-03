@@ -131,10 +131,10 @@ val projects = projects {
     p("klip") { p("api", "browser", "system") }
     // </todo>
     p("kida") { p("api", "brela", "fake") }
-    p("majestic") {
-        p("theme", "table", "graphs", "drawers", "screen", "loaders")
-        p("input") { p("core", "text", "color", "choice", "phone") }
-    }
+//    p("majestic") {
+//        p("theme", "table", "graphs", "drawers", "screen", "loaders")
+//        p("input") { p("core", "text", "color", "choice", "phone") }
+//    }
 }
 
 fun JobBuilder<JobOutputs.EMPTY>.setupAndCheckout(gp: GradleProject) {
