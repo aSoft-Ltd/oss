@@ -618,41 +618,48 @@ jobs:
         cache-disabled: 'true'
         arguments: 'kotlinUpgradePackageLock :kiota-file-test:build'
     - id: 'step-9'
+      name: 'building kiota-file-compose'
+      uses: 'gradle/gradle-build-action@v2'
+      with:
+        build-root-directory: './kiota'
+        cache-disabled: 'true'
+        arguments: 'kotlinUpgradePackageLock :kiota-file-compose:build'
+    - id: 'step-10'
       name: 'building kiota-file-picker-core'
       uses: 'gradle/gradle-build-action@v2'
       with:
         build-root-directory: './kiota'
         cache-disabled: 'true'
         arguments: 'kotlinUpgradePackageLock :kiota-file-picker-core:build'
-    - id: 'step-10'
+    - id: 'step-11'
       name: 'building kiota-file-picker-system'
       uses: 'gradle/gradle-build-action@v2'
       with:
         build-root-directory: './kiota'
         cache-disabled: 'true'
         arguments: 'kotlinUpgradePackageLock :kiota-file-picker-system:build'
-    - id: 'step-11'
+    - id: 'step-12'
       name: 'building kiota-file-picker-test'
       uses: 'gradle/gradle-build-action@v2'
       with:
         build-root-directory: './kiota'
         cache-disabled: 'true'
         arguments: 'kotlinUpgradePackageLock :kiota-file-picker-test:build'
-    - id: 'step-12'
+    - id: 'step-13'
       name: 'building kiota-file-manager-core'
       uses: 'gradle/gradle-build-action@v2'
       with:
         build-root-directory: './kiota'
         cache-disabled: 'true'
         arguments: 'kotlinUpgradePackageLock :kiota-file-manager-core:build'
-    - id: 'step-13'
+    - id: 'step-14'
       name: 'building kiota-file-manager-system'
       uses: 'gradle/gradle-build-action@v2'
       with:
         build-root-directory: './kiota'
         cache-disabled: 'true'
         arguments: 'kotlinUpgradePackageLock :kiota-file-manager-system:build'
-    - id: 'step-14'
+    - id: 'step-15'
       name: 'building kiota-file-manager-test'
       uses: 'gradle/gradle-build-action@v2'
       with:
@@ -1197,47 +1204,6 @@ jobs:
         build-root-directory: './raven'
         cache-disabled: 'true'
         arguments: 'kotlinUpgradePackageLock :raven-sms-kila:build'
-  klip-builder:
-    runs-on: 'macos-latest'
-    steps:
-    - id: 'step-0'
-      uses: 'actions/checkout@v3'
-      with:
-        submodules: 'true'
-    - id: 'step-1'
-      uses: 'actions/setup-java@v3'
-      with:
-        java-version: '18'
-        distribution: 'corretto'
-    - id: 'step-2'
-      name: 'Make ./gradlew executable'
-      working-directory: 'klip'
-      run: 'chmod +x ./gradlew'
-    - id: 'step-3'
-      name: 'Remove kotlin-js-store so that installing upgrading package-lock doesn''t fail'
-      working-directory: 'klip'
-      run: 'rm ./kotlin-js-store -rf | echo "done"'
-    - id: 'step-4'
-      name: 'building klip-api'
-      uses: 'gradle/gradle-build-action@v2'
-      with:
-        build-root-directory: './klip'
-        cache-disabled: 'true'
-        arguments: 'kotlinUpgradePackageLock :klip-api:build'
-    - id: 'step-5'
-      name: 'building klip-browser'
-      uses: 'gradle/gradle-build-action@v2'
-      with:
-        build-root-directory: './klip'
-        cache-disabled: 'true'
-        arguments: 'kotlinUpgradePackageLock :klip-browser:build'
-    - id: 'step-6'
-      name: 'building klip-system'
-      uses: 'gradle/gradle-build-action@v2'
-      with:
-        build-root-directory: './klip'
-        cache-disabled: 'true'
-        arguments: 'kotlinUpgradePackageLock :klip-system:build'
   kida-builder:
     runs-on: 'macos-latest'
     steps:
@@ -1303,7 +1269,6 @@ jobs:
     - 'sim-builder'
     - 'captain-builder'
     - 'raven-builder'
-    - 'klip-builder'
     - 'kida-builder'
     steps:
     - id: 'step-0'
@@ -1627,12 +1592,12 @@ jobs:
       working-directory: 'kiota'
       run: 'chmod +x ./gradlew'
     - id: 'step-3'
-      name: 'publishing kiota-url, kiota-sse, kiota-file-core, kiota-file-system, kiota-file-test, kiota-file-picker-core, kiota-file-picker-system, kiota-file-picker-test, kiota-file-manager-core, kiota-file-manager-system, kiota-file-manager-test'
+      name: 'publishing kiota-url, kiota-sse, kiota-file-core, kiota-file-system, kiota-file-test, kiota-file-compose, kiota-file-picker-core, kiota-file-picker-system, kiota-file-picker-test, kiota-file-manager-core, kiota-file-manager-system, kiota-file-manager-test'
       uses: 'gradle/gradle-build-action@v2'
       with:
         build-root-directory: './kiota'
         cache-disabled: 'true'
-        arguments: 'kotlinUpgradePackageLock :kiota-url:publishAllPublicationsToMavenCentral :kiota-sse:publishAllPublicationsToMavenCentral :kiota-file-core:publishAllPublicationsToMavenCentral :kiota-file-system:publishAllPublicationsToMavenCentral :kiota-file-test:publishAllPublicationsToMavenCentral :kiota-file-picker-core:publishAllPublicationsToMavenCentral :kiota-file-picker-system:publishAllPublicationsToMavenCentral :kiota-file-picker-test:publishAllPublicationsToMavenCentral :kiota-file-manager-core:publishAllPublicationsToMavenCentral :kiota-file-manager-system:publishAllPublicationsToMavenCentral :kiota-file-manager-test:publishAllPublicationsToMavenCentral --no-configuration-cache'
+        arguments: 'kotlinUpgradePackageLock :kiota-url:publishAllPublicationsToMavenCentral :kiota-sse:publishAllPublicationsToMavenCentral :kiota-file-core:publishAllPublicationsToMavenCentral :kiota-file-system:publishAllPublicationsToMavenCentral :kiota-file-test:publishAllPublicationsToMavenCentral :kiota-file-compose:publishAllPublicationsToMavenCentral :kiota-file-picker-core:publishAllPublicationsToMavenCentral :kiota-file-picker-system:publishAllPublicationsToMavenCentral :kiota-file-picker-test:publishAllPublicationsToMavenCentral :kiota-file-manager-core:publishAllPublicationsToMavenCentral :kiota-file-manager-system:publishAllPublicationsToMavenCentral :kiota-file-manager-test:publishAllPublicationsToMavenCentral --no-configuration-cache'
   neat-publisher:
     runs-on: 'macos-latest'
     needs:
@@ -1833,31 +1798,6 @@ jobs:
         build-root-directory: './raven'
         cache-disabled: 'true'
         arguments: 'kotlinUpgradePackageLock :raven-core:publishAllPublicationsToMavenCentral :raven-config:publishAllPublicationsToMavenCentral :raven-outbox-core:publishAllPublicationsToMavenCentral :raven-outbox-local:publishAllPublicationsToMavenCentral :raven-outbox-server:publishAllPublicationsToMavenCentral :raven-outbox-client:publishAllPublicationsToMavenCentral :raven-email-markup:publishAllPublicationsToMavenCentral :raven-email-agent-core:publishAllPublicationsToMavenCentral :raven-email-agent-config:publishAllPublicationsToMavenCentral :raven-email-agent-console:publishAllPublicationsToMavenCentral :raven-email-agent-brevo:publishAllPublicationsToMavenCentral :raven-email-agent-mailgun:publishAllPublicationsToMavenCentral :raven-email-agent-postmark:publishAllPublicationsToMavenCentral :raven-email-resources-core:publishAllPublicationsToMavenCentral :raven-email-resources-file:publishAllPublicationsToMavenCentral :raven-sms-core:publishAllPublicationsToMavenCentral :raven-sms-config:publishAllPublicationsToMavenCentral :raven-sms-console:publishAllPublicationsToMavenCentral :raven-sms-kila:publishAllPublicationsToMavenCentral --no-configuration-cache'
-  klip-publisher:
-    runs-on: 'macos-latest'
-    needs:
-    - 'rendezvous'
-    steps:
-    - id: 'step-0'
-      uses: 'actions/checkout@v3'
-      with:
-        submodules: 'true'
-    - id: 'step-1'
-      uses: 'actions/setup-java@v3'
-      with:
-        java-version: '18'
-        distribution: 'corretto'
-    - id: 'step-2'
-      name: 'Make ./gradlew executable'
-      working-directory: 'klip'
-      run: 'chmod +x ./gradlew'
-    - id: 'step-3'
-      name: 'publishing klip-api, klip-browser, klip-system'
-      uses: 'gradle/gradle-build-action@v2'
-      with:
-        build-root-directory: './klip'
-        cache-disabled: 'true'
-        arguments: 'kotlinUpgradePackageLock :klip-api:publishAllPublicationsToMavenCentral :klip-browser:publishAllPublicationsToMavenCentral :klip-system:publishAllPublicationsToMavenCentral --no-configuration-cache'
   kida-publisher:
     runs-on: 'macos-latest'
     needs:

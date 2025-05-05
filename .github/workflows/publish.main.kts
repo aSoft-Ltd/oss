@@ -86,7 +86,7 @@ val projects = projects {
     p("kiota") {
         p("url", "sse")
         p("file") {
-            p("core", "system", "test")
+            p("core", "system", "test", "compose")
             listOf("picker", "manager").forEach {
                 p(it) { p("core", "system", "test") }
             }
@@ -128,7 +128,7 @@ val projects = projects {
         p("sms") { p("core", "config", "console", "kila") }
     }
     // <todo>
-    p("klip") { p("api", "browser", "system") }
+//    p("klip") { p("api", "browser", "system") }
     // </todo>
     p("kida") { p("api", "brela", "fake") }
 //    p("majestic") {
