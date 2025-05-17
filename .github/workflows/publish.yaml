@@ -611,12 +611,12 @@ jobs:
         cache-disabled: 'true'
         arguments: 'kotlinUpgradePackageLock :kiota-file-system:build'
     - id: 'step-8'
-      name: 'building kiota-file-test'
+      name: 'building kiota-file-virtual'
       uses: 'gradle/gradle-build-action@v2'
       with:
         build-root-directory: './kiota'
         cache-disabled: 'true'
-        arguments: 'kotlinUpgradePackageLock :kiota-file-test:build'
+        arguments: 'kotlinUpgradePackageLock :kiota-file-virtual:build'
     - id: 'step-9'
       name: 'building kiota-file-compose'
       uses: 'gradle/gradle-build-action@v2'
@@ -639,12 +639,12 @@ jobs:
         cache-disabled: 'true'
         arguments: 'kotlinUpgradePackageLock :kiota-file-picker-system:build'
     - id: 'step-12'
-      name: 'building kiota-file-picker-test'
+      name: 'building kiota-file-picker-virtual'
       uses: 'gradle/gradle-build-action@v2'
       with:
         build-root-directory: './kiota'
         cache-disabled: 'true'
-        arguments: 'kotlinUpgradePackageLock :kiota-file-picker-test:build'
+        arguments: 'kotlinUpgradePackageLock :kiota-file-picker-virtual:build'
     - id: 'step-13'
       name: 'building kiota-file-manager-core'
       uses: 'gradle/gradle-build-action@v2'
@@ -660,12 +660,12 @@ jobs:
         cache-disabled: 'true'
         arguments: 'kotlinUpgradePackageLock :kiota-file-manager-system:build'
     - id: 'step-15'
-      name: 'building kiota-file-manager-test'
+      name: 'building kiota-file-manager-virtual'
       uses: 'gradle/gradle-build-action@v2'
       with:
         build-root-directory: './kiota'
         cache-disabled: 'true'
-        arguments: 'kotlinUpgradePackageLock :kiota-file-manager-test:build'
+        arguments: 'kotlinUpgradePackageLock :kiota-file-manager-virtual:build'
   neat-builder:
     runs-on: 'macos-latest'
     steps:
@@ -1592,12 +1592,12 @@ jobs:
       working-directory: 'kiota'
       run: 'chmod +x ./gradlew'
     - id: 'step-3'
-      name: 'publishing kiota-url, kiota-sse, kiota-file-core, kiota-file-system, kiota-file-test, kiota-file-compose, kiota-file-picker-core, kiota-file-picker-system, kiota-file-picker-test, kiota-file-manager-core, kiota-file-manager-system, kiota-file-manager-test'
+      name: 'publishing kiota-url, kiota-sse, kiota-file-core, kiota-file-system, kiota-file-virtual, kiota-file-compose, kiota-file-picker-core, kiota-file-picker-system, kiota-file-picker-virtual, kiota-file-manager-core, kiota-file-manager-system, kiota-file-manager-virtual'
       uses: 'gradle/gradle-build-action@v2'
       with:
         build-root-directory: './kiota'
         cache-disabled: 'true'
-        arguments: 'kotlinUpgradePackageLock :kiota-url:publishAllPublicationsToMavenCentral :kiota-sse:publishAllPublicationsToMavenCentral :kiota-file-core:publishAllPublicationsToMavenCentral :kiota-file-system:publishAllPublicationsToMavenCentral :kiota-file-test:publishAllPublicationsToMavenCentral :kiota-file-compose:publishAllPublicationsToMavenCentral :kiota-file-picker-core:publishAllPublicationsToMavenCentral :kiota-file-picker-system:publishAllPublicationsToMavenCentral :kiota-file-picker-test:publishAllPublicationsToMavenCentral :kiota-file-manager-core:publishAllPublicationsToMavenCentral :kiota-file-manager-system:publishAllPublicationsToMavenCentral :kiota-file-manager-test:publishAllPublicationsToMavenCentral --no-configuration-cache'
+        arguments: 'kotlinUpgradePackageLock :kiota-url:publishAllPublicationsToMavenCentral :kiota-sse:publishAllPublicationsToMavenCentral :kiota-file-core:publishAllPublicationsToMavenCentral :kiota-file-system:publishAllPublicationsToMavenCentral :kiota-file-virtual:publishAllPublicationsToMavenCentral :kiota-file-compose:publishAllPublicationsToMavenCentral :kiota-file-picker-core:publishAllPublicationsToMavenCentral :kiota-file-picker-system:publishAllPublicationsToMavenCentral :kiota-file-picker-virtual:publishAllPublicationsToMavenCentral :kiota-file-manager-core:publishAllPublicationsToMavenCentral :kiota-file-manager-system:publishAllPublicationsToMavenCentral :kiota-file-manager-virtual:publishAllPublicationsToMavenCentral --no-configuration-cache'
   neat-publisher:
     runs-on: 'macos-latest'
     needs:
