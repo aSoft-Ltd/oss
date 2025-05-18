@@ -180,7 +180,11 @@ fun WorkflowBuilder.buildProject(gp: GradleProject) = job(
     gp.modules.forEach {
         uses(
             name = "building $it",
-            action = GradleBuildAction(arguments = ":$it:build", buildRootDirectory = "./${gp.path}", cacheDisabled = true)
+            action = GradleBuildAction(
+                arguments = "kotlinUpgradePackageLock :$it:build --rerun-tasks",
+                buildRootDirectory = "./${gp.path}",
+                cacheDisabled = true
+            )
         )
     }
 }
