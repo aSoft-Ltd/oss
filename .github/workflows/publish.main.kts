@@ -153,17 +153,25 @@ fun WorkflowBuilder.buildProject(gp: GradleProject) = job(
 ) {
     setupAndCheckout(gp)
 
-    run(
-        name = "Remove kotlin-js-store so that installing upgrading package-lock doesn't fail",
-        command = """rm ./kotlin-js-store -rf | echo "done"""",
-        workingDirectory = gp.path,
+//    run(
+//        name = "Remove kotlin-js-store so that installing upgrading package-lock doesn't fail",
+//        command = """rm ./kotlin-js-store -rf | echo "done"""",
+//        workingDirectory = gp.path,
+//    )
+
+    uses(
+        name = "Updating package.lock",
+        action = GradleBuildAction(
+            arguments = "kotlinUpgradePackageLock --rerun-tasks",
+            buildRootDirectory = "./${gp.path}",
+            cacheDisabled = true
+        )
     )
 
     gp.modules.forEach {
-        val argument = "kotlinUpgradePackageLock :$it:build"
         uses(
             name = "building $it",
-            action = GradleBuildAction(arguments = argument, buildRootDirectory = "./${gp.path}", cacheDisabled = true)
+            action = GradleBuildAction(arguments = ":$it:build", buildRootDirectory = "./${gp.path}", cacheDisabled = true)
         )
     }
 }
@@ -175,13 +183,22 @@ fun WorkflowBuilder.publishProject(gp: GradleProject, after: Job<JobOutputs.EMPT
 ) {
     setupAndCheckout(gp)
 
+    uses(
+        name = "Updating package.lock",
+        action = GradleBuildAction(
+            arguments = "kotlinUpgradePackageLock --rerun-tasks",
+            buildRootDirectory = "./${gp.path}",
+            cacheDisabled = true
+        )
+    )
+
     val argument = gp.modules.joinToString(
-        prefix = "kotlinUpgradePackageLock ",
         separator = " ",
         postfix = " --no-configuration-cache"
     ) {
         ":$it:publishAllPublicationsToMavenCentral"
     }
+
     uses(
         name = "publishing " + gp.modules.joinToString(", "),
         action = GradleBuildAction(arguments = argument, buildRootDirectory = "./${gp.path}", cacheDisabled = true)
