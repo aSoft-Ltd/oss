@@ -162,6 +162,15 @@ fun WorkflowBuilder.buildProject(gp: GradleProject) = job(
     uses(
         name = "Updating package.lock",
         action = GradleBuildAction(
+            arguments = "kotlinUpgradePackageLock",
+            buildRootDirectory = "./${gp.path}",
+            cacheDisabled = true
+        )
+    )
+
+    uses(
+        name = "Assuring package.lock is well updated",
+        action = GradleBuildAction(
             arguments = "kotlinUpgradePackageLock --rerun-tasks",
             buildRootDirectory = "./${gp.path}",
             cacheDisabled = true
@@ -183,14 +192,14 @@ fun WorkflowBuilder.publishProject(gp: GradleProject, after: Job<JobOutputs.EMPT
 ) {
     setupAndCheckout(gp)
 
-    uses(
-        name = "Updating package.lock",
-        action = GradleBuildAction(
-            arguments = "kotlinUpgradePackageLock --rerun-tasks",
-            buildRootDirectory = "./${gp.path}",
-            cacheDisabled = true
-        )
-    )
+//    uses(
+//        name = "Updating package.lock",
+//        action = GradleBuildAction(
+//            arguments = "kotlinUpgradePackageLock --rerun-tasks",
+//            buildRootDirectory = "./${gp.path}",
+//            cacheDisabled = true
+//        )
+//    )
 
     val argument = gp.modules.joinToString(
         separator = " ",
