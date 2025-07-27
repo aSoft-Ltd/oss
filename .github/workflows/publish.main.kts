@@ -127,6 +127,8 @@ val projects = projects {
         }
         p("sms") { p("core", "config", "console", "kila") }
     }
+    p("status") { p("core", "scene") }
+    p("krest") { p("core") }
     // <todo>
 //    p("klip") { p("api", "browser", "system") }
     // </todo>
@@ -162,7 +164,7 @@ fun WorkflowBuilder.buildProject(gp: GradleProject) = job(
     uses(
         name = "Updating package.lock",
         action = GradleBuildAction(
-            arguments = "kotlinUpgradePackageLock",
+            arguments = "kotlinUpgradePackageLock kotlinWasmUpgradePackageLock",
             buildRootDirectory = "./${gp.path}",
             cacheDisabled = true
         )
@@ -171,7 +173,7 @@ fun WorkflowBuilder.buildProject(gp: GradleProject) = job(
     uses(
         name = "Assuring package.lock is well updated",
         action = GradleBuildAction(
-            arguments = "kotlinUpgradePackageLock --rerun-tasks",
+            arguments = "kotlinUpgradePackageLock kotlinWasmUpgradePackageLock --rerun-tasks",
             buildRootDirectory = "./${gp.path}",
             cacheDisabled = true
         )
@@ -181,7 +183,7 @@ fun WorkflowBuilder.buildProject(gp: GradleProject) = job(
         uses(
             name = "building $it",
             action = GradleBuildAction(
-                arguments = "kotlinUpgradePackageLock :$it:build --rerun-tasks",
+                arguments = "kotlinUpgradePackageLock kotlinWasmUpgradePackageLock :$it:build --rerun-tasks",
                 buildRootDirectory = "./${gp.path}",
                 cacheDisabled = true
             )
