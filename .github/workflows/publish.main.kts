@@ -91,6 +91,7 @@ val projects = projects {
                 p(it) { p("core", "system", "virtual") }
             }
         }
+        p("connection") { p("core", "http", "manual") }
     }
     p("neat") { p("validation", "formatting") }
     p("epsilon", "epsilon-api") { p("core") }
@@ -179,16 +180,16 @@ fun WorkflowBuilder.buildProject(gp: GradleProject) = job(
         )
     )
 
-    gp.modules.forEach {
-        uses(
-            name = "building $it",
-            action = GradleBuildAction(
-                arguments = "kotlinUpgradePackageLock kotlinWasmUpgradePackageLock :$it:build --rerun-tasks",
-                buildRootDirectory = "./${gp.path}",
-                cacheDisabled = true
-            )
-        )
-    }
+//    gp.modules.forEach { // Disabling building // untill https://youtrack.jetbrains.com/issue/KT-80014 gets fixed
+//        uses(
+//            name = "building $it",
+//            action = GradleBuildAction(
+//                arguments = "kotlinUpgradePackageLock kotlinWasmUpgradePackageLock :$it:build --rerun-tasks",
+//                buildRootDirectory = "./${gp.path}",
+//                cacheDisabled = true
+//            )
+//        )
+//    }
 }
 
 fun WorkflowBuilder.publishProject(gp: GradleProject, after: Job<JobOutputs.EMPTY>) = job(
