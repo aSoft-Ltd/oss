@@ -74,7 +74,9 @@ val projects = projects {
         p("awaited") { p("core", "coroutines", "test") }
         p("later") { p("core", "coroutines", "test") }
     }
-    p("keep") { p("api", "browser", "file", "mock", "react-native") }
+    p("keep") {
+        p("api", "browser", "file", "mock") // , "react-native") untill https://youtrack.jetbrains.com/issue/KT-80014 gets fixed
+    }
     p("cinematic") {
         p("live") { p("core", "kollections", "compose", "coroutines", "react", "test") }
         p("scene") { p("core") }

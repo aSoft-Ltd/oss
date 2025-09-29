@@ -983,12 +983,12 @@ jobs:
       working-directory: 'keep'
       run: 'chmod +x ./gradlew'
     - id: 'step-3'
-      name: 'publishing keep-api, keep-browser, keep-file, keep-mock, keep-react-native'
+      name: 'publishing keep-api, keep-browser, keep-file, keep-mock'
       uses: 'gradle/gradle-build-action@v2'
       with:
         build-root-directory: './keep'
         cache-disabled: 'true'
-        arguments: ':keep-api:publishAllPublicationsToMavenCentral :keep-browser:publishAllPublicationsToMavenCentral :keep-file:publishAllPublicationsToMavenCentral :keep-mock:publishAllPublicationsToMavenCentral :keep-react-native:publishAllPublicationsToMavenCentral --no-configuration-cache'
+        arguments: ':keep-api:publishAllPublicationsToMavenCentral :keep-browser:publishAllPublicationsToMavenCentral :keep-file:publishAllPublicationsToMavenCentral :keep-mock:publishAllPublicationsToMavenCentral --no-configuration-cache'
   cinematic-publisher:
     runs-on: 'macos-latest'
     needs:
