@@ -15,7 +15,7 @@ env:
   TARGETING_ALL: 'true'
 jobs:
   kotlinx-interoperable-builder:
-    runs-on: 'macos-latest'
+    runs-on: 'ubuntu-latest'
     steps:
     - id: 'step-0'
       uses: 'actions/checkout@v3'
@@ -31,7 +31,7 @@ jobs:
       working-directory: 'kotlinx-interoperable'
       run: 'chmod +x ./gradlew'
   lexi-builder:
-    runs-on: 'macos-latest'
+    runs-on: 'ubuntu-latest'
     steps:
     - id: 'step-0'
       uses: 'actions/checkout@v3'
@@ -47,7 +47,7 @@ jobs:
       working-directory: 'lexi'
       run: 'chmod +x ./gradlew'
   kommander-builder:
-    runs-on: 'macos-latest'
+    runs-on: 'ubuntu-latest'
     steps:
     - id: 'step-0'
       uses: 'actions/checkout@v3'
@@ -63,7 +63,7 @@ jobs:
       working-directory: 'kommander'
       run: 'chmod +x ./gradlew'
   kevlar-builder:
-    runs-on: 'macos-latest'
+    runs-on: 'ubuntu-latest'
     steps:
     - id: 'step-0'
       uses: 'actions/checkout@v3'
@@ -79,7 +79,7 @@ jobs:
       working-directory: 'kevlar'
       run: 'chmod +x ./gradlew'
   kase-builder:
-    runs-on: 'macos-latest'
+    runs-on: 'ubuntu-latest'
     steps:
     - id: 'step-0'
       uses: 'actions/checkout@v3'
@@ -95,7 +95,7 @@ jobs:
       working-directory: 'kase'
       run: 'chmod +x ./gradlew'
   response-builder:
-    runs-on: 'macos-latest'
+    runs-on: 'ubuntu-latest'
     steps:
     - id: 'step-0'
       uses: 'actions/checkout@v3'
@@ -111,7 +111,7 @@ jobs:
       working-directory: 'response'
       run: 'chmod +x ./gradlew'
   keep-builder:
-    runs-on: 'macos-latest'
+    runs-on: 'ubuntu-latest'
     steps:
     - id: 'step-0'
       uses: 'actions/checkout@v3'
@@ -127,7 +127,7 @@ jobs:
       working-directory: 'keep'
       run: 'chmod +x ./gradlew'
   cinematic-builder:
-    runs-on: 'macos-latest'
+    runs-on: 'ubuntu-latest'
     steps:
     - id: 'step-0'
       uses: 'actions/checkout@v3'
@@ -143,7 +143,7 @@ jobs:
       working-directory: 'cinematic'
       run: 'chmod +x ./gradlew'
   krono-core-builder:
-    runs-on: 'macos-latest'
+    runs-on: 'ubuntu-latest'
     steps:
     - id: 'step-0'
       uses: 'actions/checkout@v3'
@@ -159,7 +159,7 @@ jobs:
       working-directory: 'krono-core'
       run: 'chmod +x ./gradlew'
   habitat-builder:
-    runs-on: 'macos-latest'
+    runs-on: 'ubuntu-latest'
     steps:
     - id: 'step-0'
       uses: 'actions/checkout@v3'
@@ -175,7 +175,7 @@ jobs:
       working-directory: 'habitat'
       run: 'chmod +x ./gradlew'
   kiota-builder:
-    runs-on: 'macos-latest'
+    runs-on: 'ubuntu-latest'
     steps:
     - id: 'step-0'
       uses: 'actions/checkout@v3'
@@ -191,7 +191,7 @@ jobs:
       working-directory: 'kiota'
       run: 'chmod +x ./gradlew'
   neat-builder:
-    runs-on: 'macos-latest'
+    runs-on: 'ubuntu-latest'
     steps:
     - id: 'step-0'
       uses: 'actions/checkout@v3'
@@ -207,7 +207,7 @@ jobs:
       working-directory: 'neat'
       run: 'chmod +x ./gradlew'
   symphony-builder:
-    runs-on: 'macos-latest'
+    runs-on: 'ubuntu-latest'
     steps:
     - id: 'step-0'
       uses: 'actions/checkout@v3'
@@ -223,7 +223,7 @@ jobs:
       working-directory: 'symphony'
       run: 'chmod +x ./gradlew'
   nation-builder:
-    runs-on: 'macos-latest'
+    runs-on: 'ubuntu-latest'
     steps:
     - id: 'step-0'
       uses: 'actions/checkout@v3'
@@ -239,7 +239,7 @@ jobs:
       working-directory: 'nation'
       run: 'chmod +x ./gradlew'
   sim-builder:
-    runs-on: 'macos-latest'
+    runs-on: 'ubuntu-latest'
     steps:
     - id: 'step-0'
       uses: 'actions/checkout@v3'
@@ -255,7 +255,7 @@ jobs:
       working-directory: 'sim'
       run: 'chmod +x ./gradlew'
   captain-builder:
-    runs-on: 'macos-latest'
+    runs-on: 'ubuntu-latest'
     steps:
     - id: 'step-0'
       uses: 'actions/checkout@v3'
@@ -271,7 +271,7 @@ jobs:
       working-directory: 'captain'
       run: 'chmod +x ./gradlew'
   raven-builder:
-    runs-on: 'macos-latest'
+    runs-on: 'ubuntu-latest'
     steps:
     - id: 'step-0'
       uses: 'actions/checkout@v3'
@@ -287,7 +287,7 @@ jobs:
       working-directory: 'raven'
       run: 'chmod +x ./gradlew'
   status-builder:
-    runs-on: 'macos-latest'
+    runs-on: 'ubuntu-latest'
     steps:
     - id: 'step-0'
       uses: 'actions/checkout@v3'
@@ -303,7 +303,7 @@ jobs:
       working-directory: 'status'
       run: 'chmod +x ./gradlew'
   krest-builder:
-    runs-on: 'macos-latest'
+    runs-on: 'ubuntu-latest'
     steps:
     - id: 'step-0'
       uses: 'actions/checkout@v3'
@@ -319,7 +319,7 @@ jobs:
       working-directory: 'krest'
       run: 'chmod +x ./gradlew'
   kida-builder:
-    runs-on: 'macos-latest'
+    runs-on: 'ubuntu-latest'
     steps:
     - id: 'step-0'
       uses: 'actions/checkout@v3'
@@ -361,7 +361,7 @@ jobs:
     - id: 'step-0'
       run: 'echo "all builds completed. Beginning deployment"'
   kotlinx-interoperable-publisher:
-    runs-on: 'macos-latest'
+    runs-on: 'ubuntu-latest'
     needs:
     - 'rendezvous'
     steps:
@@ -386,7 +386,7 @@ jobs:
         cache-disabled: 'true'
         arguments: ':kotlinx-interoperable-exports:publishAllPublicationsToMavenCentral --no-configuration-cache'
   lexi-publisher:
-    runs-on: 'macos-latest'
+    runs-on: 'ubuntu-latest'
     needs:
     - 'rendezvous'
     steps:
@@ -411,7 +411,7 @@ jobs:
         cache-disabled: 'true'
         arguments: ':lexi-api:publishAllPublicationsToMavenCentral :lexi-console:publishAllPublicationsToMavenCentral :lexi-file:publishAllPublicationsToMavenCentral :lexi-configuration:publishAllPublicationsToMavenCentral :lexi-formatters:publishAllPublicationsToMavenCentral :lexi-test-android:publishAllPublicationsToMavenCentral --no-configuration-cache'
   kommander-publisher:
-    runs-on: 'macos-latest'
+    runs-on: 'ubuntu-latest'
     needs:
     - 'rendezvous'
     steps:
@@ -436,7 +436,7 @@ jobs:
         cache-disabled: 'true'
         arguments: ':kommander-core:publishAllPublicationsToMavenCentral :kommander-coroutines:publishAllPublicationsToMavenCentral --no-configuration-cache'
   kevlar-publisher:
-    runs-on: 'macos-latest'
+    runs-on: 'ubuntu-latest'
     needs:
     - 'rendezvous'
     steps:
@@ -461,7 +461,7 @@ jobs:
         cache-disabled: 'true'
         arguments: ':kevlar-core:publishAllPublicationsToMavenCentral --no-configuration-cache'
   kase-publisher:
-    runs-on: 'macos-latest'
+    runs-on: 'ubuntu-latest'
     needs:
     - 'rendezvous'
     steps:
@@ -486,7 +486,7 @@ jobs:
         cache-disabled: 'true'
         arguments: ':kase-core:publishAllPublicationsToMavenCentral :kase-optional:publishAllPublicationsToMavenCentral :kase-possible:publishAllPublicationsToMavenCentral --no-configuration-cache'
   response-publisher:
-    runs-on: 'macos-latest'
+    runs-on: 'ubuntu-latest'
     needs:
     - 'rendezvous'
     steps:
@@ -511,7 +511,7 @@ jobs:
         cache-disabled: 'true'
         arguments: ':response-core:publishAllPublicationsToMavenCentral :response-ktor-server:publishAllPublicationsToMavenCentral :response-ktor-client:publishAllPublicationsToMavenCentral --no-configuration-cache'
   keep-publisher:
-    runs-on: 'macos-latest'
+    runs-on: 'ubuntu-latest'
     needs:
     - 'rendezvous'
     steps:
@@ -536,7 +536,7 @@ jobs:
         cache-disabled: 'true'
         arguments: ':keep-api:publishAllPublicationsToMavenCentral :keep-browser:publishAllPublicationsToMavenCentral :keep-file:publishAllPublicationsToMavenCentral :keep-mock:publishAllPublicationsToMavenCentral --no-configuration-cache'
   cinematic-publisher:
-    runs-on: 'macos-latest'
+    runs-on: 'ubuntu-latest'
     needs:
     - 'rendezvous'
     steps:
@@ -561,7 +561,7 @@ jobs:
         cache-disabled: 'true'
         arguments: ':cinematic-live-core:publishAllPublicationsToMavenCentral :cinematic-live-kollections:publishAllPublicationsToMavenCentral :cinematic-live-compose:publishAllPublicationsToMavenCentral :cinematic-live-coroutines:publishAllPublicationsToMavenCentral :cinematic-live-react:publishAllPublicationsToMavenCentral :cinematic-live-test:publishAllPublicationsToMavenCentral :cinematic-scene-core:publishAllPublicationsToMavenCentral --no-configuration-cache'
   krono-core-publisher:
-    runs-on: 'macos-latest'
+    runs-on: 'ubuntu-latest'
     needs:
     - 'rendezvous'
     steps:
@@ -586,7 +586,7 @@ jobs:
         cache-disabled: 'true'
         arguments: ':krono-api:publishAllPublicationsToMavenCentral :krono-kotlinx:publishAllPublicationsToMavenCentral --no-configuration-cache'
   habitat-publisher:
-    runs-on: 'macos-latest'
+    runs-on: 'ubuntu-latest'
     needs:
     - 'rendezvous'
     steps:
@@ -611,7 +611,7 @@ jobs:
         cache-disabled: 'true'
         arguments: ':habitat-core:publishAllPublicationsToMavenCentral --no-configuration-cache'
   kiota-publisher:
-    runs-on: 'macos-latest'
+    runs-on: 'ubuntu-latest'
     needs:
     - 'rendezvous'
     steps:
@@ -636,7 +636,7 @@ jobs:
         cache-disabled: 'true'
         arguments: ':kiota-url:publishAllPublicationsToMavenCentral :kiota-sse:publishAllPublicationsToMavenCentral :kiota-file-core:publishAllPublicationsToMavenCentral :kiota-file-system:publishAllPublicationsToMavenCentral :kiota-file-virtual:publishAllPublicationsToMavenCentral :kiota-file-compose:publishAllPublicationsToMavenCentral :kiota-file-picker-core:publishAllPublicationsToMavenCentral :kiota-file-picker-system:publishAllPublicationsToMavenCentral :kiota-file-picker-virtual:publishAllPublicationsToMavenCentral :kiota-file-manager-core:publishAllPublicationsToMavenCentral :kiota-file-manager-system:publishAllPublicationsToMavenCentral :kiota-file-manager-virtual:publishAllPublicationsToMavenCentral :kiota-connection-core:publishAllPublicationsToMavenCentral :kiota-connection-http:publishAllPublicationsToMavenCentral :kiota-connection-manual:publishAllPublicationsToMavenCentral --no-configuration-cache'
   neat-publisher:
-    runs-on: 'macos-latest'
+    runs-on: 'ubuntu-latest'
     needs:
     - 'rendezvous'
     steps:
@@ -661,7 +661,7 @@ jobs:
         cache-disabled: 'true'
         arguments: ':neat-validation:publishAllPublicationsToMavenCentral :neat-formatting:publishAllPublicationsToMavenCentral --no-configuration-cache'
   symphony-publisher:
-    runs-on: 'macos-latest'
+    runs-on: 'ubuntu-latest'
     needs:
     - 'rendezvous'
     steps:
@@ -686,7 +686,7 @@ jobs:
         cache-disabled: 'true'
         arguments: ':symphony-visibility:publishAllPublicationsToMavenCentral :symphony-paginator:publishAllPublicationsToMavenCentral :symphony-selector:publishAllPublicationsToMavenCentral :symphony-actions:publishAllPublicationsToMavenCentral :symphony-table:publishAllPublicationsToMavenCentral :symphony-list:publishAllPublicationsToMavenCentral :symphony-collections:publishAllPublicationsToMavenCentral :symphony-input-core:publishAllPublicationsToMavenCentral :symphony-input-text:publishAllPublicationsToMavenCentral :symphony-input-number:publishAllPublicationsToMavenCentral :symphony-input-choice:publishAllPublicationsToMavenCentral :symphony-input-dialog:publishAllPublicationsToMavenCentral :symphony-input-phone:publishAllPublicationsToMavenCentral --no-configuration-cache'
   nation-publisher:
-    runs-on: 'macos-latest'
+    runs-on: 'ubuntu-latest'
     needs:
     - 'rendezvous'
     steps:
@@ -711,7 +711,7 @@ jobs:
         cache-disabled: 'true'
         arguments: ':nation-countries:publishAllPublicationsToMavenCentral :nation-currencies:publishAllPublicationsToMavenCentral :nation-flags-compose:publishAllPublicationsToMavenCentral --no-configuration-cache'
   sim-publisher:
-    runs-on: 'macos-latest'
+    runs-on: 'ubuntu-latest'
     needs:
     - 'rendezvous'
     steps:
@@ -736,7 +736,7 @@ jobs:
         cache-disabled: 'true'
         arguments: ':sim-core:publishAllPublicationsToMavenCentral --no-configuration-cache'
   captain-publisher:
-    runs-on: 'macos-latest'
+    runs-on: 'ubuntu-latest'
     needs:
     - 'rendezvous'
     steps:
@@ -761,7 +761,7 @@ jobs:
         cache-disabled: 'true'
         arguments: ':captain-navigator-api:publishAllPublicationsToMavenCentral :captain-navigator-browser:publishAllPublicationsToMavenCentral :captain-navigator-basic:publishAllPublicationsToMavenCentral :captain-router-core:publishAllPublicationsToMavenCentral :captain-router-react-core:publishAllPublicationsToMavenCentral :captain-router-react-dom:publishAllPublicationsToMavenCentral :captain-router-compose-core:publishAllPublicationsToMavenCentral :captain-router-compose-html:publishAllPublicationsToMavenCentral --no-configuration-cache'
   raven-publisher:
-    runs-on: 'macos-latest'
+    runs-on: 'ubuntu-latest'
     needs:
     - 'rendezvous'
     steps:
@@ -786,7 +786,7 @@ jobs:
         cache-disabled: 'true'
         arguments: ':raven-core:publishAllPublicationsToMavenCentral :raven-config:publishAllPublicationsToMavenCentral :raven-outbox-core:publishAllPublicationsToMavenCentral :raven-outbox-local:publishAllPublicationsToMavenCentral :raven-outbox-server:publishAllPublicationsToMavenCentral :raven-outbox-client:publishAllPublicationsToMavenCentral :raven-email-markup:publishAllPublicationsToMavenCentral :raven-email-agent-core:publishAllPublicationsToMavenCentral :raven-email-agent-config:publishAllPublicationsToMavenCentral :raven-email-agent-console:publishAllPublicationsToMavenCentral :raven-email-agent-brevo:publishAllPublicationsToMavenCentral :raven-email-agent-mailgun:publishAllPublicationsToMavenCentral :raven-email-agent-postmark:publishAllPublicationsToMavenCentral :raven-email-resources-core:publishAllPublicationsToMavenCentral :raven-email-resources-file:publishAllPublicationsToMavenCentral :raven-sms-core:publishAllPublicationsToMavenCentral :raven-sms-config:publishAllPublicationsToMavenCentral :raven-sms-console:publishAllPublicationsToMavenCentral :raven-sms-kila:publishAllPublicationsToMavenCentral --no-configuration-cache'
   status-publisher:
-    runs-on: 'macos-latest'
+    runs-on: 'ubuntu-latest'
     needs:
     - 'rendezvous'
     steps:
@@ -811,7 +811,7 @@ jobs:
         cache-disabled: 'true'
         arguments: ':status-core:publishAllPublicationsToMavenCentral :status-scene:publishAllPublicationsToMavenCentral --no-configuration-cache'
   krest-publisher:
-    runs-on: 'macos-latest'
+    runs-on: 'ubuntu-latest'
     needs:
     - 'rendezvous'
     steps:
@@ -836,7 +836,7 @@ jobs:
         cache-disabled: 'true'
         arguments: ':krest-core:publishAllPublicationsToMavenCentral --no-configuration-cache'
   kida-publisher:
-    runs-on: 'macos-latest'
+    runs-on: 'ubuntu-latest'
     needs:
     - 'rendezvous'
     steps:

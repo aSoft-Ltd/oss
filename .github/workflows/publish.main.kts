@@ -154,7 +154,8 @@ fun JobBuilder<JobOutputs.EMPTY>.setupAndCheckout(gp: GradleProject) {
 
 fun WorkflowBuilder.buildProject(gp: GradleProject) = job(
     id = "${gp.id}-builder",
-    runsOn = RunnerType.MacOSLatest
+//    runsOn = RunnerType.MacOSLatest
+    runsOn = RunnerType.UbuntuLatest
 ) {
     setupAndCheckout(gp)
 
@@ -196,7 +197,8 @@ fun WorkflowBuilder.buildProject(gp: GradleProject) = job(
 
 fun WorkflowBuilder.publishProject(gp: GradleProject, after: Job<JobOutputs.EMPTY>) = job(
     id = "${gp.id}-publisher",
-    runsOn = RunnerType.MacOSLatest,
+//    runsOn = RunnerType.MacOSLatest,
+    runsOn = RunnerType.UbuntuLatest,
     needs = listOf(after)
 ) {
     setupAndCheckout(gp)
