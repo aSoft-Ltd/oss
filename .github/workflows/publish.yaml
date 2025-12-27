@@ -30,20 +30,6 @@ jobs:
       name: 'Make ./gradlew executable'
       working-directory: 'kotlinx-interoperable'
       run: 'chmod +x ./gradlew'
-    - id: 'step-3'
-      name: 'Updating package.lock'
-      uses: 'gradle/gradle-build-action@v2'
-      with:
-        build-root-directory: './kotlinx-interoperable'
-        cache-disabled: 'true'
-        arguments: 'kotlinUpgradePackageLock kotlinWasmUpgradePackageLock'
-    - id: 'step-4'
-      name: 'Assuring package.lock is well updated'
-      uses: 'gradle/gradle-build-action@v2'
-      with:
-        build-root-directory: './kotlinx-interoperable'
-        cache-disabled: 'true'
-        arguments: 'kotlinUpgradePackageLock kotlinWasmUpgradePackageLock --rerun-tasks'
   lexi-builder:
     runs-on: 'macos-latest'
     steps:
@@ -60,20 +46,6 @@ jobs:
       name: 'Make ./gradlew executable'
       working-directory: 'lexi'
       run: 'chmod +x ./gradlew'
-    - id: 'step-3'
-      name: 'Updating package.lock'
-      uses: 'gradle/gradle-build-action@v2'
-      with:
-        build-root-directory: './lexi'
-        cache-disabled: 'true'
-        arguments: 'kotlinUpgradePackageLock kotlinWasmUpgradePackageLock'
-    - id: 'step-4'
-      name: 'Assuring package.lock is well updated'
-      uses: 'gradle/gradle-build-action@v2'
-      with:
-        build-root-directory: './lexi'
-        cache-disabled: 'true'
-        arguments: 'kotlinUpgradePackageLock kotlinWasmUpgradePackageLock --rerun-tasks'
   kommander-builder:
     runs-on: 'macos-latest'
     steps:
@@ -90,20 +62,6 @@ jobs:
       name: 'Make ./gradlew executable'
       working-directory: 'kommander'
       run: 'chmod +x ./gradlew'
-    - id: 'step-3'
-      name: 'Updating package.lock'
-      uses: 'gradle/gradle-build-action@v2'
-      with:
-        build-root-directory: './kommander'
-        cache-disabled: 'true'
-        arguments: 'kotlinUpgradePackageLock kotlinWasmUpgradePackageLock'
-    - id: 'step-4'
-      name: 'Assuring package.lock is well updated'
-      uses: 'gradle/gradle-build-action@v2'
-      with:
-        build-root-directory: './kommander'
-        cache-disabled: 'true'
-        arguments: 'kotlinUpgradePackageLock kotlinWasmUpgradePackageLock --rerun-tasks'
   kevlar-builder:
     runs-on: 'macos-latest'
     steps:
@@ -120,20 +78,6 @@ jobs:
       name: 'Make ./gradlew executable'
       working-directory: 'kevlar'
       run: 'chmod +x ./gradlew'
-    - id: 'step-3'
-      name: 'Updating package.lock'
-      uses: 'gradle/gradle-build-action@v2'
-      with:
-        build-root-directory: './kevlar'
-        cache-disabled: 'true'
-        arguments: 'kotlinUpgradePackageLock kotlinWasmUpgradePackageLock'
-    - id: 'step-4'
-      name: 'Assuring package.lock is well updated'
-      uses: 'gradle/gradle-build-action@v2'
-      with:
-        build-root-directory: './kevlar'
-        cache-disabled: 'true'
-        arguments: 'kotlinUpgradePackageLock kotlinWasmUpgradePackageLock --rerun-tasks'
   kase-builder:
     runs-on: 'macos-latest'
     steps:
@@ -150,20 +94,6 @@ jobs:
       name: 'Make ./gradlew executable'
       working-directory: 'kase'
       run: 'chmod +x ./gradlew'
-    - id: 'step-3'
-      name: 'Updating package.lock'
-      uses: 'gradle/gradle-build-action@v2'
-      with:
-        build-root-directory: './kase'
-        cache-disabled: 'true'
-        arguments: 'kotlinUpgradePackageLock kotlinWasmUpgradePackageLock'
-    - id: 'step-4'
-      name: 'Assuring package.lock is well updated'
-      uses: 'gradle/gradle-build-action@v2'
-      with:
-        build-root-directory: './kase'
-        cache-disabled: 'true'
-        arguments: 'kotlinUpgradePackageLock kotlinWasmUpgradePackageLock --rerun-tasks'
   response-builder:
     runs-on: 'macos-latest'
     steps:
@@ -180,20 +110,6 @@ jobs:
       name: 'Make ./gradlew executable'
       working-directory: 'response'
       run: 'chmod +x ./gradlew'
-    - id: 'step-3'
-      name: 'Updating package.lock'
-      uses: 'gradle/gradle-build-action@v2'
-      with:
-        build-root-directory: './response'
-        cache-disabled: 'true'
-        arguments: 'kotlinUpgradePackageLock kotlinWasmUpgradePackageLock'
-    - id: 'step-4'
-      name: 'Assuring package.lock is well updated'
-      uses: 'gradle/gradle-build-action@v2'
-      with:
-        build-root-directory: './response'
-        cache-disabled: 'true'
-        arguments: 'kotlinUpgradePackageLock kotlinWasmUpgradePackageLock --rerun-tasks'
   keep-builder:
     runs-on: 'macos-latest'
     steps:
@@ -210,20 +126,6 @@ jobs:
       name: 'Make ./gradlew executable'
       working-directory: 'keep'
       run: 'chmod +x ./gradlew'
-    - id: 'step-3'
-      name: 'Updating package.lock'
-      uses: 'gradle/gradle-build-action@v2'
-      with:
-        build-root-directory: './keep'
-        cache-disabled: 'true'
-        arguments: 'kotlinUpgradePackageLock kotlinWasmUpgradePackageLock'
-    - id: 'step-4'
-      name: 'Assuring package.lock is well updated'
-      uses: 'gradle/gradle-build-action@v2'
-      with:
-        build-root-directory: './keep'
-        cache-disabled: 'true'
-        arguments: 'kotlinUpgradePackageLock kotlinWasmUpgradePackageLock --rerun-tasks'
   cinematic-builder:
     runs-on: 'macos-latest'
     steps:
@@ -240,20 +142,6 @@ jobs:
       name: 'Make ./gradlew executable'
       working-directory: 'cinematic'
       run: 'chmod +x ./gradlew'
-    - id: 'step-3'
-      name: 'Updating package.lock'
-      uses: 'gradle/gradle-build-action@v2'
-      with:
-        build-root-directory: './cinematic'
-        cache-disabled: 'true'
-        arguments: 'kotlinUpgradePackageLock kotlinWasmUpgradePackageLock'
-    - id: 'step-4'
-      name: 'Assuring package.lock is well updated'
-      uses: 'gradle/gradle-build-action@v2'
-      with:
-        build-root-directory: './cinematic'
-        cache-disabled: 'true'
-        arguments: 'kotlinUpgradePackageLock kotlinWasmUpgradePackageLock --rerun-tasks'
   krono-core-builder:
     runs-on: 'macos-latest'
     steps:
@@ -270,20 +158,6 @@ jobs:
       name: 'Make ./gradlew executable'
       working-directory: 'krono-core'
       run: 'chmod +x ./gradlew'
-    - id: 'step-3'
-      name: 'Updating package.lock'
-      uses: 'gradle/gradle-build-action@v2'
-      with:
-        build-root-directory: './krono-core'
-        cache-disabled: 'true'
-        arguments: 'kotlinUpgradePackageLock kotlinWasmUpgradePackageLock'
-    - id: 'step-4'
-      name: 'Assuring package.lock is well updated'
-      uses: 'gradle/gradle-build-action@v2'
-      with:
-        build-root-directory: './krono-core'
-        cache-disabled: 'true'
-        arguments: 'kotlinUpgradePackageLock kotlinWasmUpgradePackageLock --rerun-tasks'
   habitat-builder:
     runs-on: 'macos-latest'
     steps:
@@ -300,20 +174,6 @@ jobs:
       name: 'Make ./gradlew executable'
       working-directory: 'habitat'
       run: 'chmod +x ./gradlew'
-    - id: 'step-3'
-      name: 'Updating package.lock'
-      uses: 'gradle/gradle-build-action@v2'
-      with:
-        build-root-directory: './habitat'
-        cache-disabled: 'true'
-        arguments: 'kotlinUpgradePackageLock kotlinWasmUpgradePackageLock'
-    - id: 'step-4'
-      name: 'Assuring package.lock is well updated'
-      uses: 'gradle/gradle-build-action@v2'
-      with:
-        build-root-directory: './habitat'
-        cache-disabled: 'true'
-        arguments: 'kotlinUpgradePackageLock kotlinWasmUpgradePackageLock --rerun-tasks'
   kiota-builder:
     runs-on: 'macos-latest'
     steps:
@@ -330,20 +190,6 @@ jobs:
       name: 'Make ./gradlew executable'
       working-directory: 'kiota'
       run: 'chmod +x ./gradlew'
-    - id: 'step-3'
-      name: 'Updating package.lock'
-      uses: 'gradle/gradle-build-action@v2'
-      with:
-        build-root-directory: './kiota'
-        cache-disabled: 'true'
-        arguments: 'kotlinUpgradePackageLock kotlinWasmUpgradePackageLock'
-    - id: 'step-4'
-      name: 'Assuring package.lock is well updated'
-      uses: 'gradle/gradle-build-action@v2'
-      with:
-        build-root-directory: './kiota'
-        cache-disabled: 'true'
-        arguments: 'kotlinUpgradePackageLock kotlinWasmUpgradePackageLock --rerun-tasks'
   neat-builder:
     runs-on: 'macos-latest'
     steps:
@@ -360,20 +206,6 @@ jobs:
       name: 'Make ./gradlew executable'
       working-directory: 'neat'
       run: 'chmod +x ./gradlew'
-    - id: 'step-3'
-      name: 'Updating package.lock'
-      uses: 'gradle/gradle-build-action@v2'
-      with:
-        build-root-directory: './neat'
-        cache-disabled: 'true'
-        arguments: 'kotlinUpgradePackageLock kotlinWasmUpgradePackageLock'
-    - id: 'step-4'
-      name: 'Assuring package.lock is well updated'
-      uses: 'gradle/gradle-build-action@v2'
-      with:
-        build-root-directory: './neat'
-        cache-disabled: 'true'
-        arguments: 'kotlinUpgradePackageLock kotlinWasmUpgradePackageLock --rerun-tasks'
   symphony-builder:
     runs-on: 'macos-latest'
     steps:
@@ -390,20 +222,6 @@ jobs:
       name: 'Make ./gradlew executable'
       working-directory: 'symphony'
       run: 'chmod +x ./gradlew'
-    - id: 'step-3'
-      name: 'Updating package.lock'
-      uses: 'gradle/gradle-build-action@v2'
-      with:
-        build-root-directory: './symphony'
-        cache-disabled: 'true'
-        arguments: 'kotlinUpgradePackageLock kotlinWasmUpgradePackageLock'
-    - id: 'step-4'
-      name: 'Assuring package.lock is well updated'
-      uses: 'gradle/gradle-build-action@v2'
-      with:
-        build-root-directory: './symphony'
-        cache-disabled: 'true'
-        arguments: 'kotlinUpgradePackageLock kotlinWasmUpgradePackageLock --rerun-tasks'
   nation-builder:
     runs-on: 'macos-latest'
     steps:
@@ -420,20 +238,6 @@ jobs:
       name: 'Make ./gradlew executable'
       working-directory: 'nation'
       run: 'chmod +x ./gradlew'
-    - id: 'step-3'
-      name: 'Updating package.lock'
-      uses: 'gradle/gradle-build-action@v2'
-      with:
-        build-root-directory: './nation'
-        cache-disabled: 'true'
-        arguments: 'kotlinUpgradePackageLock kotlinWasmUpgradePackageLock'
-    - id: 'step-4'
-      name: 'Assuring package.lock is well updated'
-      uses: 'gradle/gradle-build-action@v2'
-      with:
-        build-root-directory: './nation'
-        cache-disabled: 'true'
-        arguments: 'kotlinUpgradePackageLock kotlinWasmUpgradePackageLock --rerun-tasks'
   sim-builder:
     runs-on: 'macos-latest'
     steps:
@@ -450,20 +254,6 @@ jobs:
       name: 'Make ./gradlew executable'
       working-directory: 'sim'
       run: 'chmod +x ./gradlew'
-    - id: 'step-3'
-      name: 'Updating package.lock'
-      uses: 'gradle/gradle-build-action@v2'
-      with:
-        build-root-directory: './sim'
-        cache-disabled: 'true'
-        arguments: 'kotlinUpgradePackageLock kotlinWasmUpgradePackageLock'
-    - id: 'step-4'
-      name: 'Assuring package.lock is well updated'
-      uses: 'gradle/gradle-build-action@v2'
-      with:
-        build-root-directory: './sim'
-        cache-disabled: 'true'
-        arguments: 'kotlinUpgradePackageLock kotlinWasmUpgradePackageLock --rerun-tasks'
   captain-builder:
     runs-on: 'macos-latest'
     steps:
@@ -480,20 +270,6 @@ jobs:
       name: 'Make ./gradlew executable'
       working-directory: 'captain'
       run: 'chmod +x ./gradlew'
-    - id: 'step-3'
-      name: 'Updating package.lock'
-      uses: 'gradle/gradle-build-action@v2'
-      with:
-        build-root-directory: './captain'
-        cache-disabled: 'true'
-        arguments: 'kotlinUpgradePackageLock kotlinWasmUpgradePackageLock'
-    - id: 'step-4'
-      name: 'Assuring package.lock is well updated'
-      uses: 'gradle/gradle-build-action@v2'
-      with:
-        build-root-directory: './captain'
-        cache-disabled: 'true'
-        arguments: 'kotlinUpgradePackageLock kotlinWasmUpgradePackageLock --rerun-tasks'
   raven-builder:
     runs-on: 'macos-latest'
     steps:
@@ -510,20 +286,6 @@ jobs:
       name: 'Make ./gradlew executable'
       working-directory: 'raven'
       run: 'chmod +x ./gradlew'
-    - id: 'step-3'
-      name: 'Updating package.lock'
-      uses: 'gradle/gradle-build-action@v2'
-      with:
-        build-root-directory: './raven'
-        cache-disabled: 'true'
-        arguments: 'kotlinUpgradePackageLock kotlinWasmUpgradePackageLock'
-    - id: 'step-4'
-      name: 'Assuring package.lock is well updated'
-      uses: 'gradle/gradle-build-action@v2'
-      with:
-        build-root-directory: './raven'
-        cache-disabled: 'true'
-        arguments: 'kotlinUpgradePackageLock kotlinWasmUpgradePackageLock --rerun-tasks'
   status-builder:
     runs-on: 'macos-latest'
     steps:
@@ -540,20 +302,6 @@ jobs:
       name: 'Make ./gradlew executable'
       working-directory: 'status'
       run: 'chmod +x ./gradlew'
-    - id: 'step-3'
-      name: 'Updating package.lock'
-      uses: 'gradle/gradle-build-action@v2'
-      with:
-        build-root-directory: './status'
-        cache-disabled: 'true'
-        arguments: 'kotlinUpgradePackageLock kotlinWasmUpgradePackageLock'
-    - id: 'step-4'
-      name: 'Assuring package.lock is well updated'
-      uses: 'gradle/gradle-build-action@v2'
-      with:
-        build-root-directory: './status'
-        cache-disabled: 'true'
-        arguments: 'kotlinUpgradePackageLock kotlinWasmUpgradePackageLock --rerun-tasks'
   krest-builder:
     runs-on: 'macos-latest'
     steps:
@@ -570,20 +318,6 @@ jobs:
       name: 'Make ./gradlew executable'
       working-directory: 'krest'
       run: 'chmod +x ./gradlew'
-    - id: 'step-3'
-      name: 'Updating package.lock'
-      uses: 'gradle/gradle-build-action@v2'
-      with:
-        build-root-directory: './krest'
-        cache-disabled: 'true'
-        arguments: 'kotlinUpgradePackageLock kotlinWasmUpgradePackageLock'
-    - id: 'step-4'
-      name: 'Assuring package.lock is well updated'
-      uses: 'gradle/gradle-build-action@v2'
-      with:
-        build-root-directory: './krest'
-        cache-disabled: 'true'
-        arguments: 'kotlinUpgradePackageLock kotlinWasmUpgradePackageLock --rerun-tasks'
   kida-builder:
     runs-on: 'macos-latest'
     steps:
@@ -600,20 +334,6 @@ jobs:
       name: 'Make ./gradlew executable'
       working-directory: 'kida'
       run: 'chmod +x ./gradlew'
-    - id: 'step-3'
-      name: 'Updating package.lock'
-      uses: 'gradle/gradle-build-action@v2'
-      with:
-        build-root-directory: './kida'
-        cache-disabled: 'true'
-        arguments: 'kotlinUpgradePackageLock kotlinWasmUpgradePackageLock'
-    - id: 'step-4'
-      name: 'Assuring package.lock is well updated'
-      uses: 'gradle/gradle-build-action@v2'
-      with:
-        build-root-directory: './kida'
-        cache-disabled: 'true'
-        arguments: 'kotlinUpgradePackageLock kotlinWasmUpgradePackageLock --rerun-tasks'
   rendezvous:
     runs-on: 'ubuntu-latest'
     needs:

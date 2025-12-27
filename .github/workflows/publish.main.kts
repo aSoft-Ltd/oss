@@ -164,23 +164,23 @@ fun WorkflowBuilder.buildProject(gp: GradleProject) = job(
 //        workingDirectory = gp.path,
 //    )
 
-    uses(
-        name = "Updating package.lock",
-        action = GradleBuildAction(
-            arguments = "kotlinUpgradePackageLock kotlinWasmUpgradePackageLock",
-            buildRootDirectory = "./${gp.path}",
-            cacheDisabled = true
-        )
-    )
+//    uses(
+//        name = "Updating package.lock",
+//        action = GradleBuildAction(
+//            arguments = "kotlinUpgradePackageLock kotlinWasmUpgradePackageLock",
+//            buildRootDirectory = "./${gp.path}",
+//            cacheDisabled = true
+//        )
+//    )
 
-    uses(
-        name = "Assuring package.lock is well updated",
-        action = GradleBuildAction(
-            arguments = "kotlinUpgradePackageLock kotlinWasmUpgradePackageLock --rerun-tasks",
-            buildRootDirectory = "./${gp.path}",
-            cacheDisabled = true
-        )
-    )
+//    uses(
+//        name = "Assuring package.lock is well updated",
+//        action = GradleBuildAction(
+//            arguments = "kotlinUpgradePackageLock kotlinWasmUpgradePackageLock --rerun-tasks",
+//            buildRootDirectory = "./${gp.path}",
+//            cacheDisabled = true
+//        )
+//    )
 
 //    gp.modules.forEach { // Disabling building // untill https://youtrack.jetbrains.com/issue/KT-80014 gets fixed
 //        uses(
