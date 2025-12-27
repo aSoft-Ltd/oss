@@ -57,7 +57,7 @@ val projects = projects {
         p("test") { p("android") }
     }
     p("kommander") { p("core", "coroutines") }
-    p("kollections") { p("primitive", "atomic", "stacks") }
+//    p("kollections") { p("primitive", "atomic", "stacks") }
     p("kevlar") { p("core") }
     p("kase") {
         p("core", "optional", "possible")
@@ -68,12 +68,12 @@ val projects = projects {
             p("server", "client")
         }
     }
-    p("koncurrent") {
-        p("utils")
-        p("executors") { p("core", "coroutines", "mock") }
-        p("awaited") { p("core", "coroutines", "test") }
-        p("later") { p("core", "coroutines", "test") }
-    }
+//    p("koncurrent") {
+//        p("utils")
+//        p("executors") { p("core", "coroutines", "mock") }
+//        p("awaited") { p("core", "coroutines", "test") }
+//        p("later") { p("core", "coroutines", "test") }
+//    }
     p("keep") {
         p("api", "browser", "file", "mock") // , "react-native") untill https://youtrack.jetbrains.com/issue/KT-80014 gets fixed
     }
@@ -96,13 +96,13 @@ val projects = projects {
         p("connection") { p("core", "http", "manual") }
     }
     p("neat") { p("validation", "formatting") }
-    p("epsilon", "epsilon-api") { p("core") }
-    p("epsilon", "epsilon-client") {
-        p("fields")
-        p("image") { p("core", "web") }
-        p("image-react") { p("core", "dom") }
-        p("image-compose") { p("core", "html") }
-    }
+//    p("epsilon", "epsilon-api") { p("core") }
+//    p("epsilon", "epsilon-client") {
+//        p("fields")
+//        p("image") { p("core", "web") }
+//        p("image-react") { p("core", "dom") }
+//        p("image-compose") { p("core", "html") }
+//    }
     p("symphony") {
         p("visibility", "paginator", "selector", "actions", "table", "list", "collections")
         p("input") { p("core", "text", "number", "choice", "dialog", "phone") }
