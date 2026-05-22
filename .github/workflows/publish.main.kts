@@ -93,7 +93,7 @@ val projects = projects {
                 p(it) { p("core", "system", "virtual") }
             }
         }
-        p("connection") { p("core", "http", "manual") }
+        p("connection") { p("core", "coroutines", "http", "manual") }
     }
     p("neat") { p("validation", "formatting") }
 //    p("epsilon", "epsilon-api") { p("core") }
@@ -132,9 +132,7 @@ val projects = projects {
     }
     p("status") { p("core", "scene") }
     p("krest") { p("core") }
-    // <todo>
-//    p("klip") { p("api", "browser", "system") }
-    // </todo>
+    p("klip") { p("api", "local", "system") }
     p("kida") { p("api", "brela", "fake") }
 //    p("majestic") {
 //        p("theme", "table", "graphs", "drawers", "screen", "loaders")
