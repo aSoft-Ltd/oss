@@ -9,6 +9,7 @@ on:
     - 'main'
 env:
   GRADLE_OPTS: '-Djdk.internal.platform.container=none'
+  JAVA_TOOL_OPTIONS: '-XX:-UseContainerSupport'
   ORG_GRADLE_PROJECT_mavenCentralUsername: '${{ secrets.ASOFT_NEXUS_USERNAME }}'
   ORG_GRADLE_PROJECT_mavenCentralPassword: '${{ secrets.ASOFT_NEXUS_PASSWORD }}'
   ORG_GRADLE_PROJECT_signingInMemoryKey: '${{ secrets.ORG_GRADLE_PROJECT_SIGNINGINMEMORYKEY }}'

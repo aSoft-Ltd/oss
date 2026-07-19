@@ -226,7 +226,8 @@ fun WorkflowBuilder.publishProject(gp: GradleProject, after: Job<JobOutputs.EMPT
 workflow(
     name = "Build, Cache then Publish", on = listOf(Push(branches = listOf("main"))), sourceFile = __FILE__,
     env = linkedMapOf(
-        "GRADLE_OPTS" to "-Djdk.internal.platform.container=none",
+        "GRADLE_OPTS" to "-Djdk.internal.platform.container=none", // removing this causes CI to fail with 'Cannot invoke "jdk.internal.platform.CgroupInfo.getMountPoint()" because "anyController" is null'
+        "JAVA_TOOL_OPTIONS" to "-XX:-UseContainerSupport",  // removing this causes CI to fail with 'Cannot invoke "jdk.internal.platform.CgroupInfo.getMountPoint()" because "anyController" is null'
         "ORG_GRADLE_PROJECT_mavenCentralUsername" to expr { secrets["ASOFT_NEXUS_USERNAME"].toString() },
         "ORG_GRADLE_PROJECT_mavenCentralPassword" to expr { secrets["ASOFT_NEXUS_PASSWORD"].toString() },
         "ORG_GRADLE_PROJECT_signingInMemoryKey" to expr { secrets["ORG_GRADLE_PROJECT_SIGNINGINMEMORYKEY"].toString() },
