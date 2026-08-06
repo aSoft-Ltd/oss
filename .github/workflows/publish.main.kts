@@ -104,7 +104,7 @@ val projects = projects {
 //        p("image-compose") { p("core", "html") }
 //    }
     p("symphony") {
-        p("visibility", "paginator", "selector", "actions", "table", "list", "collections")
+        p("visibility", "pagination", "paginator", "selector", "actions", "table", "list", "collections")
         p("input") { p("core", "text", "number", "choice", "dialog", "phone") }
     }
     p("nation") {

@@ -698,12 +698,12 @@ jobs:
       working-directory: 'symphony'
       run: 'chmod +x ./gradlew'
     - id: 'step-3'
-      name: 'publishing symphony-visibility, symphony-paginator, symphony-selector, symphony-actions, symphony-table, symphony-list, symphony-collections, symphony-input-core, symphony-input-text, symphony-input-number, symphony-input-choice, symphony-input-dialog, symphony-input-phone'
+      name: 'publishing symphony-visibility, symphony-pagination, symphony-paginator, symphony-selector, symphony-actions, symphony-table, symphony-list, symphony-collections, symphony-input-core, symphony-input-text, symphony-input-number, symphony-input-choice, symphony-input-dialog, symphony-input-phone'
       uses: 'gradle/gradle-build-action@v2'
       with:
         build-root-directory: './symphony'
         cache-disabled: 'true'
-        arguments: ':symphony-visibility:publishAllPublicationsToMavenCentral :symphony-paginator:publishAllPublicationsToMavenCentral :symphony-selector:publishAllPublicationsToMavenCentral :symphony-actions:publishAllPublicationsToMavenCentral :symphony-table:publishAllPublicationsToMavenCentral :symphony-list:publishAllPublicationsToMavenCentral :symphony-collections:publishAllPublicationsToMavenCentral :symphony-input-core:publishAllPublicationsToMavenCentral :symphony-input-text:publishAllPublicationsToMavenCentral :symphony-input-number:publishAllPublicationsToMavenCentral :symphony-input-choice:publishAllPublicationsToMavenCentral :symphony-input-dialog:publishAllPublicationsToMavenCentral :symphony-input-phone:publishAllPublicationsToMavenCentral --no-configuration-cache'
+        arguments: ':symphony-visibility:publishAllPublicationsToMavenCentral :symphony-pagination:publishAllPublicationsToMavenCentral :symphony-paginator:publishAllPublicationsToMavenCentral :symphony-selector:publishAllPublicationsToMavenCentral :symphony-actions:publishAllPublicationsToMavenCentral :symphony-table:publishAllPublicationsToMavenCentral :symphony-list:publishAllPublicationsToMavenCentral :symphony-collections:publishAllPublicationsToMavenCentral :symphony-input-core:publishAllPublicationsToMavenCentral :symphony-input-text:publishAllPublicationsToMavenCentral :symphony-input-number:publishAllPublicationsToMavenCentral :symphony-input-choice:publishAllPublicationsToMavenCentral :symphony-input-dialog:publishAllPublicationsToMavenCentral :symphony-input-phone:publishAllPublicationsToMavenCentral --no-configuration-cache'
   nation-publisher:
     runs-on: 'ubuntu-latest'
     needs:
